@@ -4,7 +4,7 @@ This recipe publishes our current **0.8.9X11c** configuration: three NVIDIA DGX 
 
 The model, quantization format, inference engine, and upstream kernels are other people's work. Our contribution is a TP3 configuration, integration and tuning of existing ideas, numerical checks, and measurements. See [sources and credits](docs/SOURCES.md) before using or citing this recipe.
 
-Start with the [installation guide](docs/INSTALL.md) and [technical changes](docs/ARCHITECTURE.md). Agents should also read [AGENTS.md](AGENTS.md). The included launcher accepts your topology instead of embedding our private network.
+Start with the [installation guide](docs/INSTALL.md), [verification scope](docs/VERIFICATION.md) and [technical changes](docs/ARCHITECTURE.md). Agents should also read [AGENTS.md](AGENTS.md). The included launcher accepts your topology instead of embedding our private network.
 
 ## What we selected
 

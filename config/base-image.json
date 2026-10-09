@@ -1,0 +1,69 @@
+{
+    "schema":  "dsv41.public-base-image.v1",
+    "image_id":  "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+    "architecture":  "arm64",
+    "local_tag":  "dsv41-x11c-base:local",
+    "uncompressed_image_bytes":  24092097807,
+    "parts":  [
+                  {
+                      "file":  "x11c-base-image.tar.gz.part000",
+                      "bytes":  1073741824,
+                      "sha256":  "b8f75d376743a6c6d8410daf91972b625603d1028f0164a73c10855901559f50"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part001",
+                      "bytes":  1073741824,
+                      "sha256":  "0713b72252633bf2f65ea00ebc0a127b9feba59c5cbfb0a8d9fda6d8536f1870"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part002",
+                      "bytes":  1073741824,
+                      "sha256":  "8038dd45cc6821a15fd815030eed0c670b215ea882d0adeadf89b9b04098652e"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part003",
+                      "bytes":  1073741824,
+                      "sha256":  "3d9266b73812645580d647d5efb98408c81919365f78fa29d2ffb65d9dc5c8c6"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part004",
+                      "bytes":  1073741824,
+                      "sha256":  "303c9143f674945c62c4b39f2657754e4c26dbf3417cce0be1df768b84c5f578"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part005",
+                      "bytes":  1073741824,
+                      "sha256":  "e327681a7f5158742f7e5e1ac32a1ce6cb8de086bdb07a011d96e865feb07125"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part006",
+                      "bytes":  1073741824,
+                      "sha256":  "ebeb594fe8b6ccd0be1fdbd2e24accac04b24862d1162a34b0226a4099b1b485"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part007",
+                      "bytes":  1073741824,
+                      "sha256":  "6344f119ed7a975957e88b8c45049175f99156ee37115dde06ac2add585b30c0"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part008",
+                      "bytes":  1073741824,
+                      "sha256":  "9ff23357e5fb39957853930527c2b0dcb0629c7a68290c572be953602d70993e"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part009",
+                      "bytes":  1073741824,
+                      "sha256":  "8d667d5d2ea1f6b07ae2fa90bf9d3f5ec152d55f6cb1cfe377051aff5fabda22"
+                  },
+                  {
+                      "file":  "x11c-base-image.tar.gz.part010",
+                      "bytes":  78392265,
+                      "sha256":  "e6fa7c0e3f06af3d491959882d4457078fcdcc98ddfd2faea741312d09e5fa27"
+                  }
+              ],
+    "compressed_bytes":  10815810505,
+    "audit_passed":  true,
+    "archive_contains_model_weights":  false,
+    "download_base":  "https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark/releases/download/x11c-base-20261009",
+    "release_tag":  "x11c-base-20261009"
+}

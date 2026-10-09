@@ -20,7 +20,9 @@ cd deepseek-v41-flash-exl3-tp3-spark
 bash build/build.sh
 ```
 
-The first image rebuilds the original pinned vLLM, FlashInfer and EXL3 stack. The second embeds all selected runtime overlays and rebuilds the small-row EXL3 extension, T01 extension, native Engram conversion, RoCE proxy, TP3 CuTe AOT objects and NCCL 2.30.7. There is no hidden dependency on a previous deployment directory. Python, Torch and CuTe versions are checked before the native build. A changed upstream nightly image that no longer satisfies this contract fails rather than silently becoming a different recipe.
+The script downloads eleven checksum-verified archive parts, approximately 10.8 GB in total, and loads the retained ARM64 base image by its exact Docker image ID. The original upstream nightly tag currently returns 404, so the default installation does not depend on that tag remaining available. The archive contains software, not model weights. Allow at least 40 GB of extra disk space for the archive, extracted layers and build intermediates. An existing base tag identifying a different image is an error; the helper does not replace or delete it.
+
+The second image embeds all selected runtime overlays and rebuilds the small-row EXL3 extension, T01 extension, native Engram conversion, RoCE proxy, TP3 CuTe AOT objects and NCCL 2.30.7. There is no hidden dependency on a previous deployment directory. Python, Torch and CuTe versions are checked before the native build. The historical source build remains in `build/base/`, including pinned upstream revisions and original patches, but its vanished nightly dependency currently prevents rebuilding the base from that Dockerfile alone. See [verification scope](VERIFICATION.md).
 
 Transfer the completed image to the other nodes with `docker save` and `docker load`, or push it to your own registry by digest. Build once and use the same image on all three nodes. Use a named tag or digest in the local configuration; do not substitute `latest`.
 

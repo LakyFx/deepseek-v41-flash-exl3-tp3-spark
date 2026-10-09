@@ -3,6 +3,7 @@ __pycache__/
 .env
 config/cluster.local.json
 .cache/
+.venv/
 local-results/
 *.so
 *.o

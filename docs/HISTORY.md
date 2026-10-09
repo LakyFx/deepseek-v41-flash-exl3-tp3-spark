@@ -30,9 +30,9 @@ Each series is a separate measurement campaign. Values below retain their origin
 | 0.8.8 | Established rollback baseline, 32 Engram readers |
 | A | Native small-batch Engram processing with one reader; operational candidate, not part of the final paired campaign |
 | A1 / 0.8.9 | Native conversion plus restored 32 parallel disk readers |
-| B1 | Historical dense projection experiment |
+| B1 | Dense GEMV and fused MoE preparation experiment, based on the credited sfxnz sources |
 | A1+B1 | Combined experiment; gains did not simply add |
-| B2 and A1+B2 | Cooperative EXL3 expert path rejected; performance is not fabricated for a failed candidate |
+| B2 and A1+B2 | Cooperative EXL3 expert path rejected; failed qualification is retained without an invented throughput score |
 | X | 0.8.9 plus overlapping Engram reads, large-row projection/indexer partitioning and draft TP work |
 | X1 | X plus R small TP communication |
 | X2 | X1 plus K small-row EXL3 expert kernels |
@@ -71,13 +71,14 @@ This table reports weighted request decode in the original 256-token cold/hot te
 | B1 | cold | prose | 51.65 | 19.16 | 11.82 | 8.59 |
 | B1 | hot | code | 60.30 | 41.24 | 30.79 | 26.84 |
 | B1 | hot | prose | 50.27 | 32.04 | 28.53 | 28.88 |
-
 | A1+B1 | cold | code | 47.61 | 22.60 | 12.76 | 9.84 |
 | A1+B1 | cold | prose | 53.72 | 19.55 | 11.77 | 8.49 |
 | A1+B1 | hot | code | 64.97 | 41.20 | 28.49 | 27.72 |
 | A1+B1 | hot | prose | 48.47 | 37.95 | 30.77 | 27.20 |
 
 [Full numeric CSV](../results/20261002-six-version/MEASUREMENTS.csv). B2 rejection evidence is in the same directory.
+
+B2 produced CUDA error 716, a misaligned address, on all three ranks. The stock B1 expert path passed the corresponding check, which localized the failure to the cooperative launch. An unaligned shared BF16 buffer passed to a `float4` load was a source-level hypothesis; the exact failing instruction was not established. After three corrections, B2 and A1+B2 were skipped without relaxing numerical qualification. See the retained failure analysis for the distinction between evidence and hypothesis.
 
 ## Earlier tests and rejected approaches
 

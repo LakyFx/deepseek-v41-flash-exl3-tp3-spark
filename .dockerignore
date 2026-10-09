@@ -2,6 +2,7 @@
 config/cluster.local.json
 .env
 .cache
+.venv
 local-results
 results
 benchmarks
