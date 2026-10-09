@@ -20,6 +20,17 @@ Public results distinguish complete, incomplete, rejected and observational meas
 
 ## Operator acceptance
 
+After building, check the binary ABI, CUDA operator registration, native Engram ABI, NCCL version and all twelve AOT object identities without GPU access:
+
+```bash
+docker run --name dsv41-x11c-cpu-check --runtime runc --network none \
+  --env NVIDIA_VISIBLE_DEVICES=void --memory=1536m --memory-swap=1536m \
+  --mount "type=bind,src=$(pwd)/build/verify_image.py,dst=/qualification/verify_image.py,readonly" \
+  --entrypoint python3 dsv41-x11c:recipe-20261009 /qualification/verify_image.py
+```
+
+This check retains its named container and does not initialize CUDA, mount weights or run a model. Use a new name if retaining another check. A successful check establishes that the rebuilt native modules can be loaded, not that their numerical GPU output has been compared on the new host.
+
 Run the completed image on all three nodes only after preparing your own topology and local Engram ranges. Confirm startup version, dependency checks, TP rank assignment, graph capture, AOT manifest, KV capacity and reasoning policy. Then run a short owned request and an exclusive benchmark using [BENCHMARKS.md](BENCHMARKS.md). Retain your old deployment until this acceptance succeeds.
 
 The recipe does not perform a fresh 460 GB model download or a second live three-node weight load during publication. It preserves the measured deployment settings and makes the installation inputs explicit. Throughput, memory availability and graph capture can differ on another host; report them as new measurements.
