@@ -19,6 +19,7 @@ The weights can be shared read-only from one Spark to the other two over NFS. Ev
 ```bash
 git clone https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark.git
 cd deepseek-v41-flash-exl3-tp3-spark
+git checkout v0.8.9X11c
 bash build/build.sh
 ```
 
