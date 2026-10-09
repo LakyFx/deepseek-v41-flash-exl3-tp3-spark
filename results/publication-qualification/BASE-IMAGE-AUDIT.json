@@ -1,0 +1,45 @@
+{
+  "schema": "dsv41.public-base-audit.v1",
+  "image_id": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+  "docker_layers_checked": 48,
+  "layer_file_entries_checked": 254111,
+  "layer_bytes_checked": 24092155806,
+  "known_private_host_or_path_matches": 0,
+  "credential_patterns_or_paths": 0,
+  "generic_matches_reviewed": [
+    {
+      "file": "usr/local/lib/python3.12/dist-packages/tilelang-0.1.12.dist-info/RECORD",
+      "sha256": "7257c0b0fe69241798998aab09f6a041ea52bb6e26a30513e202e88e2be4f9e4",
+      "review": "Only installed public TVM package entries tilelang/3rdparty/tvm/python/tvm/relax/frontend/nn/llm; all matched windows manually reviewed."
+    },
+    {
+      "file": "usr/local/lib/python3.12/dist-packages/transformers/integrations/executorch.py",
+      "sha256": "6f12c2c07e1ec81873da746ea8ce3cdda4080b5d8adc60ed3d3656249a3cac65",
+      "review": "Public ExecuTorch extension/llm/runner reference; byte-verified against official Transformers v5.16.1 raw source."
+    },
+    {
+      "file": "vllm-workspace/examples/ray_serving/ray_serve_deepseek.py",
+      "sha256": "eda13b6c5022b30f2aa8b1cbd652da13510d2c9dc5ddaf3653f99f79282b8d21",
+      "review": "Same SHA256 as the previously independently byte-verified official public vLLM e47 example."
+    },
+    {
+      "file": "usr/local/lib/python3.12/dist-packages/modelscope/preprocessors/templates/tools_prompt.py",
+      "sha256": "25b57e56deb7859ae81899e8189e0e59891ff9870178357ae804c8794952c936",
+      "review": "Only a public github.com/modelscope/swift docs/source_en/LLM/ URL; matched window manually reviewed."
+    },
+    {
+      "file": "opt/dsv41-src/.github/CODEOWNERS",
+      "sha256": "6d2e21562929426aba8ca916b55f274a77d694a9a6b15f976ed44abb5b19ae8f",
+      "review": "Public /tests/entrypoints/llm/test_struct_output_generate.py ownership path; byte-verified against official vLLM e47 source."
+    },
+    {
+      "file": "usr/local/lib/python3.12/dist-packages/vllm/vllm-rs",
+      "sha256": "628703a514f8ea5bc3fb590d0a6e7ced1839bd511cbf1e994f2ed515f2d2bb5e",
+      "review": "Public relative Rust compiler source strings src/llm/src/*.rs; all matched windows manually reviewed; no host prefix/address/token matches."
+    }
+  ],
+  "includes_deleted_layer_entries": true,
+  "model_weights_included": false,
+  "review_result": "passed",
+  "scope": "Known project private patterns and credential formats, plus explicit review of generic LLM path matches. This is a publication privacy check, not a vulnerability audit."
+}
