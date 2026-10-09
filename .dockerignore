@@ -1,0 +1,10 @@
+.git
+config/cluster.local.json
+.env
+.cache
+local-results
+results
+benchmarks
+tests
+docs
+**/__pycache__

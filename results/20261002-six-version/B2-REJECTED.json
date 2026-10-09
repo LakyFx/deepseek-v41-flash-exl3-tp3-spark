@@ -1,0 +1,15 @@
+{
+  "bundle": "B2",
+  "fingerprint": "4a60db864fc970b03747eecb2b5367e2b6fcef019bf67c594ced03b6f2ba3949",
+  "third_candidate": true,
+  "kernel_corrections_used": 3,
+  "all3_error": "CUDA misaligned address",
+  "synchronous_rank0_origin": "native.run cooperative CUDA launch status716",
+  "tested_image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+  "B2_and_A1B2_measurement_skipped": true,
+  "quality_gate_relaxed": false,
+  "evidence_journals": [
+    "qualification-B2-moe-exec3-containers.json",
+    "qualification-B2-sync4-container.json"
+  ]
+}

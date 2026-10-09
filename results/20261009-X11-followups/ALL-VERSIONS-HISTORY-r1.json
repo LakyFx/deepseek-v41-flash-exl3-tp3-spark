@@ -1,0 +1,323 @@
+{
+  "schema": "dgx.actual-multicampaign-version-history.v1",
+  "utc": "2026-10-09T05:45:51.150351+00:00",
+  "sources": {
+    "expanded": {
+      "sha256": "392ee1d5b54d13daf95a0d69788d997937b55a531b73174abcdf498b8a937009"
+    },
+    "followup": {
+      "sha256": "b1975a6e370d7daa4b792261b6cdb7c29080b03f631e8f8e650a97293061d93a"
+    },
+    "historical": {
+      "sha256": "a06225ca2608888bb9a85d80670b419215580f4929643403b2a5d436a3a4ca7f"
+    },
+    "x_replay": {
+      "sha256": "ad28b6254ef1ad483a3d15cc0c26aec1649574cd8e281e6814d38a41d241096e"
+    }
+  },
+  "rows": [
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X",
+      "change": "0.8.9 + prefill indexer a prekryte cteni Engramu",
+      "C1_request_decode_tps": 58.53770167267469,
+      "C3_request_decode_tps": 29.74526203994714,
+      "C8_aggregate_output_tps": 132.66692694952692,
+      "64K_cold_prefill_tps": 1494.2991558616438,
+      "C1_acceptance": 0.6150684931506849,
+      "C3_acceptance": 0.6691729323308271,
+      "C8_acceptance": 0.4966101694915254
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X1",
+      "change": "X + male TP komunikacni operace",
+      "C1_request_decode_tps": 68.36046391988937,
+      "C3_request_decode_tps": 31.99615178440812,
+      "C8_aggregate_output_tps": 144.6639325578804,
+      "64K_cold_prefill_tps": 1516.673917390285,
+      "C1_acceptance": 0.705952380952381,
+      "C3_acceptance": 0.7215932914046121,
+      "C8_acceptance": 0.4919191919191919
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X2",
+      "change": "X1 + EXL3 experti",
+      "C1_request_decode_tps": 68.20531268952594,
+      "C3_request_decode_tps": 31.915185680365866,
+      "C8_aggregate_output_tps": 144.35587062747953,
+      "64K_cold_prefill_tps": 1525.1242189178538,
+      "C1_acceptance": 0.7038251366120218,
+      "C3_acceptance": 0.7146881287726358,
+      "C8_acceptance": 0.4813953488372093
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X3",
+      "change": "X2 + paralelni draft projekce",
+      "C1_request_decode_tps": 69.73640070402097,
+      "C3_request_decode_tps": 33.43539513806922,
+      "C8_aggregate_output_tps": 146.08169028428023,
+      "64K_cold_prefill_tps": 1505.489648373936,
+      "C1_acceptance": 0.7095652173913043,
+      "C3_acceptance": 0.6996598639455782,
+      "C8_acceptance": 0.4894117647058824
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X4",
+      "change": "X3 + indexer skore",
+      "C1_request_decode_tps": 70.07964799060453,
+      "C3_request_decode_tps": 32.58931131985207,
+      "C8_aggregate_output_tps": 139.4887318692885,
+      "64K_cold_prefill_tps": 1490.7482496774537,
+      "C1_acceptance": 0.719047619047619,
+      "C3_acceptance": 0.7062043795620438,
+      "C8_acceptance": 0.47913907284768215
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X5",
+      "change": "X4 + indexer top-k",
+      "C1_request_decode_tps": 69.3578786222796,
+      "C3_request_decode_tps": 33.092119247962735,
+      "C8_aggregate_output_tps": 141.2640633375715,
+      "64K_cold_prefill_tps": 1507.1723596276097,
+      "C1_acceptance": 0.6988235294117647,
+      "C3_acceptance": 0.7070175438596491,
+      "C8_acceptance": 0.4935593220338983
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X6",
+      "change": "X3 + B12X dense/attention/shared",
+      "C1_request_decode_tps": 64.81356226808067,
+      "C3_request_decode_tps": 31.716649818915034,
+      "C8_aggregate_output_tps": 147.371579379325,
+      "64K_cold_prefill_tps": 1492.603789639331,
+      "C1_acceptance": 0.6681081081081081,
+      "C3_acceptance": 0.6893382352941176,
+      "C8_acceptance": 0.5204225352112676
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X7",
+      "change": "X3 + mHC",
+      "C1_request_decode_tps": 62.78325190313316,
+      "C3_request_decode_tps": 29.794105152589896,
+      "C8_aggregate_output_tps": 141.2098903907965,
+      "64K_cold_prefill_tps": 1513.5572380406877,
+      "C1_acceptance": 0.6051948051948052,
+      "C3_acceptance": 0.6733705772811918,
+      "C8_acceptance": 0.4882943143812709
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X8",
+      "change": "X3 + L2 prefetch",
+      "C1_request_decode_tps": 60.055603793228755,
+      "C3_request_decode_tps": 33.16624841313099,
+      "C8_aggregate_output_tps": 149.05256693020905,
+      "64K_cold_prefill_tps": 1484.9001092827639,
+      "C1_acceptance": 0.5826086956521739,
+      "C3_acceptance": 0.7199233716475095,
+      "C8_acceptance": 0.5183887915936952
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X9",
+      "change": "X3 + pevny draft K3",
+      "C1_request_decode_tps": 56.42481237989861,
+      "C3_request_decode_tps": 31.496887451796994,
+      "C8_aggregate_output_tps": 155.3315736069504,
+      "64K_cold_prefill_tps": 1478.0779589760366,
+      "C1_acceptance": 0.7309523809523809,
+      "C3_acceptance": 0.7918739635157546,
+      "C8_acceptance": 0.665692007797271
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X10",
+      "change": "X3 + oba indexery/B12X/mHC/prefetch; K5",
+      "C1_request_decode_tps": 65.89645872991603,
+      "C3_request_decode_tps": 32.88901636971038,
+      "C8_aggregate_output_tps": 140.0049104950069,
+      "64K_cold_prefill_tps": 1481.5361469432933,
+      "C1_acceptance": 0.6866310160427808,
+      "C3_acceptance": 0.6878648233486944,
+      "C8_acceptance": 0.480865224625624
+    },
+    {
+      "series": "expanded-original",
+      "version": "0.8.9X11",
+      "change": "X10 + adaptivni verifikace maxK5",
+      "C1_request_decode_tps": 59.81711238680872,
+      "C3_request_decode_tps": 33.572820521928286,
+      "C8_aggregate_output_tps": 158.2661124888699,
+      "64K_cold_prefill_tps": 1488.8868427995542,
+      "C1_acceptance": 0.60625,
+      "C3_acceptance": 0.593033381712627,
+      "C8_acceptance": 0.4894117647058824
+    },
+    {
+      "series": "followup-fresh",
+      "version": "0.8.9X11",
+      "change": "X10 + adaptivni verifikace maxK5",
+      "C1_request_decode_tps": 66.79366325659863,
+      "C3_request_decode_tps": 32.689196422719455,
+      "C8_aggregate_output_tps": 146.5219837167925,
+      "64K_cold_prefill_tps": 1479.2010776729412,
+      "C1_acceptance": 0.6834532374100719,
+      "C3_acceptance": 0.6328767123287671,
+      "C8_acceptance": 0.41714285714285715
+    },
+    {
+      "series": "followup-fresh",
+      "version": "0.8.9X11a",
+      "change": "X11 + cost profil64K",
+      "C1_request_decode_tps": 56.10129203059774,
+      "C3_request_decode_tps": 32.32983586577831,
+      "C8_aggregate_output_tps": 148.36955879375068,
+      "64K_cold_prefill_tps": 1488.9540150908124,
+      "C1_acceptance": 0.55,
+      "C3_acceptance": 0.5821366024518388,
+      "C8_acceptance": 0.433693972179289
+    },
+    {
+      "series": "followup-fresh",
+      "version": "0.8.9X11b",
+      "change": "X11 + male CUDA graph buckets",
+      "C1_request_decode_tps": 61.75723913003582,
+      "C3_request_decode_tps": 28.972155561917234,
+      "C8_aggregate_output_tps": 149.92305061712122,
+      "64K_cold_prefill_tps": 1422.875007235111,
+      "C1_acceptance": 0.6545454545454545,
+      "C3_acceptance": 0.5571428571428572,
+      "C8_acceptance": 0.44944532488114103
+    },
+    {
+      "series": "followup-fresh",
+      "version": "0.8.9X11c",
+      "change": "X11 + omezene prefetch",
+      "C1_request_decode_tps": 64.17486712652091,
+      "C3_request_decode_tps": 31.905335154336633,
+      "C8_aggregate_output_tps": 153.51664937706596,
+      "64K_cold_prefill_tps": 1468.1146862392554,
+      "C1_acceptance": 0.6344594594594595,
+      "C3_acceptance": 0.5338345864661654,
+      "C8_acceptance": 0.46655844155844156
+    },
+    {
+      "series": "followup-fresh",
+      "version": "0.8.9X11d",
+      "change": "X11 + max draftK4/adaptivita",
+      "C1_request_decode_tps": 63.70703145362092,
+      "C3_request_decode_tps": 32.72726313488907,
+      "C8_aggregate_output_tps": 148.74142008691086,
+      "64K_cold_prefill_tps": 1410.8457776904802,
+      "C1_acceptance": 0.7586206896551724,
+      "C3_acceptance": 0.6798118668596237,
+      "C8_acceptance": 0.5304878048780488
+    },
+    {
+      "series": "followup-fresh",
+      "version": "0.8.9X11e",
+      "change": "X11 + dynamicky generovany draftK5/K4/K3",
+      "C1_request_decode_tps": 56.8399982455929,
+      "C3_request_decode_tps": 28.87462892938209,
+      "C8_aggregate_output_tps": 143.7147406945833,
+      "64K_cold_prefill_tps": 1409.497034289128,
+      "C1_acceptance": 0.63646408839779,
+      "C3_acceptance": 0.5892617449664429,
+      "C8_acceptance": 0.395355587808418
+    }
+  ],
+  "historical_hot_rows": [
+    {
+      "series": "historical-cold-hot20261002",
+      "version": "0.8.8",
+      "code_C1_request_decode_tps": 53.283547450746305,
+      "code_C2_request_decode_tps": 40.89790016695798,
+      "code_C3_request_decode_tps": 31.9666137237008,
+      "code_C4_request_decode_tps": 28.962621900541187,
+      "prose_C1_request_decode_tps": 45.81574670580915,
+      "prose_C2_request_decode_tps": 36.89248616206679,
+      "prose_C3_request_decode_tps": 27.35233648602086,
+      "prose_C4_request_decode_tps": 28.883007365759827
+    },
+    {
+      "series": "historical-cold-hot20261002",
+      "version": "A1",
+      "code_C1_request_decode_tps": 67.43509272593296,
+      "code_C2_request_decode_tps": 40.23753959267375,
+      "code_C3_request_decode_tps": 30.398943430309252,
+      "code_C4_request_decode_tps": 28.06275044324274,
+      "prose_C1_request_decode_tps": 46.675969304879814,
+      "prose_C2_request_decode_tps": 41.176149145040625,
+      "prose_C3_request_decode_tps": 29.656787238688718,
+      "prose_C4_request_decode_tps": 26.97886153014562
+    },
+    {
+      "series": "historical-cold-hot20261002",
+      "version": "B1",
+      "code_C1_request_decode_tps": 60.302500886638946,
+      "code_C2_request_decode_tps": 41.23996916041594,
+      "code_C3_request_decode_tps": 30.786955584151166,
+      "code_C4_request_decode_tps": 26.843826526444595,
+      "prose_C1_request_decode_tps": 50.26633107909592,
+      "prose_C2_request_decode_tps": 32.043332504951444,
+      "prose_C3_request_decode_tps": 28.526569009097468,
+      "prose_C4_request_decode_tps": 28.87528567669632
+    },
+    {
+      "series": "historical-cold-hot20261002",
+      "version": "A1B1",
+      "code_C1_request_decode_tps": 64.97068843059358,
+      "code_C2_request_decode_tps": 41.20383202568841,
+      "code_C3_request_decode_tps": 28.492783930786366,
+      "code_C4_request_decode_tps": 27.723424974390046,
+      "prose_C1_request_decode_tps": 48.46533183523421,
+      "prose_C2_request_decode_tps": 37.9518403306938,
+      "prose_C3_request_decode_tps": 30.77397028247307,
+      "prose_C4_request_decode_tps": 27.198155840875696
+    },
+    {
+      "series": "historical-cold-hot20261004",
+      "version": "0.8.9X replay-r1",
+      "code_C1_request_decode_tps": 64.88490219422515,
+      "code_C2_request_decode_tps": 41.98232909984528,
+      "code_C3_request_decode_tps": 32.82759505167689,
+      "code_C4_request_decode_tps": 26.786357609681453,
+      "prose_C1_request_decode_tps": 50.98632041999902,
+      "prose_C2_request_decode_tps": 36.79342727585308,
+      "prose_C3_request_decode_tps": 30.25008967777759,
+      "prose_C4_request_decode_tps": 29.667102267326214
+    },
+    {
+      "series": "historical-cold-hot20261004",
+      "version": "0.8.9X replay-r2",
+      "code_C1_request_decode_tps": 63.758344222921075,
+      "code_C2_request_decode_tps": 37.27104757732233,
+      "code_C3_request_decode_tps": 33.952348618635014,
+      "code_C4_request_decode_tps": 29.074171345521272,
+      "prose_C1_request_decode_tps": 48.86790149342087,
+      "prose_C2_request_decode_tps": 42.452413693954945,
+      "prose_C3_request_decode_tps": 32.76505996140348,
+      "prose_C4_request_decode_tps": 29.185162206464778
+    }
+  ],
+  "not_measured": [
+    "B2",
+    "A1B2"
+  ],
+  "scope": "Read-only local historical aggregation, no remote operations or new model requests; X11e remains final production from previous completed task.",
+  "limits": [
+    "C1/C3 agent workflow weighted per-request decode versus C8 synthetic8K aggregate wall includingTTFT; not one concurrency scalingcurve.",
+    "Expanded-original and followup-fresh are separate campaigns: same metric definitions but onepass sampled screens, noCI; duplicateX11 retained rather than averaged or cherry-picked.",
+    "Older cold/hot history code/prose test16K-24K, max256 output is distinct; do not merge with newer agent metrics.",
+    "All followup128K-C3 tests timebudgetlimited/incomplete. Original incomplete cells excluded from rateclaims.",
+    "A1 is historical implementation later versioned0.8.9; B1/A1B1 are earlier separate branches, not X11 letter variants.",
+    "B2/A1B2 rejected prior to benchmark, no numeric values available."
+  ]
+}

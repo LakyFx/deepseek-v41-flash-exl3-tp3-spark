@@ -1,0 +1,45 @@
+{
+  "schema": "dgx.offline-exact-tokenization.v1",
+  "request_sha256": "d22470a8b5d1e5cf8f19e7fd7b8b4898a2898ec3f6db5dc2c139e47a5ffe52a6",
+  "count": 8182,
+  "target": 8192,
+  "source_units": [
+    {
+      "id": "vllm/v1/attention/backends/mla/flashinfer_mla.py:151:FlashInferMLABackend",
+      "source_sha256": "deab16d2e7ff29628a1b06405ccecd02f7e00be1bc9ac71aff344bb327dc4ede"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/eagle/eagle3_utils.py:35:get_eagle3_aux_layers_from_config",
+      "source_sha256": "2d37ae3ffb3095cc17a6dca64c4366054bfad8bcd096132196a09ead658fefd4"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/indexer.py:585:KpoolTailMetadataBuilder",
+      "source_sha256": "392d93da110ec942db3ce17895dc358bf92501edb01a8b9c19b6bdfab917bb7f"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/nvidia/model.py:164:DeepseekV4DecoderLayer",
+      "source_sha256": "d47dbdf400e63307fbf88cdd4f6db2a2d4a5912f235bfc6a31e89147e85058df"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashinfer_mla.py:211:FlashInferMLAImpl",
+      "source_sha256": "deab16d2e7ff29628a1b06405ccecd02f7e00be1bc9ac71aff344bb327dc4ede"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/prefill/base.py:23:MLADimensions",
+      "source_sha256": "138bf3ddaf5a94c3cdbc4e08ac676edcae84b32fc76625e546f3b47f7d8b82ec"
+    },
+    {
+      "id": "vllm/entrypoints/serve/fault_tolerance/api_router.py:23:_validate_payload",
+      "source_sha256": "84d9a86951547c9ac71a10c680dd12fc5c868d72fd8342b4b6e33ee91a5afa53"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:1746:init_distributed_environment",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    }
+  ],
+  "token_ids_sha256": "9035e90c1ff78afc73635c90326a4e4b665e82bf850a999bc0f9bd18dc9875f9",
+  "current_tokenizer_receipt_sha256": "66c2ce0aa907a48f71d8d66f9bebc8df356acbaf3186ff6d0a6d3c445e919c5a",
+  "historical_eight_exact_matches": true,
+  "inference_requests": 0,
+  "original_request_sha256": "3438064ff436d5a251f5cdee8f2177eb353aa51bbf82f4ea3a101f9005cf83db"
+}

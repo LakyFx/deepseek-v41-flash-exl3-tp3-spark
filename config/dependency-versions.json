@@ -1,0 +1,12 @@
+{
+  "torch": "2.13.0+cu130",
+  "vllm": "0.28.1rc1.dev388+g8a728663c",
+  "nvidia-cutlass-dsl": "4.6.2",
+  "cuda-bindings": "13.3.1",
+  "triton": "3.7.1",
+  "tilelang": "0.1.12",
+  "flashinfer-python": "0.7.0rc1",
+  "transformers": "5.16.1",
+  "cuda-exl3": "1.0.0",
+  "safetensors": "0.8.0"
+}

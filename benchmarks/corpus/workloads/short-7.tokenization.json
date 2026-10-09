@@ -1,0 +1,73 @@
+{
+  "schema": "dgx.offline-exact-tokenization.v1",
+  "request_sha256": "541f73809f4dcfd29d2d944eefccab9069857a4545dae3024c6217b38f0e1962",
+  "count": 8165,
+  "target": 8192,
+  "source_units": [
+    {
+      "id": "vllm/models/deepseek_v4_1/nvidia/flashinfer_sparse.py:190:DeepseekV4FlashInferSparseMLAMetadataBuilder",
+      "source_sha256": "799ca931e6e002e110075892b6f90c04d36e5ab95c12f17727628ba3e34cf95e"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashinfer_mla_sparse.py:255:FlashInferMLASparseMetadataBuilder",
+      "source_sha256": "093181e4e0198b34075a3713fa62267c3f1fe74b1c96bb08298d553727d44478"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/cache/api_router.py:16:engine_client",
+      "source_sha256": "ba0e9be90c4fe8f42526c163d073ee5889492e4cdd8231599901d0b3aab669ce"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/cache/api_router.py:69:attach_router",
+      "source_sha256": "ba0e9be90c4fe8f42526c163d073ee5889492e4cdd8231599901d0b3aab669ce"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/aiter_custom_all_reduce.py:19:AiterCustomAllreduce",
+      "source_sha256": "266d606b2378b50bc3d1017fd6ae56f3d15ae61508ba35562048cd1bd0ac9319"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/common/mm_preprocess.py:108:num_image_tokens",
+      "source_sha256": "4ce1a019d74b1933706432c8aa1c347be78882019f25a956599665cf6d105d63"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashattn_mla.py:43:FlashAttnMLABackend",
+      "source_sha256": "cff991f1a787033c6b9e267c350c45fbb6822bb667b261c0a712137460f5d49c"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/compressor_utils.py:22:get_dspark_swa_index_width",
+      "source_sha256": "c9f6f6e4dcd64cb989d09f49fce19cef615749e02efbab4285d774240aae4bec"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:2335:in_the_same_node_as",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:2244:destroy_model_parallel",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/nvidia/flashinfer_sparse.py:97:DeepseekV4FlashInferMLASparseBackend",
+      "source_sha256": "799ca931e6e002e110075892b6f90c04d36e5ab95c12f17727628ba3e34cf95e"
+    },
+    {
+      "id": "vllm/entrypoints/serve/utils/api_utils.py:257:jsonify_non_default_args",
+      "source_sha256": "2a489ca888e0ab1803f5561e29fb8c1f0c30149b56f0ae5f10917ae570596ee0"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/sparse_swa.py:57:_layer_type_for",
+      "source_sha256": "35a065b4bb0177318e61faf8e430515190c0c633b881da6f7ff328c1d4fb2910"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/shm_object_storage.py:346:MsgpackSerde",
+      "source_sha256": "e097bf7ac0141fe8db4131e8fd553ca2ad5b0600b22a56f3924af6b795e7207c"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/shm_object_storage.py:22:SingleWriterShmRingBuffer",
+      "source_sha256": "e097bf7ac0141fe8db4131e8fd553ca2ad5b0600b22a56f3924af6b795e7207c"
+    }
+  ],
+  "token_ids_sha256": "06af221a046485cc6a06f0bd6e09c8f5b4f028265c4fca905f3d04def2aacefc",
+  "current_tokenizer_receipt_sha256": "66c2ce0aa907a48f71d8d66f9bebc8df356acbaf3186ff6d0a6d3c445e919c5a",
+  "historical_eight_exact_matches": true,
+  "inference_requests": 0,
+  "original_request_sha256": "5040ed05c688e745f7ba5b5ad934d7f32e619b1bb8a940d13eae290a6bdb5217"
+}

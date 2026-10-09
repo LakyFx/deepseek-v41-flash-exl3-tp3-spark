@@ -1,0 +1,372 @@
+{
+  "actual_versions": [
+    "0.8.9X11",
+    "0.8.9X11a",
+    "0.8.9X11b",
+    "0.8.9X11c",
+    "0.8.9X11d",
+    "0.8.9X11e"
+  ],
+  "plan_sha256": "8d1a26a5afa7d66420faa43c79c2f021da6b7881fe90007a88150dd3089cf9d8",
+  "source_receipts": {
+    "0.8.9X11": {
+      "file_sha256": "da56792cf570d8f9514fe77ec3841b57e42594f7f6a8c43cbe4adbdb173ada0d",
+      "result_sha256": "63d96a0dff6dc54f4c24c02d5b5556a5bad4bf9b48d0597ff2058da1d4d1cf2d"
+    },
+    "0.8.9X11a": {
+      "file_sha256": "a03ed3d4cf8080aff73b9c357b12380ba640a64b3aaf815b4bc1e5fefc03b4ee",
+      "result_sha256": "5ad79b40e05dc496e541fdac44e92afc916957a1e592a38af0ae0e6a7d0f1d5a"
+    },
+    "0.8.9X11b": {
+      "file_sha256": "14e4ee61b84468b5c94e69a54bc636a9c0a813293c694ad9a82aa89b398b94f2",
+      "result_sha256": "d4065bc1d15d94410f0c46e5da6a33901a4e393a417c219ae4bd188048ec04e0"
+    },
+    "0.8.9X11c": {
+      "file_sha256": "39ddfbd95dfa8920a2af035c3fb8334e3ed9257a4f22259e1742ab6b817bd0a2",
+      "result_sha256": "04eef557c9e7c2c5279a07d422261fbd79d4eb856cecb729129a1ef14298ff6f"
+    },
+    "0.8.9X11d": {
+      "file_sha256": "d39c0ab85a2e65ff3234f7a1ebc473f6b29e88d645bde626106c68aa247b13f7",
+      "result_sha256": "7bf86461f377b159f5dc6c84b09b38d020625f08d07c1490bac103596caae749"
+    },
+    "0.8.9X11e": {
+      "file_sha256": "ff1ad0371b0cc15981d1409f0cc58c17ebfc74f0d3cd964e450c974b11828dd1",
+      "result_sha256": "f87ab1703ae57e76c35b75b4c84f1314c2a49c7b199aeccdeb4da5d784ea00bc"
+    }
+  },
+  "rows": [
+    {
+      "version": "0.8.9X11",
+      "all_regimes_complete": false,
+      "C1_request_decode_tps": 66.79366325659863,
+      "C1_acceptance": 0.6834532374100719,
+      "C1_workflow_correct": true,
+      "C3_request_decode_tps": 32.689196422719455,
+      "C3_acceptance": 0.6328767123287671,
+      "C3_workflow_correct": true,
+      "C8_aggregate_output_tps": 146.5219837167925,
+      "C8_request_decode_tps": 21.953269387730767,
+      "C8_acceptance": 0.41714285714285715,
+      "64K_cold_prefill_tps": 1479.2010776729412,
+      "128K_hot_complete": false,
+      "incomplete_phases": [
+        "128K-C3"
+      ],
+      "legacy_hot_cells": [
+        {
+          "category": "code",
+          "C": 1,
+          "decode_tps": 65.29401717132006,
+          "aggregate_output_tps": 59.10687845718147,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 1,
+          "decode_tps": 55.64608211933873,
+          "aggregate_output_tps": 51.958734898552834,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "code",
+          "C": 3,
+          "decode_tps": 37.909545862887654,
+          "aggregate_output_tps": 90.77779590463358,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 3,
+          "decode_tps": 33.508227164563124,
+          "aggregate_output_tps": 90.15982315359115,
+          "complete": true,
+          "cache_verified": true
+        }
+      ],
+      "C1_request_decode_tps_vs_X11_percent": 0.0,
+      "C3_request_decode_tps_vs_X11_percent": 0.0,
+      "C8_aggregate_output_tps_vs_X11_percent": 0.0
+    },
+    {
+      "version": "0.8.9X11a",
+      "all_regimes_complete": false,
+      "C1_request_decode_tps": 56.10129203059774,
+      "C1_acceptance": 0.55,
+      "C1_workflow_correct": true,
+      "C3_request_decode_tps": 32.32983586577831,
+      "C3_acceptance": 0.5821366024518388,
+      "C3_workflow_correct": true,
+      "C8_aggregate_output_tps": 148.36955879375068,
+      "C8_request_decode_tps": 22.713073402337105,
+      "C8_acceptance": 0.433693972179289,
+      "64K_cold_prefill_tps": 1488.9540150908124,
+      "128K_hot_complete": false,
+      "incomplete_phases": [
+        "128K-C3"
+      ],
+      "legacy_hot_cells": [
+        {
+          "category": "code",
+          "C": 1,
+          "decode_tps": 67.02139129132217,
+          "aggregate_output_tps": 60.380274927797146,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 1,
+          "decode_tps": 52.65625832023688,
+          "aggregate_output_tps": 49.16518233014394,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "code",
+          "C": 3,
+          "decode_tps": 34.04914122076267,
+          "aggregate_output_tps": 90.01440251443826,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 3,
+          "decode_tps": 33.77371961314095,
+          "aggregate_output_tps": 89.14822754087945,
+          "complete": true,
+          "cache_verified": true
+        }
+      ],
+      "C1_request_decode_tps_vs_X11_percent": -16.008062299150183,
+      "C3_request_decode_tps_vs_X11_percent": -1.0993251479604615,
+      "C8_aggregate_output_tps_vs_X11_percent": 1.2609541790870704
+    },
+    {
+      "version": "0.8.9X11b",
+      "all_regimes_complete": false,
+      "C1_request_decode_tps": 61.75723913003582,
+      "C1_acceptance": 0.6545454545454545,
+      "C1_workflow_correct": true,
+      "C3_request_decode_tps": 28.972155561917234,
+      "C3_acceptance": 0.5571428571428572,
+      "C3_workflow_correct": true,
+      "C8_aggregate_output_tps": 149.92305061712122,
+      "C8_request_decode_tps": 22.65998568885632,
+      "C8_acceptance": 0.44944532488114103,
+      "64K_cold_prefill_tps": 1422.875007235111,
+      "128K_hot_complete": false,
+      "incomplete_phases": [
+        "128K-C3"
+      ],
+      "legacy_hot_cells": [
+        {
+          "category": "code",
+          "C": 1,
+          "decode_tps": 67.44663579287922,
+          "aggregate_output_tps": 60.95230734613986,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 1,
+          "decode_tps": 47.68814140976517,
+          "aggregate_output_tps": 44.82171746280778,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "code",
+          "C": 3,
+          "decode_tps": 35.71435347570761,
+          "aggregate_output_tps": 87.4084449833481,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 3,
+          "decode_tps": 31.50702035685471,
+          "aggregate_output_tps": 86.07553231092946,
+          "complete": true,
+          "cache_verified": true
+        }
+      ],
+      "C1_request_decode_tps_vs_X11_percent": -7.540272356697342,
+      "C3_request_decode_tps_vs_X11_percent": -11.370854189058088,
+      "C8_aggregate_output_tps_vs_X11_percent": 2.321199054267864
+    },
+    {
+      "version": "0.8.9X11c",
+      "all_regimes_complete": false,
+      "C1_request_decode_tps": 64.17486712652091,
+      "C1_acceptance": 0.6344594594594595,
+      "C1_workflow_correct": true,
+      "C3_request_decode_tps": 31.905335154336633,
+      "C3_acceptance": 0.5338345864661654,
+      "C3_workflow_correct": true,
+      "C8_aggregate_output_tps": 153.51664937706596,
+      "C8_request_decode_tps": 22.46951241041437,
+      "C8_acceptance": 0.46655844155844156,
+      "64K_cold_prefill_tps": 1468.1146862392554,
+      "128K_hot_complete": false,
+      "incomplete_phases": [
+        "128K-C3"
+      ],
+      "legacy_hot_cells": [
+        {
+          "category": "code",
+          "C": 1,
+          "decode_tps": 65.50365300873628,
+          "aggregate_output_tps": 59.279231994695195,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 1,
+          "decode_tps": 54.848544957065485,
+          "aggregate_output_tps": 51.031383631843234,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "code",
+          "C": 3,
+          "decode_tps": 37.64074480209495,
+          "aggregate_output_tps": 93.93092305461582,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 3,
+          "decode_tps": 34.298550417161096,
+          "aggregate_output_tps": 92.40441309306367,
+          "complete": true,
+          "cache_verified": true
+        }
+      ],
+      "C1_request_decode_tps_vs_X11_percent": -3.9207254137525016,
+      "C3_request_decode_tps_vs_X11_percent": -2.397921497507438,
+      "C8_aggregate_output_tps_vs_X11_percent": 4.773799455099659
+    },
+    {
+      "version": "0.8.9X11d",
+      "all_regimes_complete": false,
+      "C1_request_decode_tps": 63.70703145362092,
+      "C1_acceptance": 0.7586206896551724,
+      "C1_workflow_correct": true,
+      "C3_request_decode_tps": 32.72726313488907,
+      "C3_acceptance": 0.6798118668596237,
+      "C3_workflow_correct": true,
+      "C8_aggregate_output_tps": 148.74142008691086,
+      "C8_request_decode_tps": 22.5481906419561,
+      "C8_acceptance": 0.5304878048780488,
+      "64K_cold_prefill_tps": 1410.8457776904802,
+      "128K_hot_complete": false,
+      "incomplete_phases": [
+        "128K-C3"
+      ],
+      "legacy_hot_cells": [
+        {
+          "category": "code",
+          "C": 1,
+          "decode_tps": 65.19329261464213,
+          "aggregate_output_tps": 58.98646136369743,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 1,
+          "decode_tps": 50.6055499545894,
+          "aggregate_output_tps": 47.51322417946925,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "code",
+          "C": 3,
+          "decode_tps": 35.37645292174524,
+          "aggregate_output_tps": 82.90029143719643,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 3,
+          "decode_tps": 34.439740239360944,
+          "aggregate_output_tps": 91.35101468845727,
+          "complete": true,
+          "cache_verified": true
+        }
+      ],
+      "C1_request_decode_tps_vs_X11_percent": -4.621144660265031,
+      "C3_request_decode_tps_vs_X11_percent": 0.11645043725565518,
+      "C8_aggregate_output_tps_vs_X11_percent": 1.5147463294028496
+    },
+    {
+      "version": "0.8.9X11e",
+      "all_regimes_complete": false,
+      "C1_request_decode_tps": 56.8399982455929,
+      "C1_acceptance": 0.63646408839779,
+      "C1_workflow_correct": true,
+      "C3_request_decode_tps": 28.87462892938209,
+      "C3_acceptance": 0.5892617449664429,
+      "C3_workflow_correct": true,
+      "C8_aggregate_output_tps": 143.7147406945833,
+      "C8_request_decode_tps": 20.86601333243893,
+      "C8_acceptance": 0.395355587808418,
+      "64K_cold_prefill_tps": 1409.497034289128,
+      "128K_hot_complete": false,
+      "incomplete_phases": [
+        "128K-C3"
+      ],
+      "legacy_hot_cells": [
+        {
+          "category": "code",
+          "C": 1,
+          "decode_tps": 59.39948136164968,
+          "aggregate_output_tps": 54.16312559770837,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 1,
+          "decode_tps": 48.624285162341316,
+          "aggregate_output_tps": 45.73388925937229,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "code",
+          "C": 3,
+          "decode_tps": 30.277219975021694,
+          "aggregate_output_tps": 76.35851108618242,
+          "complete": true,
+          "cache_verified": true
+        },
+        {
+          "category": "prose",
+          "C": 3,
+          "decode_tps": 28.59386152176975,
+          "aggregate_output_tps": 77.89942937533972,
+          "complete": true,
+          "cache_verified": true
+        }
+      ],
+      "C1_request_decode_tps_vs_X11_percent": -14.902109759674541,
+      "C3_request_decode_tps_vs_X11_percent": -11.669199340385694,
+      "C8_aggregate_output_tps_vs_X11_percent": -1.9159193391998008
+    }
+  ],
+  "comparison_scope": "same coverage20 profile/frozen corpora/sampled max reasoning; fresh same-campaign X11",
+  "metric_scope": "C1/C3 weighted per-request decode on agent workflows; C8 hot synthetic8K aggregate wall throughput, includes TTFT; not one scaling curve",
+  "uncertainty": "single pass screen, no confidence intervals; incomplete/unpaired values null, not zero gain"
+}

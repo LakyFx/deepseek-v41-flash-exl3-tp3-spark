@@ -1,0 +1,69 @@
+{
+  "campaign_id": "dsv41-x11c-reasoning-20261009",
+  "runs": [
+    [
+      "baseline-max",
+      "max"
+    ],
+    [
+      "none",
+      "none"
+    ],
+    [
+      "medium",
+      "medium"
+    ],
+    [
+      "max",
+      "max"
+    ]
+  ],
+  "benchmark_profile": "coverage20",
+  "max_seconds_per_run": 1200,
+  "model_loads_planned": 1,
+  "production_before": "0.8.9X11e",
+  "production_after": "0.8.9X11c",
+  "variant": {
+    "modules": [
+      "R",
+      "K",
+      "D",
+      "I1",
+      "I2",
+      "H",
+      "M",
+      "P",
+      "A"
+    ],
+    "qualification_source_sha256": "d231c27e75e98b8adcc552428b93cc692cfaff1cb6297e8efcefd9c0ef0e14fd",
+    "ready_for_staged_start": true,
+    "runtime_fingerprint": "ac100567958566a48d41fcb9f19a140dda54cb70fa389b120896aa0537cf2f81",
+    "test_budget_seconds": 1200,
+    "version": "0.8.9X11c"
+  },
+  "protected": {
+    "engine": "same-vllm",
+    "engram_readers": 32,
+    "ep": false,
+    "kv_block": 128,
+    "kv_dtype": "fp8",
+    "kv_min_tokens": 3299563,
+    "main_reasoning": "max",
+    "max_context": 401408,
+    "prefill_chunk": 4096,
+    "tp": 3,
+    "trained_markov_rank": 256,
+    "vision_reasoning": "medium",
+    "weights": "same-exl3"
+  },
+  "original_corpus": {
+    "legacy_sha256": "bd4a01e9deae8808ca14ce59045202466e094e7bcf078cccc6b467e193957244",
+    "workload_sha256": "df3f710fd0cb901c262449c5c23490cf8503d087cb939a92e4f6f2a6dfd67d10"
+  },
+  "kv_dump_import": false,
+  "cache": "reset prefix cache independently before each pass and original cold phases; same frozen prompts and budgets; profile-separated cache salts",
+  "gates": "fresh generation all3 numerical gates R/K/D/I/H/M/P/A, C1/C3/C8 sampled max; KV>=3299563; ingress guard blocks API until all4 profile receipts and final max smoke",
+  "metric_scope": "C1/C3 request decode are from scored agent workflows; hot8K C8 aggregate counts output including reasoning, includes TTFT. Record durations and quality too.",
+  "limitations": "single-pass none/medium; two max repeats; incomplete128K measurements remain null. No claim of unchanged quality on non-reasoning.",
+  "rollback": "Original X11e 13z launch untouched; own C14z override only, immutable lower0.8.9 source retained. All original unit bytes and exact Docker config captured in private SNAPSHOT-r1."
+}

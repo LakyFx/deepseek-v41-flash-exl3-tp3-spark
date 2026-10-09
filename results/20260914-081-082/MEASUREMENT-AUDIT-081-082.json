@@ -1,0 +1,379 @@
+{
+  "pairing_and_counter_checks": "PASS12cells42tasks84requests per version",
+  "runner_identical": true,
+  "rows": [
+    {
+      "c": 1,
+      "mode": "COLD",
+      "A": {
+        "task_s": 40.40285600500647,
+        "output": 1338,
+        "first_output": 671,
+        "second_output": 667,
+        "first_decode": 55.88540049423797,
+        "second_decode": 40.38557294042505,
+        "decode": 46.91034719790216,
+        "phase_wait_mean_s": 0.008502391021465883,
+        "phase_wait_max_s": 0.008502391021465883,
+        "tool_mean_s": 0.025460662000114098
+      },
+      "B": {
+        "task_s": 54.870547930011526,
+        "output": 2057,
+        "first_output": 803,
+        "second_output": 1254,
+        "first_decode": 52.16157926243534,
+        "second_decode": 43.27880686966594,
+        "decode": 46.35988487130594,
+        "phase_wait_mean_s": 0.008096058008959517,
+        "phase_wait_max_s": 0.008096058008959517,
+        "tool_mean_s": 0.022668321995297447
+      },
+      "output_change_pct": 53.736920777279515,
+      "elapsed_change_pct": 35.80858720287574,
+      "decode_change_pct": -1.1734347739401074
+    },
+    {
+      "c": 1,
+      "mode": "WARM_SHARED_PREFIX",
+      "A": {
+        "task_s": 38.579485438996926,
+        "output": 1678,
+        "first_output": 677,
+        "second_output": 1001,
+        "first_decode": 55.2086852166753,
+        "second_decode": 40.987115274504646,
+        "decode": 45.739410123699344,
+        "phase_wait_mean_s": 0.009600630000932142,
+        "phase_wait_max_s": 0.009600630000932142,
+        "tool_mean_s": 0.024800971004879102
+      },
+      "B": {
+        "task_s": 28.734131064004032,
+        "output": 1262,
+        "first_output": 622,
+        "second_output": 640,
+        "first_decode": 55.77426405342237,
+        "second_decode": 40.73320926898121,
+        "decode": 46.97704045487655,
+        "phase_wait_mean_s": 0.009680421993834898,
+        "phase_wait_max_s": 0.009680421993834898,
+        "tool_mean_s": 0.018029726983513683
+      },
+      "output_change_pct": -24.791418355184746,
+      "elapsed_change_pct": -25.51966223230393,
+      "decode_change_pct": 2.705829235292101
+    },
+    {
+      "c": 2,
+      "mode": "COLD",
+      "A": {
+        "task_s": 59.163512372004334,
+        "output": 2455,
+        "first_output": 1125,
+        "second_output": 1330,
+        "first_decode": 33.07014268180866,
+        "second_decode": 34.07466696572132,
+        "decode": 33.60694278492668,
+        "phase_wait_mean_s": 1.937046711507719,
+        "phase_wait_max_s": 3.8651954389933962,
+        "tool_mean_s": 0.022586353501537815
+      },
+      "B": {
+        "task_s": 59.59454806498252,
+        "output": 2737,
+        "first_output": 1183,
+        "second_output": 1554,
+        "first_decode": 32.59280830797626,
+        "second_decode": 31.497987041913838,
+        "decode": 31.961930126836723,
+        "phase_wait_mean_s": 0.13039793451025616,
+        "phase_wait_max_s": 0.2508657680009492,
+        "tool_mean_s": 0.023088009489583783
+      },
+      "output_change_pct": 11.486761710794301,
+      "elapsed_change_pct": 0.7285498708527349,
+      "decode_change_pct": -4.89485957891943
+    },
+    {
+      "c": 2,
+      "mode": "WARM_SHARED_PREFIX",
+      "A": {
+        "task_s": 73.02375101699727,
+        "output": 3992,
+        "first_output": 1900,
+        "second_output": 2092,
+        "first_decode": 41.410853031178696,
+        "second_decode": 34.12668168990202,
+        "decode": 37.24464400745179,
+        "phase_wait_mean_s": 10.30479841849592,
+        "phase_wait_max_s": 20.601158762990963,
+        "tool_mean_s": 0.024774479505140334
+      },
+      "B": {
+        "task_s": 54.774861148005584,
+        "output": 3100,
+        "first_output": 1347,
+        "second_output": 1753,
+        "first_decode": 38.19231100030811,
+        "second_decode": 30.88284055674838,
+        "decode": 33.683417133176704,
+        "phase_wait_mean_s": 2.2223739114997443,
+        "phase_wait_max_s": 4.436465638020309,
+        "tool_mean_s": 0.028674722503637895
+      },
+      "output_change_pct": -22.344689378757508,
+      "elapsed_change_pct": -24.990348502837122,
+      "decode_change_pct": -9.56171543366764
+    },
+    {
+      "c": 3,
+      "mode": "COLD",
+      "A": {
+        "task_s": 91.08563355100341,
+        "output": 4590,
+        "first_output": 2015,
+        "second_output": 2575,
+        "first_decode": 22.518957305794032,
+        "second_decode": 27.615607368142907,
+        "decode": 25.120191922501057,
+        "phase_wait_mean_s": 1.9539563380045972,
+        "phase_wait_max_s": 3.417686136002885,
+        "tool_mean_s": 0.02374405865945543
+      },
+      "B": {
+        "task_s": 90.40531656501116,
+        "output": 4583,
+        "first_output": 1928,
+        "second_output": 2655,
+        "first_decode": 23.7107455769053,
+        "second_decode": 25.873906505086907,
+        "decode": 24.91780664970282,
+        "phase_wait_mean_s": 3.603084257328495,
+        "phase_wait_max_s": 5.935548142995685,
+        "tool_mean_s": 0.025438854664874572
+      },
+      "output_change_pct": -0.15250544662309684,
+      "elapsed_change_pct": -0.7468982313344807,
+      "decode_change_pct": -0.8056677011967994
+    },
+    {
+      "c": 3,
+      "mode": "WARM_SHARED_PREFIX",
+      "A": {
+        "task_s": 61.23808505301713,
+        "output": 4490,
+        "first_output": 2316,
+        "second_output": 2174,
+        "first_decode": 32.16556286328958,
+        "second_decode": 25.342465291191203,
+        "decode": 28.45616580134089,
+        "phase_wait_mean_s": 2.8231380846797642,
+        "phase_wait_max_s": 8.364006430027075,
+        "tool_mean_s": 0.02279228133071835
+      },
+      "B": {
+        "task_s": 64.86854021798354,
+        "output": 4219,
+        "first_output": 1695,
+        "second_output": 2524,
+        "first_decode": 35.67295504180901,
+        "second_decode": 29.533031389890972,
+        "decode": 31.72608510345598,
+        "phase_wait_mean_s": 2.5669206380068013,
+        "phase_wait_max_s": 6.5237494010070805,
+        "tool_mean_s": 0.02765529167178708
+      },
+      "output_change_pct": -6.035634743875273,
+      "elapsed_change_pct": 5.928426994121927,
+      "decode_change_pct": 11.49107481641467
+    },
+    {
+      "c": 4,
+      "mode": "COLD",
+      "A": {
+        "task_s": 99.8402304110059,
+        "output": 5092,
+        "first_output": 2310,
+        "second_output": 2782,
+        "first_decode": 17.725000783729907,
+        "second_decode": 24.43274733712943,
+        "decode": 20.853279200840035,
+        "phase_wait_mean_s": 3.794427758504753,
+        "phase_wait_max_s": 12.777794241002994,
+        "tool_mean_s": 0.025845892996585462
+      },
+      "B": {
+        "task_s": 107.70462921299622,
+        "output": 5753,
+        "first_output": 2762,
+        "second_output": 2991,
+        "first_decode": 19.706383288154434,
+        "second_decode": 24.904873497347563,
+        "decode": 22.105419732174287,
+        "phase_wait_mean_s": 9.943813365738606,
+        "phase_wait_max_s": 14.215779006975936,
+        "tool_mean_s": 0.02632760224514641
+      },
+      "output_change_pct": 12.981146897093488,
+      "elapsed_change_pct": 7.876983826675321,
+      "decode_change_pct": 6.004525807546912
+    },
+    {
+      "c": 4,
+      "mode": "WARM_SHARED_PREFIX",
+      "A": {
+        "task_s": 70.79191940100281,
+        "output": 5951,
+        "first_output": 2810,
+        "second_output": 3141,
+        "first_decode": 28.784118624178284,
+        "second_decode": 24.083035382868182,
+        "decode": 26.09532081070762,
+        "phase_wait_mean_s": 3.9530065607541474,
+        "phase_wait_max_s": 5.791234317002818,
+        "tool_mean_s": 0.025809759499679785
+      },
+      "B": {
+        "task_s": 63.7235475150228,
+        "output": 5080,
+        "first_output": 2403,
+        "second_output": 2677,
+        "first_decode": 30.23416788230294,
+        "second_decode": 23.350439650224615,
+        "decode": 26.168538096254363,
+        "phase_wait_mean_s": 2.5662676349966205,
+        "phase_wait_max_s": 4.82642948301509,
+        "tool_mean_s": 0.02333947800070746
+      },
+      "output_change_pct": -14.636195597378588,
+      "elapsed_change_pct": -9.984715693243206,
+      "decode_change_pct": 0.28057629978130993
+    },
+    {
+      "c": 5,
+      "mode": "COLD",
+      "A": {
+        "task_s": 131.43720442301128,
+        "output": 7565,
+        "first_output": 2767,
+        "second_output": 4798,
+        "first_decode": 14.517176631606938,
+        "second_decode": 21.5654038324249,
+        "decode": 18.31464059111223,
+        "phase_wait_mean_s": 4.2261796525970565,
+        "phase_wait_max_s": 6.245946875016671,
+        "tool_mean_s": 0.02683185240603052
+      },
+      "B": {
+        "task_s": 118.95466876000864,
+        "output": 6345,
+        "first_output": 2523,
+        "second_output": 3822,
+        "first_decode": 14.755489114055909,
+        "second_decode": 22.12175670236973,
+        "decode": 18.458978284975238,
+        "phase_wait_mean_s": 6.241745941794943,
+        "phase_wait_max_s": 13.948942246002844,
+        "tool_mean_s": 0.029784782201750203
+      },
+      "output_change_pct": -16.126900198281557,
+      "elapsed_change_pct": -9.49695766719858,
+      "decode_change_pct": 0.7881000620511891
+    },
+    {
+      "c": 5,
+      "mode": "WARM_SHARED_PREFIX",
+      "A": {
+        "task_s": 66.13521765801124,
+        "output": 6114,
+        "first_output": 2518,
+        "second_output": 3596,
+        "first_decode": 28.21619876905009,
+        "second_decode": 21.293926062339413,
+        "decode": 23.686277482093548,
+        "phase_wait_mean_s": 5.166456604405539,
+        "phase_wait_max_s": 12.545122420997359,
+        "tool_mean_s": 0.02034267159178853
+      },
+      "B": {
+        "task_s": 83.06034740898758,
+        "output": 6936,
+        "first_output": 3231,
+        "second_output": 3705,
+        "first_decode": 27.71698304725335,
+        "second_decode": 22.870416921866294,
+        "decode": 24.898283969062394,
+        "phase_wait_mean_s": 9.83372417440405,
+        "phase_wait_max_s": 23.604665371996816,
+        "tool_mean_s": 0.026249277807073666
+      },
+      "output_change_pct": 13.444553483807663,
+      "elapsed_change_pct": 25.591704919604407,
+      "decode_change_pct": 5.116914162156139
+    },
+    {
+      "c": 6,
+      "mode": "COLD",
+      "A": {
+        "task_s": 142.61391264101258,
+        "output": 7759,
+        "first_output": 3453,
+        "second_output": 4306,
+        "first_decode": 12.739888237229254,
+        "second_decode": 19.71902640813244,
+        "decode": 15.854498735569479,
+        "phase_wait_mean_s": 8.521516295489468,
+        "phase_wait_max_s": 15.95863810100127,
+        "tool_mean_s": 0.02621978200234783
+      },
+      "B": {
+        "task_s": 142.76719137802138,
+        "output": 8435,
+        "first_output": 3832,
+        "second_output": 4603,
+        "first_decode": 13.39915562189153,
+        "second_decode": 21.391924115699712,
+        "decode": 16.83137147473076,
+        "phase_wait_mean_s": 4.685252424169448,
+        "phase_wait_max_s": 10.323431056021946,
+        "tool_mean_s": 0.027556204998594087
+      },
+      "output_change_pct": 8.712462946255961,
+      "elapsed_change_pct": 0.10747810937257185,
+      "decode_change_pct": 6.161486121094906
+    },
+    {
+      "c": 6,
+      "mode": "WARM_SHARED_PREFIX",
+      "A": {
+        "task_s": 92.93743905500742,
+        "output": 8324,
+        "first_output": 4051,
+        "second_output": 4273,
+        "first_decode": 25.433671827841888,
+        "second_decode": 19.58832131516783,
+        "decode": 22.055057349062636,
+        "phase_wait_mean_s": 13.810018676667823,
+        "phase_wait_max_s": 22.39316702701035,
+        "tool_mean_s": 0.026873372664946753
+      },
+      "B": {
+        "task_s": 77.8690246620099,
+        "output": 7778,
+        "first_output": 3484,
+        "second_output": 4294,
+        "first_decode": 26.588638100145182,
+        "second_decode": 20.714847404847124,
+        "decode": 22.98931989893323,
+        "phase_wait_mean_s": 4.6984620104922215,
+        "phase_wait_max_s": 16.002786025987007,
+        "tool_mean_s": 0.028156211163150147
+      },
+      "output_change_pct": -6.559346468044214,
+      "elapsed_change_pct": -16.213502917891766,
+      "decode_change_pct": 4.236046794547543
+    }
+  ],
+  "interpretation": "No label/counter arithmetic mismatch found. Single-pass, variable outputs, synchronized phase barrier and fixed C order confound causal runtime comparison; no proven odd/even effect."
+}

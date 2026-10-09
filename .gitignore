@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.env
+config/cluster.local.json
+.cache/
+local-results/
+*.so
+*.o
+*.cubin
+*.safetensors
+build/base/upstream-build/*
+!build/base/upstream-build/prewarm5.py

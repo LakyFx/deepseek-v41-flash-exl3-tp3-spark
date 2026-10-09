@@ -1,0 +1,301 @@
+{
+  "schema": "dgx.C1-C4.reference-sensitivity.v1",
+  "subsets": {
+    "same_daytime_previous_day": {
+      "baseline": {
+        "start": 1790786615.5029666,
+        "end": 1790799153.467636,
+        "start_utc": "2026-09-30T16:43:35.502967+00:00",
+        "end_utc": "2026-09-30T20:12:33.467636+00:00",
+        "stable_endpoint_C": true,
+        "C": {
+          "1": {
+            "samples": 256,
+            "approx_observed_seconds": 2560.274060487747,
+            "aggregate_mean_tok_s": 43.1609375,
+            "per_stream_mean_tok_s": 43.1609375,
+            "aggregate_interval_weighted_tok_s": 43.16092892390007,
+            "aggregate_median_tok_s": 44.349999999999994,
+            "aggregate_min_tok_s": 0.0,
+            "aggregate_max_tok_s": 73.7,
+            "prompt_nonzero_samples": 79,
+            "slow_generation_samples_le_5_tok_s": 8,
+            "generation_positive_samples": 249,
+            "kv_usage_mean_pct": 2.602734375
+          },
+          "2": {
+            "samples": 289,
+            "approx_observed_seconds": 2890.5035905838013,
+            "aggregate_mean_tok_s": 58.0598615916955,
+            "per_stream_mean_tok_s": 29.02993079584775,
+            "aggregate_interval_weighted_tok_s": 58.06052123151669,
+            "aggregate_median_tok_s": 62.4,
+            "aggregate_min_tok_s": 0.7,
+            "aggregate_max_tok_s": 94.0,
+            "prompt_nonzero_samples": 134,
+            "slow_generation_samples_le_5_tok_s": 21,
+            "generation_positive_samples": 289,
+            "kv_usage_mean_pct": 4.816955017301038
+          },
+          "3": {
+            "samples": 163,
+            "approx_observed_seconds": 1630.2045798301697,
+            "aggregate_mean_tok_s": 54.714723926380366,
+            "per_stream_mean_tok_s": 18.238241308793455,
+            "aggregate_interval_weighted_tok_s": 54.7156972930656,
+            "aggregate_median_tok_s": 67.3,
+            "aggregate_min_tok_s": 1.0,
+            "aggregate_max_tok_s": 95.3,
+            "prompt_nonzero_samples": 54,
+            "slow_generation_samples_le_5_tok_s": 32,
+            "generation_positive_samples": 163,
+            "kv_usage_mean_pct": 5.685276073619632
+          },
+          "4": {
+            "samples": 68,
+            "approx_observed_seconds": 680.076024055481,
+            "aggregate_mean_tok_s": 71.64264705882353,
+            "per_stream_mean_tok_s": 17.910661764705882,
+            "aggregate_interval_weighted_tok_s": 71.64248853903119,
+            "aggregate_median_tok_s": 81.9,
+            "aggregate_min_tok_s": 2.1,
+            "aggregate_max_tok_s": 109.0,
+            "prompt_nonzero_samples": 31,
+            "slow_generation_samples_le_5_tok_s": 7,
+            "generation_positive_samples": 68,
+            "kv_usage_mean_pct": 8.011764705882353
+          }
+        },
+        "excluded": {
+          "changing_or_missing_concurrency": 223
+        }
+      },
+      "comparison_to_A1_full": {
+        "1": {
+          "available": true,
+          "baseline_tok_s": 43.1609375,
+          "A1_tok_s": 41.381770833333334,
+          "change_pct": -4.122168724130859,
+          "baseline_per_stream_tok_s": 43.1609375,
+          "A1_per_stream_tok_s": 41.381770833333334
+        },
+        "2": {
+          "available": true,
+          "baseline_tok_s": 58.0598615916955,
+          "A1_tok_s": 47.71188405797101,
+          "change_pct": -17.82294557726709,
+          "baseline_per_stream_tok_s": 29.02993079584775,
+          "A1_per_stream_tok_s": 23.855942028985506
+        },
+        "3": {
+          "available": true,
+          "baseline_tok_s": 54.714723926380366,
+          "A1_tok_s": 55.71377777777778,
+          "change_pct": 1.8259323628163848,
+          "baseline_per_stream_tok_s": 18.238241308793455,
+          "A1_per_stream_tok_s": 18.57125925925926
+        },
+        "4": {
+          "available": true,
+          "baseline_tok_s": 71.64264705882353,
+          "A1_tok_s": 71.85217391304347,
+          "change_pct": 0.2924610728689325,
+          "baseline_per_stream_tok_s": 17.910661764705882,
+          "A1_per_stream_tok_s": 17.963043478260868
+        }
+      }
+    },
+    "morning_before_prepare": {
+      "baseline": {
+        "start": 1790812800,
+        "end": 1790845800,
+        "start_utc": "2026-10-01T00:00:00+00:00",
+        "end_utc": "2026-10-01T09:10:00+00:00",
+        "stable_endpoint_C": true,
+        "C": {
+          "1": {
+            "samples": 886,
+            "approx_observed_seconds": 8861.113255739212,
+            "aggregate_mean_tok_s": 44.43961625282167,
+            "per_stream_mean_tok_s": 44.43961625282167,
+            "aggregate_interval_weighted_tok_s": 44.43977933068198,
+            "aggregate_median_tok_s": 45.9,
+            "aggregate_min_tok_s": 0.0,
+            "aggregate_max_tok_s": 80.6,
+            "prompt_nonzero_samples": 312,
+            "slow_generation_samples_le_5_tok_s": 19,
+            "generation_positive_samples": 869,
+            "kv_usage_mean_pct": 2.189729119638826
+          },
+          "2": {
+            "samples": 625,
+            "approx_observed_seconds": 6250.6561279296875,
+            "aggregate_mean_tok_s": 51.97856,
+            "per_stream_mean_tok_s": 25.98928,
+            "aggregate_interval_weighted_tok_s": 51.97882231291939,
+            "aggregate_median_tok_s": 62.1,
+            "aggregate_min_tok_s": 0.4,
+            "aggregate_max_tok_s": 98.7,
+            "prompt_nonzero_samples": 289,
+            "slow_generation_samples_le_5_tok_s": 100,
+            "generation_positive_samples": 625,
+            "kv_usage_mean_pct": 4.13424
+          },
+          "3": {
+            "samples": 276,
+            "approx_observed_seconds": 2760.2795991897583,
+            "aggregate_mean_tok_s": 61.96775362318841,
+            "per_stream_mean_tok_s": 20.655917874396135,
+            "aggregate_interval_weighted_tok_s": 61.96795860312253,
+            "aggregate_median_tok_s": 71.25,
+            "aggregate_min_tok_s": 1.1,
+            "aggregate_max_tok_s": 101.6,
+            "prompt_nonzero_samples": 121,
+            "slow_generation_samples_le_5_tok_s": 35,
+            "generation_positive_samples": 276,
+            "kv_usage_mean_pct": 5.077898550724638
+          },
+          "4": {
+            "samples": 13,
+            "approx_observed_seconds": 130.01357436180115,
+            "aggregate_mean_tok_s": 75.23076923076923,
+            "per_stream_mean_tok_s": 18.807692307692307,
+            "aggregate_interval_weighted_tok_s": 75.23080238134389,
+            "aggregate_median_tok_s": 81.2,
+            "aggregate_min_tok_s": 26.9,
+            "aggregate_max_tok_s": 98.5,
+            "prompt_nonzero_samples": 8,
+            "slow_generation_samples_le_5_tok_s": 0,
+            "generation_positive_samples": 13,
+            "kv_usage_mean_pct": 6.846153846153846
+          }
+        },
+        "excluded": {
+          "window_boundary_or_exclusion": 1,
+          "changing_or_missing_concurrency": 591
+        }
+      },
+      "comparison_to_A1_full": {
+        "1": {
+          "available": true,
+          "baseline_tok_s": 44.43961625282167,
+          "A1_tok_s": 41.381770833333334,
+          "change_pct": -6.880899695649778,
+          "baseline_per_stream_tok_s": 44.43961625282167,
+          "A1_per_stream_tok_s": 41.381770833333334
+        },
+        "2": {
+          "available": true,
+          "baseline_tok_s": 51.97856,
+          "A1_tok_s": 47.71188405797101,
+          "change_pct": -8.208530482623965,
+          "baseline_per_stream_tok_s": 25.98928,
+          "A1_per_stream_tok_s": 23.855942028985506
+        },
+        "3": {
+          "available": true,
+          "baseline_tok_s": 61.96775362318841,
+          "A1_tok_s": 55.71377777777778,
+          "change_pct": -10.092306852753797,
+          "baseline_per_stream_tok_s": 20.655917874396135,
+          "A1_per_stream_tok_s": 18.57125925925926
+        },
+        "4": {
+          "available": true,
+          "baseline_tok_s": 75.23076923076923,
+          "A1_tok_s": 71.85217391304347,
+          "change_pct": -4.490975371210104,
+          "baseline_per_stream_tok_s": 18.807692307692307,
+          "A1_per_stream_tok_s": 17.963043478260868
+        }
+      }
+    },
+    "settled088_pre_restart_available_logs": {
+      "baseline": {
+        "start": 1790852543.6740277,
+        "end": 1790853600,
+        "start_utc": "2026-10-01T11:02:23.674028+00:00",
+        "end_utc": "2026-10-01T11:20:00+00:00",
+        "stable_endpoint_C": true,
+        "C": {
+          "1": {
+            "samples": 13,
+            "approx_observed_seconds": 130.01420974731445,
+            "aggregate_mean_tok_s": 45.207692307692305,
+            "per_stream_mean_tok_s": 45.207692307692305,
+            "aggregate_interval_weighted_tok_s": 45.207489576378684,
+            "aggregate_median_tok_s": 48.9,
+            "aggregate_min_tok_s": 0.0,
+            "aggregate_max_tok_s": 55.0,
+            "prompt_nonzero_samples": 3,
+            "slow_generation_samples_le_5_tok_s": 1,
+            "generation_positive_samples": 12,
+            "kv_usage_mean_pct": 2.669230769230769
+          },
+          "2": {
+            "samples": 48,
+            "approx_observed_seconds": 480.112587928772,
+            "aggregate_mean_tok_s": 46.575,
+            "per_stream_mean_tok_s": 23.2875,
+            "aggregate_interval_weighted_tok_s": 46.57107560237767,
+            "aggregate_median_tok_s": 58.349999999999994,
+            "aggregate_min_tok_s": 0.4,
+            "aggregate_max_tok_s": 87.2,
+            "prompt_nonzero_samples": 20,
+            "slow_generation_samples_le_5_tok_s": 10,
+            "generation_positive_samples": 48,
+            "kv_usage_mean_pct": 6.13125
+          },
+          "3": {
+            "samples": 1,
+            "approx_observed_seconds": 9.999863862991333,
+            "aggregate_mean_tok_s": 28.0,
+            "per_stream_mean_tok_s": 9.333333333333334,
+            "aggregate_interval_weighted_tok_s": 28.0,
+            "aggregate_median_tok_s": 28.0,
+            "aggregate_min_tok_s": 28.0,
+            "aggregate_max_tok_s": 28.0,
+            "prompt_nonzero_samples": 1,
+            "slow_generation_samples_le_5_tok_s": 0,
+            "generation_positive_samples": 1,
+            "kv_usage_mean_pct": 6.7
+          }
+        },
+        "excluded": {
+          "window_boundary_or_exclusion": 1,
+          "changing_or_missing_concurrency": 23
+        }
+      },
+      "comparison_to_A1_full": {
+        "1": {
+          "available": true,
+          "baseline_tok_s": 45.207692307692305,
+          "A1_tok_s": 41.381770833333334,
+          "change_pct": -8.462987777210584,
+          "baseline_per_stream_tok_s": 45.207692307692305,
+          "A1_per_stream_tok_s": 41.381770833333334
+        },
+        "2": {
+          "available": true,
+          "baseline_tok_s": 46.575,
+          "A1_tok_s": 47.71188405797101,
+          "change_pct": 2.440974896341408,
+          "baseline_per_stream_tok_s": 23.2875,
+          "A1_per_stream_tok_s": 23.855942028985506
+        },
+        "3": {
+          "available": true,
+          "baseline_tok_s": 28.0,
+          "A1_tok_s": 55.71377777777778,
+          "change_pct": 98.97777777777779,
+          "baseline_per_stream_tok_s": 9.333333333333334,
+          "A1_per_stream_tok_s": 18.57125925925926
+        },
+        "4": {
+          "available": false
+        }
+      }
+    }
+  },
+  "purpose": "show that different legitimate historical windows change the comparison; not select the most favorable baseline"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "dgx.B2.third-failure-analysis.v1",
+  "observed": "Actualall3GPUmisalignedaddress; syncNative716; sameB1stock actualMoEall3pass",
+  "confirmed_scope": "B2cooperative native launch, notCUDAcontextcreation orstockreference",
+  "not_confirmed": "ExactfailingGPUinstruction/address unavailablewithoutsanitizer; numericalparitynotobtained",
+  "source_inference": {
+    "kernel": "runtime/cooperative_source/quant/goal50_fixed_coop_kernel.cuh:708,830-837",
+    "observation": "sharedBF16sh_t01[256] hasnoexplicit16bytealignment; passedtoexactstockT01 helper",
+    "helper": "runtime/cooperative_source/quant/stock_t01_contract.cuh:42",
+    "observation_helper": "ActVec<BF16>::load castsinputpointertofloat4",
+    "hypothesis": "sharedbuffer alignment is a likelycandidate for716; sharedbufferwarpownership additionallyneeds audit",
+    "confirmed": false
+  },
+  "official_error_reference": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-runtime-api/group__CUDART__TYPES.html",
+  "fourth_kernel_correction_performed": false,
+  "decision": "SkipB2/A1B2 afterthirdkernel failure; preserveexact evidence, continueotherbenchmarkswithoutaddingofflinetuningduringmeasurement"
+}

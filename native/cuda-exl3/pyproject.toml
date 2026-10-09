@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "torch>=2.6"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cuda-exl3"
+version = "1.0.0"
+description = "EXL3 (ExLlamaV3 trellis) quantization plugin for vLLM, with custom CUDA kernels"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "cuda-exl3 contributors" }]
+keywords = ["vllm", "exl3", "exllamav3", "quantization", "cuda", "llm"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: C++",
+    "Environment :: GPU :: NVIDIA CUDA",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["torch>=2.6", "numpy"]
+
+[project.optional-dependencies]
+dev = ["pytest", "safetensors"]
+
+[project.urls]
+Homepage = "https://github.com/Zeuss5/cuda-exl3"
+Repository = "https://github.com/Zeuss5/cuda-exl3"
+Issues = "https://github.com/Zeuss5/cuda-exl3/issues"
+
+
+# vLLM discovers the plugin through this entry point group and calls the
+# function, which registers "exl3" as a quantization method.
+[project.entry-points."vllm.general_plugins"]
+cuda_exl3 = "cuda_exl3:register"
+
+[tool.setuptools]
+# src layout: running pytest from the repo root must not shadow the installed
+# package with the source tree, which has no compiled extension in it.
+package-dir = { "" = "src" }
+packages = ["cuda_exl3"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,332 @@
+{
+  "typographic_changes": [
+    {
+      "file": "build/base/patch/attention.py",
+      "original_sha256": "173c5203302efd645f8977677665b95dbc660df9e58a3934d838bfa541817d12",
+      "published_sha256": "24191c8af6de75ec142f04abf49e560a8d8ad81858f6c7f95ab64338dd6ffcee",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "build/base/patch/dsv4_nvidia_model.py",
+      "original_sha256": "ff63552c15d4f63908ab9d57649a8925924cd3dc0c246953da66c7882c60e143",
+      "published_sha256": "1666386ddf4f681f0500153c4f806d56bb7764c8afa12f928f7b31ed46305a09",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "build/base/patch/engram.py",
+      "original_sha256": "452c3edd1ea52f43c27479d735d2b34f2a836e5ef314e8d11b3c1822649545e3",
+      "published_sha256": "04bb79bcc4c910b0d6a36277dccfd05c3c568d0e7e1804e6a20715505b794981",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "build/base/patch/sparse_attn_indexer.py",
+      "original_sha256": "707d9aeda786953133526e1ee01ea8486ba5d239f2f1b49044a9d711d3cd22e6",
+      "published_sha256": "de13ca0929492573d3c108d512de78536928ba3540d7833a64b2fca02523f6e4",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "build/base/patch/sparse_swa.py",
+      "original_sha256": "35a065b4bb0177318e61faf8e430515190c0c633b881da6f7ff328c1d4fb2910",
+      "published_sha256": "91a04d86166281ad15b3ab844db07fed13707f56e490956d5a70cc36d9519d4a",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "build/base/patch/vl_model.py",
+      "original_sha256": "e2d00691ce516157fc76fe7379a8c4ebec79e1a86f560917615d22ae29f0fa7f",
+      "published_sha256": "87b1feaa25fdee362ee5aff290eebe8937fb008bd082f119a445f67594885ad1",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "build/base/patch/weight_utils.py",
+      "original_sha256": "9e7d9400b7da7f01eff6b30a816d4dd62354f627f5487e26f0463a21f8aa87c8",
+      "published_sha256": "3f96d7861e3545387c1fc227635b799642d73f8cc7dcfbfc1b4e0b6f2410d22a",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/__init__.py",
+      "original_sha256": "674788c9e0906599ec2c707ac11bcf13a3483b8632f3f7e7bdf7fa4cc09781cb",
+      "published_sha256": "0027e271b286634ca5d82eb1202f8609543e5fa521611fef61d56c67749647f3",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/attention/__init__.py",
+      "original_sha256": "7d2689cdaadc905db71cfd413273d189bb5bb83bf8961eb59348c879eac1fc23",
+      "published_sha256": "07d0f35ec77f9b5234fae8a98576ccb59803c7c304d249c9936c9aafa6b05c25",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/attention/dsa_indexer/contiguous_kernel.py",
+      "original_sha256": "f2db3c2114ef2b47c85ee61fdbad1ef18875a14d4d9792f3f6d764fa191b6c89",
+      "published_sha256": "0dc7222757b19ab87bb48d6d425ca33ce6f5f4c7e1796d30a9dfca62f8cd16f0",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/attention/dsa_indexer/fused_indexer.py",
+      "original_sha256": "9467299f0b9a8bca480cd014957b4f74b03b6f8410f58edf3a6f9d1896b47b72",
+      "published_sha256": "1888cb99169f70707af3772c8033ba0fb314319415540e22b921c8e1177127eb",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/attention/dsa_indexer/tiled_topk.py",
+      "original_sha256": "984a511b0dfcbe389e4285507c81d7682e7b025a35d1d63948712076c010502a",
+      "published_sha256": "c8cbdf3157cd33550eb64f9286bba1f9f4161984f452f6c79b374a573905a793",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/attention/dsa_indexer/__init__.py",
+      "original_sha256": "f34160bb899b1e4a87350a8ed1dc30b322db28f6ff440c0c553a169b51c53f92",
+      "published_sha256": "1546d33524b727142a53c0d7fc7a906b42a6dc643016c27f3dd3626b994468bb",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/comm/__init__.py",
+      "original_sha256": "a6110a66ad4a5034b63225da4edaa860e9f4d94527b8063faaabb8d0ab051343",
+      "published_sha256": "d3dbb0bc8208acf3c85f1a229f55376daca28825cb8fb73325025d4a906755cc",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/gemm/_shared/wo_mxfp8.py",
+      "original_sha256": "1f995f8dca363b043363f929b11e0447a8509b3b66818a58d3739356f7af5826",
+      "published_sha256": "b09b10207d669c0e6a5e927e7d27336e5905bcd7e68b209336c08c532790abde",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/integration/vllm/fp6_serving.py",
+      "original_sha256": "143f770f992ba1fbb9c2ad72a7afab285317ea77a9aec5455b3aecca1ae26ab2",
+      "published_sha256": "565e4b6be4653d6f94613844b951470123e05ae6f6f7d56689ce76fe1416c77e",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/integration/vllm/plugin.py",
+      "original_sha256": "1303987812728d77de247c96aeb4b8a0e68cec4ba9666a1ba98a7636e72519cd",
+      "published_sha256": "440a8426df0112b180f434444ef5c85d74bedfc0fcc73a541510a8aa1298f3de",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/ep_moe/__init__.py",
+      "original_sha256": "e3208ba57a202822f0a6655dd08e709aa9cb991deafe0b6b60e08bffca4f8a3e",
+      "published_sha256": "6001fde09abef165f48a22970a1716ccac19c274c8f23ecd543494981c7d3ba8",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/fused_moe/_impl.py",
+      "original_sha256": "ebafa95e908daaba337e9f8f540d6dd309f066828d21967e62f1eae03f1e700b",
+      "published_sha256": "d4f0db05085dd052c49ef44ff0de2a065da035c6fbe5bd36650e22918a0a44ec",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/_shared/exl3_schema.py",
+      "original_sha256": "3ba9887e4917dfe4e4ee7ad944439390aea5c58e657ef81672dc531efc2a91d9",
+      "published_sha256": "dd8f5d340132e8c153304f7374d9fc4d8cb8a830152107a4dd3770f59e351344",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/_shared/kernels/dynamic.py",
+      "original_sha256": "560b547ee373fa5f58bffc3b6c38f22ebb7b2ca281383d04cc1833ddca38a50d",
+      "published_sha256": "10000e6960fe42f91986db6fece57bb35c922103a841cd9f711de551fa916256",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/_shared/kernels/micro.py",
+      "original_sha256": "09e9f99e8c7633cc3500743e0a0156680e92c839c20855b386f3c3c525b1e05b",
+      "published_sha256": "add5743f6325505b40deb1eb185b5717d05ba312de14d117551aee4f77f3d56c",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/_shared/kernels/mxfp6_moe.py",
+      "original_sha256": "a006a13ee5f76b69b00a663ef966b0dfba942197fe585cfbf7b61046c01bebf6",
+      "published_sha256": "bccc578461c43778977a16d05e0581a79235a6defe4c93a7a7a58dd6b964eee7",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/_shared/kernels/nvfp4_phase1.py",
+      "original_sha256": "5b52fe5dcfd5e382c175c602576fb4fe4ff0daa8ce075640ba341aa4f9c8d554",
+      "published_sha256": "155cf91fea38c0a7e762609910719dab0a789d1a166217f90f265c4c081adff3",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/_shared/kernels/nvfp4_phase2.py",
+      "original_sha256": "9da64702c44a64e23eaadc46c370ccb45914a379c8eb5b0c7fd4e32d48c97a73",
+      "published_sha256": "8963dd9b79c7b21827fb3cfd5d8ba1b51e4d59921a36fbac09c7428a02345824",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/_shared/kernels/tiny_decode.py",
+      "original_sha256": "267453b00551fd402796dc82ab817e9b4e66ba0f74df9034b706093fa643fadb",
+      "published_sha256": "5c1defbd19fb9e07b4ba9025240218997b58e8f746af1f11a7f2a13e58d3b7ee",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/moe/_shared/kernels/w4a16/kernel.py",
+      "original_sha256": "d822a8b68a1053ec095adc9e27374b051f69f3a5bf8ef64b75287364de5eeef7",
+      "published_sha256": "4eac4f040d1fe58fb026a3b87fce40095e149ea1018ea2d351b1860a3f9dd461",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/preparation/_progress.py",
+      "original_sha256": "ca1d9ded000b0a2cc47de509cebaeda618f85ebc5a13b86aa45e4350d566935f",
+      "published_sha256": "81999fc40c05764104478caf2bf1bfb23c313b5367e1e2783f18d1a702ff8050",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/quantization/mxfp6/bf16_to_fp6_small_m.py",
+      "original_sha256": "ea07a8b24b76741d400c2d31485702fdd4ebda270a08d719279b8d1663c9d1fe",
+      "published_sha256": "dbe12b206bf27213aae73fc60c68d7a9fa777ca980f82e6b7896ab7a64c57931",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/quantization/mxfp6/bf16_to_fp6_tma.py",
+      "original_sha256": "574585d4b172110813875be200aac5cc7a59fbe4acfec6c805ff7667ebdcca59",
+      "published_sha256": "d901d36229c2cb1d6f6e0dec0cd0baad1215601819695cf5885edf0d4c903efb",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/quantization/mxfp6/calib_io.py",
+      "original_sha256": "fe47b00ef8aee69abbafeb20dc00fa90f03a4d0f70b6490983c7a25111155f0d",
+      "published_sha256": "a2462fb82ee3b49f10ede4fdedf750c76b4b7d6985cdd7e83e1f72ee39f8bc34",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/quantization/mxfp6/fp6_checkpoint.py",
+      "original_sha256": "dc90d7ee6db913137e2a69dfb03a651c47d832ddd8fff0de2c5c30180500fab0",
+      "published_sha256": "085ae7f9ec38cde20c97cc4e9a7533b1647eef1c53e11d729e4c075f1b59caed",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/quantization/mxfp6/fp6_dense_weights.py",
+      "original_sha256": "8698912e74a3716f3fad50d33ecdb22d68421b64f547ad38fc74c1f08859f6ce",
+      "published_sha256": "b12401199c333facd5901942ee5a474a6541a480224b8ee564abf63a981f54bd",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/quantization/mxfp6/fp6_moe_weights.py",
+      "original_sha256": "d7e3223366749bd6e2045d5e081b34d2a6d06d0f53bb74d35f9385a70936836b",
+      "published_sha256": "157e9cd98c9973c47b685d1871bea3ac5f2398cadb60733b78a2deb130937234",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/quantization/mxfp6/fp6_row_gs.py",
+      "original_sha256": "a6d8a261fc9fa670f8c20dfa1e12a9e55fa4ab01bc65cfe8575d03b4f2b3645f",
+      "published_sha256": "13c0a3f1a904cc322416fb957b60d4312a449926d8b0fde7eabbed4211295dc8",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/quantization/mxfp6/fp6_safetensors_export.py",
+      "original_sha256": "42a5d1fec20a50627d756d30572b9383dfd9c1b421d905616e1a1eed703162af",
+      "published_sha256": "e4471f7f03c3628de400d44bf1f50dfe79ef0d44f12eb266773596034d3a7a5f",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/_lib/dense_gemm.py",
+      "original_sha256": "82f623eb8bb5e1eb11def387b96911be54db7e6fcb8b1184cbc9be5dd1e755d7",
+      "published_sha256": "f945f381a51187c5d2b2f10b1dc30f380db07434fb6ea907af6aad22ed9ba559",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/_lib/dense_gemm_mxfp6.py",
+      "original_sha256": "68b8bf892e1b5d33fac6d7e68be4a028c25b29baa2f6423d0d60531d849b87e8",
+      "published_sha256": "9fb8cc0c6c04e4eb834da29815e50da49f935dd0a84e881ae5a6815ff0a7f867",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/_lib/fp6.py",
+      "original_sha256": "1671412e43324793538bef2004fe3b6b4b0de15c32e4c551f5fd998e235431ce",
+      "published_sha256": "c46dd151747bdf6d4fcea5dc6c4a6ef0daffc6d9e1f14e6330a44afe306fb167",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x/_lib/intrinsics.py",
+      "original_sha256": "731c58d3fa910455ebfa2e35136a02a686eddc4aac660306ed2c5604f0f8ab6a",
+      "published_sha256": "db2ae892c59114be1b4c3ae2b6c675835969a7453f9011fcea36b1a46bbba42d",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/v089_runtime/cooperative_source/cache/q_cache_kernels.cuh",
+      "original_sha256": "d654e59bddf843af7b89b438963d29e44dcdd641377d29ae5ed03328d5f537ca",
+      "published_sha256": "c49d19ff8c81577e28ed9db1c8ca49cd1a4d3952d3fae73da5f352ad4679279f",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/v089_runtime/cooperative_source/libtorch/attention.h",
+      "original_sha256": "628741cc309a351507b09d992c09d8d2972a113afb3ff76e0a6323ed0b0ee4b4",
+      "published_sha256": "5a1492c505c5ab650e7b5d67a50fc1d37dce3aba2b6245b70aaae3a69d998597",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/v089_runtime/cooperative_source/parallel/all_reduce_cpu_avx2.h",
+      "original_sha256": "1bff7a352023b7ac3576238c04c38ef4edf0a2c3ff070155c7493c604e871c6d",
+      "published_sha256": "ee7e7e4a7d3cf1dd7c2cf44878eb17852a67bd2b97eeba0c522f3b90a9441a6b",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/distributed/parallel_state.py",
+      "original_sha256": "84c17e61a8907d4e5dc97d9180550116adee57ab6f1aa5baa9c648cea22dcc4b",
+      "published_sha256": "d6fb0b946ec6339bc35976a43bb623e8d7d6e903700428b5ce5683c48c24372a",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4/nvidia/model.py",
+      "original_sha256": "a19bb4aeccfb315f296870e9f76be9091de807d542fe3edc9d62e9d2809f65f8",
+      "published_sha256": "730b8b16c17bda3c3f59a84296a3771121b5b8e47ffb64c3c47bc8021620fd6a",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/common/engram.py",
+      "original_sha256": "203cd14921336eb69992e71a3a80c4eda0d62a0151b3b01019f63b0dc3a3b293",
+      "published_sha256": "aa6b6803ffbba7d84ad5f063add29054e39f759f839bdee8ac97d98a35bd5a55",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/dspark.py",
+      "original_sha256": "9a609c843bd74c7027fc050e454cb333f7ca11b940cb54eee7a8bb19a7895c9f",
+      "published_sha256": "1fdb9cac8b3cc03358d61d3171da0278d948d98b85f0a4b489ef8f7a32b03734",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/model.py",
+      "original_sha256": "5e859eb87b4a50a922dccafb756f45a83a3bdbe6aa7faffc35ee50a24d4ad16c",
+      "published_sha256": "fc2dfc27ab49aba168384a53d85e3e2aac12191fef9da6045f8797f0d5268ce3",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/sparse_attn_indexer.py",
+      "original_sha256": "1f6cc2f38fbe7ec40885e2b31508edb0c5e7af01fb55983c4c323c6b1e0d0f88",
+      "published_sha256": "869e535ca2f70bfda2792948f149a4e955605e688c910e95e68b30b4b22ff680",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/quantization/modelopt.py",
+      "original_sha256": "81d2a64154cd267ae15c15f1d9358d5f380dca171667f2aa05ab1043745df9a1",
+      "published_sha256": "649546ab9e82989a47b5d3c422fdcbd66c0d692fdd31283ddb07b0a127ab5cb8",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py",
+      "original_sha256": "1b0457cd69e17ea26ef88072e029f9a443434f7b0aff48501e512862245a0719",
+      "published_sha256": "dfabd7ce423dee29bf91bfa18ace5d6d408e38342e6209382e78512a3b53ad29",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_model_runner.py",
+      "original_sha256": "9717c82948981593cdb40529f533c4212f56b1e0cb6e24a3b85938dfb1525bf2",
+      "published_sha256": "81e48aa9495aacdb9e276526c73114d0f43289752663227aab54ee0606b07468",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    },
+    {
+      "file": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py",
+      "original_sha256": "9bef83a746adc36d7e7aafb31b246b4e56059f7e188e5d171cde6eed83f49ddb",
+      "published_sha256": "5f32c389b98b33ec556893d1c12644ba89d9b34950165231276c95111d770e29",
+      "reason": "typographic punctuation; copyright/license notice retained"
+    }
+  ],
+  "functional_packaging_changes": [
+    {
+      "file": "runtime/rootfs/opt/dgx_campaign/runtime/dgx_campaign_runtime/control.py",
+      "reason": "private benchmark controller address is operator-supplied; lane inactive by default"
+    },
+    {
+      "file": "native/cuda-exl3/setup.py",
+      "reason": "host -g0 avoids debug symbol build memory; CUDA arithmetic flags unchanged"
+    }
+  ]
+}

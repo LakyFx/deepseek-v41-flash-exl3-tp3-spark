@@ -1,0 +1,101 @@
+{
+  "image": "dsv41-x11c:recipe-20261009",
+  "backend_bind": "127.0.0.1",
+  "backend_port": 8003,
+  "master_port": 29541,
+  "roce_cidr": "REPLACE_ROCE_CIDR",
+  "benchmark_control": {
+    "enabled": false,
+    "peer_address": "127.0.0.1",
+    "lease_path": "/srv/dsv41/benchmark-lease"
+  },
+  "nodes": [
+    {
+      "rank": 0,
+      "control_address": "REPLACE_RANK0_CONTROL_ADDRESS",
+      "control_interface": "REPLACE_CONTROL_INTERFACE",
+      "hcas": [
+        "rocep1s0f0",
+        "rocep1s0f1",
+        "roceP2p1s0f0",
+        "roceP2p1s0f1"
+      ],
+      "gid_index": 3,
+      "peer_hcas": {
+        "1": [
+          "rocep1s0f0",
+          "roceP2p1s0f0"
+        ],
+        "2": [
+          "rocep1s0f1",
+          "roceP2p1s0f1"
+        ]
+      },
+      "body_path": "/srv/dsv41/body",
+      "engram_path": "/srv/dsv41/engram-rank0",
+      "cache_path": "/srv/dsv41/x11c/cache",
+      "state_path": "/srv/dsv41/x11c/profile",
+      "diag_path": "/srv/dsv41/x11c/diag",
+      "chunk_path": "/srv/dsv41/x11c/chunk",
+      "snapshot_path": "/srv/dsv41/x11c/snapshots"
+    },
+    {
+      "rank": 1,
+      "control_address": "REPLACE_RANK1_CONTROL_ADDRESS",
+      "control_interface": "REPLACE_CONTROL_INTERFACE",
+      "hcas": [
+        "rocep1s0f0",
+        "rocep1s0f1",
+        "roceP2p1s0f0",
+        "roceP2p1s0f1"
+      ],
+      "gid_index": 3,
+      "peer_hcas": {
+        "0": [
+          "rocep1s0f0",
+          "roceP2p1s0f0"
+        ],
+        "2": [
+          "rocep1s0f1",
+          "roceP2p1s0f1"
+        ]
+      },
+      "body_path": "/srv/dsv41/body",
+      "engram_path": "/srv/dsv41/engram-rank1",
+      "cache_path": "/srv/dsv41/x11c/cache",
+      "state_path": "/srv/dsv41/x11c/profile",
+      "diag_path": "/srv/dsv41/x11c/diag",
+      "chunk_path": "/srv/dsv41/x11c/chunk",
+      "snapshot_path": "/srv/dsv41/x11c/snapshots"
+    },
+    {
+      "rank": 2,
+      "control_address": "REPLACE_RANK2_CONTROL_ADDRESS",
+      "control_interface": "REPLACE_CONTROL_INTERFACE",
+      "hcas": [
+        "rocep1s0f0",
+        "rocep1s0f1",
+        "roceP2p1s0f0",
+        "roceP2p1s0f1"
+      ],
+      "gid_index": 3,
+      "peer_hcas": {
+        "0": [
+          "rocep1s0f0",
+          "roceP2p1s0f0"
+        ],
+        "1": [
+          "rocep1s0f1",
+          "roceP2p1s0f1"
+        ]
+      },
+      "body_path": "/srv/dsv41/body",
+      "engram_path": "/srv/dsv41/engram-rank2",
+      "cache_path": "/srv/dsv41/x11c/cache",
+      "state_path": "/srv/dsv41/x11c/profile",
+      "diag_path": "/srv/dsv41/x11c/diag",
+      "chunk_path": "/srv/dsv41/x11c/chunk",
+      "snapshot_path": "/srv/dsv41/x11c/snapshots"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+[
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/dsv41_gateway_middleware.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/dsv41_gateway_middleware.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/core/kv_cache_utils.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/core/kv_cache_utils.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/v089_runtime",
+    "target": "/usr/local/lib/python3.12/dist-packages/v089_runtime",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/renderers/base.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/renderers/base.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/model.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/model.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/dgx_indexer_warmup.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/dgx_indexer_warmup.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/model_runner.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/model_runner.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_model_runner.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_model_runner.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/distributed/device_communicators/cuda_communicator.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/distributed/device_communicators/cuda_communicator.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/async_utils.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/async_utils.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/runner/moe_runner.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/runner/moe_runner.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/model_executor/warmup/kernel_warmup.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/warmup/kernel_warmup.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4/nvidia/model.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4/nvidia/model.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/nds-t01",
+    "target": "/nds-t01",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/metrics/chunk_probe.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/metrics/chunk_probe.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/diaglog.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/diaglog.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/dspark.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/dspark.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/workspace_baseline.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/workspace_baseline.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/model_state.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/nvidia/model_state.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/qwen3_dspark.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/qwen3_dspark.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/distributed/parallel_state.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/distributed/parallel_state.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/cuda_exl3/moe.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/cuda_exl3/moe.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/mla/indexer.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/mla/indexer.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/dgx_render_gate.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/dgx_render_gate.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/quantization/modelopt.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/quantization/modelopt.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/sparse_attn_indexer.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/sparse_attn_indexer.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/opt/dgx_campaign/vendor/sparknet",
+    "target": "/opt/dgx_campaign/vendor/sparknet",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/dgx_kv_snapshot.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/dgx_kv_snapshot.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/opt/dgx_campaign/runtime",
+    "target": "/opt/dgx_campaign/runtime",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/v089x_runtime",
+    "target": "/usr/local/lib/python3.12/dist-packages/v089x_runtime",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/opt/dgx_campaign/vendor/b12x-package/b12x",
+    "target": "/opt/dgx_campaign/vendor/b12x-package/b12x",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/mm/encoder_runner.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu/mm/encoder_runner.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/dgx_workspace_memory.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/dgx_workspace_memory.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/common/engram.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/models/deepseek_v4_1/common/engram.py",
+    "read_only": true
+  },
+  {
+    "source": "runtime/rootfs/usr/local/lib/python3.12/dist-packages/v089_runtime",
+    "target": "/opt/dgx-v089",
+    "read_only": true
+  }
+]

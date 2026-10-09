@@ -1,0 +1,85 @@
+{
+  "schema": "dgx.offline-exact-tokenization.v1",
+  "request_sha256": "e1d0e5ee0190de5c6aa64711e17afa2cc9df3477e57d2f74b99031c265c81026",
+  "count": 8174,
+  "target": 8192,
+  "source_units": [
+    {
+      "id": "vllm/entrypoints/serve/dev/rpc/api_router.py:23:collective_rpc",
+      "source_sha256": "02b3ac71867b333548b15cb5d8382877d587b211c4ef80fdd881712ab523d107"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/sleep/api_router.py:21:sleep",
+      "source_sha256": "f16d4e6e878d2872c7754e649b3b9b306b757789bd80df4530d72989b78b4eca"
+    },
+    {
+      "id": "vllm/model_executor/kernels/mhc/tilelang_kernels.py:663:mhc_post_tilelang",
+      "source_sha256": "bee798830df27c874dd284f58cac6950a2539be1c79b2d5f190468a7c94840cb"
+    },
+    {
+      "id": "vllm/model_executor/layers/sparse_attn_indexer.py:818:SparseAttnIndexer",
+      "source_sha256": "4b0b0ffc64b5a214c42091ec2cce1e176d081159009726135ce1334262691dca"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/sparse_utils.py:514:triton_filter_and_convert_dcp_index",
+      "source_sha256": "20372237899fb0a0c9152e12eab40396119b76c1ac5f1c9bdfdbed53f8146559"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/rocm_aiter_mla_sparse.py:91:_convert_req_index_to_global_index_kernel",
+      "source_sha256": "47b5a1f21e7857d9fc2a26d74783b8dc6b31902289eb95ba062d7b2d5e78abb1"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/mtp/speculator.py:12:MTPSpeculator",
+      "source_sha256": "1fcffbf5e5a85e4c901bd71c65a73da814e7273627276dbdfebf367720a0bc1a"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashinfer_mla.py:118:FlashInferMLAMetadataBuilder",
+      "source_sha256": "deab16d2e7ff29628a1b06405ccecd02f7e00be1bc9ac71aff344bb327dc4ede"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/cache/api_router.py:69:attach_router",
+      "source_sha256": "ba0e9be90c4fe8f42526c163d073ee5889492e4cdd8231599901d0b3aab669ce"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/rocm_aiter_mla.py:138:_aiter_mla_native_h24_supported",
+      "source_sha256": "bd8e4d5d2c20dc791da52584fbc12a5a1e63a0eda0368a0362b22de1e5ac08b8"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/triton_mla.py:43:_compute_num_kv_splits",
+      "source_sha256": "930c4adb294447b686a2a4a03bac626a49a08620a1dd2b9bf7d7cd5d53ee1842"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/nvidia/model.py:153:_use_sequence_parallel",
+      "source_sha256": "d47dbdf400e63307fbf88cdd4f6db2a2d4a5912f235bfc6a31e89147e85058df"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashmla.py:47:FlashMLABackend",
+      "source_sha256": "cace45fc3f99fd5bb6db6fe799f8237dec676be88e9c3ef0784318f7348a885c"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:361:patched_fused_scaled_matmul_reduce_scatter",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/autoregressive/cudagraph_utils.py:20:SpeculatorCudaGraphManager",
+      "source_sha256": "13392ef0a9ed59eb9c2b2bad43d7c61beb212a8805849e46b5130c230275d0a5"
+    },
+    {
+      "id": "vllm/model_executor/kernels/attention/dsa/candidate_blocks.py:140:select_candidate_blocks",
+      "source_sha256": "0d53e4e6a60a37995713bf792089d645b07db1af3e55e36dcc49542705a5db9c"
+    },
+    {
+      "id": "vllm/entrypoints/serve/exception_handling/handlers/validation.py:135:clean_loc_for_param",
+      "source_sha256": "ed14c81cc5685c7521ed1b5b8c51b4e7a5de05d2fb6310e7a3faa3d31548cca0"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/cuda_wrapper.py:30:cudaIpcMemHandle_t",
+      "source_sha256": "333b6d9ed173e7a18c7f2b6627a3c9c9ed88892ce52015f05e29d6d245e48ee3"
+    }
+  ],
+  "token_ids_sha256": "2135bef18ddfa741add62475db27132dd4583aada5a93402b2a4da12582d60b5",
+  "current_tokenizer_receipt_sha256": "66c2ce0aa907a48f71d8d66f9bebc8df356acbaf3186ff6d0a6d3c445e919c5a",
+  "historical_eight_exact_matches": true,
+  "inference_requests": 0,
+  "original_request_sha256": "c034563f3986e28aac68d067334206f65d022f918cd9a0fe6547e0bacb238bdc"
+}
