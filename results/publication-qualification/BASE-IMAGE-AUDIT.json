@@ -10,12 +10,12 @@
     {
       "file": "usr/local/lib/python3.12/dist-packages/tilelang-0.1.12.dist-info/RECORD",
       "sha256": "7257c0b0fe69241798998aab09f6a041ea52bb6e26a30513e202e88e2be4f9e4",
-      "review": "Only installed public TVM package entries tilelang/3rdparty/tvm/python/tvm/relax/frontend/nn/llm; all matched windows manually reviewed."
+      "review": "Only installed public TVM package entries for its LLM frontend; all matched windows manually reviewed."
     },
     {
       "file": "usr/local/lib/python3.12/dist-packages/transformers/integrations/executorch.py",
       "sha256": "6f12c2c07e1ec81873da746ea8ce3cdda4080b5d8adc60ed3d3656249a3cac65",
-      "review": "Public ExecuTorch extension/llm/runner reference; byte-verified against official Transformers v5.16.1 raw source."
+      "review": "Public ExecuTorch LLM runner reference; byte-verified against official Transformers v5.16.1 raw source."
     },
     {
       "file": "vllm-workspace/examples/ray_serving/ray_serve_deepseek.py",
@@ -25,17 +25,17 @@
     {
       "file": "usr/local/lib/python3.12/dist-packages/modelscope/preprocessors/templates/tools_prompt.py",
       "sha256": "25b57e56deb7859ae81899e8189e0e59891ff9870178357ae804c8794952c936",
-      "review": "Only a public github.com/modelscope/swift docs/source_en/LLM/ URL; matched window manually reviewed."
+      "review": "Only a public ModelScope Swift agent-deployment documentation URL; matched window manually reviewed."
     },
     {
       "file": "opt/dsv41-src/.github/CODEOWNERS",
       "sha256": "6d2e21562929426aba8ca916b55f274a77d694a9a6b15f976ed44abb5b19ae8f",
-      "review": "Public /tests/entrypoints/llm/test_struct_output_generate.py ownership path; byte-verified against official vLLM e47 source."
+      "review": "Public LLM entrypoint test ownership path; byte-verified against official vLLM e47 source."
     },
     {
       "file": "usr/local/lib/python3.12/dist-packages/vllm/vllm-rs",
       "sha256": "628703a514f8ea5bc3fb590d0a6e7ced1839bd511cbf1e994f2ed515f2d2bb5e",
-      "review": "Public relative Rust compiler source strings src/llm/src/*.rs; all matched windows manually reviewed; no host prefix/address/token matches."
+      "review": "Public relative Rust compiler source strings for the LLM crate; all matched windows manually reviewed; no host prefix, address or token matches."
     }
   ],
   "includes_deleted_layer_entries": true,
