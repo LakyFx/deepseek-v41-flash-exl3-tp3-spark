@@ -1,7 +1,7 @@
 ARG BASE_IMAGE=dsv41-x11c-base:local
 FROM ${BASE_IMAGE}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-ENV MAX_JOBS=1 CUTE_DSL_ARCH=sm_121a TORCH_CUDA_ARCH_LIST=12.1a
+ENV MAX_JOBS=1 CUTE_DSL_ARCH=sm_121a TORCH_CUDA_ARCH_LIST=12.1a NVIDIA_VISIBLE_DEVICES=void
 RUN apt-get update && apt-get install -y --no-install-recommends libibverbs-dev gcc g++ make
 COPY runtime/rootfs/ /
 COPY native/ /opt/recipe/native/
@@ -19,4 +19,5 @@ RUN mkdir -p /opt/nccl-src /opt/nccl/lib && curl -fL --retry 5 https://codeload.
 RUN make -C /opt/nccl-src -j2 src.build CUDA_HOME=/usr/local/cuda NVCC_GENCODE="-gencode=arch=compute_121,code=sm_121" && cp -a /opt/nccl-src/build/lib/libnccl.so* /opt/nccl/lib/
 RUN cp -L /opt/nccl/lib/libnccl.so.2 /usr/local/lib/python3.12/dist-packages/nvidia/nccl/lib/libnccl.so.2
 ENV VLLM_NCCL_SO_PATH=/opt/nccl/lib/libnccl.so.2 LD_PRELOAD=/opt/nccl/lib/libnccl.so.2
+ENV NVIDIA_VISIBLE_DEVICES=all
 LABEL org.opencontainers.image.source="https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark" dgx.recipe.version="0.8.9X11c"
