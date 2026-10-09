@@ -6,6 +6,8 @@ This is a three-node, ARM64, one-GB10-GPU-per-node installation. It uses TP3 and
 
 Use three DGX Sparks with working NVIDIA drivers, Docker, NVIDIA Container Toolkit, and working RoCE v2 between every pair. CUDA 13 and SM121 support come from the pinned container build. Keep management traffic and RoCE address selection explicit. This recipe does not upgrade a host driver or network firmware.
 
+The running three-node deployment inspected on 2026-10-09 had NVIDIA GB10 on every rank, driver 580.173.02 and host kernel `6.17.0-1031-nvidia`. These are observed host versions, not an instruction to downgrade another functioning host. GB10 uses unified memory; `nvidia-smi` reports its total GPU memory as N/A on this setup. Verify actual host memory and the engine's reported KV capacity.
+
 The measured transport has four logical HCA names per node and two HCA lanes per peer. Check your actual devices with `ibv_devices`, `ibv_devinfo`, `ip -br address`, and `/sys/class/infiniband`. Do not infer a GID index from a device name. Confirm that the selected index is the IPv4 RoCE v2 entry on each selected HCA. The example names describe the measured device layout; verify your machine before retaining them.
 
 Download and build on a node with enough free disk and RAM. The body is approximately 257 GB of tensor bytes, plus approximately 203 GB for the original Engram tables, metadata, source and build caches. Each rank retains only its own Engram rows, approximately one third of those tables, in sparse files. `du -h` shows actual allocation; `ls -lh` shows the larger logical sparse size. Keep additional disk headroom for image layers and download cache. Model files are not in this Git repository.

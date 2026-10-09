@@ -1,0 +1,35 @@
+{
+  "schema": "dsv41.public-image-cpu-qualification.v1",
+  "dependency_versions": {
+    "torch": "2.13.0+cu130",
+    "vllm": "0.28.1rc1.dev388+g8a728663c",
+    "nvidia-cutlass-dsl": "4.6.2",
+    "cuda-bindings": "13.3.1",
+    "triton": "3.7.1",
+    "tilelang": "0.1.12",
+    "flashinfer-python": "0.7.0rc1",
+    "transformers": "5.16.1",
+    "cuda-exl3": "1.0.0",
+    "safetensors": "0.8.0"
+  },
+  "cuda_operator_registrations": [
+    "exl3_linear",
+    "exl3_moe_gemm",
+    "exl3_moe_had_in",
+    "exl3_moe_glu_had_in_t01",
+    "mla_decode"
+  ],
+  "prebuilt_extensions": [
+    "moe_prep",
+    "dense_gemv"
+  ],
+  "engram_abi": 1,
+  "nccl_version": 23007,
+  "aot_objects": 12,
+  "aot_manifest_sha256": "973352ee776ecc6e077941f46ae3074f3c4b79e5eda24e520f58af3d11986643",
+  "gpu_initialized": false,
+  "gpu_kernels_executed": 0,
+  "model_loaded": false,
+  "numerical_gpu_qualification": false,
+  "build_source_revision": "8ae62c9"
+}

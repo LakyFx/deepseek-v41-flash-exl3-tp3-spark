@@ -1,0 +1,23 @@
+{
+  "schema": "dsv41.public-native-build.v1",
+  "source_revision": "8ae62c9",
+  "native_build_exit_code": 0,
+  "cpu_only": true,
+  "gpu_mounts": false,
+  "model_weight_mounts": false,
+  "production_restarted": false,
+  "memory_limit_mb": 2500,
+  "selected_build_inputs_unchanged": {
+    "runtime/rootfs": "bbf8b6fea0ed103d0cfd94cc0b790603ff5ad468",
+    "native": "96bc69e1283bdc056e8303345e245d5fa2734706",
+    "build/Dockerfile": "a501c2a49197b54af47d2e442f907e8c9d0b4cf0",
+    "build/native.py": "780ee260ec2090cf7a4c0e2869c0592e96627643",
+    "build/extensions.py": "aca24dae42b67fe9677271baf8c549d544c48f6a",
+    "config/dependency-versions.json": "1a273ef758171c533cdf347529482621909589c7",
+    "config/x11c.json": "f33306be49e520e4940785a33253d2de0d125368"
+  },
+  "numerical_gpu_qualification": false,
+  "anonymous_clone_cpu_tests_passed": 9,
+  "published_source_provenance_files_verified": 741,
+  "internal_doc_links_verified": 14
+}

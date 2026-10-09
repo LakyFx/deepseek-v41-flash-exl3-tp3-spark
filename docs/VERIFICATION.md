@@ -2,6 +2,8 @@
 
 The historical measurements were made on the running X11c deployment. The public image rebuild is a separate packaging check. Compiling identical source does not establish numerical equivalence on a new machine or reproduce a throughput measurement by itself.
 
+The publication build completed from commit `8ae62c9` on ARM64 with no GPU or model mounts and a 2,500 MB memory cap. Its selected build inputs match the published tree. The subsequent CPU check loaded the EXL3, T01 and auxiliary extensions, verified their ABI and registration, confirmed NCCL 2.30.7, and checked all twelve AOT objects. CUDA remained uninitialized. Nine CPU tests also passed from an anonymous fresh clone, and all 741 published runtime provenance hashes matched. Machine-readable receipts are in [publication-qualification](../results/publication-qualification/).
+
 ## Retained base
 
 `config/base-image.json` pins the exact ARM64 base image ID, ordered archive parts, sizes and SHA256 identities. The original upstream nightly tag returned 404 when checked on 2026-10-09. The public release mirror preserves the existing base rather than substituting a newer vLLM distribution. The historical base Dockerfile, source pins and patches are also included.
