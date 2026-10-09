@@ -49,7 +49,8 @@ def fetch(url, destination, item, attempts=5):
                         raise ValueError('unexpected Content-Range; refusing to append')
                     mode = 'ab'
                 elif status == 200 and offset == 0:
-                    mode = 'xb'
+                    # An interrupted first attempt can leave an empty partial.
+                    mode = 'ab' if partial.exists() else 'xb'
                 elif status == 200:
                     # A server may ignore Range. Keep the existing partial intact.
                     raise ValueError('server ignored resume Range; existing partial retained')

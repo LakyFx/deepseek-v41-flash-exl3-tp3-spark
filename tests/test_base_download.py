@@ -17,8 +17,9 @@ class DownloadTests(unittest.TestCase):
             def do_GET(self):
                 offset = int(self.headers['Range'].removeprefix('bytes=').removesuffix('-'))
                 seen.append(offset)
-                self.send_response(206)
-                self.send_header('Content-Range', f'bytes {offset}-{len(data)-1}/{len(data)}')
+                self.send_response(206 if offset else 200)
+                if offset:
+                    self.send_header('Content-Range', f'bytes {offset}-{len(data)-1}/{len(data)}')
                 self.end_headers()
                 self.wfile.write(data[offset:])
             def log_message(self, *args):
@@ -33,6 +34,11 @@ class DownloadTests(unittest.TestCase):
                 self.assertEqual(path.read_bytes(), data)
                 self.assertEqual(seen, [4137])
                 fetch('http://invalid.example/', path, item)
+                empty = Path(directory) / 'empty'
+                empty.with_name('empty.partial').write_bytes(b'')
+                fetch(f'http://127.0.0.1:{server.server_port}/empty', empty, item)
+                self.assertEqual(empty.read_bytes(), data)
+                self.assertEqual(seen[-1], 0)
                 path.write_bytes(b'X' * len(data))
                 with self.assertRaises(ValueError):
                     verify(path, item)
