@@ -48,6 +48,8 @@ An adapter issue was corrected after the none run was durably saved and before a
 
 All scored agent tasks passed in each mode. All four 128K C3 phases exhausted the 325-second budget, so their hot measurements remain incomplete. None and medium each have one run; max has two. Outputs differed, including 627 versus 965 tokens in the two max C1 cohorts. Medium's higher observed C1 token rate does not establish superior speed or equal quality for arbitrary tasks.
 
+Short throughput probes can exhaust their output cap during reasoning and return no visible final answer. Reasoning tokens remain generated tokens in the reported rates. Those probes do not require a complete visible answer and are distinct from the scored multi-turn workflows, which all passed. A MAX decode rate is therefore not a rate of visible answer tokens.
+
 The serving policy after these tests remains main max and vision medium. The benchmark medium mode did not change the main agent's production reasoning.
 
 ## Run a new public comparison
