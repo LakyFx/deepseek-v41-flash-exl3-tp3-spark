@@ -47,7 +47,7 @@ def build(config, rank, image_aot_sha):
     if benchmark.get('enabled'):
         env['DGX_CAMPAIGN_CONTROL_PEER_ADDRESS'] = benchmark['peer_address']
     argv = ['docker', 'run', '--name', f'dsv41-x11c-rank{rank}', '--network', 'host',
-            '--gpus', 'all', '--ipc', 'host', '--ulimit', 'memlock=-1', '--ulimit', 'stack=67108864',
+            '--gpus', 'all', '--ipc', 'host', '--cap-add', 'IPC_LOCK', '--ulimit', 'memlock=-1',
             '--device', '/dev/infiniband', '--entrypoint', 'vllm']
     for key, value in sorted(env.items()):
         argv += ['--env', key + '=' + value]

@@ -50,6 +50,33 @@ All scored agent tasks passed in each mode. All four 128K C3 phases exhausted th
 
 The serving policy after these tests remains main max and vision medium. The benchmark medium mode did not change the main agent's production reasoning.
 
+## Run a new public comparison
+
+The sixteen expanded workflow and long-context bodies are included. The older legacy screen used private captured inputs and private operational source packets, so the public runner prepares eight clearly labelled synthetic surrogates. It uses the actual backend tokenizer and records their real counts. Their measurements are new results, not an exact replay of our historical legacy cells.
+
+On rank 0, after the model is healthy, prepare the surrogate inputs without sending generation requests:
+
+```bash
+python3 benchmarks/run.py --config config/cluster.local.json \
+  --prepare-only --output local-results/public-legacy
+```
+
+For a measured run, close every other ingress and confirm no client is still sending requests. Set `benchmark_control.enabled` to true before starting the measurement deployment, keep its `peer_address` equal to `127.0.0.1`, and create the configured lease directory on each node before launching. The launcher mounts it read-only in the model container. The host-side runner writes the owned lease into the rank 0 directory. This optional control lane adds only bounded cache reset and owned cancellation operations. It is inactive without the closed-window lease and is not required for ordinary serving.
+
+```bash
+# Use this exact directory only if it matches your local configuration.
+mkdir -p /srv/dsv41/benchmark-lease
+python3 benchmarks/run.py --config config/cluster.local.json --exclusive \
+  --legacy local-results/public-legacy/corpus.json \
+  --reasoning max --profile coverage20 --output local-results/x11c-max-01
+```
+
+Repeat with `--reasoning none` or `medium` and a fresh output directory. The `coverage20` profile retains the seven original budgets and a 20-minute hard cap. `--profile legacy-full16` instead runs the full sixteen code/prose, cold/hot, C1 through C4 cells with a 720-second phase budget. These profiles answer different questions.
+
+Every run retains local metric snapshots and a `RESULT.json`, or a failed-closed receipt and partial evidence. A completed lease is marked inactive and retained. Before another run, inspect that the engine is idle and move the inactive lease to an operator-chosen archival filename; the tool refuses to overwrite any existing lease. After failure, resolve outstanding owned requests before moving its lease or resuming ingress. The runner never stops services, reloads weights or opens the API. Restore your serving policy and resume ingress only after verifying the final selected runtime.
+
+The public adapter binds measurements to a stable frontend process and rejects counter resets or unexplained request counts. It does not claim independent generation UUID checks on every TP worker. An operator must preserve the exclusive window and monitor rank health for the entire run. Keep new local results private until they have been reviewed for content.
+
 ## Limits of the evidence
 
 Measured results show workload-specific behavior. They do not establish confidence intervals, universal 20 percent speedups, model quality equivalence across reasoning modes, or the capacity to serve eight near-limit contexts simultaneously. User observations during real Hermes work explain the deployment preference, while synthetic measurements provide the reproducible comparison. Both are useful and should remain distinguishable.

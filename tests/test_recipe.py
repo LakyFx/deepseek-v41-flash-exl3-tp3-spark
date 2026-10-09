@@ -58,6 +58,7 @@ class RecipeTests(unittest.TestCase):
             self.assertIn('DGX_X11_PREFETCH_MIN_ROWS=12', env)
             self.assertEqual('--headless' in command, rank != 0)
             self.assertNotIn('--enable-expert-parallel', command)
+            self.assertEqual(command[command.index('--cap-add')+1], 'IPC_LOCK')
             spec = json.loads(command[command.index('--speculative-config')+1])
             self.assertEqual(spec['num_speculative_tokens'], 5)
             self.assertTrue(spec['enable_adaptive_verification'])

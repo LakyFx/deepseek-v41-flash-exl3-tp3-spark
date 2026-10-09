@@ -21,11 +21,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class LocalConnection(http.client.HTTPConnection):
-    def __init__(self, network, timeout):
-        self.network = network
+    def __init__(self, network, timeout, restricted=False):
+        self.network, self.restricted = network, restricted
         super().__init__('127.0.0.1', network.port, timeout=timeout)
 
     def connect(self):
+        if not self.restricted:
+            return super().connect()
         # The narrow control middleware requires an explicit local source port.
         for _ in range(256):
             self.source_address = ('127.0.0.1', self.network.next_port())
@@ -49,13 +51,17 @@ class Network:
             self.index += 1
             return value
 
-    def connection(self, base, timeout=30):
+    def connection(self, base, timeout=30, restricted=False):
         if base != self.BASE:
             raise ValueError('only the configured loopback backend is allowed')
-        return LocalConnection(self, timeout)
+        return LocalConnection(self, timeout, restricted=restricted)
 
     def request(self, base, method, path, body=None):
-        connection = self.connection(base)
+        # Reserve the narrow source-port range for leased control operations.
+        # Scrapes, tokenization and generation use ephemeral ports so frequent
+        # metric settling cannot exhaust 256 ports in TIME_WAIT.
+        connection = self.connection(base, restricted=path in
+                                     ('/reset_prefix_cache', '/abort_requests', '/collective_rpc'))
         try:
             data = json.dumps(body).encode() if body is not None else b''
             connection.request(method, path, data, {'Content-Type': 'application/json', 'Connection': 'close'})

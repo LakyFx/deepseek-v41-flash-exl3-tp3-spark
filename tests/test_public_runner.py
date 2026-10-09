@@ -18,16 +18,18 @@ class RunnerTests(unittest.TestCase):
         requests = []
         class Handler(BaseHTTPRequestHandler):
             def do_POST(self):
-                body = json.loads(self.rfile.read(int(self.headers['Content-Length'])))
+                raw = self.rfile.read(int(self.headers['Content-Length']))
+                body = json.loads(raw) if raw else None
                 requests.append((self.path, self.client_address[1], body))
-                if self.path != '/tokenize':
+                if self.path not in ('/tokenize', '/reset_prefix_cache'):
                     self.send_response(404)
                     self.end_headers()
                     return
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/json')
                 self.end_headers()
-                self.wfile.write(json.dumps({'count': 6000 + len(requests)}).encode())
+                payload = {'count': 6000 + len(requests)} if self.path == '/tokenize' else {'success': True}
+                self.wfile.write(json.dumps(payload).encode())
             def log_message(self, *args):
                 pass
         with tempfile.TemporaryDirectory() as directory, ThreadingHTTPServer(('127.0.0.1', 0), Handler) as server:
@@ -43,12 +45,15 @@ class RunnerTests(unittest.TestCase):
                 self.assertEqual(len(corpus['prose']), 4)
                 for path, port, body in requests:
                     self.assertEqual(path, '/tokenize')
-                    self.assertTrue(20000 <= port <= 20255)
+                    self.assertTrue(0 < port < 65536)
                     self.assertTrue(body['add_generation_prompt'])
                     self.assertEqual(body['chat_template_kwargs']['reasoning_effort'], 'max')
                 manifest = json.loads((destination / 'corpus.json').read_text())
                 self.assertFalse(manifest['historical_private_inputs_equal'])
                 self.assertEqual(manifest['model_generation_requests'], 0)
+                network = Network(server.server_port)
+                self.assertTrue(network.request(network.BASE, 'POST', '/reset_prefix_cache')['success'])
+                self.assertTrue(20000 <= requests[-1][1] <= 20255)
             finally:
                 server.shutdown()
                 thread.join()

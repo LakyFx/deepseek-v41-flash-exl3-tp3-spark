@@ -1,6 +1,6 @@
 # Agent installation guide
 
-Read README.md, docs/INSTALL.md, docs/ARCHITECTURE.md and docs/BENCHMARKS.md before executing commands. The only install target is X11c. Historical names in docs/HISTORY.md describe experiments; they are not ready-to-install independent engines.
+Read README.md, docs/INSTALL.md, docs/VERIFICATION.md, docs/ARCHITECTURE.md and docs/BENCHMARKS.md before executing commands. The only install target is X11c. Historical names in docs/HISTORY.md describe experiments; they are not ready-to-install independent engines.
 
 Use config/x11c.json as the inference profile and config/cluster.local.json as operator-supplied topology. Do not change weights, trained rank, EP policy, KV layout or graph sizes to bypass a build or startup error. Check the exact checkpoint revision and all three nodes' image identity. Missing AOT objects, incompatible ABI or wrong Engram row ownership must be fixed before accepting traffic.
 
