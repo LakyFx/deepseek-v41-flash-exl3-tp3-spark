@@ -1,0 +1,26 @@
+name: Variant source reconstruction
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-variants:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s tests -v
+      - run: python3 experiments/render_catalog.py --check
+      - run: python3 experiments/validate_variants.py --output "$RUNNER_TEMP/variant-check"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: variant-source-receipt
+          path: ${{ runner.temp }}/variant-check/receipt.json

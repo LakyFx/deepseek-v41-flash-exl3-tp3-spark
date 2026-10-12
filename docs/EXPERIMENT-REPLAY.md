@@ -43,3 +43,7 @@ The public authored workflow/long-context corpus is included. The historical leg
 ## Earlier campaigns
 
 The earlier A/B/X/X11 tables preserve their actual measured scopes, including the October 2 full C1–C4 cold/hot matrix, the X1–X11 coverage20 sweep, independent X11a–e follow-ups, and X11c none/medium/MAX comparisons. They do not all have a separately packaged installable image. `v0.8.9X11c` preserves the previous public recipe. No missing version is assigned a synthetic speed or an untested combination claimed to be qualified.
+
+## Choose and validate a recipe
+
+See the [README comparison tables](../README.md#choose-your-variant), [per-arm build cards](VARIANTS.md) and [four-level verification status](VARIANT-VALIDATION.md). `experiments/validate_variants.py` reconstructs and checks all 18 measured arms; explicit `--build` adds sequential ARM64 image builds and CPU ABI receipts without deploying.

@@ -1,0 +1,244 @@
+{
+  "schema": "ds41f.variant-validation.v1",
+  "source_commit": "569d8a2bed2fef198ae8e1cd4bea392a070db5d7",
+  "tracked_tree_dirty": false,
+  "scope": "source reconstruction; optional CPU-only image build; no GPU qualification",
+  "arms": [
+    {
+      "arm": "B0",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 754,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N1",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 755,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N2",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 755,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N3",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 755,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N4",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 754,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N5",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 756,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N6",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 782,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N7a",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 754,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N7b",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 754,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N8a",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 756,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "N8b",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 756,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "C1",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 756,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "C2",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 757,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "C3",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 757,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "C4",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 785,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "C5-indexer",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 759,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "C5-sp512",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 757,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "arm": "C5-sp256",
+      "materialization": "passed",
+      "public_build": "not_run",
+      "cpu_abi": "not_run",
+      "gpu_requalification": "not_run",
+      "verified_source_files": 757,
+      "launch_argument_ranks_verified": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "validator_sha256": "917ed1c8a0df205702ec6467881a2bd27c1b6ce8873a1cc062483e60df60b38a",
+  "note": "Archive source revision is source_commit. Documentation and validator were added in the publication change. No public image build or GPU requalification was run."
+}
