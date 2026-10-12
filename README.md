@@ -1,5 +1,7 @@
 # DeepSeek V4.1 Flash EXL3 on three DGX Sparks
 
+**A big thank you to [Christopher Owen](https://github.com/christopherowen), [@christopherowen on X](https://x.com/christopherowen), for sharing his recipes, networking work and benchmarks. His [spark-ds41f project](https://github.com/christopherowen/spark-ds41f) was a major source of inspiration for this recipe and our tuning work.**
+
 **DS41F 1.0.0 is campaign C4**, our selected production recipe for Hermes agent work: TP3 on three DGX Sparks, the same approximately 3.51 bpw Pollard EXL3 experts, MAX reasoning, long prompts and a measured **3,299,563-token KV pool**.
 
 The model, quantization, engine and upstream kernels are other people's work. Our contribution is integration, TP3 tuning, bounded correctness checks and workload measurements. Read [sources and credits](docs/SOURCES.md). The second benchmark is explicitly adapted from [Christopher Owen's spark-ds41f recipe](docs/OWEN-BENCHMARK.md).
