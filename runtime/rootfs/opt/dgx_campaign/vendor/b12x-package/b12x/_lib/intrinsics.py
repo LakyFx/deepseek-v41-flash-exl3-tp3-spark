@@ -2271,7 +2271,7 @@ def spin_wait_global_ge_i32(addr: Int64, target: Int32, *, loc=None, ip=None):
 
 @dsl_user_op
 def threadfence(*, loc=None, ip=None):
-    """Emit membar.gl -- threadfence across global memory."""
+    """Emit membar.gl — threadfence across global memory."""
     llvm.inline_asm(
         None,
         [],
@@ -2519,7 +2519,7 @@ def cvt_f32_to_bf16_bits(x: Float32, *, loc=None, ip=None) -> Uint32:
     """Round one float32 to bf16 (cvt.rn.bf16.f32, round-to-nearest-even) and
     return its 16 raw bits zero-extended into a u32.
 
-    Bit-identical to ``torch.Tensor.to(torch.bfloat16)`` on finite values --
+    Bit-identical to ``torch.Tensor.to(torch.bfloat16)`` on finite values —
     both are IEEE RN. Widen back to f32 with ``u32_as_f32(bits << 16)``
     (bf16 -> f32 is exact).
     """
@@ -6316,7 +6316,7 @@ def relu2_quantize_block_fp8_mx(
 def mx_scale_from_amax32(amax: Float32) -> Tuple[Float32, Float32]:
     """Per-32 MXFP8 block scale from a precomputed amax.
 
-    Returns ``(scale, inv_scale)`` with ``scale = pow2_ceil(amax/448)`` --
+    Returns ``(scale, inv_scale)`` with ``scale = pow2_ceil(amax/448)`` —
     identical numerics to ``quantize_block_fp8_mx`` (zero amax yields
     (0, 0), silencing the block).
     """

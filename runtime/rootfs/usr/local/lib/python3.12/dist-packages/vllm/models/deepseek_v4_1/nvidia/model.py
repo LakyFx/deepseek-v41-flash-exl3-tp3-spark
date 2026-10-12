@@ -1,3 +1,4 @@
+from dgx_next_runtime import replay_support as _replay
 from v089x_runtime.rows import current_rows as _v089x_rows, target_prefill_rows as _v089x_prefill
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
@@ -64,6 +65,7 @@ from vllm.models.deepseek_v4.nvidia.model import (
     make_deepseek_v4_expert_params_mapping,
 )
 from vllm.models.deepseek_v4_1.attention import DeepseekV4Attention
+from vllm.models.deepseek_v4_1.decoder_replay_layers import DecoderReplayLayers
 from vllm.models.deepseek_v4_1.nvidia.flashinfer_sparse import (
     DeepseekV4FlashInferMLAAttention,
     DeepseekV4FlashInferSM120Attention,
@@ -164,6 +166,7 @@ def _use_sequence_parallel(vllm_config: VllmConfig) -> bool:
 
 
 class DeepseekV4DecoderLayer(nn.Module):
+    write_kv = _replay.write_kv
     def __init__(
         self,
         vllm_config,
@@ -515,6 +518,47 @@ class DeepseekV4Model(nn.Module, EagleModelMixin):
         else:
             self._mtp_hidden_buffer = None
 
+        # Decoder-side SWA bounded replay: in eager prefill steps the layers past
+        # the last KV source run on each request's trailing window only
+        # (decoder_replay_layers.py).
+        self.decoder_replay_layers: DecoderReplayLayers | None = None
+        self.decoder_replay_start = self.end_layer
+        cut = max(config.kv_source_layer_ids)
+        if (
+            cut < self.end_layer - 1
+            and self._decoder_replay_supported(vllm_config, cut)
+            and self.layers[cut].attn.swa_cache_layer.bounded_replay
+        ):
+            assert self.layers[cut].attn.compress_ratio <= 1
+            # The last KV source writes every row's KV, then replays.
+            self.decoder_replay_start = cut
+            # The attention metadata keys the replay layers read.
+            metadata_prefixes = set()
+            for layer in islice(self.layers, cut, self.end_layer):
+                attn = typing.cast(DeepseekV4DecoderLayer, layer).attn
+                metadata_prefixes.add(attn.swa_cache_layer.prefix)
+                if attn.compressed_cache_prefix is not None:
+                    metadata_prefixes.add(attn.compressed_cache_prefix)
+                if attn.indexer is not None:
+                    metadata_prefixes.add(attn.indexer.k_cache.prefix)
+            self.decoder_replay_layers = DecoderReplayLayers(
+                config.sliding_window,
+                self._run_replay_layers,
+                self.layers[cut].write_kv,
+                metadata_prefixes,
+                self.layers[cut].attn.swa_cache_layer.prefix,
+            )
+            logger.info_once(
+                "Decoder SWA bounded replay: in eager prefill steps, layer %d "
+                "writes its KV for every token, and the rest of it and layers "
+                "%d-%d run on each request's last %d tokens only.",
+                cut,
+                cut + 1,
+                self.end_layer - 1,
+                config.sliding_window,
+            )
+
+
     def embed_input_ids(self, input_ids: torch.Tensor) -> torch.Tensor:
         return self.embed_tokens(input_ids)
 
@@ -525,9 +569,9 @@ class DeepseekV4Model(nn.Module, EagleModelMixin):
         device: torch.device,
     ) -> IntermediateTensors:
         # PP intermediate tensors carry the multi-stream hidden_states
-        # of shape (num_tokens, hc_mult, hidden_size) -- V4 expands the
+        # of shape (num_tokens, hc_mult, hidden_size) — V4 expands the
         # token embedding to hc_mult streams before the first decoder
-        # layer and keeps that shape until the final hc collapse -- plus the
+        # layer and keeps that shape until the final hc collapse — plus the
         # (num_tokens, hc_mult) pre-mix the next rank's first layer needs
         # for its attention collapse.
         return IntermediateTensors(
@@ -567,7 +611,7 @@ class DeepseekV4Model(nn.Module, EagleModelMixin):
             input_ids = input_ids.to(torch.int64)
 
         # Engram n-gram hashes for the whole (flattened) batch, computed once
-        # on the full token stream -- before any sequence-parallel sharding --
+        # on the full token stream — before any sequence-parallel sharding —
         # and consumed by the engram layers (1 and 14) below. Skipped on
         # profile runs (KV cache unbound).
         engram_hashes: torch.Tensor | None = None
@@ -642,6 +686,18 @@ class DeepseekV4Model(nn.Module, EagleModelMixin):
             islice(self.layers, self.start_layer, self.end_layer),
             start=self.start_layer,
         ):
+            if (idx == self.decoder_replay_start
+                    and self.decoder_replay_layers is not None
+                    and self.decoder_replay_layers.uses_replay_batch()):
+                outputs = _replay.enter_tail(
+                    self, plan, hidden_states, positions, input_ids,
+                    pre_mix, post_mix, res_mix, residual)
+                if self._mtp_hidden_buffer is not None:
+                    raw_hidden_states = outputs[-1]
+                    self._mtp_hidden_buffer[:raw_hidden_states.shape[0]].copy_(
+                        raw_hidden_states.flatten(1))
+                aux_hidden_states.extend(outputs[1:-1])
+                return (outputs[0], aux_hidden_states) if aux_hidden_states else outputs[0]
             hidden_states, residual, post_mix, res_mix, pre_mix = layer(
                 hidden_states,
                 positions,
@@ -692,7 +748,7 @@ class DeepseekV4Model(nn.Module, EagleModelMixin):
             self._mtp_hidden_buffer[:num_tokens].copy_(hidden_states.flatten(1))
 
         # Collapse the hc copies with the pre-mix from the last layer's FFN
-        # mixes -- the mix the reference applies via
+        # mixes — the mix the reference applies via
         # ``last_layer.hc_pre(h, pre_mix)`` (v4.1 has no learned hc_head).
         assert pre_mix is not None
         hidden_states = hc_collapse_triton(hidden_states, pre_mix)
@@ -705,6 +761,104 @@ class DeepseekV4Model(nn.Module, EagleModelMixin):
         if len(aux_hidden_states) > 0:
             return hidden_states, aux_hidden_states
         return hidden_states
+
+    def _run_replay_layers(self, hidden_states, positions, input_ids,
+                           pre_mix, post_mix, res_mix, residual):
+        engram_hashes = engram_mask = None
+        aux_hidden_states: list[torch.Tensor] = []
+        final_aux_recon: torch.Tensor | None = None  # avoid duplicate mhc_post call
+        for idx, layer in enumerate(
+            islice(self.layers, self.decoder_replay_start, self.end_layer),
+            start=self.decoder_replay_start,
+        ):
+            hidden_states, residual, post_mix, res_mix, pre_mix = layer(
+                hidden_states,
+                positions,
+                input_ids,
+                pre_mix,
+                post_mix,
+                res_mix,
+                residual,
+                engram_hashes,
+                engram_mask,
+            )
+            if idx + 1 in self.aux_hidden_state_layers:
+                # Reconstruct the aux hidden state for draft models
+                aux_recon = mhc_post_tilelang(
+                    hidden_states, residual, post_mix, res_mix
+                )
+                aux_hidden_state = aux_recon.mean(dim=1)
+                aux_hidden_states.append(aux_hidden_state)
+                final_aux_recon = aux_recon
+        if layer is not None:
+            # Reuse if the last layer was captured as an aux hidden state
+            if self.end_layer in self.aux_hidden_state_layers:
+                hidden_states = final_aux_recon
+            else:
+                hidden_states = mhc_post_tilelang(
+                    hidden_states, residual, post_mix, res_mix
+                )
+
+        assert pre_mix is not None
+        raw_hidden_states = hidden_states
+        hidden_states = hc_collapse_triton(hidden_states, pre_mix)
+        hidden_states = self.norm(hidden_states)
+        return (hidden_states, *aux_hidden_states, raw_hidden_states)
+
+    def _decoder_replay_supported(self, vllm_config: VllmConfig, cut: int) -> bool:
+        """Whether this rank may replay from layer ``cut`` on; warns when not."""
+        parallel_config = vllm_config.parallel_config
+        spec_config = vllm_config.speculative_config
+        draft_config = spec_config.draft_model_config if spec_config else None
+        draft_hf_config = getattr(draft_config, "hf_config", None)
+        draft_window = getattr(draft_hf_config, "sliding_window", None)
+        draft_layer_types = getattr(draft_hf_config, "layer_types", None) or ()
+        window = self.config.sliding_window
+        # DSpark drafts from the target checkpoint itself; unlike EAGLE,
+        # it has no separate draft_model_config at serving time.
+        if spec_config is not None and spec_config.use_dspark():
+            draft_hf_config = self.config
+            draft_window = self.config.sliding_window
+            draft_layer_types = getattr(self.config, "layer_types", None) or ()
+        if (parallel_config.tensor_parallel_size != 3
+                or parallel_config.pipeline_parallel_size != 1
+                or parallel_config.data_parallel_size != 1
+                or parallel_config.enable_expert_parallel
+                or vllm_config.kv_transfer_config is not None
+                or self.use_mega_moe
+                or window != 128 or cut != 20
+                or spec_config is None or not spec_config.use_dspark()):
+            raise RuntimeError("N6 requires the locked TP3/DSpark/window128/cut20 contract")
+        from dgx_next_runtime.replay_contract import validate_model
+        validate_model(self.config, draft_hf_config, parallel_config, cut, vllm_config.cache_config)
+        if self.start_layer > cut or self.end_layer < self.config.num_hidden_layers:
+            reason = (
+                "the pipeline stage holding the last KV source layer must also "
+                "hold every layer after it"
+            )
+        elif (
+            self.use_sequence_parallel
+            or parallel_config.prefill_context_parallel_size > 1
+            or parallel_config.use_ubatching
+        ):
+            reason = (
+                "the replay-layer batch shrinks per rank, which sequence and "
+                "prefill-context parallelism and microbatching cannot follow"
+            )
+        elif any(i >= cut for i in getattr(self.config, "engram_layer_ids", ())):
+            reason = "an Engram layer sits at or after the last KV source layer"
+        elif draft_config is not None and (
+            draft_window is None
+            or draft_window > window
+            or any(t != "sliding_attention" for t in draft_layer_types)
+        ):
+            reason = (
+                f"the drafter (sliding window {draft_window}) reads hidden states "
+                f"outside the target's {window}-token window"
+            )
+        else:
+            return True
+        raise RuntimeError("N6 bounded replay would be inactive: " + reason)
 
     def load_weights(self, weights: Iterable[tuple[str, torch.Tensor]]) -> set[str]:
         stacked_params_mapping = [
@@ -1099,6 +1253,10 @@ class DeepseekV41LLMForCausalLM(
         passes them as `lookback_token_ids`."""
         engram_hash = self.model.engram_hash
         return engram_hash.lookback_depth if engram_hash is not None else 0
+
+    @property
+    def decoder_replay_layers(self) -> DecoderReplayLayers | None:
+        return self.model.decoder_replay_layers
 
     def forward(
         self,

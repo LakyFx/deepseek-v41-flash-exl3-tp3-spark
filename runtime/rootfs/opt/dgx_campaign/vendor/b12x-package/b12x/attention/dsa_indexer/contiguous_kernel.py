@@ -59,7 +59,7 @@ _MAX_Q_HEADS = 64
 _CONTIGUOUS_TMA_DESC_CACHE_SIZE = 32
 
 _PREFILL_BLOCK_Q = 32  # Same Q tile size as decode
-_PREFILL_BLOCK_K = 256  # 4x K tile -- fewer CTAs, more work per CTA
+_PREFILL_BLOCK_K = 256  # 4x K tile — fewer CTAs, more work per CTA
 _PREFILL_WARPS_Q = _PREFILL_BLOCK_Q // 16  # 2
 _PREFILL_WARPS_K = 4  # 4 K-warps, each covering 32 K-rows via num_mma_kv=2
 _PREFILL_WARPS_PER_CTA = _PREFILL_WARPS_Q * _PREFILL_WARPS_K  # 8
@@ -548,7 +548,7 @@ def _encode_contiguous_k_tma_descriptor(
             f"k_quant_bytes must have dtype torch.uint8, got {k_quant_bytes.dtype}"
         )
 
-    # Phase 3: Always use SWIZZLE_128B -- hardware XOR pattern matches _permuted_offset_128b
+    # Phase 3: Always use SWIZZLE_128B — hardware XOR pattern matches _permuted_offset_128b
     U64 = cuda.cuuint64_t
     U32 = cuda.cuuint32_t
     row_bytes = int(k_quant_bytes.stride(0)) * k_quant_bytes.element_size()
@@ -1969,7 +1969,7 @@ class DSAContiguousLogitsPrefillKernel:
                 cute.arch.sync_threads()
                 batch_base_head += Int32(_PREFILL_Q_HEADS_BATCH)
 
-            # Write back -- each K-warp covers NUM_MMA_KV * 16 K-rows
+            # Write back — each K-warp covers NUM_MMA_KV * 16 K-rows
             lane_group = lane // Int32(4)
             lane_pair_base = Int32(2) * (lane % Int32(4))
             if BLOCK_SCORE_OUTPUT:
@@ -2299,7 +2299,7 @@ class DSAContiguousLogitsPrefill512Kernel:
                     k_subtile_idx,
                     k_subtile_idx + Int32(1),
                 )
-            # Exp40: weight staging removed -- weights read from gmem directly (hidden by QK MMA latency).
+            # Exp40: weight staging removed — weights read from gmem directly (hidden by QK MMA latency).
             # Only stage scales while the K TMA copy is in flight.
             scale_linear = tx
             while scale_linear < Int32(_PREFILL512_BLOCK_K):
@@ -2315,7 +2315,7 @@ class DSAContiguousLogitsPrefill512Kernel:
                     acc_frag[Int32(0), mma_kv, reg_id] = Float32(0.0)
 
             # Exp38: compute Q staging variables and issue first Q-head batch
-            # cp_async BEFORE mbarrier_wait -- Q loads from gmem, independent of K TMA.
+            # cp_async BEFORE mbarrier_wait — Q loads from gmem, independent of K TMA.
             # This overlaps first-batch Q staging latency with K TMA tail + weight/scale loads.
             threads_per_row = Int32(8)
             row_local = tx // threads_per_row

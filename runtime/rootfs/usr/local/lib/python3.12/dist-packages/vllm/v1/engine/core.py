@@ -362,7 +362,7 @@ class EngineCore:
         if encoder_compile_time > 0:
             logger.info_once(
                 "init engine (profile, create kv cache, warmup model) took "
-                "%.2f s (compilation: %.2f s -- language_model: %.2f s, "
+                "%.2f s (compilation: %.2f s — language_model: %.2f s, "
                 "encoder: %.2f s)",
                 elapsed,
                 compile_time + encoder_compile_time,

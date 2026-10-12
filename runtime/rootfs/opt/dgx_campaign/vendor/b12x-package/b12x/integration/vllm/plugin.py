@@ -5,8 +5,8 @@ Wire through vLLM's ``general_plugins`` entry point (see README)::
     [project.entry-points."vllm.general_plugins"]
     b12x_fp6 = "b12x.integration.vllm.plugin:register_b12x_fp6"
 
-vLLM loads general plugins in *every* process -- the front process, the
-engine-core process, and each tensor-parallel worker -- so registration survives
+vLLM loads general plugins in *every* process — the front process, the
+engine-core process, and each tensor-parallel worker — so registration survives
 worker spawn under TP.
 
 Flow

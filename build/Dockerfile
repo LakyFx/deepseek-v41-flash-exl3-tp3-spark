@@ -8,7 +8,7 @@ COPY native/ /opt/recipe/native/
 COPY build/native.py /opt/recipe/build/native.py
 COPY build/extensions.py /opt/recipe/build/extensions.py
 COPY config/dependency-versions.json /opt/recipe/config/dependency-versions.json
-ENV PYTHONPATH=/opt/dgx_campaign/vendor/b12x-package:/opt/dgx_campaign/vendor/sparknet:/opt/dgx_campaign/runtime
+ENV PYTHONPATH=/opt/dgx_next/runtime:/opt/dgx_campaign/vendor/b12x-package:/opt/dgx_campaign/vendor/sparknet:/opt/dgx_campaign/runtime
 RUN ln -s /usr/local/lib/python3.12/dist-packages/v089_runtime /opt/dgx-v089 && python3 /opt/recipe/build/native.py --part versions
 RUN python3 /opt/recipe/build/native.py --part c
 RUN python3 /opt/recipe/build/native.py --part exl3
@@ -20,4 +20,4 @@ RUN make -C /opt/nccl-src -j2 src.build CUDA_HOME=/usr/local/cuda NVCC_GENCODE="
 RUN cp -L /opt/nccl/lib/libnccl.so.2 /usr/local/lib/python3.12/dist-packages/nvidia/nccl/lib/libnccl.so.2
 ENV VLLM_NCCL_SO_PATH=/opt/nccl/lib/libnccl.so.2 LD_PRELOAD=/opt/nccl/lib/libnccl.so.2
 ENV NVIDIA_VISIBLE_DEVICES=all
-LABEL org.opencontainers.image.source="https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark" dgx.recipe.version="0.8.9X11c"
+LABEL org.opencontainers.image.source="https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark" dgx.recipe.version="1.0.0"

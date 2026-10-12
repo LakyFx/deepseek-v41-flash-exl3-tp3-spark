@@ -1,4 +1,4 @@
-# What X11c changes
+# Architecture: X11c foundation and DS41F 1.0.0
 
 The trained model, tokenizer and hybrid checkpoint remain the same. This is vLLM on three DGX Sparks, with tensor parallelism and PP1. Expert parallelism and TensorFold are not enabled. Approximately 3.51 bpw describes routed EXL3 experts; the checkpoint also contains native dense, shared, draft, Engram and vision tensors at their own precisions.
 
@@ -36,3 +36,7 @@ The separate X11a, X11b, X11d and X11e experiments respectively changed the adap
 We selected X11c because it retained a useful C1 and improved the short C8 aggregate result in the fresh comparison, while real Hermes work often has long prompts and overlapping tasks. The measured 64K prefill rate remained approximately 1.47K tok/s. The selection is a workload preference, not evidence that every concurrency or prompt becomes faster.
 
 KV uses the native `fp8_ds_mla` layout, with an explicit 8,074,035,200-byte per-rank allocation. The resulting logical pool is approximately 3.30 million tokens in the observed build. This shared pool is not a per-request context limit. The maximum model context is 401,408 and `max_num_seqs` is eight, but memory accounting and attention work still constrain actual simultaneous long contexts.
+
+## Current production additions
+
+DS41F 1.0.0 is C4: the foundation above plus N1/N2/N3/N4/N6 on the qualified 64K-page host. [The release architecture](DS41F-1.0.0.md) explains the single-request verification exception, mHC phase routing, draft scratch reuse, EXL3 prefill specialization and bounded decoder replay. The default profile is now `config/ds41f-1.0.0.json`; `config/x11c.json` is historical.

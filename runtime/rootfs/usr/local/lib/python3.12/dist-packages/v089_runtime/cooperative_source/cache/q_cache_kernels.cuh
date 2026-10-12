@@ -16,7 +16,7 @@ Cache quantization, groups of 32 values along the head/token dim:
   of the group's num_bits uint32 words. Unpacking any bit width is a two-word funnel window per
   lane, so dequant needs no cross-lane traffic for the payload
 - each warp covers 4 groups (128 values): an 8-lane subgroup per group, 4 consecutive values per
-  lane. H32 then factors as an in-register H4 times a 3-round __shfl_xor H8 -- same matrix as a
+  lane. H32 then factors as an in-register H4 times a 3-round __shfl_xor H8 — same matrix as a
   5-round per-lane butterfly, at 12 instead of 40 shuffles per warp (the old one-group-per-warp
   bitplane kernels ran at ~92% LSU-pipe utilization and 38% of DRAM)
 

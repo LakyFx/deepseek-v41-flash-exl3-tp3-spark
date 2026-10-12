@@ -16,10 +16,10 @@ chunk-by-chunk while an n-gram at position ``p`` needs the token ids at
   ``engram_compressed_vocab_size``).
 - ``hash_cache``: one int32 slot per KV slot of the first local layer's
   sliding-window cache, holding the compressed id (or DEAD) of the token
-  last written to that slot. Slots are stable per (request, position) --
+  last written to that slot. Slots are stable per (request, position) —
   the block table pins a position to a physical slot, prefix-cache hits
   reuse both the physical blocks and the identical token ids, and
-  spec-decode rollbacks rewrite the same slots -- so lookbacks read back
+  spec-decode rollbacks rewrite the same slots — so lookbacks read back
   exactly what the owning request wrote. Lookback depth (3) is far inside
   the sliding window (128), so window eviction never frees a block a
   live lookback still needs.

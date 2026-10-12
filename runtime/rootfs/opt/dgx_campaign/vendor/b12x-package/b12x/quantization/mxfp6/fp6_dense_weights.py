@@ -152,7 +152,7 @@ def _quantize_matrix_fp6(
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """Quantize ``(M, K)`` bf16 to packed MX-FP6 codes + flat swizzled scales.
 
-    Uses the GPU quantizer (``compile_bf16_to_fp6_tma``) -- the kernel's own
+    Uses the GPU quantizer (``compile_bf16_to_fp6_tma``) — the kernel's own
     bit-identical quantizer. Requires CUDA and ``M % 128 == 0``, ``K % 128 == 0``.
 
     Returns ``(packed (M, 3K//4) uint8, scale_storage flat uint8)``.
@@ -186,8 +186,8 @@ def _quantize_matrix_fp6_bytes(
     """Quantize ``(M, K)`` bf16 to byte-container MX-FP6 codes + flat scales.
 
     Identical quantization math to :func:`_quantize_matrix_fp6` but the kernel
-    emits one code per byte (``emit="bytes"``) -- the exact ``mxf8f6f4`` GEMM
-    operand layout -- so the per-call activation expansion disappears. Returns
+    emits one code per byte (``emit="bytes"``) — the exact ``mxf8f6f4`` GEMM
+    operand layout — so the per-call activation expansion disappears. Returns
     views over freshly allocated buffers (the caller owns them; no clones).
 
     Returns ``(codes (M, K) uint8, scale_storage flat uint8)``.
@@ -229,7 +229,7 @@ def _quantize_matrix_fp6_bytes_per_row(
        bf16 in-registers and quantizes with a unit gs.
 
     The result matches the host formulation bit-for-bit (same amax semantics,
-    div.rn.f32 divisions, cvt.rn.bf16.f32 pre-scale -- see the kernel
+    div.rn.f32 divisions, cvt.rn.bf16.f32 pre-scale — see the kernel
     docstrings). ``m`` must be 128-padded (TMA contract); zero padding rows
     quantize to the same bytes as the host chain's zero-padded input.
 
@@ -282,11 +282,11 @@ def _quantize_matrix_fp6_bytes_small_m(
 
     The WHOLE global-scale tail is fused into the kernel: it computes the
     activation amax itself (bit-identical to ``vector_norm(x, inf)``), derives
-    ``a_gs`` in-registers and ``alpha = 1/(a_gs*w_gs)`` on thread 0 -- no amax
+    ``a_gs`` in-registers and ``alpha = 1/(a_gs*w_gs)`` on thread 0 — no amax
     reduce or convert/clamp/div/mul/reciprocal launches on the hot path.
 
     With ``per_row=True`` the per-row global-scale recipe ALSO runs in-kernel
-    (row amax, bf16 pre-scale, unit-gs quantization -- see
+    (row amax, bf16 pre-scale, unit-gs quantization — see
     :class:`SmallMQuantKernel`), and a 4th value is returned: the ``(m, 1)``
     bf16 per-row output correction for the post-GEMM ``result.mul_``.
 
@@ -418,7 +418,7 @@ def quantize_dense_weight_to_fp6(
     """Quantize a BF16 linear weight ``(out_features, in_features)`` to MX-FP6.
 
     The weight layout matches ``torch.nn.Linear.weight`` (rows = out_features,
-    cols = in_features) and is used directly as the ``dense_gemm`` RHS -- no
+    cols = in_features) and is used directly as the ``dense_gemm`` RHS — no
     transpose. ``in_features`` and ``out_features`` must both be multiples of 128.
     """
     if weight_bf16.ndim != 2:
@@ -435,8 +435,8 @@ def quantize_dense_weight_to_fp6(
     w = weight_bf16.to(torch.bfloat16)
     # Pure-MX contract, matching the safetensors/vLLM export
     # (quantize_linear_to_fp6): unit global scale, the UE8M0 block scales
-    # carry the whole dynamic range. Alpha then reduces to 1/a_gs -- exactly
-    # what serving computes from the on-disk unit weight_scale_2 -- so tests
+    # carry the whole dynamic range. Alpha then reduces to 1/a_gs — exactly
+    # what serving computes from the on-disk unit weight_scale_2 — so tests
     # and benches built on this path validate the served math.
     gs = torch.ones(1, dtype=torch.float32, device=w.device)
     packed, scale_storage = _quantize_matrix_fp6(w, fmt, gs)
@@ -540,7 +540,7 @@ def dense_fp6_linear_expanded(
         # in-kernel per-tensor scale. At m=1 with per-row scaling the
         # host pre-scale above already ran, so the kernel's amax scan sees
         # exactly mx_gs_numerator and its gs/alpha collapse to 1.0 / 1/w_gs
-        # -- the same arithmetic as the unfused per-row m=1 path.
+        # — the same arithmetic as the unfused per-row m=1 path.
         a_amax = x.float().abs().amax().reshape(1)
         a_gs = mx_gs_numerator(a_fmt) / a_amax.clamp_min_(1e-6)
         w_gs = global_scale.to(torch.float32).reshape(1)

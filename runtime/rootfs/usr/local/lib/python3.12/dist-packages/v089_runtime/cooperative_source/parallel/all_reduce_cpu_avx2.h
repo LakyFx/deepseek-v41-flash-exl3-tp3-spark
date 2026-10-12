@@ -94,7 +94,7 @@ inline bool cpusum_device_arrived(PGContext* ctx, int device, uint32_t stage, bo
 }
 
 // True when every participating device's recv blocks have consumed the chunk whose absolute
-// stage precedes `target` -- the CPU's accumulator-ring throttle (only meaningful for
+// stage precedes `target` — the CPU's accumulator-ring throttle (only meaningful for
 // multi-chunk jobs; the elastic reduce kernel has no lockstep bounding the CPU's lead)
 inline bool cpusum_recv_ready(PGContext* ctx, uint32_t device_mask, uint32_t target)
 {

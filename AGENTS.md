@@ -1,8 +1,8 @@
 # Agent installation guide
 
-Read README.md, docs/INSTALL.md, docs/VERIFICATION.md, docs/ARCHITECTURE.md and docs/BENCHMARKS.md before executing commands. The only install target is X11c. Historical names in docs/HISTORY.md describe experiments; they are not ready-to-install independent engines.
+Read README.md, docs/INSTALL.md, docs/VERIFICATION.md, docs/ARCHITECTURE.md and docs/BENCHMARKS.md before executing commands. The production install target is DS41F 1.0.0, exactly campaign C4. Read docs/DS41F-1.0.0.md. Historical arms can be inspected/materialized as described in docs/EXPERIMENT-REPLAY.md; materialization is not a GPU qualification.
 
-Use config/x11c.json as the inference profile and config/cluster.local.json as operator-supplied topology. Do not change weights, trained rank, EP policy, KV layout or graph sizes to bypass a build or startup error. Check the exact checkpoint revision and all three nodes' image identity. Missing AOT objects, incompatible ABI or wrong Engram row ownership must be fixed before accepting traffic.
+Use config/ds41f-1.0.0.json as the inference profile and config/cluster.local.json as operator-supplied topology. Do not change weights, trained rank, EP policy, KV layout or graph sizes to bypass a build or startup error. Check the exact checkpoint revision and all three nodes' image identity. Missing AOT objects, incompatible ABI or wrong Engram row ownership must be fixed before accepting traffic.
 
 Keep deployment separate from preparation. Build images, download and verify weights, prepare local Engram and print every rank command before touching a running service. Ask the operator for the actual topology and maintenance window if they are missing. Never invent management IPs, interface names, GID indexes or authentication secrets. The example configuration is deliberately incomplete.
 

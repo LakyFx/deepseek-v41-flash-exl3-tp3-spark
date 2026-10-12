@@ -1,4 +1,4 @@
-"""MoEMicroKernelBackend -- compact routed NVFP4 MoE kernel for SM120."""
+"""MoEMicroKernelBackend — compact routed NVFP4 MoE kernel for SM120."""
 
 from __future__ import annotations
 

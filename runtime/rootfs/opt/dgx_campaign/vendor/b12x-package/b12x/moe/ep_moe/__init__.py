@@ -2,7 +2,7 @@
 
 Each rank sees the replicated input and computes partial outputs for its
 local experts; cross-rank reduction is the caller's job (typically
-``comm.pcie.OneshotAllReduce``) -- composed in user code, never imported here.
+``comm.pcie.OneshotAllReduce``) — composed in user code, never imported here.
 
 Lifecycle: ``prepare_expert_map`` -> declarative ``plan`` ->
 ``PreparationSession.prepare`` -> ``bind(plan, ...)`` -> ``run``.

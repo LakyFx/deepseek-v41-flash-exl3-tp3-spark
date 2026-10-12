@@ -23,7 +23,7 @@ def _require_safetensors_path(path: str | pathlib.Path) -> pathlib.Path:
         )
     if p.suffix.lower() != ".safetensors":
         raise ValueError(
-            f"expected a *.safetensors path, got {p} -- e.g. "
+            f"expected a *.safetensors path, got {p} — e.g. "
             f"{p.with_suffix('.safetensors')}"
         )
     return p

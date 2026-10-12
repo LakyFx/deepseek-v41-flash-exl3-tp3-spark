@@ -434,7 +434,7 @@ class Nvfp4MaterializedPhase1Kernel:
             # register selects the half.
             # B fragments: the m16n8k64 B operand of lane (q, c) for n8
             # group g is B row (8*(4*warp + g) + q), word c (+4 for the
-            # k32-high register) of that row's 8-word staging -- empirically
+            # k32-high register) of that row's 8-word staging — empirically
             # pinned against the QMMA probe (tests/moe fragment probes);
             # the row index is q, never the warp-level column.
             gate_b_lo = cute.make_rmem_tensor((4,), Uint32)

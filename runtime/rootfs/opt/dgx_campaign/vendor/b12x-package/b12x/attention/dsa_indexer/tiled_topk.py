@@ -1532,7 +1532,7 @@ def run_tiled_topk(
 
     # Carry buffers hold the previous supertile chunk's running top-k (value, global
     # index) that this launch folds in. When is_first there is no predecessor, so the
-    # kernel never reads them (the read path is constexpr-elided) -- but a real tensor
+    # kernel never reads them (the read path is constexpr-elided) — but a real tensor
     # of the right shape must still be passed, so allocate a throwaway if none given.
     if not is_first:
         if carry_values is None or carry_indices is None:
@@ -1560,7 +1560,7 @@ def run_tiled_topk(
             raise ValueError("carry buffers must be on the tile_logits device")
         # carry-IN is read throughout selection; the output (carry-OUT for non-final
         # chunks) is written. They must be physically distinct to avoid an
-        # intra-launch read/write race -- the orchestrator ping-pongs two buffers.
+        # intra-launch read/write race — the orchestrator ping-pongs two buffers.
         if _same_data_address(carry_values, topk_values):
             raise ValueError("carry_values must not alias the output values buffer")
         if _same_data_address(carry_indices, topk_indices):

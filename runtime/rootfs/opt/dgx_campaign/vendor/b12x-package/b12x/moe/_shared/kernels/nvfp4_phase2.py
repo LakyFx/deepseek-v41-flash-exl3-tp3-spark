@@ -327,7 +327,7 @@ class Nvfp4MaterializedPhase2Kernel:
             # B reg j nib n: row = q, k = 32*j + 8*c + n.  Staged K64 rows
             # are 32 linear bytes; the lane's c selects the 4-byte k group
             # within the half and the register selects the half.  The B row
-            # for n8 group g is 8*(4*warp + g) + q -- pinned by the QMMA
+            # for n8 group g is 8*(4*warp + g) + q — pinned by the QMMA
             # fragment probes.
             b_lo = cute.make_rmem_tensor((4,), Uint32)
             b_hi = cute.make_rmem_tensor((4,), Uint32)

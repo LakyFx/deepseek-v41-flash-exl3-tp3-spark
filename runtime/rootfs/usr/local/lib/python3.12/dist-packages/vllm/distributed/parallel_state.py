@@ -85,7 +85,7 @@ class _RetainedHandle:
     gloo copies them in the background; ``wait`` drops the refs once drained.
 
     ``wait`` must be idempotent: gloo ``Work.wait()`` is single-shot for
-    point-to-point operations -- calling it a second time on an already
+    point-to-point operations — calling it a second time on an already
     completed send blocks forever (verified empirically). Both the worker's
     top-of-step drain of ``_pp_send_work`` and ``_reap_completed_isends``
     may wait the same entry's metadata handle, so the second caller must
@@ -1124,7 +1124,7 @@ class GroupCoordinator:
         never used as the completion gate. Instead we gate on the tensor-send
         handles (``handles[1:]``), which run on the device backend where
         ``is_completed()`` is reliable. Once all tensor sends are done the
-        peer must already have posted the matching tensor recvs -- and since
+        peer must already have posted the matching tensor recvs — and since
         the receiver ingests metadata before tensors, the gloo metadata send
         is then guaranteed complete, so ``wait()`` on it is ~instant and only
         serves to drop the retained refs.
@@ -1690,7 +1690,7 @@ def _init_process_group_for_split_group(
 def _validate_default_pg_for_split_group() -> None:
     """When an external launcher (e.g. ``torchrun``) initialized the default
     PG, ``GroupCoordinator`` cannot patch in additional backends or change
-    the eager-init behavior -- ``split_group`` only selects subsets of an
+    the eager-init behavior — ``split_group`` only selects subsets of an
     existing parent. Validate that the parent has both ``device_id`` and a
     CPU (gloo) backend, and emit a descriptive error pointing at the exact
     init call to update otherwise.

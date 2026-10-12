@@ -1,0 +1,21 @@
+{
+  "schema": "ds41f.public-release-preflight.v1",
+  "release": "DS41F 1.0.0",
+  "selected_arm": "C4",
+  "date": "2026-10-12",
+  "cpu_unit_tests": 13,
+  "source_and_archive_hashes_verified": true,
+  "frozen_owen_fixture_verified": true,
+  "summary_recomputed_for_arms": 18,
+  "read_only_live_source_export": true,
+  "private_payloads_excluded": true,
+  "known_private_address_path_or_credential_hits": 0,
+  "materialization_checked": [
+    "B0",
+    "C4"
+  ],
+  "public_image_rebuilt_this_release": false,
+  "new_public_image_gpu_qualified_this_release": false,
+  "production_restarted_for_publication": false,
+  "scope": "Offline packaging, source and numerical evidence checks; production C4 campaign evidence is separate."
+}

@@ -1,0 +1,3347 @@
+{
+  "schema": "ds41f.public-source-variants.v1",
+  "baseline": "X11c on host64k",
+  "arms": [
+    {
+      "arm": "B0",
+      "parts": [],
+      "description": "Exact X11c inference with identical test RPC instrumentation",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-B0",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "B0",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N1",
+      "parts": [
+        "N1"
+      ],
+      "description": "Full valid K5 verification for one pure decode request",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/adaptive_verification.py": {
+          "sha256": "88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14",
+          "file": "sources/88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N1",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N1",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N2",
+      "parts": [
+        "N2"
+      ],
+      "description": "Stock lagged mHC for small pure decode; mixed/prefill stay fused",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_campaign_runtime/mhc.py": {
+          "sha256": "9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3",
+          "file": "sources/9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3.py"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/mhc_original.py": {
+          "sha256": "310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5",
+          "file": "sources/310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf",
+          "file": "sources/ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N2",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N2",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N3",
+      "parts": [
+        "N3"
+      ],
+      "description": "Same probabilistic draft, reusable logits scratch and batched position keys",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/dspark/speculator.py": {
+          "sha256": "b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171",
+          "file": "sources/b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N3",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N3",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N4",
+      "parts": [
+        "N4"
+      ],
+      "description": "EXL3 prefill tile/warp specialization, retaining existing decode-once arithmetic",
+      "env_delta": {
+        "CUDA_EXL3_NEXT_PREFILL": "1"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "native/gemm.cu": {
+          "sha256": "d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5",
+          "file": "sources/d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5.cu"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N4",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "CUDA_EXL3_NEXT_PREFILL": "1",
+        "DGX_NEXT_ARM": "N4",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N5",
+      "parts": [
+        "N5"
+      ],
+      "description": "Exact compatible indexer optimization",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/candidate_kernels.py": {
+          "sha256": "38fbf6684bb5c709de8556d2ffe1633164f8a30f014acddaac67fcb267c36610",
+          "file": "sources/38fbf6684bb5c709de8556d2ffe1633164f8a30f014acddaac67fcb267c36610.py"
+        },
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer.py": {
+          "sha256": "768dabeed090fef8e845b911f9524af87f3f6522268d1c70fb0b08695aee1fa5",
+          "file": "sources/768dabeed090fef8e845b911f9524af87f3f6522268d1c70fb0b08695aee1fa5.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/indexer_reference.py": {
+          "sha256": "58d1efb61c0aab0a7ab18e0f54fd5996e97229f2f78fb5eb6e6443ef2ee70a87",
+          "file": "sources/58d1efb61c0aab0a7ab18e0f54fd5996e97229f2f78fb5eb6e6443ef2ee70a87.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N5",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N5",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N6",
+      "parts": [
+        "N6"
+      ],
+      "description": "Bounded decoder replay with cache and custom SP integration",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48], \"cudagraph_decoder_replay\": true, \"decoder_replay_cudagraph_capture_sizes\": [128, 256, 384, 512, 768, 1024], \"decoder_replay_trim_threshold\": 768}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_contract.py": {
+          "sha256": "ea6d1c822cd19a619029d6f2c7d9557398454e2170060eb2a7a32db1f4acf2a2",
+          "file": "sources/ea6d1c822cd19a619029d6f2c7d9557398454e2170060eb2a7a32db1f4acf2a2.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/replay_support.py": {
+          "sha256": "54de6f68b5ad20f9c57270d0188e0db03c0a3ddb1e61e8a1e751054998d25db1",
+          "file": "sources/54de6f68b5ad20f9c57270d0188e0db03c0a3ddb1e61e8a1e751054998d25db1.py"
+        },
+        "dgx_next_runtime/replay_vision.py": {
+          "sha256": "d47630e6aafb8c801685e7d158e56bb1efdf30993965fd3f54cb0b91145327a0",
+          "file": "sources/d47630e6aafb8c801685e7d158e56bb1efdf30993965fd3f54cb0b91145327a0.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/config/cache.py": {
+          "sha256": "9cdf7d73e79ef9fd186b5bd80fe69bd4da54de8e6fa992bd9cf76bad9f75f553",
+          "file": "sources/9cdf7d73e79ef9fd186b5bd80fe69bd4da54de8e6fa992bd9cf76bad9f75f553.py"
+        },
+        "vllm/config/compilation.py": {
+          "sha256": "87680658cd19c80418b125afe05e65a0ee1392280633b74dc8fc05175f3e85f6",
+          "file": "sources/87680658cd19c80418b125afe05e65a0ee1392280633b74dc8fc05175f3e85f6.py"
+        },
+        "vllm/engine/arg_utils.py": {
+          "sha256": "0f543eafa457b3f0ee14607a36930457e4195cb5e12bc50fcd6c924238c81869",
+          "file": "sources/0f543eafa457b3f0ee14607a36930457e4195cb5e12bc50fcd6c924238c81869.py"
+        },
+        "vllm/models/deepseek_v4/sparse_mla.py": {
+          "sha256": "f02c096cd6c05cd4534fd2fdc5e5eeece695310934574e0aab91e80d3d08a12f",
+          "file": "sources/f02c096cd6c05cd4534fd2fdc5e5eeece695310934574e0aab91e80d3d08a12f.py"
+        },
+        "vllm/models/deepseek_v4_1/attention.py": {
+          "sha256": "223509515e8644d46ef12bfb5953df3b9d4687e141d13a0e9050bf93533827d4",
+          "file": "sources/223509515e8644d46ef12bfb5953df3b9d4687e141d13a0e9050bf93533827d4.py"
+        },
+        "vllm/models/deepseek_v4_1/compressor.py": {
+          "sha256": "f0a7246a01a1056abe32644e0b5f805ebae6043415ff42b881f6432e26cbc3b8",
+          "file": "sources/f0a7246a01a1056abe32644e0b5f805ebae6043415ff42b881f6432e26cbc3b8.py"
+        },
+        "vllm/models/deepseek_v4_1/decoder_replay_layers.py": {
+          "sha256": "c0efef808d8d7b479f6a90576dba1b5967d7255c48d0d1f138e340b544693ea3",
+          "file": "sources/c0efef808d8d7b479f6a90576dba1b5967d7255c48d0d1f138e340b544693ea3.py"
+        },
+        "vllm/models/deepseek_v4_1/sparse_mla.py": {
+          "sha256": "62a5c705d79189dc1e7b23dd515f47fe120137333f6c5dd3833c270413f77270",
+          "file": "sources/62a5c705d79189dc1e7b23dd515f47fe120137333f6c5dd3833c270413f77270.py"
+        },
+        "vllm/models/deepseek_v4_1/common/ops/cache_utils.py": {
+          "sha256": "afccbf01d78a19973db4cf6edd11ae531c68d071780331b99ff711e0cef6dc4a",
+          "file": "sources/afccbf01d78a19973db4cf6edd11ae531c68d071780331b99ff711e0cef6dc4a.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/decoder_replay_cudagraph.py": {
+          "sha256": "b4fdb245fa0cb03e7506c158748df093680e6a7cc64c09f2fe523e4a29bf5494",
+          "file": "sources/b4fdb245fa0cb03e7506c158748df093680e6a7cc64c09f2fe523e4a29bf5494.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/flashinfer_sparse.py": {
+          "sha256": "261cc2ad6f228b1cf90dad6a8ee8e0095f357654016035d56f4b5cb5618b408f",
+          "file": "sources/261cc2ad6f228b1cf90dad6a8ee8e0095f357654016035d56f4b5cb5618b408f.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/model.py": {
+          "sha256": "98377c4890a07dc34915662fc7d3cca3d2779f1e50d7fbc676799fd8484b9eff",
+          "file": "sources/98377c4890a07dc34915662fc7d3cca3d2779f1e50d7fbc676799fd8484b9eff.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/model_state.py": {
+          "sha256": "89ffd4002d2b516cdf555271f42333fbd1eec7d88f64886aed9936514a85f06d",
+          "file": "sources/89ffd4002d2b516cdf555271f42333fbd1eec7d88f64886aed9936514a85f06d.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/vl_model.py": {
+          "sha256": "07f8d86d16a5202c365372e23ef99b1bab5486ea7603c4a6fd80770f9aa29cbb",
+          "file": "sources/07f8d86d16a5202c365372e23ef99b1bab5486ea7603c4a6fd80770f9aa29cbb.py"
+        },
+        "vllm/model_executor/warmup/kernel_warmup.py": {
+          "sha256": "20fd1653370c202e34a9a455c60715c1620ef184e4b2574923be294d9189d300",
+          "file": "sources/20fd1653370c202e34a9a455c60715c1620ef184e4b2574923be294d9189d300.py"
+        },
+        "vllm/v1/kv_cache_interface.py": {
+          "sha256": "f9d64d261d8d793429363e3ab8cb03cc68652b25991d19631f43e463d47d0284",
+          "file": "sources/f9d64d261d8d793429363e3ab8cb03cc68652b25991d19631f43e463d47d0284.py"
+        },
+        "vllm/v1/request.py": {
+          "sha256": "e080315163fae530cc67ce5187d3572458d855efde648a44243a465894956a03",
+          "file": "sources/e080315163fae530cc67ce5187d3572458d855efde648a44243a465894956a03.py"
+        },
+        "vllm/v1/attention/backends/mla/compressor_utils.py": {
+          "sha256": "27f6f6067ff6186d134dca70361a2374329e68a2ed376b6fc5e9cc8062e6b8fc",
+          "file": "sources/27f6f6067ff6186d134dca70361a2374329e68a2ed376b6fc5e9cc8062e6b8fc.py"
+        },
+        "vllm/v1/attention/backends/mla/indexer.py": {
+          "sha256": "b75e3cd5b6e408a0ec45c24380a3b72d2777f37b2d424719b7dd625f3792fb52",
+          "file": "sources/b75e3cd5b6e408a0ec45c24380a3b72d2777f37b2d424719b7dd625f3792fb52.py"
+        },
+        "vllm/v1/attention/backends/mla/sparse_swa.py": {
+          "sha256": "9d814de58c520a305f9963e53b1cd652c8296c17fb5e11d59bdc629c910ae476",
+          "file": "sources/9d814de58c520a305f9963e53b1cd652c8296c17fb5e11d59bdc629c910ae476.py"
+        },
+        "vllm/v1/core/kv_cache_manager.py": {
+          "sha256": "5729997cea52cabaccf1e99ae7c7ce3794f03a98284a56f9aad0626d1f0d2708",
+          "file": "sources/5729997cea52cabaccf1e99ae7c7ce3794f03a98284a56f9aad0626d1f0d2708.py"
+        },
+        "vllm/v1/core/single_type_kv_cache_manager.py": {
+          "sha256": "f5980d63550d1690e0cc4bb228e61879dcc7c52ad76b4dc5e48f7384d34cbecf",
+          "file": "sources/f5980d63550d1690e0cc4bb228e61879dcc7c52ad76b4dc5e48f7384d34cbecf.py"
+        },
+        "vllm/v1/core/sched/output.py": {
+          "sha256": "d22181cb5f70895a3a17bd67d60e8b6f349a499a184422c9d2a620a76051770a",
+          "file": "sources/d22181cb5f70895a3a17bd67d60e8b6f349a499a184422c9d2a620a76051770a.py"
+        },
+        "vllm/v1/core/sched/scheduler.py": {
+          "sha256": "94ae5dea03474ebdb48298a8d07e9ba6720c2641995090329f0c4ccc68b4383d",
+          "file": "sources/94ae5dea03474ebdb48298a8d07e9ba6720c2641995090329f0c4ccc68b4383d.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/cudagraph_utils.py": {
+          "sha256": "374383c512eb09632d7278efc575d5be337a1c364231b2e868c6eae3fae488e2",
+          "file": "sources/374383c512eb09632d7278efc575d5be337a1c364231b2e868c6eae3fae488e2.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "0314bcab6d9572751c80971b7b815a53d16889e53f1289a46da011afa4de8078",
+          "file": "sources/0314bcab6d9572751c80971b7b815a53d16889e53f1289a46da011afa4de8078.py"
+        },
+        "vllm/v1/worker/gpu/model_states/default.py": {
+          "sha256": "1821f4293880511fb84ecbe1a1966e4d11b1da6bf9fdb33bb47a11cd082687ef",
+          "file": "sources/1821f4293880511fb84ecbe1a1966e4d11b1da6bf9fdb33bb47a11cd082687ef.py"
+        },
+        "vllm/v1/worker/gpu/model_states/encoder_only.py": {
+          "sha256": "a80ad9b60a66a35c96a221bd20c415b9d77e1168266e10c84436534f0debd695",
+          "file": "sources/a80ad9b60a66a35c96a221bd20c415b9d77e1168266e10c84436534f0debd695.py"
+        },
+        "vllm/v1/worker/gpu/model_states/interface.py": {
+          "sha256": "75e80cffaed87d2a5766362f24b962fe144eb2dec423d1cc9d04f2d4582cc7f6",
+          "file": "sources/75e80cffaed87d2a5766362f24b962fe144eb2dec423d1cc9d04f2d4582cc7f6.py"
+        },
+        "vllm/v1/worker/gpu/model_states/mamba_hybrid.py": {
+          "sha256": "8ca8a3b3a88ef2b78ce19291ea85e2bd75676d917e2ba7873b7085b5b67f8d7f",
+          "file": "sources/8ca8a3b3a88ef2b78ce19291ea85e2bd75676d917e2ba7873b7085b5b67f8d7f.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N6",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N6",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N7a",
+      "parts": [
+        "N7a"
+      ],
+      "description": "Pure prefill SP threshold 512",
+      "env_delta": {
+        "DGX_V089X_SP_MIN_ROWS": "512"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "512",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N7a",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N7a",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N7b",
+      "parts": [
+        "N7b"
+      ],
+      "description": "Pure prefill SP threshold 256",
+      "env_delta": {
+        "DGX_V089X_SP_MIN_ROWS": "256"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "256",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N7b",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N7b",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "N8a",
+      "parts": [
+        "N8a"
+      ],
+      "description": "B12X MXFP8 A16 rows1..6 splitK2; larger rows unchanged",
+      "env_delta": {
+        "DGX_NEXT_DENSE_SMALL_SPLIT": "2"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "b12x/gemm/blockscaled/_preparation.py": {
+          "sha256": "d9a757d3898f04348baa4db95a0b8b6868e3baf34e5d2038125e324f018324c8",
+          "file": "sources/d9a757d3898f04348baa4db95a0b8b6868e3baf34e5d2038125e324f018324c8.py"
+        },
+        "b12x/gemm/blockscaled/_tuning.py": {
+          "sha256": "96e456cfba3c04f288141b27362e0fefd33856b9570ea23a86f96e15e1a6a1f2",
+          "file": "sources/96e456cfba3c04f288141b27362e0fefd33856b9570ea23a86f96e15e1a6a1f2.py"
+        },
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/dense_policy.py": {
+          "sha256": "f48d532abb17f27024054e514e3671e7fc149bec2025755c1c785b95f3667322",
+          "file": "sources/f48d532abb17f27024054e514e3671e7fc149bec2025755c1c785b95f3667322.py"
+        },
+        "dgx_next_runtime/dense_reference.py": {
+          "sha256": "c88a1e06173fd3917606ed9ba30e716f18ac1dd6628d6c98de91de965c0e07df",
+          "file": "sources/c88a1e06173fd3917606ed9ba30e716f18ac1dd6628d6c98de91de965c0e07df.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N8a",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N8a",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011",
+        "DGX_NEXT_DENSE_SMALL_SPLIT": "2"
+      }
+    },
+    {
+      "arm": "N8b",
+      "parts": [
+        "N8b"
+      ],
+      "description": "B12X MXFP8 A16 rows1..6 splitK1; larger rows unchanged",
+      "env_delta": {
+        "DGX_NEXT_DENSE_SMALL_SPLIT": "1"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "b12x/gemm/blockscaled/_preparation.py": {
+          "sha256": "d9a757d3898f04348baa4db95a0b8b6868e3baf34e5d2038125e324f018324c8",
+          "file": "sources/d9a757d3898f04348baa4db95a0b8b6868e3baf34e5d2038125e324f018324c8.py"
+        },
+        "b12x/gemm/blockscaled/_tuning.py": {
+          "sha256": "96e456cfba3c04f288141b27362e0fefd33856b9570ea23a86f96e15e1a6a1f2",
+          "file": "sources/96e456cfba3c04f288141b27362e0fefd33856b9570ea23a86f96e15e1a6a1f2.py"
+        },
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/dense_policy.py": {
+          "sha256": "f48d532abb17f27024054e514e3671e7fc149bec2025755c1c785b95f3667322",
+          "file": "sources/f48d532abb17f27024054e514e3671e7fc149bec2025755c1c785b95f3667322.py"
+        },
+        "dgx_next_runtime/dense_reference.py": {
+          "sha256": "c88a1e06173fd3917606ed9ba30e716f18ac1dd6628d6c98de91de965c0e07df",
+          "file": "sources/c88a1e06173fd3917606ed9ba30e716f18ac1dd6628d6c98de91de965c0e07df.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N8b",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N8b",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011",
+        "DGX_NEXT_DENSE_SMALL_SPLIT": "1"
+      }
+    },
+    {
+      "arm": "N9",
+      "parts": [
+        "N9"
+      ],
+      "description": "Up to three trace-selected additional graph buckets",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc",
+          "file": "sources/97ca24ab3ecdb1f0b680dcc0ba8f0acab6ce7f63c5fb498dc75231381a5b62fc.py"
+        }
+      },
+      "measured": false,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-N9",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "N9",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "C1",
+      "parts": [
+        "N1",
+        "N2"
+      ],
+      "description": "Single-stream specialization",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_campaign_runtime/mhc.py": {
+          "sha256": "9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3",
+          "file": "sources/9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3.py"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/mhc_original.py": {
+          "sha256": "310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5",
+          "file": "sources/310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf",
+          "file": "sources/ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/adaptive_verification.py": {
+          "sha256": "88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14",
+          "file": "sources/88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-C1",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "C1",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "C2",
+      "parts": [
+        "N1",
+        "N2",
+        "N3"
+      ],
+      "description": "Single-stream specialization and cheaper same-distribution draft",
+      "env_delta": {},
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_campaign_runtime/mhc.py": {
+          "sha256": "9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3",
+          "file": "sources/9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3.py"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/mhc_original.py": {
+          "sha256": "310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5",
+          "file": "sources/310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf",
+          "file": "sources/ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/adaptive_verification.py": {
+          "sha256": "88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14",
+          "file": "sources/88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/dspark/speculator.py": {
+          "sha256": "b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171",
+          "file": "sources/b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-C2",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "DGX_NEXT_ARM": "C2",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "C3",
+      "parts": [
+        "N1",
+        "N2",
+        "N3",
+        "N4"
+      ],
+      "description": "Balanced decode plus EXL3 prefill",
+      "env_delta": {
+        "CUDA_EXL3_NEXT_PREFILL": "1"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_campaign_runtime/mhc.py": {
+          "sha256": "9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3",
+          "file": "sources/9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3.py"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/mhc_original.py": {
+          "sha256": "310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5",
+          "file": "sources/310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "native/gemm.cu": {
+          "sha256": "d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5",
+          "file": "sources/d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5.cu"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf",
+          "file": "sources/ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/adaptive_verification.py": {
+          "sha256": "88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14",
+          "file": "sources/88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/dspark/speculator.py": {
+          "sha256": "b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171",
+          "file": "sources/b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-C3",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "CUDA_EXL3_NEXT_PREFILL": "1",
+        "DGX_NEXT_ARM": "C3",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "C4",
+      "parts": [
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N6"
+      ],
+      "description": "Balanced decode/prefill plus bounded replay",
+      "env_delta": {
+        "CUDA_EXL3_NEXT_PREFILL": "1"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48], \"cudagraph_decoder_replay\": true, \"decoder_replay_cudagraph_capture_sizes\": [128, 256, 384, 512, 768, 1024], \"decoder_replay_trim_threshold\": 768}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_campaign_runtime/mhc.py": {
+          "sha256": "9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3",
+          "file": "sources/9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3.py"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/mhc_original.py": {
+          "sha256": "310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5",
+          "file": "sources/310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_contract.py": {
+          "sha256": "ea6d1c822cd19a619029d6f2c7d9557398454e2170060eb2a7a32db1f4acf2a2",
+          "file": "sources/ea6d1c822cd19a619029d6f2c7d9557398454e2170060eb2a7a32db1f4acf2a2.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/replay_support.py": {
+          "sha256": "54de6f68b5ad20f9c57270d0188e0db03c0a3ddb1e61e8a1e751054998d25db1",
+          "file": "sources/54de6f68b5ad20f9c57270d0188e0db03c0a3ddb1e61e8a1e751054998d25db1.py"
+        },
+        "dgx_next_runtime/replay_vision.py": {
+          "sha256": "d47630e6aafb8c801685e7d158e56bb1efdf30993965fd3f54cb0b91145327a0",
+          "file": "sources/d47630e6aafb8c801685e7d158e56bb1efdf30993965fd3f54cb0b91145327a0.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "native/gemm.cu": {
+          "sha256": "d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5",
+          "file": "sources/d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5.cu"
+        },
+        "vllm/config/cache.py": {
+          "sha256": "9cdf7d73e79ef9fd186b5bd80fe69bd4da54de8e6fa992bd9cf76bad9f75f553",
+          "file": "sources/9cdf7d73e79ef9fd186b5bd80fe69bd4da54de8e6fa992bd9cf76bad9f75f553.py"
+        },
+        "vllm/config/compilation.py": {
+          "sha256": "87680658cd19c80418b125afe05e65a0ee1392280633b74dc8fc05175f3e85f6",
+          "file": "sources/87680658cd19c80418b125afe05e65a0ee1392280633b74dc8fc05175f3e85f6.py"
+        },
+        "vllm/engine/arg_utils.py": {
+          "sha256": "0f543eafa457b3f0ee14607a36930457e4195cb5e12bc50fcd6c924238c81869",
+          "file": "sources/0f543eafa457b3f0ee14607a36930457e4195cb5e12bc50fcd6c924238c81869.py"
+        },
+        "vllm/models/deepseek_v4/sparse_mla.py": {
+          "sha256": "f02c096cd6c05cd4534fd2fdc5e5eeece695310934574e0aab91e80d3d08a12f",
+          "file": "sources/f02c096cd6c05cd4534fd2fdc5e5eeece695310934574e0aab91e80d3d08a12f.py"
+        },
+        "vllm/models/deepseek_v4_1/attention.py": {
+          "sha256": "223509515e8644d46ef12bfb5953df3b9d4687e141d13a0e9050bf93533827d4",
+          "file": "sources/223509515e8644d46ef12bfb5953df3b9d4687e141d13a0e9050bf93533827d4.py"
+        },
+        "vllm/models/deepseek_v4_1/compressor.py": {
+          "sha256": "f0a7246a01a1056abe32644e0b5f805ebae6043415ff42b881f6432e26cbc3b8",
+          "file": "sources/f0a7246a01a1056abe32644e0b5f805ebae6043415ff42b881f6432e26cbc3b8.py"
+        },
+        "vllm/models/deepseek_v4_1/decoder_replay_layers.py": {
+          "sha256": "c0efef808d8d7b479f6a90576dba1b5967d7255c48d0d1f138e340b544693ea3",
+          "file": "sources/c0efef808d8d7b479f6a90576dba1b5967d7255c48d0d1f138e340b544693ea3.py"
+        },
+        "vllm/models/deepseek_v4_1/sparse_mla.py": {
+          "sha256": "62a5c705d79189dc1e7b23dd515f47fe120137333f6c5dd3833c270413f77270",
+          "file": "sources/62a5c705d79189dc1e7b23dd515f47fe120137333f6c5dd3833c270413f77270.py"
+        },
+        "vllm/models/deepseek_v4_1/common/ops/cache_utils.py": {
+          "sha256": "afccbf01d78a19973db4cf6edd11ae531c68d071780331b99ff711e0cef6dc4a",
+          "file": "sources/afccbf01d78a19973db4cf6edd11ae531c68d071780331b99ff711e0cef6dc4a.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/decoder_replay_cudagraph.py": {
+          "sha256": "b4fdb245fa0cb03e7506c158748df093680e6a7cc64c09f2fe523e4a29bf5494",
+          "file": "sources/b4fdb245fa0cb03e7506c158748df093680e6a7cc64c09f2fe523e4a29bf5494.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/flashinfer_sparse.py": {
+          "sha256": "261cc2ad6f228b1cf90dad6a8ee8e0095f357654016035d56f4b5cb5618b408f",
+          "file": "sources/261cc2ad6f228b1cf90dad6a8ee8e0095f357654016035d56f4b5cb5618b408f.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/model.py": {
+          "sha256": "98377c4890a07dc34915662fc7d3cca3d2779f1e50d7fbc676799fd8484b9eff",
+          "file": "sources/98377c4890a07dc34915662fc7d3cca3d2779f1e50d7fbc676799fd8484b9eff.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/model_state.py": {
+          "sha256": "89ffd4002d2b516cdf555271f42333fbd1eec7d88f64886aed9936514a85f06d",
+          "file": "sources/89ffd4002d2b516cdf555271f42333fbd1eec7d88f64886aed9936514a85f06d.py"
+        },
+        "vllm/models/deepseek_v4_1/nvidia/vl_model.py": {
+          "sha256": "07f8d86d16a5202c365372e23ef99b1bab5486ea7603c4a6fd80770f9aa29cbb",
+          "file": "sources/07f8d86d16a5202c365372e23ef99b1bab5486ea7603c4a6fd80770f9aa29cbb.py"
+        },
+        "vllm/model_executor/warmup/kernel_warmup.py": {
+          "sha256": "20fd1653370c202e34a9a455c60715c1620ef184e4b2574923be294d9189d300",
+          "file": "sources/20fd1653370c202e34a9a455c60715c1620ef184e4b2574923be294d9189d300.py"
+        },
+        "vllm/v1/kv_cache_interface.py": {
+          "sha256": "f9d64d261d8d793429363e3ab8cb03cc68652b25991d19631f43e463d47d0284",
+          "file": "sources/f9d64d261d8d793429363e3ab8cb03cc68652b25991d19631f43e463d47d0284.py"
+        },
+        "vllm/v1/request.py": {
+          "sha256": "e080315163fae530cc67ce5187d3572458d855efde648a44243a465894956a03",
+          "file": "sources/e080315163fae530cc67ce5187d3572458d855efde648a44243a465894956a03.py"
+        },
+        "vllm/v1/attention/backends/mla/compressor_utils.py": {
+          "sha256": "27f6f6067ff6186d134dca70361a2374329e68a2ed376b6fc5e9cc8062e6b8fc",
+          "file": "sources/27f6f6067ff6186d134dca70361a2374329e68a2ed376b6fc5e9cc8062e6b8fc.py"
+        },
+        "vllm/v1/attention/backends/mla/indexer.py": {
+          "sha256": "b75e3cd5b6e408a0ec45c24380a3b72d2777f37b2d424719b7dd625f3792fb52",
+          "file": "sources/b75e3cd5b6e408a0ec45c24380a3b72d2777f37b2d424719b7dd625f3792fb52.py"
+        },
+        "vllm/v1/attention/backends/mla/sparse_swa.py": {
+          "sha256": "9d814de58c520a305f9963e53b1cd652c8296c17fb5e11d59bdc629c910ae476",
+          "file": "sources/9d814de58c520a305f9963e53b1cd652c8296c17fb5e11d59bdc629c910ae476.py"
+        },
+        "vllm/v1/core/kv_cache_manager.py": {
+          "sha256": "5729997cea52cabaccf1e99ae7c7ce3794f03a98284a56f9aad0626d1f0d2708",
+          "file": "sources/5729997cea52cabaccf1e99ae7c7ce3794f03a98284a56f9aad0626d1f0d2708.py"
+        },
+        "vllm/v1/core/single_type_kv_cache_manager.py": {
+          "sha256": "f5980d63550d1690e0cc4bb228e61879dcc7c52ad76b4dc5e48f7384d34cbecf",
+          "file": "sources/f5980d63550d1690e0cc4bb228e61879dcc7c52ad76b4dc5e48f7384d34cbecf.py"
+        },
+        "vllm/v1/core/sched/output.py": {
+          "sha256": "d22181cb5f70895a3a17bd67d60e8b6f349a499a184422c9d2a620a76051770a",
+          "file": "sources/d22181cb5f70895a3a17bd67d60e8b6f349a499a184422c9d2a620a76051770a.py"
+        },
+        "vllm/v1/core/sched/scheduler.py": {
+          "sha256": "94ae5dea03474ebdb48298a8d07e9ba6720c2641995090329f0c4ccc68b4383d",
+          "file": "sources/94ae5dea03474ebdb48298a8d07e9ba6720c2641995090329f0c4ccc68b4383d.py"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/cudagraph_utils.py": {
+          "sha256": "374383c512eb09632d7278efc575d5be337a1c364231b2e868c6eae3fae488e2",
+          "file": "sources/374383c512eb09632d7278efc575d5be337a1c364231b2e868c6eae3fae488e2.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "85f81b1c4aa46a73c449b22ffaab5e70b9f8398049230b9b7dd477ec0a6a810b",
+          "file": "sources/85f81b1c4aa46a73c449b22ffaab5e70b9f8398049230b9b7dd477ec0a6a810b.py"
+        },
+        "vllm/v1/worker/gpu/model_states/default.py": {
+          "sha256": "1821f4293880511fb84ecbe1a1966e4d11b1da6bf9fdb33bb47a11cd082687ef",
+          "file": "sources/1821f4293880511fb84ecbe1a1966e4d11b1da6bf9fdb33bb47a11cd082687ef.py"
+        },
+        "vllm/v1/worker/gpu/model_states/encoder_only.py": {
+          "sha256": "a80ad9b60a66a35c96a221bd20c415b9d77e1168266e10c84436534f0debd695",
+          "file": "sources/a80ad9b60a66a35c96a221bd20c415b9d77e1168266e10c84436534f0debd695.py"
+        },
+        "vllm/v1/worker/gpu/model_states/interface.py": {
+          "sha256": "75e80cffaed87d2a5766362f24b962fe144eb2dec423d1cc9d04f2d4582cc7f6",
+          "file": "sources/75e80cffaed87d2a5766362f24b962fe144eb2dec423d1cc9d04f2d4582cc7f6.py"
+        },
+        "vllm/v1/worker/gpu/model_states/mamba_hybrid.py": {
+          "sha256": "8ca8a3b3a88ef2b78ce19291ea85e2bd75676d917e2ba7873b7085b5b67f8d7f",
+          "file": "sources/8ca8a3b3a88ef2b78ce19291ea85e2bd75676d917e2ba7873b7085b5b67f8d7f.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/adaptive_verification.py": {
+          "sha256": "88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14",
+          "file": "sources/88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/dspark/speculator.py": {
+          "sha256": "b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171",
+          "file": "sources/b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-C4",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "CUDA_EXL3_NEXT_PREFILL": "1",
+        "DGX_NEXT_ARM": "C4",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "C5-indexer",
+      "parts": [
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N5"
+      ],
+      "description": "Balanced candidate with indexer",
+      "env_delta": {
+        "CUDA_EXL3_NEXT_PREFILL": "1"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/candidate_kernels.py": {
+          "sha256": "38fbf6684bb5c709de8556d2ffe1633164f8a30f014acddaac67fcb267c36610",
+          "file": "sources/38fbf6684bb5c709de8556d2ffe1633164f8a30f014acddaac67fcb267c36610.py"
+        },
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_campaign_runtime/mhc.py": {
+          "sha256": "9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3",
+          "file": "sources/9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3.py"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer.py": {
+          "sha256": "768dabeed090fef8e845b911f9524af87f3f6522268d1c70fb0b08695aee1fa5",
+          "file": "sources/768dabeed090fef8e845b911f9524af87f3f6522268d1c70fb0b08695aee1fa5.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/indexer_reference.py": {
+          "sha256": "58d1efb61c0aab0a7ab18e0f54fd5996e97229f2f78fb5eb6e6443ef2ee70a87",
+          "file": "sources/58d1efb61c0aab0a7ab18e0f54fd5996e97229f2f78fb5eb6e6443ef2ee70a87.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/mhc_original.py": {
+          "sha256": "310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5",
+          "file": "sources/310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "native/gemm.cu": {
+          "sha256": "d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5",
+          "file": "sources/d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5.cu"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf",
+          "file": "sources/ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/adaptive_verification.py": {
+          "sha256": "88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14",
+          "file": "sources/88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/dspark/speculator.py": {
+          "sha256": "b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171",
+          "file": "sources/b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "2048",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-C5-indexer",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "CUDA_EXL3_NEXT_PREFILL": "1",
+        "DGX_NEXT_ARM": "C5-indexer",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "C5-sp512",
+      "parts": [
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N7a"
+      ],
+      "description": "Balanced candidate with SP512",
+      "env_delta": {
+        "CUDA_EXL3_NEXT_PREFILL": "1",
+        "DGX_V089X_SP_MIN_ROWS": "512"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_campaign_runtime/mhc.py": {
+          "sha256": "9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3",
+          "file": "sources/9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3.py"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/mhc_original.py": {
+          "sha256": "310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5",
+          "file": "sources/310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "native/gemm.cu": {
+          "sha256": "d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5",
+          "file": "sources/d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5.cu"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf",
+          "file": "sources/ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/adaptive_verification.py": {
+          "sha256": "88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14",
+          "file": "sources/88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/dspark/speculator.py": {
+          "sha256": "b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171",
+          "file": "sources/b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "512",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-C5-sp512",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "CUDA_EXL3_NEXT_PREFILL": "1",
+        "DGX_NEXT_ARM": "C5-sp512",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    },
+    {
+      "arm": "C5-sp256",
+      "parts": [
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N7b"
+      ],
+      "description": "Balanced candidate with SP256",
+      "env_delta": {
+        "CUDA_EXL3_NEXT_PREFILL": "1",
+        "DGX_V089X_SP_MIN_ROWS": "256"
+      },
+      "flags": {
+        "--speculative-config": "{\"method\": \"dspark\", \"num_speculative_tokens\": 5, \"draft_sample_method\": \"probabilistic\", \"rejection_sample_method\": \"block\", \"enable_adaptive_verification\": true}",
+        "--compilation-config": "{\"cudagraph_mode\": \"FULL_AND_PIECEWISE\", \"cudagraph_capture_sizes\": [5, 6, 10, 12, 15, 18, 20, 24, 25, 30, 35, 36, 40, 42, 48]}",
+        "--kv-cache-memory-bytes": "8074035200",
+        "--max-model-len": "401408",
+        "--max-num-seqs": "8",
+        "--max-num-batched-tokens": "4096"
+      },
+      "files": {
+        "dgx_campaign_runtime/control.py": {
+          "sha256": "a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1",
+          "file": "sources/a66279b6ec655920538426cf5d59b06e105dce75d88b07695ceb979b6c7a46b1.py",
+          "measured_source_sha256": "57a7722336e5ce1a9e0cc73c0c32d79fa2cf7cd2c7a86f7fda96e634df34766e",
+          "public_adaptation": "operator-supplied control peer instead of private quarantine address"
+        },
+        "dgx_campaign_runtime/mhc.py": {
+          "sha256": "9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3",
+          "file": "sources/9aea08016750521b1da14328b0b90c25ba6325509130b9799cb6c494f296fcf3.py"
+        },
+        "dgx_next_runtime/baseline_methods.py": {
+          "sha256": "79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8",
+          "file": "sources/79b61b485e549ec68c5a75f4f95a1dc002937d102b7ae1a3398075714d44b7a8.py"
+        },
+        "dgx_next_runtime/dense_gate.py": {
+          "sha256": "7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752",
+          "file": "sources/7402a2791ea246b5f18d88be3d6f08ec0334de31e392b6d26d9397ee083ba752.py"
+        },
+        "dgx_next_runtime/graph_gate.py": {
+          "sha256": "b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df",
+          "file": "sources/b23a7eca3128b613779a2701cd7b47b683eaf3ed8cbe4e269d917bbe11b598df.py"
+        },
+        "dgx_next_runtime/indexer_gate.py": {
+          "sha256": "7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06",
+          "file": "sources/7e537bf140d0f928d43f9a87f5f69380db6aa75e254d0a163dc4267fa79fed06.py"
+        },
+        "dgx_next_runtime/mhc_gate.py": {
+          "sha256": "d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d",
+          "file": "sources/d43321820f340a7718f91a196ddf8e6c53029b06f275dfc3c5ead7007d48da4d.py"
+        },
+        "dgx_next_runtime/mhc_original.py": {
+          "sha256": "310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5",
+          "file": "sources/310eea2fc4045fa75d7374cbbbf6eeffe7cdba0933d8a447ecf073c6b8aa3ce5.py"
+        },
+        "dgx_next_runtime/native_gate.py": {
+          "sha256": "adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca",
+          "file": "sources/adfaff424614a47d1e5853c265b31a9a25e72827af7e181c3a49330d6e3f95ca.py"
+        },
+        "dgx_next_runtime/policy.py": {
+          "sha256": "6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b",
+          "file": "sources/6dbddef9eb0ce78675ae21d27ec45f29e3561fb9c482e655cb7d953114d5681b.py"
+        },
+        "dgx_next_runtime/qualification_protocol.py": {
+          "sha256": "b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9",
+          "file": "sources/b6894fc3c7fa534036cce2c701d4c4ea6075b05843fce75f149beca19e29d0e9.py"
+        },
+        "dgx_next_runtime/registry.py": {
+          "sha256": "6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae",
+          "file": "sources/6ab64dbea8e11588a371b964f792ca5fb67d7ea4883f4cde3adfdf7620c258ae.py"
+        },
+        "dgx_next_runtime/replay_gate.py": {
+          "sha256": "9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3",
+          "file": "sources/9ddc6d2fc3e2d519ce54a004ad28f6af077231a2fa4b31f9906d5ee8d9faf0e3.py"
+        },
+        "dgx_next_runtime/row_gate.py": {
+          "sha256": "92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e",
+          "file": "sources/92591eb44e54dbfffa5b24416f1f0f0991a9737d38e796092ca4639b73a4230e.py"
+        },
+        "dgx_next_runtime/speculation_gate.py": {
+          "sha256": "57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55",
+          "file": "sources/57eb75d19a8f0d28401712a6d99040bed0e1c3b65c87e3c788689ccc5f751a55.py"
+        },
+        "dgx_next_runtime/trace.py": {
+          "sha256": "f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9",
+          "file": "sources/f3f6897a53b8e3565801a945f423255230e9034fb3f281f1736550438e0c81c9.py"
+        },
+        "dgx_next_runtime/worker.py": {
+          "sha256": "da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f",
+          "file": "sources/da063491972a1e08420638ac1317729a950629052ce86a9e638c5d8e236b3d1f.py"
+        },
+        "dgx_next_runtime/__init__.py": {
+          "sha256": "9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a",
+          "file": "sources/9157f67c80f86660b1de4da8e8c2ac312f355599041e8e77f4feb12999869c0a.py"
+        },
+        "native/gemm.cu": {
+          "sha256": "d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5",
+          "file": "sources/d5441c3dcf265dfc274fd6398eefef556256f9754f3514c495b7fe709b3532b5.cu"
+        },
+        "vllm/v1/worker/gpu_worker.py": {
+          "sha256": "a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b",
+          "file": "sources/a6a8a9cebfa07193f6e0704a32a5af77725609b0054096d04eb7696c9fa18c9b.py"
+        },
+        "vllm/v1/worker/gpu/model_runner.py": {
+          "sha256": "ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf",
+          "file": "sources/ffbd14720f99b5e87f9ac7c7f69c5d6f0adc279bca5d3a3faea34f05f0b47fdf.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/adaptive_verification.py": {
+          "sha256": "88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14",
+          "file": "sources/88918ee62f60ce1734b96a0dabe588a3b318aad445d259f1849c7001ec10df14.py"
+        },
+        "vllm/v1/worker/gpu/spec_decode/dspark/speculator.py": {
+          "sha256": "b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171",
+          "file": "sources/b2a8cd549d0b248fe7af26cf1fd7341996048320120c7f3a915d79fc18805171.py"
+        }
+      },
+      "measured": true,
+      "note": "Prepared source archive. See report for qualification, repairs, measured status and public packaging limits.",
+      "environment": {
+        "CUDA_EXL3_CAMPAIGN_K": "1",
+        "CUDA_EXL3_MODEL_PATH": "/models/dsv41",
+        "DGX_CAMPAIGN_A": "1",
+        "DGX_CAMPAIGN_H": "1",
+        "DGX_CAMPAIGN_INDEXER": "2",
+        "DGX_CAMPAIGN_M": "1",
+        "DGX_CAMPAIGN_P": "1",
+        "DGX_CAMPAIGN_R": "1",
+        "DGX_CAMPAIGN_R_AOT_ROOT": "/opt/dgx_campaign/native/roce-aot",
+        "DGX_CHUNK_TELEMETRY_PATH": "/dgx-chunk/chunk.json",
+        "DGX_DIAG_DIR": "/dgx-diag",
+        "DGX_EXPERIMENT_MODULES": "R,K,D,I1,I2,H,M,P,A",
+        "DGX_INDEXER_PROJECTION_WARMUP": "1",
+        "DGX_KV_SNAPSHOT_DIR": "/dgx-kv-snapshots",
+        "DGX_SERIAL_RENDER": "1",
+        "DGX_V089X_ENGRAM_ASYNC": "1",
+        "DGX_V089X_ENGRAM_TIMEOUT_S": "20",
+        "DGX_V089X_INDEXER_SPLIT": "1",
+        "DGX_V089X_MAIN_PROJ_TP": "1",
+        "DGX_V089X_MARKOV_TP": "1",
+        "DGX_V089X_PROFILE_DIR": "/dgx-v089x-profile",
+        "DGX_V089X_SP": "1",
+        "DGX_V089X_SP_MIN_ROWS": "256",
+        "DGX_V089_PROFILE_DIR": "/dgx-v089-profile",
+        "DGX_V089_VERSION": "0.8.9X11c-C5-sp256",
+        "DGX_VISION_BATCH_ITEMS": "1",
+        "DGX_WORKSPACE_OBSERVE": "1",
+        "DGX_WORKSPACE_RECLAIM": "1",
+        "DSV41_ENGRAM_DIR": "/engram-local",
+        "DSV41_ENGRAM_DISK": "1",
+        "DSV41_ENGRAM_DISK_CHUNK": "16",
+        "DSV41_ENGRAM_DISK_THREADS": "32",
+        "DSV41_KV_PACK_REPEATS": "1",
+        "VLLM_BUILD_COMMIT": "8a728663c1c3eeace834a95f5654fa653cc1998c",
+        "VLLM_CACHE_ROOT": "/cache/vllm",
+        "VLLM_ENABLE_CUDA_COMPATIBILITY": "0",
+        "VLLM_ENGINE_READY_TIMEOUT_S": "3600",
+        "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/flashinfer",
+        "VLLM_HAS_FLASHINFER_CUBIN": "1",
+        "VLLM_NCCL_SO_PATH": "/opt/nccl/lib/libnccl.so.2",
+        "VLLM_SPARSE_INDEXER_MAX_LOGITS_MB": "64",
+        "VLLM_USAGE_SOURCE": "production-docker-image",
+        "VLLM_USE_BREAKABLE_CUDAGRAPH": "1",
+        "VLLM_USE_FLASHINFER_SAMPLER": "0",
+        "VLLM_USE_RUST_FRONTEND": "0",
+        "DGX_X11_FOLLOWUP_MAX_DRAFT": "5",
+        "DGX_X11_PREFETCH_MIN_ROWS": "12",
+        "DGX_X11_PREFETCH_MAX_ROWS": "48",
+        "DGX_X11_PREFETCH_FFN_MIB": "8",
+        "DGX_X11_PREFETCH_ATTN_MIB": "12",
+        "DGX_X11_PREFETCH_CTAS": "1",
+        "CUDA_EXL3_NEXT_PREFILL": "1",
+        "DGX_NEXT_ARM": "C5-sp256",
+        "DGX_NEXT_CAMPAIGN": "x11c-next-20261011"
+      }
+    }
+  ]
+}

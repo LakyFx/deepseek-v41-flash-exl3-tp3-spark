@@ -9,3 +9,5 @@ benchmarks
 tests
 docs
 **/__pycache__
+
+experiments

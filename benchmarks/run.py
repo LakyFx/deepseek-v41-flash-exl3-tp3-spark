@@ -230,7 +230,7 @@ def main():
     client = ProfileClient(network, profile=args.reasoning, armed=True)
     window = Window(network, client, lease, owner, save)
     monitor = NativeMonitor(window.fetch, window.guard, save=lambda row: save('native', row), armed=True)
-    suite = Suite(client, legacy, workloads, campaign=owner['campaign_id'], version='0.8.9X11c',
+    suite = Suite(client, legacy, workloads, campaign=owner['campaign_id'], version=json.loads((ROOT / 'config/ds41f-1.0.0.json').read_text())['internal_version'],
                   monitor=monitor, save=save, drain=window.drain, cold_reset=window.reset, profile=args.profile)
     window.reset()
     try:

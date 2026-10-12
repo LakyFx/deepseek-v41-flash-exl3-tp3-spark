@@ -9,15 +9,15 @@ fully in 6-bit. Only a scalar activation global-scale is needed at launch.
 
 Layout produced (matches the passing numeric test ``test_moe_fp6_numeric_vs_reference``):
 
-* ``w1_fp6``        : ``(E, 2*N, 3*K//4)`` uint8 -- packed FC1 (gate+up) codes
+* ``w1_fp6``        : ``(E, 2*N, 3*K//4)`` uint8 — packed FC1 (gate+up) codes
 * ``w1_blockscale`` : swizzled UE8M0 bytes, ``(E, pad128(2*N), pad4(K//32))`` uint8
-* ``w2_fp6``        : ``(E, K, 3*N//4)`` uint8 -- packed FC2 (down) codes
+* ``w2_fp6``        : ``(E, K, 3*N//4)`` uint8 — packed FC2 (down) codes
 * ``w2_blockscale`` : swizzled UE8M0 bytes, ``(E, pad128(K), pad4(N//32))`` uint8
 * ``*_alphas``      : ``(E,)`` f32 dequant scales (1.0 under unit global scale)
 * ``a{1,2}_gscale`` : ``(1,)`` f32 activation global scales (1.0 default)
 
-The packed codes come from the GPU quantizer (``compile_bf16_to_fp6_tma``) -- the
-kernel's own quantizer, bit-identical to the torch reference -- and the block scales
+The packed codes come from the GPU quantizer (``compile_bf16_to_fp6_tma``) — the
+kernel's own quantizer, bit-identical to the torch reference — and the block scales
 are computed with the same per-32-block UE8M0 + cutlass swizzle the kernel reads.
 """
 from __future__ import annotations

@@ -1,4 +1,4 @@
-"""Print or run one X11c rank, with operator supplied topology and local paths."""
+"""Print or run one DS41F 1.0.0 (C4) rank, with operator supplied topology and local paths."""
 from pathlib import Path
 import argparse
 import hashlib
@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def build(config, rank, image_aot_sha):
-    p = json.loads((ROOT / 'config/x11c.json').read_text())
+    p = json.loads((ROOT / 'config/ds41f-1.0.0.json').read_text())
     nodes = config['nodes']
     if len(nodes) != 3 or [n['rank'] for n in nodes] != [0, 1, 2]:
         raise ValueError('exactly ranks 0, 1, 2 are required')
@@ -46,8 +46,8 @@ def build(config, rank, image_aot_sha):
     benchmark = config.get('benchmark_control', {})
     if benchmark.get('enabled'):
         env['DGX_CAMPAIGN_CONTROL_PEER_ADDRESS'] = benchmark['peer_address']
-    argv = ['docker', 'run', '--name', f'dsv41-x11c-rank{rank}', '--network', 'host',
-            '--gpus', 'all', '--ipc', 'host', '--cap-add', 'IPC_LOCK', '--ulimit', 'memlock=-1',
+    argv = ['docker', 'run', '--name', f"ds41f-{p['version']}-rank{rank}", '--network', 'host',
+            '--gpus', 'all', '--ipc', 'host', '--memory', '112g', '--memory-swap', '112g', '--cap-add', 'IPC_LOCK', '--ulimit', 'memlock=-1',
             '--device', '/dev/infiniband', '--entrypoint', 'vllm']
     for key, value in sorted(env.items()):
         argv += ['--env', key + '=' + value]
@@ -80,8 +80,7 @@ def build(config, rank, image_aot_sha):
              '--speculative-config', json.dumps({'method': 'dspark', 'num_speculative_tokens': 5,
                     'draft_sample_method': 'probabilistic', 'rejection_sample_method': 'block',
                     'enable_adaptive_verification': True}),
-             '--compilation-config', json.dumps({'cudagraph_mode': 'FULL_AND_PIECEWISE',
-                    'cudagraph_capture_sizes': p['cuda_graph_capture_sizes']})]
+             '--compilation-config', json.dumps(p['compilation'])]
     if benchmark.get('enabled'):
         argv += ['--middleware', 'dgx_campaign_runtime.control.CampaignControl']
     if rank != 0:

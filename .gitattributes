@@ -4,3 +4,7 @@
 Dockerfile text eol=lf
 *.cu text eol=lf
 *.cuh text eol=lf
+
+experiments/20261012/sources/* -text -whitespace
+benchmarks/owen/owen-source.py -text
+benchmarks/owen/owen-fixture.json -text

@@ -199,7 +199,7 @@ def moe_emit_fp4_mma(
     (observed on the FP4 gated static MoE kernel with >1 M-tile). Creating a
     fresh atom per emission keeps every atom value local to one straight-line
     block, so dominance holds by construction. The atom is trace-time
-    metadata only -- no runtime cost.
+    metadata only — no runtime cost.
     """
     mma_atom = cute.make_mma_atom(mma_op)
     mma_atom.set(WarpField.SFA, tCrSFA[None, mt, k_block_idx].iterator)
@@ -229,7 +229,7 @@ def moe_emit_mma_k_block(
     """Dispatch one K-block MMA for MoE (inline MX-FP6 or native FP4).
 
     ``fmt_a`` / ``fmt_b`` accept either FP6/FP8 sub-format strings (``"e3m2"``
-    / ``"e2m3"`` / ``"e4m3"`` -- the byte-container ``mxf8f6f4`` path) or the
+    / ``"e2m3"`` / ``"e4m3"`` — the byte-container ``mxf8f6f4`` path) or the
     legacy ``Float6E3M2FN`` / ``Float6E2M3FN`` dtypes; both emit the inline
     ``mxf8f6f4`` MMA. ``None`` or a non-FP6 dtype falls back to the native FP4
     block-scaled MMA. The byte-container FP6 operands are carried in
@@ -237,7 +237,7 @@ def moe_emit_mma_k_block(
     must be passed explicitly.
 
     Plain Python (not ``@cute.jit``) and takes the MMA *op descriptor*
-    (``self.mma_op``) rather than a shared atom -- the FP4 branch creates a
+    (``self.mma_op``) rather than a shared atom — the FP4 branch creates a
     fresh atom per emission; see :func:`moe_emit_fp4_mma`.
     """
     if fmt_a == "e3m2" or fmt_a == "e2m3" or fmt_a == "e4m3":

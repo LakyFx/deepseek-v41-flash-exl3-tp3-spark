@@ -1425,7 +1425,7 @@ class DeepseekV4Model(nn.Module, EagleModelMixin):
         device: torch.device,
     ) -> IntermediateTensors:
         # PP intermediate tensors carry the multi-stream hidden_states
-        # of shape (num_tokens, hc_mult, hidden_size) -- V4 expands the
+        # of shape (num_tokens, hc_mult, hidden_size) — V4 expands the
         # token embedding to hc_mult streams before the first decoder
         # layer and keeps that shape until hc_head() collapses it.
         return IntermediateTensors(

@@ -1,6 +1,6 @@
 """Communication ops for b12x.
 
-- ``pcie``: collectives for consumer PCIe fabrics (no NVLink) -- one-shot and
+- ``pcie``: collectives for consumer PCIe fabrics (no NVLink) — one-shot and
   DMA/CE-ring all-reduce, FP8-transport two-shot reduce-scatter, and the DCP
   attention all-to-all with fused LSE merge.
 - ``roce`` (RoCEnante): one-shot RDMA all-reduce and all-gather for tensor

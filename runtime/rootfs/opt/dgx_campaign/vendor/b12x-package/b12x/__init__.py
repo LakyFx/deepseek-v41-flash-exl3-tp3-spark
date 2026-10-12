@@ -1,4 +1,4 @@
-"""b12x -- consumer-Blackwell (SM120/SM121) kernels.
+"""b12x — consumer-Blackwell (SM120/SM121) kernels.
 
 CuTe-DSL and Triton kernels for NVFP4/MXFP4/MXFP8 GEMM, fused MoE, attention
 (paged, dense/sparse/compressed MLA, DSA indexing, and QSA decode),

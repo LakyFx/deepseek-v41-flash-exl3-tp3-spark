@@ -54,7 +54,7 @@ class RecipeTests(unittest.TestCase):
             env = [command[i+1] for i, x in enumerate(command) if x == '--env']
             self.assertIn('DSV41_ENGRAM_DISK_THREADS=32', env)
             self.assertIn('DGX_CAMPAIGN_R_AOT_SHA256='+'a'*64, env)
-            self.assertIn('DGX_V089_VERSION=0.8.9X11c', env)
+            self.assertIn('DGX_V089_VERSION=0.8.9X11c-C4', env)
             self.assertIn('DGX_X11_PREFETCH_MIN_ROWS=12', env)
             self.assertEqual('--headless' in command, rank != 0)
             self.assertNotIn('--enable-expert-parallel', command)

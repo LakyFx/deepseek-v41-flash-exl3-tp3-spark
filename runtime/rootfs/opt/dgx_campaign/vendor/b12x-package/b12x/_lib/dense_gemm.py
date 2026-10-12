@@ -590,7 +590,7 @@ def _select_block_fp8_decode_slices(
 def _spread_fp6_group_u32(g: Uint32) -> Uint32:
     """Spread 4 packed 6-bit codes (24 bits) into 4 byte lanes (bits[5:0] each).
 
-    Output byte ``i`` holds ``(g >> 6*i) & 0x3F`` -- identical per-group math to
+    Output byte ``i`` holds ``(g >> 6*i) & 0x3F`` — identical per-group math to
     :func:`b12x._lib.fp6.expand_mxfp6_packed_to_bytes`. Two-step binary
     spread (12-bit halves to 16-bit lanes, then 6-bit fields to byte lanes): 2
     shifts + 2 LOP3-fusable mask/or pairs, ~30% fewer ops than masking each
@@ -634,7 +634,7 @@ def _expand_packed_b_stage_smem(
     """Expand one 3:4-packed B stage IN PLACE into the byte-container sB stage.
 
     TMA stages the packed tile (96 B/row, plain k-major, no swizzle) into the
-    BOTTOM ``tile_n * 3*tile_k/4`` bytes of the sB stage itself -- no separate
+    BOTTOM ``tile_n * 3*tile_k/4`` bytes of the sB stage itself — no separate
     staging buffer, which buys an extra pipeline stage (3 -> 4 for the decode
     tile). The expanded output (128 B/row, swizzled) overlaps the packed input
     region, so expansion is two-phase: every thread loads ALL of its packed
@@ -646,7 +646,7 @@ def _expand_packed_b_stage_smem(
     Raw addressing is deliberate: ``cute.recast_tensor(sB, Uint8)`` STRIPS the
     smem swizzle on this build (confirmed in the fused-MoE FC2 requant path).
     The 8-bit K-major SW128 atom (Sw<3,4,3>, 8x128 = 1024 B) gives
-    ``physical = flat ^ ((row & 7) << 4)`` -- the XOR touches bits 4..6 only,
+    ``physical = flat ^ ((row & 7) << 4)`` — the XOR touches bits 4..6 only,
     so every 16-byte unit stays contiguous and the traffic is fully 128-bit
     (6 x ld.shared.v4 in, 8 x st.shared.v4 out per row). Per-group bit math
     matches :func:`b12x._lib.fp6.expand_mxfp6_packed_to_bytes` exactly,
@@ -656,7 +656,7 @@ def _expand_packed_b_stage_smem(
     MMA-group named barrier before any ldmatrix reads of this stage.
     """
     # Whole-row ownership; ceil-divide so configs with more threads than rows
-    # (e.g. the 256-thread (128,128) tile) stay correct -- guarded threads skip
+    # (e.g. the 256-thread (128,128) tile) stay correct — guarded threads skip
     # the row I/O but ALL threads reach the phase barrier.
     rows_per_thread = (tile_n + num_threads - 1) // num_threads
     packed_row_bytes = tile_k * 3 // 4
@@ -2266,8 +2266,8 @@ class DenseGemmKernel:
             # Second consumer-side view of the mainloop pipeline, kept exactly
             # one stage ahead of mainloop_consumer_state: it advances once at
             # each work-tile prologue and once per k_tile at k_block 0, for a
-            # total of k_tile_cnt per tile -- the same as the main state's
-            # (k_tile_cnt - 1) in-loop advances plus 1 in the hoisted tail --
+            # total of k_tile_cnt per tile — the same as the main state's
+            # (k_tile_cnt - 1) in-loop advances plus 1 in the hoisted tail —
             # so the two stay phase-aligned across persistent work tiles.
             packed_b_lookahead_state = pipeline.make_pipeline_state(
                 pipeline.PipelineUserType.Consumer, self.ab_stage
@@ -7880,7 +7880,7 @@ def dense_gemm(
     per-call weight expansion is skipped. Callers hoist the expansion to load
     time so the static weight is unpacked once instead of every token.
 
-    ``a_preexpanded``: same for the LHS -- its shape is then ``(M, K, L)`` with
+    ``a_preexpanded``: same for the LHS — its shape is then ``(M, K, L)`` with
     one code per byte (e.g. the quantizer's ``emit="bytes"`` output), so the
     logical K is read directly from the shape and no expansion runs.
 

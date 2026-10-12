@@ -1,5 +1,5 @@
 {
-  "image": "dsv41-x11c:recipe-20261009",
+  "image": "ds41f:1.0.0",
   "backend_bind": "127.0.0.1",
   "backend_port": 8003,
   "master_port": 29541,

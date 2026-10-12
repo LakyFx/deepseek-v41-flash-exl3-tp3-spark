@@ -824,6 +824,32 @@ void launch_bm(const half* A, const uint16_t* Bq, OUT_T* C, const half* svh, int
             return;
         }
     }
+    // X11c-N4: same one-row-of-warps reuse, four warps instead of eight.
+    // Decode K fast path above is unchanged; all shapes outside exact TP3
+    // routed projections keep baseline. No BF16/FP16 accumulator downgrade.
+    static const bool next_prefill = [] {
+        const char* value = exl3_env("CUDA_EXL3_NEXT_PREFILL");
+        return value && value[0] == '1' && value[1] == '\0';
+    }();
+    if constexpr (CB == 2 && (BITS == 3 || BITS == 4)) {
+        if (next_prefill && expert_ids && split == 1 && moe_sorted_ids
+            && moe_top_k > 0 && moe_m_valid > 48 * moe_top_k
+            && ((k == 5120 && n == 1536) || (k == 768 && n == 5120))) {
+#define DGX_NEXT_PREFILL(BM, ST) \
+            if (bm == BM) { \
+                launch<BITS, CB, BM, false, OUT_T, 32, ST, false, 64, 4>( \
+                    A, Bq, C, svh, m, k, n, ldc, n_off, n_tiles_full, acc, \
+                    1, smap, stream, expert_ids, b_expert_stride, \
+                    svh_expert_stride, n_rows, moe_sorted_ids, moe_weights, \
+                    moe_top_k, moe_m_valid); \
+                return; \
+            }
+            DGX_NEXT_PREFILL(32, 3)
+            DGX_NEXT_PREFILL(64, 3)
+            DGX_NEXT_PREFILL(128, 2)
+#undef DGX_NEXT_PREFILL
+        }
+    }
     // One warp row (WARPS_M == 1) keeps each trellis tile decoded exactly once.
     // Pipeline depth trades against occupancy: the padded A tile is larger, so
     // the biggest block tile uses one stage fewer to stay at 2 blocks/SM.

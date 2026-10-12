@@ -1186,7 +1186,7 @@ def _scale_is_exact_ue8m0(scale: torch.Tensor) -> bool:
 
     UE8M0-typed tensors (`float8_e8m0fnu`/`uint8`) qualify by construction. A
     floating-point tensor qualifies only if every entry is a positive power of
-    two (zero mantissa) -- e.g. a previously-UE8M0 scale widened to fp32. Genuine
+    two (zero mantissa) — e.g. a previously-UE8M0 scale widened to fp32. Genuine
     checkpoint scales (`weight_scale_inv = block_amax / 448`) are not powers of
     two and fail this test, so they get re-quantized. Runs once at weight load.
     """

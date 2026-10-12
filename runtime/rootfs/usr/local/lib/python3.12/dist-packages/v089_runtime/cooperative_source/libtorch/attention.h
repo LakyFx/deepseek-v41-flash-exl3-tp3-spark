@@ -9,9 +9,9 @@
 
 // Graph-captured decode attention block, following the BC_GatedDeltaNetSplit pattern: run() is
 // the bound entry point controlling the mode (first run eager, second run captured, later runs
-// patch-and-replay), run_gr() is the workload -- q/k/v projections, fused q/k norm + RoPE, cache
+// patch-and-replay), run_gr() is the workload — q/k/v projections, fused q/k norm + RoPE, cache
 // append and the flash-decoding attention kernels (AOT-compiled Triton cubins launched through
-// TritonKernel), then o_proj -- all recorded as one graph. Intermediates live in static buffers
+// TritonKernel), then o_proj — all recorded as one graph. Intermediates live in static buffers
 // allocated python-side through g_tensor_cache (shared between layers on the same device); the
 // only per-call updates are the pointers patched into the graph: input x, output y,
 // cache_seqlens, block_table and RoPE positions.

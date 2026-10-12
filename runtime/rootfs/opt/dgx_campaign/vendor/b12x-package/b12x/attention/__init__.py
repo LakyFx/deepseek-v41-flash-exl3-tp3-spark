@@ -7,7 +7,7 @@
 - ``sparse_mla``: top-k-selected MLA, including strided physical records.
 - ``compressed_sparse_mla``: sparse MLA directly from compressed KV pages
   (DSV4).
-- ``dsa_indexer``: the DSA index stage -- quantize -> score -> select.
+- ``dsa_indexer``: the DSA index stage — quantize -> score -> select.
 - ``qsa``: grouped-selector sparse GQA over caller-populated, read-only main
   BF16 paged K/V.
 - ``varlen``: contiguous batched/varlen attention (reduced-assurance tier).

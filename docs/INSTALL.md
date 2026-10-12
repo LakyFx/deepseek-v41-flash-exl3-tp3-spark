@@ -1,4 +1,4 @@
-# Install the selected X11c profile
+# Install DS41F 1.0.0 (C4)
 
 This is a three-node, ARM64, one-GB10-GPU-per-node installation. It uses TP3 and disk-backed Engram. The build and model preparation can take much longer than the benchmark. Prepare them before replacing an existing service. The launcher never stops an existing model or changes a system service.
 
@@ -6,7 +6,7 @@ This is a three-node, ARM64, one-GB10-GPU-per-node installation. It uses TP3 and
 
 Use three DGX Sparks with working NVIDIA drivers, Docker, NVIDIA Container Toolkit, and working RoCE v2 between every pair. CUDA 13 and SM121 support come from the pinned container build. Keep management traffic and RoCE address selection explicit. This recipe does not upgrade a host driver or network firmware.
 
-The running three-node deployment inspected on 2026-10-09 had NVIDIA GB10 on every rank, driver 580.173.02 and host kernel `6.17.0-1031-nvidia`. These are observed host versions, not an instruction to downgrade another functioning host. GB10 uses unified memory; `nvidia-smi` reports its total GPU memory as N/A on this setup. Verify actual host memory and the engine's reported KV capacity.
+The selected C4 deployment inspected on 2026-10-12 uses NVIDIA GB10 on every rank, driver `580.178.04`, kernel `7.0.0-1019-nvidia-64k`, 65,536-byte host pages and a signed memory-saver module with packing enabled by default. The earlier X11c release used `6.17.0-1031-nvidia` / `580.173.02`; do not use that historical environment as the claimed C4 test environment. See [host environment](HOST-ENVIRONMENT.md) before changing an OS or module. GB10 uses unified memory; `nvidia-smi` reports its total GPU memory as N/A on this setup. Verify actual host memory and the engine's reported KV capacity.
 
 The measured transport has four logical HCA names per node and two HCA lanes per peer. Check your actual devices with `ibv_devices`, `ibv_devinfo`, `ip -br address`, and `/sys/class/infiniband`. Do not infer a GID index from a device name. Confirm that the selected index is the IPv4 RoCE v2 entry on each selected HCA. The example names describe the measured device layout; verify your machine before retaining them.
 
@@ -19,7 +19,7 @@ The weights can be shared read-only from one Spark to the other two over NFS. Ev
 ```bash
 git clone https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark.git
 cd deepseek-v41-flash-exl3-tp3-spark
-git checkout v0.8.9X11c
+git checkout v1.0.0
 bash build/build.sh
 ```
 

@@ -6125,7 +6125,7 @@ class GPUModelRunner(
             ubatch_slices=ubatch_slices_padded,
         )
 
-        # Dummy runs have no real slot assignments -- fill with -1 so
+        # Dummy runs have no real slot assignments — fill with -1 so
         # concat_and_cache kernels skip the KV write.
         if slot_mappings_by_group is not None:
             for sm in slot_mappings_by_group.values():
@@ -6411,7 +6411,7 @@ class GPUModelRunner(
             )
             # Also warm forward_native (taken when generators dict is non-empty),
             # but skip the extra call in 'processed_logits' / 'processed_logprobs'
-            # modes -- there TopKTopPSampler binds forward = forward_native at
+            # modes — there TopKTopPSampler binds forward = forward_native at
             # init time, so the warmup call is redundant and only inflates peak
             # memory during profile_run.
             # No .clone() of logits: warmup output is discarded, so any in-place
@@ -6586,7 +6586,7 @@ class GPUModelRunner(
 
                 if (encoder_budget := mm_budget.get_encoder_budget()) > 0:
                     if not mm_budget.mm_max_toks_per_item:
-                        # All modality limits are 0 -- embedding-only mode.
+                        # All modality limits are 0 — embedding-only mode.
                         # Budget is non-zero for embedding storage, but
                         # there's no encoder to profile.
                         logger.info(

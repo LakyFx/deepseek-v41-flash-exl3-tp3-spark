@@ -99,7 +99,7 @@ def emit_mxfp6_dense_mma_k_block(
             sfa, sfb,
         )
     elif cutlass.const_expr(fmt_a == "e2m3" and fmt_b == "e4m3"):
-        # Cross-format (A=FP6, B=FP8) -- not used by the dense W6A8 path.
+        # Cross-format (A=FP6, B=FP8) — not used by the dense W6A8 path.
         d0, d1, d2, d3 = mxfp6_mma_m16n8k32_f32_e2m3_e4m3(
             acc[0], acc[1], acc[2], acc[3],
             a_frag[0], a_frag[1], a_frag[2], a_frag[3],

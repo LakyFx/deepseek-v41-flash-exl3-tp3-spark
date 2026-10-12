@@ -958,6 +958,12 @@ class GPUModelRunner(LoRAModelRunnerMixin):
                             self.lora_config, self
                         ),
                     )
+                    self.model_state.capture_inner_cudagraphs(
+                        input_buffers,
+                        self.block_tables,
+                        self.attn_groups,
+                        self.kv_cache_config,
+                    )
                     if self.speculator is not None:
                         with use_workspace_lane(self._draft_workspace_lane):
                             self.speculator.capture()
@@ -1589,6 +1595,8 @@ class GPUModelRunner(LoRAModelRunnerMixin):
             )
 
         skip_compiled = _v089x_prefill(self, batch_req_state, scheduler_output, num_toks, dummy_run)
+        from dgx_next_runtime.policy import small_prefill_eager
+        skip_compiled = skip_compiled or small_prefill_eager(batch_req_state, num_toks, dummy_run)
         if self.is_encoder_decoder and scheduler_output.scheduled_encoder_inputs:
             # Encoder-decoder models such as Whisper should run eager/non-compiled
             # when encoder inputs are scheduled, because this step updates
@@ -1607,6 +1615,8 @@ class GPUModelRunner(LoRAModelRunnerMixin):
             num_active_loras=num_active_loras,
         )
 
+        from dgx_next_runtime.trace import observe as next_shape_observe
+        next_shape_observe(batch_req_state, num_toks, batch_desc.num_tokens, dummy_run)
         if batch_desc.num_tokens == 0:
             # All DP ranks have zero tokens to run.
             empty_output = self.kv_connector.no_forward(scheduler_output)

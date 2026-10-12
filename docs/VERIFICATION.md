@@ -1,6 +1,6 @@
 # Installation verification and historical measurements
 
-The historical measurements were made on the running X11c deployment. The public image rebuild is a separate packaging check. Compiling identical source does not establish numerical equivalence on a new machine or reproduce a throughput measurement by itself.
+The current C4 / 1.0.0 scope is recorded at the end of this page. The following original publication receipts describe the earlier X11c deployment. The public image rebuild is a separate packaging check. Compiling identical source does not establish numerical equivalence on a new machine or reproduce a throughput measurement by itself.
 
 The publication build completed from commit `8ae62c9` on ARM64 with no GPU or model mounts and a 2,500 MB memory cap. Its selected build inputs match the published tree. The subsequent CPU check loaded the EXL3, T01 and auxiliary extensions, verified their ABI and registration, confirmed NCCL 2.30.7, and checked all twelve AOT objects. CUDA remained uninitialized. Nine CPU tests also passed from an anonymous fresh clone, and all 741 published runtime provenance hashes matched. Machine-readable receipts are in [publication-qualification](../results/publication-qualification/).
 
@@ -36,3 +36,9 @@ This check retains its named container and does not initialize CUDA, mount weigh
 Run the completed image on all three nodes only after preparing your own topology and local Engram ranges. Confirm startup version, dependency checks, TP rank assignment, graph capture, AOT manifest, KV capacity and reasoning policy. Then run a short owned request and an exclusive benchmark using [BENCHMARKS.md](BENCHMARKS.md). Retain your old deployment until this acceptance succeeds.
 
 The recipe does not perform a fresh 460 GB model download or a second live three-node weight load during publication. It preserves the measured deployment settings and makes the installation inputs explicit. Throughput, memory availability and graph capture can differ on another host; report them as new measurements.
+
+## October 12 release scope
+
+DS41F 1.0.0 exports the running C4 source plus the exact native N4 build source. Production passed the saved three-rank qualification/quality campaign; full numerical envelopes are in `results/20261012-host64k-campaign/`. This publication uses offline source, settings, corpus and regression checks. It does not claim a newly built public image was loaded on three GPUs during documentation work. The older CPU image build receipt above applies to the previous X11c packaging, not automatically to this updated C4 image.
+
+`runtime/source-provenance.json` distinguishes live measured-source hashes from public LF-normalized or control-peer-adapted file hashes. Host topology is deliberately supplied by the operator. The image still needs build/ABI and numerical qualification on a new installation.

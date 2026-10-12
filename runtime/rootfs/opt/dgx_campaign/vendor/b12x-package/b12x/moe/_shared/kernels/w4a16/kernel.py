@@ -929,7 +929,7 @@ class MoEMicroKernelW4A16SmallMDirect(MoEMicroKernelBackend):
         # The FC2 chunking (256 intermediate values per chunk, fc2_n_chunks)
         # masks a tail inside a single chunk correctly (I=128 oracle-covered),
         # but multi-chunk shards with a partial last chunk (352, 384) index
-        # scale columns past the e8m0 grid and corrupt decode outputs -- the
+        # scale columns past the e8m0 grid and corrupt decode outputs — the
         # e4m3_k16 path masks this fine; e8m0 must cover multi-chunk exactly.
         if scale_format == "e8m0_k32":
             fc2_n_chunks = ((int(intermediate_size) // 2) + 127) // 128

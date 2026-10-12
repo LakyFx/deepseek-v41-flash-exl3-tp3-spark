@@ -4,7 +4,7 @@ Design (see plan): a row-cooperative persistent kernel where each CTA streams a
 slice of one query row's K, scores q·k via ``mxfp8`` MMA into shared memory
 (m = heads / MQA), folds each scored sub-tile into an in-SMEM running top-k via
 the ``tiled_topk`` radix (coarse-8-bit-histogram + byte-refine), and CTAs merge
-in turn. Logits never reach global memory -- peak per-row working set is
+in turn. Logits never reach global memory — peak per-row working set is
 O(topk), not O(K). contiguous K/V vs paged K/V is a constexpr K-loader
 specialization; the score assembly and top-k are identical (always m = heads).
 
@@ -125,7 +125,7 @@ _THREADS_PER_CTA = 1024
 _MAX_CHUNK_ELEMENTS = 8192
 
 # Constexpr K/V-layout specialization (the ONLY contiguous-vs-paged divergence in the
-# fused kernel -- everything downstream of the SMEM staging tile is shared).
+# fused kernel — everything downstream of the SMEM staging tile is shared).
 KV_LAYOUT_CONTIGUOUS_MLA = 0
 KV_LAYOUT_PAGED = 1
 
@@ -156,7 +156,7 @@ def _load_flat_k_tile_scalar(
 ):
     """CONTIGUOUS_MLA K-load: stage a 64-row tile of contiguous K starting at abs_base.
 
-    Rows >= valid_rows are zero-filled (so the MMA contributes 0 for them -- masked
+    Rows >= valid_rows are zero-filled (so the MMA contributes 0 for them — masked
     out anyway by the staging-write valid_slots guard).
     """
     linear = lane_linear
@@ -231,7 +231,7 @@ def _load_permute_k_page_g2s(
     vectorized pass. Granule addresses are 16B-aligned (page*page_stride_bytes +
     row*128 + vec*16); page_stride_bytes MUST be the real dim-0 stride of
     k_quant_bytes (the packed paged cache interleaves per-page scales, so its page
-    stride is 8448, not the contiguous 8192) -- using a hardcoded stride reads the
+    stride is 8448, not the contiguous 8192) — using a hardcoded stride reads the
     wrong page for the packed layout. It stays 16B-aligned (8448 = 16*528).
     """
     page_elem_base = Int64(page_id) * page_stride_bytes
@@ -292,7 +292,7 @@ def _align_up(value: int, multiple: int) -> int:
 def _resolve_fused_launch_config(
     num_rows: int, width: int, device: torch.device
 ) -> _FusedLaunchConfig:
-    """Row-cooperative split -- cloned from persistent_topk._resolve_launch_config.
+    """Row-cooperative split — cloned from persistent_topk._resolve_launch_config.
 
     One group owns one query row; ``ctas_per_group`` CTAs split the row's K of
     ``width`` tokens; groups persist grid-stride over rows.
@@ -2317,7 +2317,7 @@ class DSAFusedIndexerKernel:
                                             )
                                         s_c0_gindex[carry_count + slot_idx] = output_idx
                             # page_splits==1 (always for 1/2/4 head tiles): no post-reduce
-                            # barrier -- the next page's load barrier (or the trim's leading
+                            # barrier — the next page's load barrier (or the trim's leading
                             # sync, or the pre-output sync) orders this reduce before any
                             # later writer of s_partial_logits / reader of the carry. Multi-
                             # split would need the barrier between splits, so keep it then.

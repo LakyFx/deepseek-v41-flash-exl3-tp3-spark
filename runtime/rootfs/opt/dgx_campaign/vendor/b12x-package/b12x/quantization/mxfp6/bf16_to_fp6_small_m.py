@@ -3,8 +3,8 @@
 The TMA quantizer (:mod:`b12x.quantization.mxfp6.bf16_to_fp6_tma`) tiles
 M in 128, so an M=1 decode activation pays for 128 quantized rows (~99% wasted
 work: ~29 us per linear, larger than the decode GEMM itself). This kernel
-quantizes ONLY the real rows -- one thread per 32-element block, plain global
-loads, no TMA/smem -- and writes the exact same outputs for those rows:
+quantizes ONLY the real rows — one thread per 32-element block, plain global
+loads, no TMA/smem — and writes the exact same outputs for those rows:
 
 * byte-container codes (one FP6 code per byte, the ``mxf8f6f4`` GEMM operand
   layout) at the same ``(row, K)`` offsets, and
@@ -12,7 +12,7 @@ loads, no TMA/smem -- and writes the exact same outputs for those rows:
 
 using the *same* ``quantize_block_fp6_*_bytes`` math and the same store
 helpers, so results are bit-identical to the TMA path for every written row.
-Rows ``m..127`` of the padded buffers stay unwritten -- the GEMM runs at the
+Rows ``m..127`` of the padded buffers stay unwritten — the GEMM runs at the
 true ``m`` and never depends on them (same contract as the uninitialized
 ``x_pad`` rows on the large-M path).
 
@@ -26,15 +26,15 @@ of CTA 0 emits ``alpha = 1 / (gs * w_gscale)`` for the GEMM epilogue. That
 removes the separate ``vector_norm`` reduce kernel (~1 ms/step at 256
 linears/step in the serving profile) plus the f32-convert/clamp/div/mul/
 reciprocal launches from the decode hot path. All divisions use div.rn.f32
-(correctly rounded); the host-side chain divides in f64 and casts to f32 --
-provably the same bits -- so codes/scales/alpha stay bit-identical. (A raw
+(correctly rounded); the host-side chain divides in f64 and casts to f32 —
+provably the same bits — so codes/scales/alpha stay bit-identical. (A raw
 torch f32 scalar/tensor divide is NOT always correctly rounded on CUDA.)
 
 The amax scan is deliberately REDUNDANT per CTA rather than single-CTA or
 cross-CTA synced: at small-M sizes the scan is a sub-microsecond L2 read
 (<=442 KB) while quantization wants the full grid (up to 54 CTAs at m=16,
 K=13824). A single-CTA variant was tried and cost ~1.2 ms/step in serving by
-serializing the MTP-verify quants -- redundancy is the cheaper trade by far.
+serializing the MTP-verify quants — redundancy is the cheaper trade by far.
 """
 from __future__ import annotations
 
@@ -77,7 +77,7 @@ _THREADS = 128
 
 # Numerator of the activation global scale, per sub-format: maps amax into the
 # format's own range exactly like the host-side recipe (e3m2: 12544.0,
-# e2m3: 3360.0 -- both exactly representable in f32). Resolved at kernel trace
+# e2m3: 3360.0 — both exactly representable in f32). Resolved at kernel trace
 # time from ``self.fmt``, so codes/scales/alpha stay bit-identical to the host
 # path in b12x.quantization.mxfp6.fp6_dense_weights.
 _GS_NUMERATOR = {f: mx_gs_numerator(f) for f in ("e3m2", "e2m3", "e4m3")}
@@ -103,7 +103,7 @@ class SmallMQuantKernel:
     * quantization with a UNIT global scale and ``alpha = 1/(1*w_gs)``
       (the pre-scaled row amax is exactly the fmt numerator, so the
       per-tensor gs the host chain's kernel re-derived collapses to exactly
-      1.0 -- same argument as the host-path comment in fp6_dense_weights),
+      1.0 — same argument as the host-path comment in fp6_dense_weights),
     * the per-row output correction ``inv_gs_r = bf16(1/gs_r)`` written to
       ``mInvGs`` for the caller's post-GEMM ``result.mul_``.
 
@@ -175,7 +175,7 @@ class SmallMQuantKernel:
         gs_pr = cute.make_rmem_tensor((m_c,), cutlass.Float32)
         if cutlass.const_expr(self.per_row):
             # Phase 0 (per-row mode): per-CTA amax of EACH row (every CTA
-            # computes the same values -- see module docstring). Same
+            # computes the same values — see module docstring). Same
             # vectorized 128-bit loads as the per-tensor scan; k % 128 == 0
             # keeps every row start 16-byte aligned. f32 max over exact
             # |bf16| values is bit-identical to x.abs().amax(dim=1).float().
@@ -207,8 +207,8 @@ class SmallMQuantKernel:
                 # may lower to an approximate division). NOTE: torch's CUDA
                 # f32 scalar/tensor division is itself NOT always correctly
                 # rounded (200704/2.625 lands 1 ulp high), so the host chain
-                # in fp6_dense_weights divides in f64 and casts -- provably
-                # equal to div.rn.f32 -- to stay bit-identical to this kernel.
+                # in fp6_dense_weights divides in f64 and casts — provably
+                # equal to div.rn.f32 — to stay bit-identical to this kernel.
                 gs_pr[r] = div_rn_f32(
                     cutlass.Float32(_GS_NUMERATOR[self.fmt]),
                     fmax_f32(amax_r, cutlass.Float32(1e-6)),
@@ -227,10 +227,10 @@ class SmallMQuantKernel:
             # Quantization below uses the pre-scaled values with a UNIT gs
             # (gs_value stays 1.0): the pre-scaled row amax is exactly the
             # fmt numerator, so the host chain's re-derived per-tensor gs is
-            # exactly 1.0 as well -- bit-identical codes/scales/alpha.
+            # exactly 1.0 as well — bit-identical codes/scales/alpha.
         else:
             # Phase 0 (per-tensor mode): per-CTA amax over all m*K bf16
-            # values (every CTA computes the same value -- see module
+            # values (every CTA computes the same value — see module
             # docstring), 128-bit loads (k % 128 == 0 so m*K % 8 == 0 and x
             # is 16-byte aligned). abs of a bf16 in f32 is just its bits
             # shifted high with the sign cleared, so each u32 word costs two
@@ -263,7 +263,7 @@ class SmallMQuantKernel:
                 cutlass.Float32(_GS_NUMERATOR[self.fmt]), amax_f32
             )
 
-        # Phase 1: one 32-element block per thread across the full grid --
+        # Phase 1: one 32-element block per thread across the full grid —
         # same parallelism as the pre-fusion kernel. Same per-block math
         # (load order, f32 convert, sequential fmax-of-fabs) as the TMA
         # kernel -> bit-identical codes/scales.
@@ -271,7 +271,7 @@ class SmallMQuantKernel:
         if idx == Int32(0):
             # alpha = 1/(a_gs * w_gs) for the GEMM epilogue; div.rn.f32
             # matches torch.reciprocal (both correctly rounded). In per-row
-            # mode gs_value is the unit scale (1.0) -- alpha = 1/(1*w_gs),
+            # mode gs_value is the unit scale (1.0) — alpha = 1/(1*w_gs),
             # same as the host chain's torch.reciprocal(gs_unit * w_gs).
             alpha = div_rn_f32(
                 cutlass.Float32(1.0),

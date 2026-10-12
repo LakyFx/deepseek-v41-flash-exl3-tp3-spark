@@ -47,7 +47,7 @@ Each series is a separate measurement campaign. Values below retain their origin
 | X11 | X10 plus adaptive verification; generated maximum K5 |
 | X11a | X11 plus adaptive startup profiling at 64K |
 | X11b | X11 plus alternative graph capture sizes |
-| X11c | X11 plus bounded prefetch, selected production |
+| X11c | X11 plus bounded prefetch, selected October 9; later superseded by C4 / 1.0.0 |
 | X11d | X11 plus generated maximum K4, adaptive verification retained |
 | X11e | X11 plus genuinely dynamic generated draft length |
 
@@ -90,8 +90,24 @@ Operational versions 0.8.4 through 0.8.7 included cache, allocator, diagnostic a
 
 Changing trained Markov rank, weights, expert parallelism or installing TensorFold was not part of the selected tuning sequence. NVFP4 and other model recipes were studied as alternatives and are excluded from this EXL3 performance claim.
 
-## Why current X11c
+## Why X11c was selected on October 9
 
 The fresh X11 to X11c comparison gave C8 aggregate +4.77%, C1 request decode -3.92%, C3 request decode -2.40%, and 64K computed prefill -0.75%. Real long-context Hermes work and observed behavior motivated retaining X11c. The preference is not an assertion that every individual metric improved. The subsequent reasoning comparison is a separate experiment in `results/20261009-X11c-reasoning/`.
 
 Private captured bodies and generated private text are omitted from public evidence. Public metrics preserve durations, counts, cache state, scoring and incomplete phases; public surrogate inputs must be measured as a new benchmark.
+
+## October 12 production release
+
+**DS41F 1.0.0 is C4.** Continue with [the complete B0/N/C campaign](CAMPAIGN-20261012.md) and [the final recipe explanation](DS41F-1.0.0.md). The host64k baseline was freshly measured; earlier X11c numbers are not substituted for it.
+
+## Exact X11 follow-up settings and what did not carry forward
+
+[Machine-readable follow-up settings](../results/20261009-X11-followups/exact-settings.json) retain the complete graph lists and policy constants. These were independent changes from X11, not steps accumulated into X11e.
+
+- **X11a:** profile adaptive startup cost at 65,536 context tokens. The measured C1 dropped from 66.79 to 56.10, while C8 rose slightly. Longer cost profiling alone was not the selected solution.
+- **X11b:** add graph sizes 1, 2, 3, 4, 8, 16 and 32 to the baseline set. More captured buckets reduce some padding but consume memory and change graph choices. C8 rose modestly; C3 and prefill declined.
+- **X11c:** reduce prefetch from rows 1?48, FFN 16 MiB, attention 20 MiB and two CTAs to rows 12?48, 8 MiB, 12 MiB and one CTA. This limits overhead for small batches. The fresh C8 gain was 4.77%, with modest C1/C3 declines. This is the foundation retained in 1.0.0.
+- **X11d:** generate at most K4, keep adaptive verification, add graph sizes needed for request counts 1?8 times physical depths 4/5. Lower draft cost did not give the best overall result.
+- **X11e:** genuinely dynamic generated depth, K5 at 1?3 requests, K4 at 4?5 and K3 at 6?8. Downshift after two matching steps; upshift immediately. Extra graph shapes cover physical depths 3?6. It was weaker than X11c on the shown C1/C3/C8 and prefill cells, so dynamic generation was not carried into production.
+
+The X1?X11 table above likewise shows non-additive behavior: X4 gave the largest isolated C1 in that campaign, X9's shorter K3 favored C8 but lost C1, and X10's combined fixed-K5 changes did not dominate. X11 added adaptive verification to X10 and improved C8 in that pass. These observations motivated combination tests rather than assuming every individually plausible kernel change must stay enabled.

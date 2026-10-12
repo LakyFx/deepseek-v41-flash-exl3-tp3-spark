@@ -603,9 +603,9 @@ def sparse_attn_indexer(
             # decode_threshold since we unstrictly split
             # prefill and decode by decode_threshold
             # (currently set to 1 + speculative tokens).
-            # FP8 Q is float8_e4m3fn (pack_seq_triton's fp32 pad path is OK --
+            # FP8 Q is float8_e4m3fn (pack_seq_triton's fp32 pad path is OK —
             # downstream context_lens masks stale slots). MXFP4 Q is two
-            # uint8 tensors (values + ue8m0 scales) -- use the dedicated uint8
+            # uint8 tensors (values + ue8m0 scales) — use the dedicated uint8
             # packer with pad_byte=0 so padded slots dequantize to 0 and
             # can't produce NaN/Inf in the logits kernel.
             if q_scale is not None:

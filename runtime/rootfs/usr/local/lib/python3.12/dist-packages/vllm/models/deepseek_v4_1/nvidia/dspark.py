@@ -224,7 +224,7 @@ class DSparkDeepseekV4Model(nn.Module):
             hidden_states = sp_all_gather(hidden_states)[:full_num_tokens]
             pre_mix = sp_all_gather(pre_mix)[:full_num_tokens]
         # Collapse the hc copies with the pre-mix from the last layer's FFN
-        # mixes -- the mix the reference forward_head applies (hc_pre with the
+        # mixes — the mix the reference forward_head applies (hc_pre with the
         # last block's ffn pre-mix). Return the PRE-norm head hidden;
         # compute_logits applies self.norm.
         assert pre_mix is not None
@@ -486,7 +486,7 @@ class DSparkDeepseekV4ForCausalLM(nn.Module):
                 continue
 
             # Stacked rules only apply to decoder-layer weights. Head-stack params
-            # (main_proj/norm/markov_head/confidence_head) load directly --
+            # (main_proj/norm/markov_head/confidence_head) load directly —
             # otherwise e.g. "markov_w1" would collide with the "w1" shard rule.
             is_layer_param = name.startswith("model.layers.")
             for param_name, weight_name, stacked_shard_id in stacked_params_mapping:

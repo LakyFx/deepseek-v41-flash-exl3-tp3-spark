@@ -240,9 +240,9 @@ def load_act_fmt_overrides(
 ) -> list[tuple[str, str]]:
     """Merge env + config overrides (env wins on conflict by coming first).
 
-    * ``B12X_FP6_ACT_FMT_OVERRIDES`` -- ``pat=fmt,pat=fmt`` (serve-time, no
+    * ``B12X_FP6_ACT_FMT_OVERRIDES`` — ``pat=fmt,pat=fmt`` (serve-time, no
       config edit).
-    * ``quantization_config.activation_format_overrides`` -- dict in
+    * ``quantization_config.activation_format_overrides`` — dict in
       ``config.json``.
     """
     env_spec = os.environ.get("B12X_FP6_ACT_FMT_OVERRIDES", "").strip()
@@ -377,7 +377,7 @@ def _pack_codes_and_scales_mse(
 
     Per 32-element block: try the amax-ceil containment scale and the one-finer
     exponent (ceil-1, may clip the block max). Keep whichever reconstruction has
-    lower block MSE. Never blind-floors -- ceil remains the safe default candidate.
+    lower block MSE. Never blind-floors — ceil remains the safe default candidate.
     Model-agnostic; offline weights only (runtime activation quant stays ceil).
     """
     from b12x._lib.fp6 import pack_fp6_codes_tensor
@@ -406,7 +406,7 @@ def _pack_codes_and_scales_mse(
     # ue==0 is reserved as the "all-zero block" sentinel (see
     # dequantize_linear_from_fp6), so the finer exponent is only eligible when
     # e-1 still maps to ue >= 1 (e-1 >= -126). Gating the CANDIDATE (rather
-    # than clamping ue afterwards) keeps codes and stored scale consistent --
+    # than clamping ue afterwards) keeps codes and stored scale consistent —
     # a post-hoc ue clamp would pair e-1-encoded codes with an e-exponent
     # scale and silently dequantize the block 2x too large.
     lo_representable = e > -126.0

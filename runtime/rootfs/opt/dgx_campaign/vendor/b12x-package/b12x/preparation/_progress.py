@@ -312,7 +312,7 @@ class PreparationDisplay:
             self._rail_row(frame),
             self._progress_row(frame, inner),
             Text("─" * inner, style=_TRACK),
-            self._field("REQUEST", p.component_id or "--", p.request_name),
+            self._field("REQUEST", p.component_id or "—", p.request_name),
             self._activity_row(frame),
             self._detail_row(frame),
             Text("─" * inner, style=_TRACK),

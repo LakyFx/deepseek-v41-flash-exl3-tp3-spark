@@ -1,0 +1,97 @@
+{
+  "complete": true,
+  "version": "X11c-host64k",
+  "decode": {
+    "code-c1": {
+      "samples": 3,
+      "mean_tps": 59.401,
+      "min_tps": 58.146,
+      "max_tps": 61.7
+    },
+    "code-c2": {
+      "samples": 3,
+      "mean_tps": 83.836,
+      "min_tps": 79.825,
+      "max_tps": 88.722
+    },
+    "code-c4": {
+      "samples": 3,
+      "mean_tps": 131.47033333333334,
+      "min_tps": 127.536,
+      "max_tps": 138.417
+    },
+    "code-c8": {
+      "samples": 3,
+      "mean_tps": 215.239,
+      "min_tps": 194.973,
+      "max_tps": 228.857
+    },
+    "prose-c1": {
+      "samples": 3,
+      "mean_tps": 40.21066666666667,
+      "min_tps": 36.208,
+      "max_tps": 44.885
+    },
+    "prose-c2": {
+      "samples": 3,
+      "mean_tps": 68.74266666666666,
+      "min_tps": 65.606,
+      "max_tps": 72.11
+    },
+    "prose-c4": {
+      "samples": 3,
+      "mean_tps": 99.00566666666667,
+      "min_tps": 95.159,
+      "max_tps": 105.015
+    },
+    "prose-c8": {
+      "samples": 3,
+      "mean_tps": 157.759,
+      "min_tps": 155.5,
+      "max_tps": 160.393
+    }
+  },
+  "prefill": {
+    "32768": {
+      "mean_tps": 1251.9035210016725,
+      "measurements": [
+        {
+          "tps": 1263.559868953809,
+          "actual_tokens": 30739,
+          "ttft_s": 24.3273
+        },
+        {
+          "tps": 1240.247173049536,
+          "actual_tokens": 30568,
+          "ttft_s": 24.6467
+        }
+      ]
+    },
+    "262144": {
+      "mean_tps": 1244.3665975983247,
+      "measurements": [
+        {
+          "tps": 1198.712047308979,
+          "actual_tokens": 235805,
+          "ttft_s": 196.7153
+        },
+        {
+          "tps": 1290.0211478876704,
+          "actual_tokens": 249185,
+          "ttft_s": 193.1635
+        }
+      ]
+    }
+  },
+  "wall_seconds": 757.6324722810004,
+  "reasoning": "production MAX; author effort unverified",
+  "limits": [
+    "500K excluded: exceeds401408 context",
+    "own stdlib text, not proven identical to author",
+    "this fixture is not a benchmark runner or a performance result",
+    "nominal input length is approximate; require actual tokenizer/API counts",
+    "abort on foreign traffic, missing usage, request failure or generation change"
+  ],
+  "source_result_sha256": "d5e51853faabb055dc1699c667027cfb2a5449626c13a6fbccb04cf8e97dcd77",
+  "scope": "Adapted historical Owen client, frozen Linux fixture, MAX reasoning. Author historical effort/prompt bytes not proven identical; common-subset comparison, not exact reproduction."
+}

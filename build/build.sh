@@ -9,5 +9,6 @@ fi
 # exact base archive instead of silently substituting a different nightly.
 # Keep at least 40 GB of additional free disk for the archive and image layers.
 python3 tools/fetch_base.py --load
-docker build -f build/Dockerfile -t dsv41-x11c:recipe-20261009 .
-docker image inspect dsv41-x11c:recipe-20261009 --format '{{.Id}}'
+recipe_image="${RECIPE_IMAGE:-ds41f:1.0.0}"
+docker build -f build/Dockerfile -t "$recipe_image" .
+docker image inspect "$recipe_image" --format '{{.Id}}'

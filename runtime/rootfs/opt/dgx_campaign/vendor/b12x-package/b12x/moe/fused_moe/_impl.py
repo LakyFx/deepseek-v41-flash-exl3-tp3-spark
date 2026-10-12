@@ -2838,7 +2838,7 @@ def _packed_input_binding_views(
     packed_input_scale: torch.Tensor,
 ) -> _PackedInputBindingViews:
     sf_dtype = cutlass.Float8E4M3FN
-    # Keep as uint8 -- the float4 element type is conveyed to CUTLASS via
+    # Keep as uint8 — the float4 element type is conveyed to CUTLASS via
     # _gptr / compile-time dtype, and dlpack does not support float4.
     return _PackedInputBindingViews(
         packed_a_view=packed_input.permute(1, 2, 0),
@@ -5684,7 +5684,7 @@ def _swap_w13_scale_halves_inplace(
 # Storages already flipped to the kernel-native [up; gate] order, keyed by
 # data_ptr. Values hold the tensors so the allocator cannot recycle a
 # registered address (a recycled data_ptr would skip the flip for new weights);
-# deliberately NOT cleared with the view caches -- the storage stays normalized.
+# deliberately NOT cleared with the view caches — the storage stays normalized.
 _W13_NORMALIZED_STORAGES: Dict[Tuple[int, int], Tuple[torch.Tensor, torch.Tensor]] = {}
 
 
@@ -5700,7 +5700,7 @@ def _ensure_w13_kernel_order_inplace(
 
     The gated micro/dynamic kernels consume fused FC1 weights as [up; gate]
     ("w13"). vLLM fuses [gate; up], so flip the caller's weight and block-scale
-    storage once at first use -- the load-time mirror of the W4A16 prepare-path
+    storage once at first use — the load-time mirror of the W4A16 prepare-path
     row rotation. Mutates caller storage in place.
     """
     reg_key = (w1_fp4.data_ptr(), w1_blockscale.data_ptr())
@@ -5723,7 +5723,7 @@ def _ensure_w13_kernel_order_inplace(
         sl[:, :n] = sl[:, n:]
         sl[:, n:] = tmp
     if quant_mode == "w4a8_mx":
-        # MXFP4 sources carry plain [E, 2n, K//32] grids -- swap rows directly.
+        # MXFP4 sources carry plain [E, 2n, K//32] grids — swap rows directly.
         grid = _as_e8m0_k32_grid(w1_blockscale, 2 * n, k, name="w1_blockscale")
         tmp = grid[:, :n].clone()
         grid[:, :n] = grid[:, n:]
@@ -5951,7 +5951,7 @@ def _get_weight_views(
         w2_storage=w2_fp4,
         w2_scale_storage=w2_scale_storage,
     )
-    # Keep as uint8 for dlpack compatibility -- torch float4 types are not
+    # Keep as uint8 for dlpack compatibility — torch float4 types are not
     # supported by dlpack, and sglang may load weights as native float4.
     # The CUTLASS kernel receives the element type via _gptr / compile-time
     # dtype, not from the torch tensor dtype.
@@ -5997,7 +5997,7 @@ def _get_weight_views(
             )
         else:
             # w4a8_mx: the checkpoint E8M0 K/32 grids feed the kernel
-            # directly. Residuals stay None -- the w4a8_mx kernel neither
+            # directly. Residuals stay None — the w4a8_mx kernel neither
             # stages nor reads them (const_expr-gated) and the launch
             # substitutes dummy pointers.
             views.sfb_w13_mx = w13_sf
@@ -10991,7 +10991,7 @@ def _get_dynamic_kernel(
     )
     topk_ids_align = 4 if topk_ids_dtype == torch.int32 else 8
 
-    # a_input, topk_ids, topk_weights, scatter_output are pointers -- shapes
+    # a_input, topk_ids, topk_weights, scatter_output are pointers — shapes
     # are constructed at runtime from num_tokens Int32.
     a_input_fake = make_ptr(a_dtype, 16, cute.AddressSpace.gmem, assumed_align=16)
     topk_ids_fake = make_ptr(

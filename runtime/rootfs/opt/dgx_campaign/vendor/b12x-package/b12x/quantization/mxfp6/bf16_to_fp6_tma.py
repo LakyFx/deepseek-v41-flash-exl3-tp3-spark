@@ -93,7 +93,7 @@ class TestKernel:
         # per_row: large-M half of the fused per-row global-scale recipe (see
         # fp6_row_gs). ``global_scale`` becomes the (M,) f32 per-row gs from
         # RowGsKernel; each element is pre-scaled bf16(f32(x) * gs_row) in
-        # registers (cvt.rn.bf16.f32 -- the exact host-chain rounding) and
+        # registers (cvt.rn.bf16.f32 — the exact host-chain rounding) and
         # quantized with a UNIT gs, bit-identical to the host per-row path.
         # Activations only, so bytes-emit only.
         if per_row and emit != "bytes":
@@ -216,7 +216,7 @@ class TestKernel:
             # Per-row mode: values are pre-scaled per row below, so the
             # quantizer's own global scale is exactly 1.0 (same collapse as
             # the host chain, which quantizes the pre-scaled input with a
-            # unit gs -- see fp6_dense_weights).
+            # unit gs — see fp6_dense_weights).
             gs_value = cutlass.Float32(1.0)
         else:
             gs_value = global_scale[Int32(0)].to(cutlass.Float32)
@@ -277,7 +277,7 @@ class TestKernel:
                     if cutlass.const_expr(self.per_row):
                         # Per-row pre-scale with the SAME rounding chain as the
                         # host: f32 multiply (RN), round through bf16 (RN),
-                        # widen back (exact) -- identical to the small-M
+                        # widen back (exact) — identical to the small-M
                         # per-row branch. global_scale is the (M,) f32 row
                         # scales from RowGsKernel.
                         gs_row = cutlass.Float32(global_scale[grow])

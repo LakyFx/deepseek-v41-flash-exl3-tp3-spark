@@ -1,66 +1,61 @@
 # DeepSeek V4.1 Flash EXL3 on three DGX Sparks
 
-This recipe publishes our current **0.8.9X11c** configuration: three NVIDIA DGX Sparks using tensor parallelism, Pollard EXL3 routed experts at approximately 3.51 bits per weight, DSpark speculation, and a measured KV pool of **3,299,563 tokens**. We use it for long prompts and real work with the Hermes agent. The installation target is X11c; earlier variants are documented experiments.
+**DS41F 1.0.0 is campaign C4**, our selected production recipe for Hermes agent work: TP3 on three DGX Sparks, the same approximately 3.51 bpw Pollard EXL3 experts, MAX reasoning, long prompts and a measured **3,299,563-token KV pool**.
 
-The model, quantization format, inference engine, and upstream kernels are other people's work. Our contribution is a TP3 configuration, integration and tuning of existing ideas, numerical checks, and measurements. See [sources and credits](docs/SOURCES.md) before using or citing this recipe.
+The model, quantization, engine and upstream kernels are other people's work. Our contribution is integration, TP3 tuning, bounded correctness checks and workload measurements. Read [sources and credits](docs/SOURCES.md). The second benchmark is explicitly adapted from [Christopher Owen's spark-ds41f recipe](docs/OWEN-BENCHMARK.md).
 
-Start with the [installation guide](docs/INSTALL.md), [verification scope](docs/VERIFICATION.md) and [technical changes](docs/ARCHITECTURE.md). Agents should also read [AGENTS.md](AGENTS.md). The included launcher accepts your topology instead of embedding our private network.
+## Start here
 
-## What we selected
+- [Final 1.0.0 recipe and technical explanation](docs/DS41F-1.0.0.md): exactly what C4 contains and why it was selected.
+- [Complete latest campaign](docs/CAMPAIGN-20261012.md): all 18 measured arms, isolated changes, combinations, Hermes and Owen tables, C1?C8 curve, incomplete phases and tradeoffs.
+- [Earlier tuning history](docs/HISTORY.md): 0.8.x, A/B, X1?X11, X11a?e and reasoning tests, including rejected changes.
+- [Install](docs/INSTALL.md), [host environment](docs/HOST-ENVIRONMENT.md), [verification scope](docs/VERIFICATION.md), [architecture](docs/ARCHITECTURE.md).
+- [Run our benchmark](docs/BENCHMARKS.md), [run the Owen subset](docs/OWEN-BENCHMARK.md), [reconstruct experimental variants](docs/EXPERIMENT-REPLAY.md).
 
-| Setting | X11c |
+Agents should read [AGENTS.md](AGENTS.md). The launcher takes your topology and paths; private production addresses are not part of the recipe.
+
+## Selected settings
+
+| Setting | DS41F 1.0.0 / C4 |
 |---|---|
-| Engine | Pinned vLLM with the EXL3 CUDA plugin and included overlays |
-| Parallelism | TP3, pipeline parallelism 1, expert parallelism disabled |
-| Weights | [bot-lab-21 Pollard EXL3 3.5 bpw](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard), revision `f129e31a81e1337aa33e129e2d847fc7e37c8733` |
-| Weight changes during tuning | None |
-| KV allocation | 8,074,035,200 bytes per rank |
-| Observed logical KV pool | 3,299,563 tokens |
-| KV format | CLI `fp8`, native `fp8_ds_mla`, block size 128 |
-| Maximum model context | 401,408 tokens, including generated tokens |
-| Scheduler | Up to 8 sequences, prefill chunk 4,096 tokens |
-| Engram | Local disk rows, 32 reader threads, native conversion and overlapped staging |
-| Draft | Maximum generated length K5, probabilistic draft sampling, block rejection sampling |
-| Adaptive verification | Enabled; this does not dynamically shorten draft generation |
-| Reasoning policy | Main agent max; vision medium, mapped to native `high` |
-| Limited L2 prefetch | 12 to 48 input rows, FFN 8 MiB, attention 12 MiB, one CTA |
+| Engine / parallelism | Pinned vLLM + CUDA EXL3, TP3, PP1, EP disabled |
+| Checkpoint | [Pollard EXL3 3.5 bpw](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard), pinned revision; no weight change during tuning |
+| Host | Kernel `7.0.0-1019-nvidia-64k`, 64K pages, driver `580.178.04`, signed memory-saver packing |
+| KV | 8,074,035,200 bytes per rank, native `fp8_ds_mla`, 3.30M observed logical tokens |
+| Context / scheduler | Maximum 401,408 tokens, eight sequences, 4,096-token prefill chunks |
+| Engram | Local disk, 32 readers, native conversion and overlapped reads |
+| Draft | DSpark K5, probabilistic draft/block rejection, adaptive verification with eligible C1 full-proposal path |
+| Reasoning | Main MAX; vision medium mapped to native `high` |
+| C4 additions | N1 + N2 + N3 + N4 + N6 over the qualified X11c host64k baseline |
+| Long prefill | Bounded decoder replay with cache, indexer, vision and row-partitioning integration |
 
-The pool is shared across requests. It does not mean eight independent 401K prompts and their outputs always fit simultaneously. Model context, logical pool size, admission policy and available host RAM are different limits. The observed pool comes from engine receipts, not a generic bytes-per-token extrapolation.
+The KV pool is shared capacity, not a per-request context limit or a guarantee that eight maximum-length requests always fit. The 3.51 bpw figure describes routed experts, not every tensor in the hybrid checkpoint.
 
-## Why X11c
+## Measured tradeoff
 
-We optimize for long context, reusable prefixes, tool calls and concurrent agent work. We retained the proven EXL3 checkpoint and approximately 3.3M pool instead of replacing them with another weight format or engine. X11c limits the prefetch work that the preceding X11 configuration performed on small batches.
+| Same-campaign metric | B0: X11c host64k | C4: 1.0.0 |
+|---|---:|---:|
+| Hermes C1 request decode tok/s | 62.3 | 63.6 |
+| Hermes C3 request decode tok/s | 31.2 | 34.1 |
+| Hermes C8 hot output/wall tok/s | 159.0 | 146.1 |
+| Hermes cold 64K computed prefill tok/s | 1,318.0 | **1,734.1** |
+| Owen code C8 decode-window tok/s | 192.9 | **194.5** |
+| Owen cold nominal 256K input/TTFT tok/s | 1,230.2 | **1,687.2** |
 
-In the fresh follow-up campaign, X11c reached **153.52 aggregate output tok/s at C8**, compared with X11's 146.52. Its C1 request decode was 64.17 versus 66.79 tok/s, and C3 was 31.91 versus 32.69. This is a workload tradeoff, not a win in every cell. X3 and fixed K3 were also competitive in particular regimes. We selected X11c after these tests and practical Hermes use, rather than selecting only the largest short-prompt decode number.
+C4 improved the measured long prefill by about 32?37% in these two distinct tests. It was one of only two arms to complete the bounded 128K-C3 cold/hot phase. **It did not win every decode cell:** Hermes C8 declined, while other candidates were stronger there. We chose the long-context compromise for our workload. The original Hermes 70+ C1 and 180+ C8 targets were not both achieved.
 
-The benchmarks are single passes without confidence intervals. Acceptance and generated text vary, and X11 itself produced substantially different numbers in two campaigns. We do not claim a universal or statistically established 20 percent improvement.
+These are different metric definitions, not interchangeable speeds. Hermes has one campaign pass per arm; Owen averages three measured decode repeats. We publish output lengths, acceptance, cache evidence and incomplete phases, not confidence intervals or a universal speedup claim.
 
-## Reading the results
+## Source and evidence
 
-| X11c reasoning run | C1 request decode tok/s | C3 request decode tok/s | C8 aggregate output tok/s | 64K cold prefill tok/s |
-|---|---:|---:|---:|---:|
-| Baseline max | 67.50 | 32.12 | 154.38 | 1,467.88 |
-| None | 69.97 | 24.98 | 146.25 | 1,456.36 |
-| Medium, native high | 76.53 | 28.69 | 149.37 | 1,462.74 |
-| Max repeated | 64.82 | 32.75 | 150.91 | 1,448.78 |
-
-C1 and C3 measure weighted decode speed per request on scored agent workflows. C8 measures total output divided by cohort wall time, including first-token latency. These columns are **different metrics**, not one concurrency scaling curve. Non-reasoning and medium finished the scored workflows sooner mainly because they generated fewer tokens. All scored agent tasks passed in these four modes. That small test set does not establish equal general reasoning quality.
-
-All four 128K C3 tests reached the original 325-second phase budget. Their incomplete hot measurements are not zero and are not a completed long-context throughput result. The other six phases completed. The four reasoning runs used one model load and the same running X11c generation.
-
-Read [benchmark methodology](docs/BENCHMARKS.md), [version history](docs/HISTORY.md), and the machine-readable [results](results/) for the full scope, settings, failures and measured cells.
-
-## Repository layout
-
-| Path | Purpose |
+| Path | Contents |
 |---|---|
-| `config/x11c.json` | Selected engine, cache, draft, graph and prefetch settings |
-| `config/dependency-versions.json` | Versions observed in the running production image |
-| `runtime/rootfs/` | Mounted production Python and native source dependencies |
-| `runtime/mounts.json` | Container destinations, without private host paths |
-| `native/` | Sources needed to rebuild the modified EXL3 extension and fused transform |
-| `build/base/` | Pinned base image construction and original recipe patches |
-| `results/` | Historical measurements and incomplete or rejected outcomes |
-| `licenses/` | Preserved third-party license notices |
+| `config/ds41f-1.0.0.json` | Current exact profile; `config/x11c.json` is historical |
+| `runtime/rootfs/`, `native/` | Selected C4 sources and rebuild inputs |
+| `runtime/source-provenance.json` | Measured source and portable export hashes |
+| `experiments/20261012/` | Baseline and per-arm source/settings archive |
+| `benchmarks/` | Public Hermes workloads and frozen Owen common-context adapter |
+| `results/` | All retained historical campaigns and current numerical envelopes |
+| `licenses/` | Third-party notices |
 
-The recipe uses configurable cluster inputs. Private IP addresses, SSH aliases, credentials, certificates, private conversations and the private runtime Git history do not belong in this repository.
+Private captured legacy prompts and generated private text are excluded. The public legacy surrogates can be measured as a new comparison; they are not identical historical inputs. Production C4 is tested; a newly built portable image still needs qualification on your cluster. This repository update did not reload the running model.

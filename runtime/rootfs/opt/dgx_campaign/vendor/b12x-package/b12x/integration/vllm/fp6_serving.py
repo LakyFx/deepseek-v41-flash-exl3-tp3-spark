@@ -7,10 +7,10 @@ fork; :mod:`b12x.integration.vllm.plugin` is the concrete vLLM adapter.
 
 Enablement is twofold (mirrors how the FP4 b12x path is selected framework-side):
 
-1. **Env gate** -- ``B12X_ENABLE_FP6=1`` must be set. If unset,
+1. **Env gate** — ``B12X_ENABLE_FP6=1`` must be set. If unset,
    :func:`should_use_b12x_fp6` returns ``False``
    and the framework falls back to its native path.
-2. **Checkpoint detection** -- ``config.json`` carries
+2. **Checkpoint detection** — ``config.json`` carries
    ``quantization_config={"quant_method": "modelopt", "quant_algo": "W6A6", ...}``.
 
 Exact FP6 call contract

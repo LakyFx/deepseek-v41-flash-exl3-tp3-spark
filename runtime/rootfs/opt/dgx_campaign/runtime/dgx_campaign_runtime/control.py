@@ -52,7 +52,7 @@ class CampaignControl:
                 result={'status':'aborted','aborted':len(ids)}
             else:
                 if (not isinstance(body,dict) or set(body)!={'method','args','kwargs','timeout'}
-                    or body['method']!='dgx_campaign_qualify' or body['kwargs']!={} or body['timeout']!=300
+                    or body['method']!=('dgx_next_qualify' if owner.get('campaign_id')=='x11c-next-20261011' else 'dgx_campaign_qualify') or body['kwargs']!={} or body['timeout']!=300
                     or not isinstance(body['args'],list) or len(body['args'])!=1 or not isinstance(body['args'][0],str)):
                     raise ValueError('only prepared qualification RPC allowed')
                 request=json.loads(body['args'][0])

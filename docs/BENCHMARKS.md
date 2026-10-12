@@ -82,3 +82,7 @@ The public adapter binds measurements to a stable frontend process and rejects c
 ## Limits of the evidence
 
 Measured results show workload-specific behavior. They do not establish confidence intervals, universal 20 percent speedups, model quality equivalence across reasoning modes, or the capacity to serve eight near-limit contexts simultaneously. User observations during real Hermes work explain the deployment preference, while synthetic measurements provide the reproducible comparison. Both are useful and should remain distinguishable.
+
+## DS41F 1.0.0 campaign
+
+The latest [18 measured arms](CAMPAIGN-20261012.md) add the separately attributed [Christopher Owen benchmark](OWEN-BENCHMARK.md), plus a supplemental hot C1–C8 curve. Hermes remains the primary workload suite. [Source/settings reconstruction](EXPERIMENT-REPLAY.md) describes how to compare individual and combined changes. Current profile and launcher select C4 / 1.0.0; the older X11c reasoning table is a separate historical campaign.

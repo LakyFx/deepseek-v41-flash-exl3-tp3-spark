@@ -4,25 +4,25 @@ EXL3 is the TP-shard-independent checkpoint container for trellis-coded MoE
 expert weights. Storage is organized around 32-channel *slots* on the
 intermediate axis: every slot row holds all experts' code words for those
 channels, so a tensor-parallel rank loads a contiguous slot range and
-nothing else. All behavior is declared in a manifest -- codebook, rate
-structure, intermediate Hadamard transform, and geometry -- and the reader
+nothing else. All behavior is declared in a manifest — codebook, rate
+structure, intermediate Hadamard transform, and geometry — and the reader
 derives byte addressing purely from those declarations.
 
 Storage schema id: ``exl3-v1``. A checkpoint directory contains
 ``exl3-manifest.json`` plus one ``exl3-layer-<NNNNN>.safetensors`` file per
 MoE layer. Per-layer tensors:
 
-- ``codes``: u8 ``[num_slots, row_stride]`` -- trellis code words only,
+- ``codes``: u8 ``[num_slots, row_stride]`` — trellis code words only,
   expert-id-major bundles per row, zero padding to the row stride.
-- ``rotations``: fp16 ``[num_slots, num_experts, 3, slot_channels]`` --
+- ``rotations``: fp16 ``[num_slots, num_experts, 3, slot_channels]`` —
   per-channel intermediate-boundary values for gate/up/down in physical
   channel order.
-- ``rates_fc1``/``rates_fc2``: u8 ``[num_slots/8, num_experts]`` -- one
+- ``rates_fc1``/``rates_fc2``: u8 ``[num_slots/8, num_experts]`` — one
   rate byte per (256-channel pair, expert); present iff the rate structure
   is ``per_expert_pair``.
 - ``gate_suh``/``up_suh``/``down_svh``: fp16 ``[hidden_size]`` or
-  ``[num_experts, hidden_size]`` -- hidden-axis incoherence values.
-- ``sign_pattern``: u8 ``[num_experts]`` in ``0..7`` -- present iff the
+  ``[num_experts, hidden_size]`` — hidden-axis incoherence values.
+- ``sign_pattern``: u8 ``[num_experts]`` in ``0..7`` — present iff the
   intermediate Hadamard transform is declared.
 
 A rate byte is ``(low_bits << 4) | high_bits`` and is exactly the fused

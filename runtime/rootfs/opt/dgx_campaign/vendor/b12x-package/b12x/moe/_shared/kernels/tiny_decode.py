@@ -1,4 +1,4 @@
-"""MoETinyDecodeKernelBackend -- tiny-decode (M<=4) W4A8-MX MoE for SM120.
+"""MoETinyDecodeKernelBackend — tiny-decode (M<=4) W4A8-MX MoE for SM120.
 
 Reads the N256/K128 in-place-REPACKED weight storage (the "rp" layout produced
 by _logical_weight_to_w4a8_rp_inplace) directly.
@@ -15,8 +15,8 @@ kernels are safe on busy serving streams.
 Thread mapping (256 threads/CTA), the core of the rp coalescing story: one rp
 (nt, kt) tile is 4096 contiguous int32 words whose flat index decomposes as
 ``k32<<10 | n8c<<7 | r8<<4 | cgrp<<2 | n8i``. Thread t = (n8c=t>>5, r8=(t>>2)&7,
-cgrp=t&3) issues one 16 B ``ld.global.nc.v4`` per k32 covering n8i=0..3 -- four
-8-apart logical rows at one k window -- so a warp (fixed n8c) covers a fully
+cgrp=t&3) issues one 16 B ``ld.global.nc.v4`` per k32 covering n8i=0..3 — four
+8-apart logical rows at one k window — so a warp (fixed n8c) covers a fully
 coalesced 512 B run per k32, and the 4-lane cgrp butterfly folds the k dim.
 
 The prep rotation normalizes both declared w13 layouts to the same rp tile

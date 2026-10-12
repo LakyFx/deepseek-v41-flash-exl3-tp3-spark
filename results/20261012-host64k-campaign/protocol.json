@@ -1,0 +1,35 @@
+{
+  "schema": "dgx.x11c-next.benchmark-plan.v1",
+  "execution_authorized": false,
+  "primary": "hermes-coverage20",
+  "per_loaded_arm": [
+    {
+      "suite": "hermes-coverage20",
+      "workload_sha256": "df3f710fd0cb901c262449c5c23490cf8503d087cb939a92e4f6f2a6dfd67d10",
+      "hard_cap_s": 1200,
+      "reasoning": "MAX",
+      "status": "frozen standard suite unchanged"
+    },
+    {
+      "suite": "owen-common-context",
+      "fixture_sha256": "40427145003f73d3db195de5e98810fcc6ed294d68872df8028f9a3181fcb367",
+      "source_sha256": "b130f172ec4e039532e9fb0b7d4d6256ddc5f16918c88d0689841146631ba46a",
+      "hard_cap_s": 1200,
+      "reasoning": "same server MAX; author effort unknown",
+      "scope": "code/prose C1,C2,C4,C8; discarded warmup + three samples; cold32K/256K twice"
+    }
+  ],
+  "owen_every_measured_arm": true,
+  "reload_between_suites": false,
+  "reset_between_suites": "owned-request drain plus quarantined prefix cache reset",
+  "results": "separate suite identifiers and metric denominators; never merge rates",
+  "targets": {
+    "hermes_C1_request_decode_tps": 70,
+    "hermes_C8_wall_output_tps": 180,
+    "prefill": "no demonstrated regression against fresh X11c baseline"
+  },
+  "timing": "Each suite has its own 20-minute cap. Two suites are not promised within 20 minutes combined. Loading/qualification is additional.",
+  "failure": "Stop on RPC error or foreign traffic. Never retry stale rank queues. Keep ingress closed until qualified final arm or exact X11c rollback.",
+  "supplement": "Bounded separate C1..C8 curve; never substitute it for standard Hermes metrics",
+  "production": "No deployment or benchmark started during preparation"
+}

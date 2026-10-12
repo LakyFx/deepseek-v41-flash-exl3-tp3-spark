@@ -56,7 +56,7 @@ def mx_gs_numerator(fmt: str) -> float:
     """Numerator of the amax->global-scale recipe: ``gs = numerator / amax``.
 
     Fmt-aware ``f8e4m3_max * fmt_max`` (e3m2: 12544.0, e2m3: 3360.0, e4m3:
-    200704.0 -- all exactly representable in f32). Single source of truth for
+    200704.0 — all exactly representable in f32). Single source of truth for
     the host paths (``fp6_dense_weights``) and the fused small-M kernel
     (``bf16_to_fp6_small_m``), which must stay bit-identical. Under the ceil
     UE8M0 containment rule the gs largely cancels; the numerator only nudges

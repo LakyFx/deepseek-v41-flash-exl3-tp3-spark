@@ -605,7 +605,7 @@ def export_dense_model_to_fp6_safetensors(
     are normally the dominant BF16 residue in multimodal-hybrid checkpoints, so
     enabling them is what brings the FP6 size below the FP8 equivalent. They are a
     quality trade-off (FP6 is lower precision than the FP8 those layers usually
-    ship in) -- validate downstream before relying on them.
+    ship in) — validate downstream before relying on them.
     """
     model = SafetensorsModel(model_path)
 

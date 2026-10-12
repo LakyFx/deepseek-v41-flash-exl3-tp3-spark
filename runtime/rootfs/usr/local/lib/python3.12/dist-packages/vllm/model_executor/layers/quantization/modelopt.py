@@ -1722,10 +1722,10 @@ class ModelOptMixedPrecisionConfig(ModelOptQuantConfigBase):
         if isinstance(layer, (LinearBase, ParallelLMHead)):
             # Per-prefix algo -> its sub-config, then the generic linear method.
             # resolve() reads group_size off whichever sub-config it is handed.
-            # Read-only -- never write back, or a linear-only change leaks into
+            # Read-only — never write back, or a linear-only change leaks into
             # the MoE method that shares the sub-config.
             if quant_algo is None or quant_algo not in LINEAR_ALGOS:
-                # Layer not in quantized_layers -- leave unquantized
+                # Layer not in quantized_layers — leave unquantized
                 return UnquantizedLinearMethod()
             _, subcfg_attr = LINEAR_ALGOS[quant_algo]
             return build_linear_method(getattr(self, subcfg_attr), quant_algo, prefix)
@@ -1802,7 +1802,7 @@ class CkptCtx:
 
 @dataclass(frozen=True)
 class RuntimeDtypes:
-    """Runtime/model dtypes kernels need -- format-agnostic."""
+    """Runtime/model dtypes kernels need — format-agnostic."""
 
     input_dtype: torch.dtype
     out_dtype: torch.dtype
@@ -1831,7 +1831,7 @@ class QuantKeyScheme:
     ``role`` from the slot it fills the key into (wkey->WEIGHT, akey->ACT).
 
     Every scheme branches on ``role`` explicitly and ``reject``s any role it has
-    not validated -- never falling through to the wrong role's registration,
+    not validated — never falling through to the wrong role's registration,
     which would allocate the wrong parameters and produce garbage silently.
     """
 
@@ -1914,7 +1914,7 @@ class KNvfp4Static(QuantKeyScheme):
                 "likely reduce accuracy. Consider a checkpoint with the same "
                 "global NVFP4 scale for fused weights."
             )
-        # Raw max, no reciprocation -- Marlin/cutlass want ModelOpt's amax/2688.
+        # Raw max, no reciprocation — Marlin/cutlass want ModelOpt's amax/2688.
         weight_global_scale = layer.weight_scale_2.max().to(torch.float32)
         layer.weight_global_scale = Parameter(weight_global_scale, requires_grad=False)
         del layer.weight_scale_2
@@ -1958,7 +1958,7 @@ class KNvfp4Dynamic(QuantKeyScheme):
 
 
 class KFp8StaticTensor(QuantKeyScheme):
-    """Plain per-tensor static FP8 -- bivalent: serves BOTH the weight slot and
+    """Plain per-tensor static FP8 — bivalent: serves BOTH the weight slot and
     the activation slot (W8A8). One key in both QuantSpec slots."""
 
     key = kFp8StaticTensorSym
@@ -2028,7 +2028,7 @@ class KFp8StaticTensor(QuantKeyScheme):
 
 
 class KFp8StaticChannel(QuantKeyScheme):
-    """Per-channel static FP8 weight (the 'PcPt' weight). Weight-role only --
+    """Per-channel static FP8 weight (the 'PcPt' weight). Weight-role only —
     there is no static per-channel *activation* today."""
 
     key = kFp8StaticTokenSym
@@ -2199,7 +2199,7 @@ class KMxfp8Static(QuantKeyScheme):
 
 class KDynamicNoParam(QuantKeyScheme):
     """Dynamic activation with no stored scale (W8A8): quantized at runtime in
-    the kernel. NOT the same as activation=None (weight-only) -- init_fp8 needs a
+    the kernel. NOT the same as activation=None (weight-only) — init_fp8 needs a
     non-None activation key. Activation-role only. Serves the fp8 per-token, fp8
     per-block, and mxfp8 dynamic activation keys."""
 
@@ -2267,11 +2267,11 @@ class FormatScheme:
     """Optional per-format hooks that compose *around* the QuantKey schemes.
 
     Extension seam for residue that belongs to a format as a whole rather than a
-    single QuantKey -- an extra parameter the weight/activation schemes don't
+    single QuantKey — an extra parameter the weight/activation schemes don't
     cover, or a tweak before/after their ``process``. All hooks default to
     no-ops; most formats need none (they are a pure ``(weight, activation)`` key
     pair). To add one: subclass, override the hooks you need, and return an
-    instance from the format's ``resolve()`` branch -- no change to
+    instance from the format's ``resolve()`` branch — no change to
     ``ModelOptLinearMethod`` itself.
     """
 
@@ -2395,7 +2395,7 @@ class ModelOptLinearMethod(LinearMethodBase):
         self.input_dtype = dtype
         self.marlin_input_dtype = None
         # Kernel/backend are chosen in create_weights (after get_quant_method),
-        # so the front-end marlin poke stays dormant here -- same as the old
+        # so the front-end marlin poke stays dormant here — same as the old
         # NVFP4 methods.
         self.kernel: Any = None
 
@@ -2507,8 +2507,8 @@ def resolve(algo: str, subcfg, prefix: str):
 # Bespoke-method escape hatch. Almost every ModelOpt linear format is a
 # (weight, activation) QuantKey pair handled by the generic ModelOptLinearMethod
 # (optionally + a FormatScheme), so this stays empty. A format that genuinely
-# cannot be expressed that way -- a fundamentally different create/process/apply
-# lifecycle -- registers its own LinearMethodBase here, keyed by algo:
+# cannot be expressed that way — a fundamentally different create/process/apply
+# lifecycle — registers its own LinearMethodBase here, keyed by algo:
 #
 #     LINEAR_METHOD_BUILDERS["FOO"] = lambda cfg, prefix: ModelOptFooLinearMethod(cfg)
 #

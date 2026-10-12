@@ -1,5 +1,5 @@
 """
-MoEDynamicKernel -- fused routed low-precision MoE kernel for SM120.
+MoEDynamicKernel — fused routed low-precision MoE kernel for SM120.
 
 The kernel has a route/activation-pack phase followed by the proven FC1 /
 activation / quant / FC2 / scatter compute body.  The boundary between those
@@ -231,7 +231,7 @@ def _w4a8_stage_b_tile(
 ):
     """cp.async one 128x64B packed-FP4 tile into smem rows.
 
-    Unpadded (64B) rows XOR-swizzle the 16B chunk by the row's low bits --
+    Unpadded (64B) rows XOR-swizzle the 16B chunk by the row's low bits —
     without it every consumer B load is a 4-8 way bank conflict."""
     for i in cutlass.range_constexpr((128 * 4 + tcnt - 1) // tcnt):
         idx = tidx + Int32(i * tcnt)
@@ -1090,7 +1090,7 @@ class MoEDynamicKernelBackend:
             )
         # NVFP4 split-materialized admission (external phase kernels).  The
         # premise below is load-bearing for correctness, not a convenience:
-        #   * share_input_across_experts=True -- the front-end quantizes each
+        #   * share_input_across_experts=True — the front-end quantizes each
         #     token exactly ONCE with ``input_global_scale[0]`` (the shared
         #     input branch) and fans the same quantized row out to every
         #     routed expert's physical row.  Phase 1 reads that expert-major
@@ -1425,7 +1425,7 @@ class MoEDynamicKernelBackend:
         )
         self.mma_atom = cute.make_mma_atom(mma_op)
         # Op descriptor kept for per-emission fresh-atom creation in the FP4
-        # MMA path (see moe_emit_fp4_mma) -- avoids threading a single atom's
+        # MMA path (see moe_emit_fp4_mma) — avoids threading a single atom's
         # SSA value across dynamic scf regions (MLIR dominance ICE).
         self.mma_op = mma_op
         # MMA dispatch selector: FP6/FP8 byte-containers are indistinguishable
@@ -1565,7 +1565,7 @@ class MoEDynamicKernelBackend:
             # Staging layout/depth (see the kernel hoist block): python ints
             # must live on self so in-loop const_expr sees them as static.
             # Small tiles: gated FC1 runs FUSED (one k sweep, both gate+up
-            # accumulators -- 64 hot regs fit at tile_m<=32) with 16KB
+            # accumulators — 64 hot regs fit at tile_m<=32) with 16KB
             # gate+up B granules at depth 2; non-gated small tiles use
             # depth-4 single-pass staging. Tile 128 keeps two passes/depth 2.
             self.w4a8_small = self.tile_shape_mnk[0] <= 32
@@ -2473,7 +2473,7 @@ class MoEDynamicKernelBackend:
         task_slice_count: cute.Tensor,  # [max_tasks] int32
         task_valid_rows: cute.Tensor,  # [max_tasks] int32
         tile_write_count: cute.Tensor,  # [E * max_m_tiles] int32
-        b_w13: cute.Tensor,  # [w1_n, K, E] -- gated packs [up, gate], relu2 is single FC1
+        b_w13: cute.Tensor,  # [w1_n, K, E] — gated packs [up, gate], relu2 is single FC1
         sfb_w13_ptr: cute.Pointer,  # scale factors for FC1 weights
         b_down: cute.Tensor,  # [K, I_tp, E]
         sfb_down_ptr: cute.Pointer,
@@ -3329,7 +3329,7 @@ class MoEDynamicKernelBackend:
             route_gate_tile_cnt + task_slice_chunk - Int32(1)
         ) // task_slice_chunk
 
-        # Phase 0: cooperative init -- zero routing state, queue state, and output.
+        # Phase 0: cooperative init — zero routing state, queue state, and output.
         task_capacity = Int32(task_ready.shape[0])
         tile_write_slots = Int32(tile_write_count.shape[0])
         if cutlass.const_expr(not self.direct_routing):
@@ -7543,7 +7543,7 @@ class MoEDynamicKernelBackend:
                                     # Byte-container swizzled store into the
                                     # Float8 A smem (8-bit K-major SW128 atom
                                     # Sw<3,4,3>): the physical offset is
-                                    # flat ^ ((row&7)<<4). Raw addressing --
+                                    # flat ^ ((row&7)<<4). Raw addressing —
                                     # the recast sA_u8 view is un-swizzled and
                                     # only correct at row 0 for this atom.
                                     _row_sw = (row & Int32(7)) << Int32(4)
@@ -8583,7 +8583,7 @@ class MoEDynamicKernelBackend:
                         w4a8_pend_epoch = Int32(0)
                         # With two producer warps, epochs split by parity:
                         # warp 0 stages odd epochs (pars 0,2), warp 1 even
-                        # (pars 1,3) -- disjoint buffers, independent FIFOs.
+                        # (pars 1,3) — disjoint buffers, independent FIFOs.
                         w4a8_warp_off = warp_idx - Int32(self.tma_load_warp_id)
                         asc_base_p = Int64(m_row_base_p) * Int64(a_mx_per_row)
                         cur_slice_p = task_slice_begin_idx + slice_idx

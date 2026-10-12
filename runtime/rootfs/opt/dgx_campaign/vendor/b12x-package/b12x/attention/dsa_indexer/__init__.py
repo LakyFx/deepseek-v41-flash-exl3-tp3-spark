@@ -3,12 +3,12 @@
 A three-stage pipeline whose outputs feed ``attention.sparse_mla`` /
 ``attention.compressed_sparse_mla``:
 
-1. quantize -- ``quantize_q_fp8`` (index-Q to FP8 e4m3, MXFP8 tiling;
+1. quantize — ``quantize_q_fp8`` (index-Q to FP8 e4m3, MXFP8 tiling;
    INDEX_HEAD_DIM 128).
-2. score -- MQA logits between index-Q and the FP8 index-K cache:
+2. score — MQA logits between index-Q and the FP8 index-K cache:
    ``logits_paged`` / ``logits_contiguous``, block-score reduction via
    ``block_scores_paged`` / ``block_scores_contiguous``.
-3. select -- ``topk_blocks`` / ``topk_tiled`` and the q2k index builders
+3. select — ``topk_blocks`` / ``topk_tiled`` and the q2k index builders
    ``q2k_indices_decode`` / ``q2k_indices_prefill`` (+ query-position
    helpers).
 

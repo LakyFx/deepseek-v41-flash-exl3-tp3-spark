@@ -52,7 +52,7 @@ from b12x._lib.utils import current_cuda_stream
 _THREADS = 128
 
 # Fmt-aware global-scale numerator (e3m2: 12544.0, e2m3: 3360.0, e4m3:
-# 200704.0 -- all exactly representable in f32), resolved at trace time from
+# 200704.0 — all exactly representable in f32), resolved at trace time from
 # ``self.fmt`` exactly like the small-M kernel.
 _GS_NUMERATOR = {f: mx_gs_numerator(f) for f in ("e3m2", "e2m3", "e4m3")}
 

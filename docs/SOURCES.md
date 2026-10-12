@@ -42,3 +42,11 @@ License notices supplied with copied source remain in the tree. Licensing the in
 | [NousResearch Hermes agent](https://github.com/NousResearch/hermes-agent) | Main real agent workload motivating the selection of long context, reusable prefixes, tool behavior and concurrent work. Private Hermes conversations are excluded. |
 
 We credit upstream contributors rather than presenting imported kernels or quantization as our invention. Our benchmark results measure our configuration and workload, not a controlled ranking of all these projects.
+
+## DS41F 1.0.0 additions and benchmark attribution
+
+The final C4 port retains the preceding credits and adds bounded decoder replay integration. The supporting Owen recipe snapshot is [`459a2e1e40607fcc3de3490050a00fc18f66f62b`](https://github.com/christopherowen/spark-ds41f/tree/459a2e1e40607fcc3de3490050a00fc18f66f62b); upstream vLLM file license headers remain intact. Our changes adapt this work to the existing EXL3 TP3 runtime and its cache/vision/speculation contracts. They are not presented as a newly invented attention algorithm.
+
+**The second benchmark is taken from Christopher Owen's GitHub recipe**, specifically [`bin/spark` at `dd35633edeadd8864ec177890025b6e7c5df47ce`](https://github.com/christopherowen/spark-ds41f/blob/dd35633edeadd8864ec177890025b6e7c5df47ce/bin/spark). [OWEN-BENCHMARK.md](OWEN-BENCHMARK.md) documents exactly which functions, workload subset, repetitions and definitions were retained, and which transport/context adaptations were made. The whole upstream administration client is fetched by hash for local use rather than republished here.
+
+The frozen cold-prefill fixture includes public CPython 3.12.3 standard-library excerpts; its license is retained in `licenses/python-stdlib.txt`. The host packing module is [dgx-spark-memory-saver](https://github.com/christopherowen/dgx-spark-memory-saver/tree/6f97319e7c00e5422b0afe4cabbd348211bfcb34), pinned at `6f97319e7c00e5422b0afe4cabbd348211bfcb34`. Machine-specific signing material is not distributed.

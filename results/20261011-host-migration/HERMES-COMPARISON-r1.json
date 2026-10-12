@@ -1,0 +1,121 @@
+{
+  "candidate": {
+    "version": "0.8.9X11c-host64k-cold",
+    "all_regimes_complete": false,
+    "C1_request_decode_tps": 66.3349048722184,
+    "C1_acceptance": 0.6470588235294118,
+    "C1_workflow_correct": true,
+    "C3_request_decode_tps": 31.28069531398969,
+    "C3_acceptance": 0.5905084745762712,
+    "C3_workflow_correct": true,
+    "C8_aggregate_output_tps": 165.70715010779804,
+    "C8_request_decode_tps": 25.081135767944982,
+    "C8_acceptance": 0.4607431340872375,
+    "64K_cold_prefill_tps": 1410.6683883488843,
+    "128K_hot_complete": false,
+    "incomplete_phases": [
+      "128K-C3"
+    ],
+    "legacy_hot_cells": [
+      {
+        "category": "code",
+        "C": 1,
+        "decode_tps": 67.61448537818234,
+        "aggregate_output_tps": 61.55965673544644,
+        "complete": true,
+        "cache_verified": true
+      },
+      {
+        "category": "prose",
+        "C": 1,
+        "decode_tps": 53.41253950032532,
+        "aggregate_output_tps": 50.32927056299581,
+        "complete": true,
+        "cache_verified": true
+      },
+      {
+        "category": "code",
+        "C": 3,
+        "decode_tps": 35.341133594205594,
+        "aggregate_output_tps": 94.6123767304302,
+        "complete": true,
+        "cache_verified": true
+      },
+      {
+        "category": "prose",
+        "C": 3,
+        "decode_tps": 34.41356072063557,
+        "aggregate_output_tps": 89.17678382204282,
+        "complete": true,
+        "cache_verified": true
+      }
+    ]
+  },
+  "previous_max": [
+    {
+      "run_id": "baseline-max",
+      "reasoning_profile": "max",
+      "native_effort": "max",
+      "C1_request_decode_tps": "67.49559835456255",
+      "C3_request_decode_tps": "32.11500535926512",
+      "C8_aggregate_output_tps": "154.3768757417228",
+      "64K_cold_prefill_tps": "1467.8832567404763",
+      "C1_acceptance": "0.6942857142857143",
+      "C3_acceptance": "0.6083788706739527",
+      "C8_acceptance": "0.46012861736334404",
+      "C1_workflow_seconds": "16.66729866201058",
+      "C3_workflow_seconds": "39.46467447304167",
+      "C1_initial_first_visible_seconds_median": "6.1996051168534905",
+      "C3_initial_first_visible_seconds_median": "17.76151148113422",
+      "C1_workflow_correct": "True",
+      "C3_workflow_correct": "True",
+      "128K_hot_complete": "False",
+      "suite_wall_seconds": "775.2734527899884",
+      "completed_request_count": "63",
+      "visible_text_response_count": "4",
+      "observed_reasoning_characters": "42640"
+    },
+    {
+      "run_id": "max",
+      "reasoning_profile": "max",
+      "native_effort": "max",
+      "C1_request_decode_tps": "64.8203244157294",
+      "C3_request_decode_tps": "32.75064350322668",
+      "C8_aggregate_output_tps": "150.9073850611478",
+      "64K_cold_prefill_tps": "1448.7777674840563",
+      "C1_acceptance": "0.6577777777777778",
+      "C3_acceptance": "0.5696284329563812",
+      "C8_acceptance": "0.45559105431309904",
+      "C1_workflow_seconds": "21.93376959883608",
+      "C3_workflow_seconds": "42.40482370485552",
+      "C1_initial_first_visible_seconds_median": "5.845089707057923",
+      "C3_initial_first_visible_seconds_median": "16.98372420319356",
+      "C1_workflow_correct": "True",
+      "C3_workflow_correct": "True",
+      "128K_hot_complete": "False",
+      "suite_wall_seconds": "785.0747866490856",
+      "completed_request_count": "63",
+      "visible_text_response_count": "5",
+      "observed_reasoning_characters": "45379"
+    }
+  ],
+  "scope": "Same frozen Hermes coverage20; historical baseline from October9, single pass candidate October11. NativeC1/C3 vs hot8KC8 aggregate are different metrics. Incomplete128KC3 not a valid hot speed result. Kernel/driver/UVM changed; inferenceweights/settings unchanged.",
+  "gains_vs_previous_max": {
+    "C1_request_decode_tps": [
+      -1.7196580379166049,
+      2.33658265388359
+    ],
+    "C3_request_decode_tps": [
+      -2.5978823168240073,
+      -4.4883032270561785
+    ],
+    "C8_aggregate_output_tps": [
+      7.339359804787815,
+      9.80718408224579
+    ],
+    "64K_cold_prefill_tps": [
+      -3.8977805713678593,
+      -2.630450300279852
+    ]
+  }
+}
