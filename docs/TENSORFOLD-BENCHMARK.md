@@ -17,6 +17,10 @@ Use `TF351-3.3M` or `TF29`, the same **3.3M** kit on every rank, context 401,408
 
 MAX chat reasoning is explicit. Some Owen endpoints use `/v1/completions`, which does not have the chat `reasoning_effort` field; retain the endpoint and payload for each cell. Do not call every Owen request a chat-reasoning comparison. C1 is one request; C8 throughput is the cohort total.
 
+**Retained-run audit:** all measured Owen decode requests in full V3 and final V7 exhausted the 256-token budget in reasoning, with no final content. Code/prose label the prompt. These are short decode microbenchmarks, not completed-answer speed or quality measurements. The completed Hermes C1/C3 workflows are separately scored. [Correction and comparable results](BENCHMARK-CORRECTION-20261014.md).
+
+To verify the published numerical correction **without calling a model**, run `python3 tools/audit_tensorfold_results.py` from the repository root. It checks receipt hashes, counter coverage, cold-token counts, completed-workflow correctness and the Owen timing formula, and writes `results/20261013-tensorfold/comparison-audit.json`. It does not connect to an API or change a runtime.
+
 ## Close ingress and prepare the native control lane
 
 The native head must be started with `--benchmark-control`; `tensorfold/launch.py --benchmark` also forces a loopback bind. Close all gateways/agent ingress for the exclusive window before measurement. Merely supplying `--exclusive` does not close them. The runner does not deploy, stop services or reopen APIs.

@@ -1,0 +1,730 @@
+{
+  "schema": "ds41f.saved-receipt-comparison-audit.v1",
+  "audit_date": "2026-10-14",
+  "inference_requests_sent": 0,
+  "model_or_production_changed": false,
+  "baseline": "fresh C4 / 1.0.0 reference from the TensorFold comparison",
+  "speed_pool_tokens": 3300000,
+  "reasoning": "max",
+  "scope": "final workflow C1/C3 and V3 load probes; stages kept separate; no new benchmark",
+  "arms": {
+    "C4-reference": {
+      "workflows": {
+        "workflow-C1": {
+          "wall_seconds": 22.965218548022676,
+          "cohort_wall_seconds": 22.965218548022676,
+          "correct_tasks": 1,
+          "usage": {
+            "prompt_tokens": 35035,
+            "completion_tokens": 1003,
+            "cached_tokens": 26368,
+            "computed_prompt_tokens": 8667
+          },
+          "decode_tokens_per_second": 62.318883941724515,
+          "decode_engine_seconds": 16.09463996399427,
+          "decode_scope": "output includes reasoning and tools; summed per-request engine time",
+          "draft_acceptance": 0.6358333333333334,
+          "coverage_verified": true
+        },
+        "workflow-C3": {
+          "wall_seconds": 39.00322859999142,
+          "cohort_wall_seconds": 39.00322859999142,
+          "correct_tasks": 3,
+          "usage": {
+            "prompt_tokens": 76495,
+            "completion_tokens": 2185,
+            "cached_tokens": 50688,
+            "computed_prompt_tokens": 25807
+          },
+          "decode_tokens_per_second": 31.82620922753224,
+          "decode_engine_seconds": 68.6541078260052,
+          "decode_scope": "output includes reasoning and tools; summed per-request engine time",
+          "draft_acceptance": 0.6047882136279926,
+          "coverage_verified": true
+        }
+      },
+      "load_probes": {
+        "64K-C1": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            65534
+          ],
+          "cold_computed_tokens": 65534,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 38.30491343297763,
+          "cold_computed_tokens_per_second": 1710.8510143134847,
+          "hot_output_tokens": 128,
+          "hot_wall_seconds": 2.9278813670098316,
+          "hot_aggregate_tokens_per_second": 43.7176182895426,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            128
+          ]
+        },
+        "128K-C3": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            131055,
+            131048,
+            131059
+          ],
+          "cold_computed_tokens": 393162,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 239.89611635403708,
+          "cold_computed_tokens_per_second": 1638.8843886900368,
+          "hot_output_tokens": 384,
+          "hot_wall_seconds": 5.152592583006481,
+          "hot_aggregate_tokens_per_second": 74.52558955785716,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            128,
+            128,
+            128
+          ]
+        },
+        "8K-C8": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            8191,
+            8174,
+            8161,
+            8191,
+            8172,
+            8189,
+            8183,
+            8165
+          ],
+          "cold_computed_tokens": 65426,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 74.54461455898127,
+          "cold_computed_tokens_per_second": 877.6757434064344,
+          "hot_output_tokens": 2048,
+          "hot_wall_seconds": 13.599830960010877,
+          "hot_aggregate_tokens_per_second": 150.5901070404453,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256
+          ]
+        }
+      },
+      "legacy_screen_v3": [
+        {
+          "phase": "cold",
+          "category": "code",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 13.744426475048037,
+          "aggregate_output_tokens_per_wall_second": 17.180876860962215,
+          "output_tokens": 768,
+          "wall_seconds": 44.700861674005864,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "cold",
+          "category": "prose",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 12.201808848591131,
+          "aggregate_output_tokens_per_wall_second": 14.89279364118524,
+          "output_tokens": 768,
+          "wall_seconds": 51.56856520700967,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "code",
+          "concurrency": 1,
+          "weighted_request_decode_tokens_per_second": 69.1180388934179,
+          "aggregate_output_tokens_per_wall_second": 62.8511981785432,
+          "output_tokens": 256,
+          "wall_seconds": 4.073112485028105,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "prose",
+          "concurrency": 1,
+          "weighted_request_decode_tokens_per_second": 53.260990760315316,
+          "aggregate_output_tokens_per_wall_second": 49.136023751271836,
+          "output_tokens": 256,
+          "wall_seconds": 5.210026788001414,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "code",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 38.614661931107705,
+          "aggregate_output_tokens_per_wall_second": 91.02152891616502,
+          "output_tokens": 768,
+          "wall_seconds": 8.437564267980633,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "prose",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 33.71805062592269,
+          "aggregate_output_tokens_per_wall_second": 85.71634017042223,
+          "output_tokens": 768,
+          "wall_seconds": 8.959785245999228,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        }
+      ],
+      "mixed_v3": {
+        "stage": "V3",
+        "wall_seconds": 52.55254462501034,
+        "leader_aggregate_output_tokens_per_wall_second": 58.456789016244656,
+        "injected_cold_ttft_seconds": 21.300168980000308,
+        "injected_cold_wall_seconds": 25.888626511004986,
+        "weighted_request_decode_tokens_per_second": 20.405666880617087,
+        "scope": "three hot leaders plus one cold32K arrival; bounded load probe, not scored task completion",
+        "cache_verified": true
+      },
+      "owen_v3_audit": {
+        "measured_requests": 90,
+        "reasoning_only_requests": 90,
+        "final_content_chars": 0,
+        "max_output_tokens": 256,
+        "all_finish_reason": "length",
+        "timing_recalculated": true,
+        "measured_cells": [
+          "code-c4",
+          "prose-c1",
+          "code-c2",
+          "prose-c2",
+          "code-c8",
+          "prose-c4",
+          "prose-c8",
+          "code-c1",
+          "prose-c8",
+          "prose-c4",
+          "prose-c2",
+          "code-c2",
+          "code-c1",
+          "code-c4",
+          "prose-c1",
+          "code-c8",
+          "code-c2",
+          "code-c8",
+          "prose-c4",
+          "prose-c2",
+          "prose-c1",
+          "code-c4",
+          "prose-c8",
+          "code-c1"
+        ]
+      }
+    },
+    "TF351": {
+      "workflows": {
+        "workflow-C1": {
+          "wall_seconds": 15.207215117989108,
+          "cohort_wall_seconds": 15.204291292990092,
+          "correct_tasks": 1,
+          "usage": {
+            "prompt_tokens": 34798,
+            "completion_tokens": 877,
+            "cached_tokens": 26446,
+            "computed_prompt_tokens": 8352
+          },
+          "decode_tokens_per_second": 85.00061012410575,
+          "decode_engine_seconds": 10.317573,
+          "decode_scope": "output includes reasoning and tools; summed per-request engine time",
+          "draft_acceptance": 0.7080536912751678,
+          "coverage_verified": true
+        },
+        "workflow-C3": {
+          "wall_seconds": 35.60099791697576,
+          "cohort_wall_seconds": 35.598073739995016,
+          "correct_tasks": 3,
+          "usage": {
+            "prompt_tokens": 76725,
+            "completion_tokens": 2616,
+            "cached_tokens": 51476,
+            "computed_prompt_tokens": 25249
+          },
+          "decode_tokens_per_second": 34.49147605665283,
+          "decode_engine_seconds": 75.844826,
+          "decode_scope": "output includes reasoning and tools; summed per-request engine time",
+          "draft_acceptance": 0.74921875,
+          "coverage_verified": true
+        }
+      },
+      "load_probes": {
+        "64K-C1": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            65534
+          ],
+          "cold_computed_tokens": 65534,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 31.040267999999998,
+          "cold_computed_tokens_per_second": 2111.257544554706,
+          "hot_output_tokens": 128,
+          "hot_wall_seconds": 1.499062873015646,
+          "hot_aggregate_tokens_per_second": 85.38667877385556,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            128
+          ]
+        },
+        "128K-C3": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            131055,
+            131048,
+            131059
+          ],
+          "cold_computed_tokens": 393162,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 192.63492900000003,
+          "cold_computed_tokens_per_second": 2040.969423567,
+          "hot_output_tokens": 384,
+          "hot_wall_seconds": 3.0046199220232666,
+          "hot_aggregate_tokens_per_second": 127.80318641481286,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            128,
+            128,
+            128
+          ]
+        },
+        "8K-C8": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            8191,
+            8174,
+            8161,
+            8191,
+            8172,
+            8189,
+            8183,
+            8165
+          ],
+          "cold_computed_tokens": 65426,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 32.815337,
+          "cold_computed_tokens_per_second": 1993.7628554599332,
+          "hot_output_tokens": 2048,
+          "hot_wall_seconds": 10.278802144021029,
+          "hot_aggregate_tokens_per_second": 199.24500650022534,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256
+          ]
+        }
+      },
+      "legacy_screen_v3": [
+        {
+          "phase": "cold",
+          "category": "code",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 19.457112116642982,
+          "aggregate_output_tokens_per_wall_second": 24.795302342780797,
+          "output_tokens": 768,
+          "wall_seconds": 30.973609007982304,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "cold",
+          "category": "prose",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 17.155326921112916,
+          "aggregate_output_tokens_per_wall_second": 21.417288539215786,
+          "output_tokens": 768,
+          "wall_seconds": 35.85888095002156,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "code",
+          "concurrency": 1,
+          "weighted_request_decode_tokens_per_second": 98.32841691248758,
+          "aggregate_output_tokens_per_wall_second": 96.82273194504124,
+          "output_tokens": 256,
+          "wall_seconds": 2.6440071960096247,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "prose",
+          "concurrency": 1,
+          "weighted_request_decode_tokens_per_second": 93.85017406274439,
+          "aggregate_output_tokens_per_wall_second": 92.38266998250715,
+          "output_tokens": 256,
+          "wall_seconds": 2.7710824990062974,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "code",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 59.433533421070145,
+          "aggregate_output_tokens_per_wall_second": 162.81045306914032,
+          "output_tokens": 768,
+          "wall_seconds": 4.717141839006217,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "prose",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 56.43570598937156,
+          "aggregate_output_tokens_per_wall_second": 158.7625226073356,
+          "output_tokens": 768,
+          "wall_seconds": 4.837413687986555,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        }
+      ],
+      "mixed_v3": {
+        "stage": "V3",
+        "wall_seconds": 37.347881572000915,
+        "leader_aggregate_output_tokens_per_wall_second": 82.25469561988156,
+        "injected_cold_ttft_seconds": 15.506764885998564,
+        "injected_cold_wall_seconds": 18.682059101993218,
+        "weighted_request_decode_tokens_per_second": 28.432281965008535,
+        "scope": "three hot leaders plus one cold32K arrival; bounded load probe, not scored task completion",
+        "cache_verified": true
+      },
+      "owen_v3_audit": {
+        "measured_requests": 90,
+        "reasoning_only_requests": 90,
+        "final_content_chars": 0,
+        "max_output_tokens": 256,
+        "all_finish_reason": "length",
+        "timing_recalculated": true,
+        "measured_cells": [
+          "code-c4",
+          "prose-c1",
+          "code-c2",
+          "prose-c2",
+          "code-c8",
+          "prose-c4",
+          "prose-c8",
+          "code-c1",
+          "prose-c8",
+          "prose-c4",
+          "prose-c2",
+          "code-c2",
+          "code-c1",
+          "code-c4",
+          "prose-c1",
+          "code-c8",
+          "code-c2",
+          "code-c8",
+          "prose-c4",
+          "prose-c2",
+          "prose-c1",
+          "code-c4",
+          "prose-c8",
+          "code-c1"
+        ]
+      },
+      "owen_final_audit": {
+        "measured_requests": 18,
+        "reasoning_only_requests": 18,
+        "final_content_chars": 0,
+        "max_output_tokens": 256,
+        "all_finish_reason": "length",
+        "timing_recalculated": true,
+        "measured_cells": [
+          "prose-c1",
+          "code-c8",
+          "prose-c8",
+          "code-c1"
+        ]
+      }
+    },
+    "TF29": {
+      "workflows": {
+        "workflow-C1": {
+          "wall_seconds": 22.28395303300931,
+          "cohort_wall_seconds": 22.28080636699451,
+          "correct_tasks": 1,
+          "usage": {
+            "prompt_tokens": 36170,
+            "completion_tokens": 1559,
+            "cached_tokens": 27818,
+            "computed_prompt_tokens": 8352
+          },
+          "decode_tokens_per_second": 88.9004508262182,
+          "decode_engine_seconds": 17.536469,
+          "decode_scope": "output includes reasoning and tools; summed per-request engine time",
+          "draft_acceptance": 0.6853448275862069,
+          "coverage_verified": true
+        },
+        "workflow-C3": {
+          "wall_seconds": 43.665509568993,
+          "cohort_wall_seconds": 43.661975226015784,
+          "correct_tasks": 3,
+          "usage": {
+            "prompt_tokens": 78089,
+            "completion_tokens": 3621,
+            "cached_tokens": 52840,
+            "computed_prompt_tokens": 25249
+          },
+          "decode_tokens_per_second": 41.8090731692842,
+          "decode_engine_seconds": 86.607995,
+          "decode_scope": "output includes reasoning and tools; summed per-request engine time",
+          "draft_acceptance": 0.744,
+          "coverage_verified": true
+        }
+      },
+      "load_probes": {
+        "64K-C1": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            65534
+          ],
+          "cold_computed_tokens": 65534,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 30.929484000000002,
+          "cold_computed_tokens_per_second": 2118.8196996755587,
+          "hot_output_tokens": 128,
+          "hot_wall_seconds": 1.3882085120130796,
+          "hot_aggregate_tokens_per_second": 92.20516867050732,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            128
+          ]
+        },
+        "128K-C3": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            131055,
+            131048,
+            131059
+          ],
+          "cold_computed_tokens": 393162,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 191.181182,
+          "cold_computed_tokens_per_second": 2056.4890115597254,
+          "hot_output_tokens": 384,
+          "hot_wall_seconds": 2.682234151987359,
+          "hot_aggregate_tokens_per_second": 143.1642348284475,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            128,
+            128,
+            128
+          ]
+        },
+        "8K-C8": {
+          "stage": "full V3; not rerun in final V7",
+          "cold_prompt_token_counts": [
+            8191,
+            8174,
+            8161,
+            8191,
+            8172,
+            8189,
+            8183,
+            8165
+          ],
+          "cold_computed_tokens": 65426,
+          "cold_cached_tokens": 0,
+          "cold_engine_prefill_seconds": 32.59735899999998,
+          "cold_computed_tokens_per_second": 2007.0951146686464,
+          "hot_output_tokens": 2048,
+          "hot_wall_seconds": 9.266245333012193,
+          "hot_aggregate_tokens_per_second": 221.01724338160312,
+          "hot_scope": "bounded output probe, not a scored completed agent workflow",
+          "hot_output_caps": [
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256,
+            256
+          ]
+        }
+      },
+      "legacy_screen_v3": [
+        {
+          "phase": "cold",
+          "category": "code",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 20.469540337814585,
+          "aggregate_output_tokens_per_wall_second": 25.10217281346102,
+          "output_tokens": 768,
+          "wall_seconds": 30.59496106998995,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "cold",
+          "category": "prose",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 17.75172752854925,
+          "aggregate_output_tokens_per_wall_second": 21.73144691412266,
+          "output_tokens": 768,
+          "wall_seconds": 35.34049081199919,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "code",
+          "concurrency": 1,
+          "weighted_request_decode_tokens_per_second": 136.5070511757471,
+          "aggregate_output_tokens_per_wall_second": 133.62014828491107,
+          "output_tokens": 256,
+          "wall_seconds": 1.9158787300111726,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "prose",
+          "concurrency": 1,
+          "weighted_request_decode_tokens_per_second": 97.4143714356709,
+          "aggregate_output_tokens_per_wall_second": 95.36427647340663,
+          "output_tokens": 256,
+          "wall_seconds": 2.6844433730002493,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "code",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 68.66335777230324,
+          "aggregate_output_tokens_per_wall_second": 175.2817810802198,
+          "output_tokens": 768,
+          "wall_seconds": 4.381516408990137,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        },
+        {
+          "phase": "hot",
+          "category": "prose",
+          "concurrency": 3,
+          "weighted_request_decode_tokens_per_second": 62.69688700159645,
+          "aggregate_output_tokens_per_wall_second": 176.80003153070462,
+          "output_tokens": 768,
+          "wall_seconds": 4.343890628020745,
+          "cache_verified": true,
+          "scope": "256-token bounded throughput probe, not scored task completion"
+        }
+      ],
+      "mixed_v3": {
+        "stage": "V3",
+        "wall_seconds": 35.31117304600775,
+        "leader_aggregate_output_tokens_per_wall_second": 86.99941850555743,
+        "injected_cold_ttft_seconds": 15.452952900988748,
+        "injected_cold_wall_seconds": 17.895632939995266,
+        "weighted_request_decode_tokens_per_second": 29.9037751971049,
+        "scope": "three hot leaders plus one cold32K arrival; bounded load probe, not scored task completion",
+        "cache_verified": true
+      },
+      "owen_v3_audit": {
+        "measured_requests": 90,
+        "reasoning_only_requests": 90,
+        "final_content_chars": 0,
+        "max_output_tokens": 256,
+        "all_finish_reason": "length",
+        "timing_recalculated": true,
+        "measured_cells": [
+          "code-c4",
+          "prose-c1",
+          "code-c2",
+          "prose-c2",
+          "code-c8",
+          "prose-c4",
+          "prose-c8",
+          "code-c1",
+          "prose-c8",
+          "prose-c4",
+          "prose-c2",
+          "code-c2",
+          "code-c1",
+          "code-c4",
+          "prose-c1",
+          "code-c8",
+          "code-c2",
+          "code-c8",
+          "prose-c4",
+          "prose-c2",
+          "prose-c1",
+          "code-c4",
+          "prose-c8",
+          "code-c1"
+        ]
+      },
+      "owen_final_audit": {
+        "measured_requests": 18,
+        "reasoning_only_requests": 18,
+        "final_content_chars": 0,
+        "max_output_tokens": 256,
+        "all_finish_reason": "length",
+        "timing_recalculated": true,
+        "measured_cells": [
+          "prose-c1",
+          "code-c8",
+          "prose-c8",
+          "code-c1"
+        ]
+      }
+    }
+  },
+  "changes_vs_c4": {
+    "TF351": {
+      "workflow_C1_wall_reduction_percent": 33.781535384959525,
+      "workflow_C1_decode_increase_percent": 36.39623296782932,
+      "workflow_C3_wall_reduction_percent": 8.722946292236966,
+      "workflow_C3_decode_increase_percent": 8.374440103959714,
+      "cold_64K-C1_rate_increase_percent": 23.403939144396666,
+      "cold_128K-C3_rate_increase_percent": 24.534069495795883,
+      "hot_8K-C8_rate_increase_percent": 32.309492579557286
+    },
+    "TF29": {
+      "workflow_C1_wall_reduction_percent": 2.9665100446954917,
+      "workflow_C1_decode_increase_percent": 42.654112530883225,
+      "workflow_C3_wall_reduction_percent": -11.953577014910532,
+      "workflow_C3_decode_increase_percent": 31.366801714845693,
+      "cold_64K-C1_rate_increase_percent": 23.845950462599454,
+      "cold_128K-C3_rate_increase_percent": 25.48103000746018,
+      "hot_8K-C8_rate_increase_percent": 46.767438927606705
+    }
+  },
+  "source_public_sha256": {
+    "results/20261013-tensorfold/summary.json": "9e42acc88b96518775e61e310836273ced425f8961494354e0a7ff247fc7a63e",
+    "results/20261013-tensorfold/evidence/v3/results/C4-reference/hermes/RESULT.json": "2dc0e39f650fbabd24128d25af7a3716e95f772dc92f4f581e0a6c05b9fbae2b",
+    "results/20261013-tensorfold/evidence/v3/results/C4-reference/owen/OWEN-RESULT-4c04d422fbcf4a3faf2d7b3d4bf31187.json": "9e756423ea6c3f08d78eefcfcf9527fcffeba2c21dfeaa0becb67bba6e70238d",
+    "results/20261013-tensorfold/evidence/v3/results/TF351/hermes/RESULT.json": "008447fde269b5868a84569b503c225922bd0bafff4f652cf8d8a56bb000598b",
+    "results/20261013-tensorfold/evidence/v7/TF351-workflow_delta_probe/RESULT.json": "2378773c4695d201f8213e0bda8535b0fae322916d85fac07177cc036129a516",
+    "results/20261013-tensorfold/evidence/v3/results/TF351/owen/OWEN-RESULT-f9e4d16a743644c39103de113261f583.json": "7e2ea6fe3b54ab3c56b78cc3467f0e8af9093a7b6d64ca658d43965c26181c42",
+    "results/20261013-tensorfold/evidence/v7r2/TF351-owen_delta_probe/RESULT.json": "48bac1b85fe4f16972effddaa465c705d32a6d51cafa3f393e94627cf87d7b33",
+    "results/20261013-tensorfold/evidence/v3/results/TF29/hermes/RESULT.json": "486f14c57d26c99489fc384ee7c3e96feb61c379dc30414f7732c96e4e2d19d6",
+    "results/20261013-tensorfold/evidence/v7r2/TF29-workflow_delta_probe/RESULT.json": "b98286aabb5f0459a6989c470bad8a2e1eebc626ebfbc0b0b6d9085f33095075",
+    "results/20261013-tensorfold/evidence/v3/results/TF29/owen/OWEN-RESULT-4404b6b4abd8487ea231d9c246e2b250.json": "5e673a5673e823d95abd4a7d3b8c33d0cc4c55c7bde898e414d0615ee9467e92",
+    "results/20261013-tensorfold/evidence/v7r2/TF29-owen_delta_probe/RESULT.json": "be72d42c8cc38f77fb0038817b5b557e49abc6d5d3149d93c85300c93d4e9cae"
+  }
+}

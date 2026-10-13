@@ -4,6 +4,22 @@
 
 TP3, MAX, context 401,408, eight streams. Full V3 uses source `6b7c3ac6df05e8041a4a77c26152723c795fad42`; final V7 uses `c4844adfef8df07f2bd299a6a23e5d04a6ec43c0`. The published runtime snapshot `61357debe730ac9ffe20e760edcddbc253b0e525` adds monitor observations. All speed/quality runs used the 3.3M pool. TF351 10M qualification is a separate phase. C4 reference files were frozen and SHA-verified, not rerun at every native iteration.
 
+**14 October correction:** all 270 measured Owen V3 decode requests and 36 final V7 requests generated only reasoning and hit the 256-token limit with zero final content. The old code/prose labels identify the prompt, not a completed answer. The numbers below remain valid short-reasoning decode measurements; do not advertise them as completed coding/prose throughput. Prefer the [audited completed Hermes C1/C3 comparison](BENCHMARK-CORRECTION-20261014.md) and the README's fresh C4 baseline. No new inference was performed for this correction.
+
+## Relevant Hermes C1/C3 and cold-prefill comparison
+
+| Metric / stage | C4 fresh reference | TF351 | TF29 |
+|---|---:|---:|---:|
+| Completed C1 workflow wall, s; final | 22.965 | 15.207 | 22.284 |
+| Completed C3 workflow cohort wall, s; final | 39.003 | 35.601 | 43.666 |
+| C1 request decode incl. reasoning/tools, tok/s; final | 62.319 | 85.001 | 88.900 |
+| C3 request decode incl. reasoning/tools, tok/s; final | 31.826 | 34.491 | 41.809 |
+| Cold 64K-C1 computed input/native prefill time, tok/s; V3 | 1,710.851 | 2,111.258 | 2,118.820 |
+| Cold 128K-C3 computed input/native prefill time, tok/s; V3 | 1,638.884 | 2,040.969 | 2,056.489 |
+| Hot 8K-C8 short probe aggregate output/wall, tok/s; V3 | 150.590 | 199.245 | 221.017 |
+
+TF351 completed C1/C3 tasks in **33.8%/8.7% less time** than C4, with different generated output lengths. Its request decode rates increased **36.4%/8.4%**; these are weighted per-request rates, not aggregate concurrency scaling. Cold prefill increased **23.4%/24.5%** in the two Hermes regimes. C3 was measured both as scored agent workflows and as 128K cold/hot load probes; Owen has no C3 cell. [Receipts, hashes and calculations](../results/20261013-tensorfold/comparison-audit.json), [offline recalculation](../tools/audit_tensorfold_results.py).
+
 ## Full V3 matrix: three decode repeats, two cold repeats
 
 | Version | Code C1 | Code C2 | Code C4 | Code C8 | Prose C1 | Prose C2 | Prose C4 | Prose C8 | Cold 32K | Cold 256K |
@@ -12,7 +28,7 @@ TP3, MAX, context 401,408, eight streams. Full V3 uses source `6b7c3ac6df05e8041
 | TF351 | 84.40 | 161.45 | 255.80 | 392.87 | 83.13 | 159.71 | 259.21 | 393.33 | 2,129.50 | 1,976.48 |
 | TF29 | 93.15 | 181.12 | 306.40 | 413.59 | 86.41 | 162.90 | 242.64 | 405.61 | 2,152.20 | 1,989.41 |
 
-Decode values are aggregate tok/s over the shared first/last-token window after a discarded warmup. Cold values are actual rendered input / HTTP TTFT, not a native kernel bandwidth or output metric. Each receipt retains actual counts and TTFT. Native Hermes prefill is separate.
+Decode values are **reasoning-only** aggregate tok/s over the shared first/last-token window after a discarded warmup. Code/prose name the input task. Cold values are actual rendered input / HTTP TTFT, not a native kernel bandwidth or output metric. Each receipt retains actual counts and TTFT. Native Hermes prefill is separate.
 
 ## Final V7 subset after short-continuation and tool-history repairs
 
@@ -97,7 +113,7 @@ No completed-but-failed noncode attempts were found in that captured subset. Len
 
 ## TF351
 
-[Exact TF351 recipe](TF351.md). Pollard routed experts plus Mia ancillary tensors. Speed profile 3.3M; separately qualified selected pool 10M. Final C1/C8 decode is 84.470/396.030 code and 83.513/394.949 prose tok/s.
+[Exact TF351 recipe](TF351.md). Pollard routed experts plus Mia ancillary tensors. Speed profile 3.3M; separately qualified selected pool 10M. Final short reasoning-only Owen C1/C8 decode is 84.470/396.030 for the code prompt and 83.513/394.949 for the prose prompt. Final completed Hermes C1/C3 workflows take 15.207/35.601 s.
 
 | Incomplete attempt | Finish / error |
 |---|---|
@@ -191,15 +207,15 @@ No completed-but-failed noncode attempts were found in that captured subset. Len
 
 ## Historical X11c comparison and poster values
 
-[All historical host64k measurements](CAMPAIGN-20261012.md), [earlier X/A/B history](HISTORY.md), and [the source values for the poster](../results/20261013-tensorfold/poster-values.json). The historical X11c B0 baseline is from an earlier three-repeat campaign. Percentages compare that baseline with final V7 one-wave decode/32K and explicitly V3 256K/64K; they are descriptive cross-campaign differences, not confidence intervals or a fresh controlled paired test.
+[All historical host64k measurements](CAMPAIGN-20261012.md), [earlier X/A/B history](HISTORY.md), and [the superseded poster's source values](../results/20261013-tensorfold/poster-values.json). The historical X11c B0 baseline is from an earlier three-repeat campaign. Percentages compare that baseline with final V7 one-wave decode/32K and explicitly V3 256K/64K; they are descriptive cross-campaign differences, not confidence intervals or a fresh controlled paired test. **The old poster is superseded:** its short reasoning-only code/prose rates could be read as completed-answer performance. The [corrected poster values](../results/20261013-tensorfold/poster-values-corrected.json) use fresh C4 for completed Hermes work and cold prefill; the old data are retained as history.
 
 | Metric | X11c historical | TF351 stage | Change |
 |---|---:|---:|---:|
 | Hermes cold 64K | 1,318.0 | 2,111.3 V3, derived actual uncached input/native time | +60.2% |
 | Owen cold 32K | 1,254.1 | 2,147.6 final V7 | +71.2% |
 | Owen cold 256K | 1,230.2 | 1,976.5 V3 | +60.7% |
-| Code C1 / C8 | 59.8 / 192.9 | 84.47 / 396.03 final V7 | +41.3% / +105.3% |
-| Prose C1 / C8 | 40.9 / 153.3 | 83.51 / 394.95 final V7 | +104.2% / +157.6% |
+| Short reasoning decode, code prompt C1 / C8 | 59.8 / 192.9 | 84.47 / 396.03 final V7 | +41.3% / +105.3% |
+| Short reasoning decode, prose prompt C1 / C8 | 40.9 / 153.3 | 83.51 / 394.95 final V7 | +104.2% / +157.6% |
 
 ## Initial full comparison, before cache repairs
 

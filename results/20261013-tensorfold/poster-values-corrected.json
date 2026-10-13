@@ -1,0 +1,79 @@
+{
+  "schema": "ds41f.corrected-poster-values.v1",
+  "status": "CURRENT",
+  "baseline": "fresh C4 / DS41F1.0.0 reference; not historical X11c",
+  "candidate": "TF351 final workflow and independently labelled V3 load probes",
+  "reasoning": "max",
+  "speed_pool_tokens": 3300000,
+  "model_requests_sent_for_correction": 0,
+  "values": {
+    "workflow_C1": {
+      "c4_seconds": 22.965218548022676,
+      "tf351_seconds": 15.207215117989108,
+      "time_reduction_percent": 33.781535384959525,
+      "stage": "final repaired workflow; fresh frozen C4 reference",
+      "output_lengths_differ": true
+    },
+    "workflow_C1_decode": {
+      "c4": 62.318883941724515,
+      "tf351": 85.00061012410575,
+      "rate_increase_percent": 36.39623296782932,
+      "scope": "summed per-request engine decode, including reasoning and tools, not cohort aggregate"
+    },
+    "workflow_C3": {
+      "c4_seconds": 39.00322859999142,
+      "tf351_seconds": 35.60099791697576,
+      "time_reduction_percent": 8.722946292236966,
+      "stage": "final repaired workflow; fresh frozen C4 reference",
+      "output_lengths_differ": true
+    },
+    "workflow_C3_decode": {
+      "c4": 31.82620922753224,
+      "tf351": 34.49147605665283,
+      "rate_increase_percent": 8.374440103959714,
+      "scope": "summed per-request engine decode, including reasoning and tools, not cohort aggregate"
+    },
+    "hermes_cold_64K-C1": {
+      "c4": 1710.8510143134847,
+      "tf351": 2111.257544554706,
+      "rate_increase_percent": 23.403939144396666,
+      "stage": "V3, verified zero cached tokens"
+    },
+    "hermes_cold_128K-C3": {
+      "c4": 1638.8843886900368,
+      "tf351": 2040.969423567,
+      "rate_increase_percent": 24.534069495795883,
+      "stage": "V3, verified zero cached tokens"
+    },
+    "owen_cold_32768": {
+      "c4": 1610.05420509696,
+      "tf351": 2147.6430353038168,
+      "rate_increase_percent": 33.389486422569384,
+      "scope": "actual rendered input / HTTP TTFT",
+      "stage": "C4 V3; TF351 final V7"
+    },
+    "owen_cold_262144": {
+      "c4": 1680.6282976512996,
+      "tf351": 1976.479812797013,
+      "rate_increase_percent": 17.603625713024694,
+      "scope": "actual rendered input / HTTP TTFT",
+      "stage": "V3"
+    },
+    "hermes_hot_8K-C8": {
+      "c4": 150.5901070404453,
+      "tf351": 199.24500650022534,
+      "rate_increase_percent": 32.309492579557286,
+      "stage": "V3 bounded output probe; not completed workflows"
+    },
+    "capacity": {
+      "c4_logical_tokens": 3300000,
+      "tf351_logical_tokens": 10000000,
+      "capacity_ratio": 3.0303030303030303,
+      "scope": "TF35110M separately stress-qualified; speed measurements use3.3M"
+    }
+  },
+  "image": "assets/tf351-vs-c4-hermes.png",
+  "replaces": "assets/tf351-vs-x11c.png",
+  "compatibility_image_alias": "assets/tf351-vs-x11c.png",
+  "old_poster_retention": "Original retained in Git history at51484c4 and local project output; old main-branch image URL now serves the corrected poster."
+}

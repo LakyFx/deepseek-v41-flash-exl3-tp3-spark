@@ -43,5 +43,8 @@
       "tf351": 2111.257544554706,
       "change_percent": 60.18646013313398
     }
-  }
+  },
+  "presentation_status": "SUPERSEDED_20261014",
+  "superseded_reason": "Code/prose decode cells exhausted256 tokens in reasoning with no final answer; old poster did not make this clear enough. Old numeric values retained.",
+  "replacement": "poster-values-corrected.json"
 }

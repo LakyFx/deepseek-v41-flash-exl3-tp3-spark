@@ -595,5 +595,15 @@
   "source_receipts": {
     "FINAL-CACHE-REVIEW-v7.json": "38d2ce8e5c29178d8ce16dea6b4c15f4730443604ae883f67df205c7c6aad21e",
     "V3-COMPARISON-REVIEWED.json": "f9a0f30f1c17bc05be2954b50b90bcf584415d1876925a6a948a94a245141c34"
+  },
+  "measurement_audit": {
+    "date": "2026-10-14",
+    "owen_decode": "short MAX reasoning only; max_tokens256; all measured V3/final requests have zero final-content chars",
+    "completed_task_comparison": "Hermes workflow C1/C3; output lengths differ",
+    "hermes_C3_measured": true,
+    "speed_pool_tokens": 3300000,
+    "TF351_10M": "separate capacity qualification, not speed result",
+    "new_model_requests": 0,
+    "details": "docs/BENCHMARK-CORRECTION-20261014.md"
   }
 }

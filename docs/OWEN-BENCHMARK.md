@@ -21,6 +21,8 @@ The adapter extracts only `stream_request` and `decode_window_tps` by AST from t
 
 See the source function for the exact concurrency-window implementation. Tables average the three measured decode samples, not the warmup. Both individual cold-prefill repetitions are retained, and their displayed rate is their arithmetic mean. Requests can hit their 256-token cap in reasoning with no visible answer. This is throughput evidence, not a scored coding or prose quality result.
 
+**Confirmed in our TensorFold comparison:** all 270 measured full V3 requests across C4/TF351/TF29 and 36 final native V7 requests had 256 completion tokens, `finish_reason: length`, nonempty reasoning and **zero final-content characters**. Their timing/counters check out, but they measure short reasoning decode. This limitation concerns our MAX-reasoning configuration, not an error attributed to the upstream author's benchmark. The README now leads with [completed Hermes C1/C3 workflows and verified cold prefill](BENCHMARK-CORRECTION-20261014.md); original Owen rows remain as explicitly labelled microbenchmarks.
+
 ## Run the same frozen subset
 
 Prepare the upstream source as data, before the exclusive window:

@@ -4,7 +4,9 @@
 
 **A big thank you to [Christopher Owen](https://github.com/christopherowen), [@christopherowen on X](https://x.com/christopherowen), for his [spark-ds41f recipes](https://github.com/christopherowen/spark-ds41f), networking work and benchmark. The Owen code/prose benchmark below is explicitly adapted from his GitHub project.**
 
-![TF351 on three DGX Sparks: historical X11c comparison, TensorFold and separately qualified 10M pool](assets/tf351-vs-x11c.png)
+**Measurement correction, 14 October:** the audited Owen code/prose decode cells generated only the first 256 MAX-reasoning tokens, with no final answer. Their timing is valid, but they are not completed-code/prose rates. The main comparison below now uses **completed Hermes C1/C3 workflows and verified cold prefill against the fresh C4 / 1.0.0 reference**. No model tests were rerun. [Audit, exact scopes and all retained results](docs/BENCHMARK-CORRECTION-20261014.md).
+
+![TF351 on three DGX Sparks: verified Hermes C1/C3 and cold-prefill comparison against C4 / 1.0.0; separately qualified 10M pool](assets/tf351-vs-c4-hermes.png)
 
 ## Choose an engine and recipe
 
@@ -17,16 +19,128 @@
 | **TF351** | **TensorFold / Pollard ~3.51 bpw** | **10M qualified; 3.3M speed profile** | [Recipe](docs/TF351.md), [source/build/install](docs/TENSORFOLD-INSTALL.md), [tests](docs/TENSORFOLD-RESULTS.md#tf351) |
 | TF29 | TensorFold / Mia 2.9 bpw | 3.3M qualified | [Recipe](docs/TF29.md), [tests](docs/TENSORFOLD-RESULTS.md#tf29) |
 
-### Latest code, prose and cold-prefill measurements
+### Hermes: completed agent work and verified cold prefill
 
-| Version / measurement stage | Code C1 | Code C8 total | Prose C1 | Prose C8 total | Owen cold 32K | Owen cold 256K |
+**C3 was tested:** one code task, one tool/accounting task and one evidence-analysis task submitted together, with correctness checks and tool rounds. Each workflow starts with approximately 8K input tokens; the separate long-context probes use 64K and three 128K inputs. The final native workflows use repaired V7 history; cold/hot load probes below retain their separately labelled full V3 measurements. C4 is the fresh frozen reference from that comparison, not the older X11c campaign.
+
+| Measurement / stage | C4 / 1.0.0 reference | TF351 | TF29 | TF351 vs C4 |
+|---|---:|---:|---:|---:|
+| Completed workflow C1 wall, seconds; final | 22.97 | **15.21** | 22.28 | **33.8% less time** |
+| Completed workflow C3 cohort wall, seconds; final | 39.00 | **35.60** | 43.67 | **8.7% less time** |
+| Workflow C1 request decode, tok/s; final | 62.32 | **85.00** | 88.90 | +36.4% |
+| Workflow C3 request decode, tok/s; final | 31.83 | **34.49** | 41.81 | +8.4% |
+| Hermes 64K-C1 cold computed prefill, tok/s; V3 | 1,710.85 | **2,111.26** | 2,118.82 | **+23.4%** |
+| Hermes 128K-C3 cold computed prefill, tok/s; V3 | 1,638.88 | **2,040.97** | 2,056.49 | +24.5% |
+| Hermes 8K-C8 hot bounded probe, aggregate output/wall tok/s; V3 | 150.59 | **199.25** | 221.02 | +32.3% |
+| Owen nominal 32K cold input/TTFT, tok/s; C4 V3 / TF final V7 | 1,610.05 | **2,147.64** | 2,161.99 | +33.4% |
+| Owen nominal 256K cold input/TTFT, tok/s; V3 | 1,680.63 | **1,976.48** | 1,989.41 | +17.6% |
+
+Workflow decode counts **reasoning, tool output and final output** over summed per-request engine decode time. It is not aggregate C3 throughput or a visible-answer-only rate. Workflow wall measures completed tasks; output lengths differ: C4/TF351/TF29 emit **1,003/877/1,559** tokens at C1 and **2,185/2,616/3,621** at C3. All four final workflows pass in each arm. TF29's higher token rate did **not** make its C3 tasks finish faster. C8 is a short hot throughput probe, not eight scored workflows.
+
+Hermes prefill counts verified uncached input over each engine's prefill timer; Owen counts actual input over HTTP TTFT. These are separate metrics. Hermes has one pass per arm; Owen V3 cold has two repeats and final V7 cold has one. **Speed tests used a 3.3M pool; TF351's 10M capacity passed a separate stress test.** [Recalculate these values offline from published receipts](tools/audit_tensorfold_results.py), [machine-readable audit](results/20261013-tensorfold/comparison-audit.json).
+
+<!-- tf-complete-saved:start -->
+### Complete saved TensorFold comparison: every measured load regime
+
+All tables here use the **fresh C4 reference and the full V3 native captures**, unless a row explicitly says final V7 above. No missing cell is reconstructed. These are the seven coverage20 phases plus the separately attributed Owen subset; the original full16 legacy option was not run. [Every retained receipt and hash](results/20261013-tensorfold/evidence-manifest.json).
+
+**Full V3 Owen short reasoning-only decode: three measured repeats after warmup.** Code/prose identify prompts; all measured outputs stop at 256 reasoning tokens with no final answer. These are not completed-answer rates.
+
+| Version | Code-prompt C1 | C2 | C4 | C8 total | Prose-prompt C1 | C2 | C4 | C8 total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| C4-reference | 53.51 | 85.18 | 128.43 | 208.62 | 37.42 | 64.63 | 99.80 | 152.51 |
+| TF351 | 84.40 | 161.45 | 255.80 | 392.87 | 83.13 | 159.71 | 259.21 | 393.33 |
+| TF29 | 93.15 | 181.12 | 306.40 | 413.59 | 86.41 | 162.90 | 242.64 | 405.61 |
+
+Final V7 C1/C8 below are a separate one-wave subset, not an average blended with these three repeats. Owen has no C3 cell. The retained cold 32K/256K values and stages are in the main table above.
+
+**Hermes legacy six-cell screen: C3 cold and C1/C3 hot, code and prose.** Same frozen legacy inputs, MAX, cap256, temperature0, one measurement per cell, verified cold/hot cache. These are bounded throughput probes. Request decode and cohort wall rates have different denominators.
+
+| Phase / prompt / concurrency | C4 request decode | TF351 request decode | TF29 request decode | C4 cohort output/wall | TF351 cohort output/wall | TF29 cohort output/wall |
+|---|---:|---:|---:|---:|---:|---:|
+| cold / code / C3 | 13.74 | 19.46 | 20.47 | 17.18 | 24.80 | 25.10 |
+| cold / prose / C3 | 12.20 | 17.16 | 17.75 | 14.89 | 21.42 | 21.73 |
+| hot / code / C1 | 69.12 | 98.33 | 136.51 | 62.85 | 96.82 | 133.62 |
+| hot / prose / C1 | 53.26 | 93.85 | 97.41 | 49.14 | 92.38 | 95.36 |
+| hot / code / C3 | 38.61 | 59.43 | 68.66 | 91.02 | 162.81 | 175.28 |
+| hot / prose / C3 | 33.72 | 56.44 | 62.70 | 85.72 | 158.76 | 176.80 |
+
+All rates are tok/s and include reasoning. Cold C3 request decode can include interleaved prefill stalls. The six cells are the actual screen; unrun cold C1/C2/C4 and hot C2/C4 cells are not filled in.
+
+**Long-context and short-C8 cold/hot load probes, V3.** Cold input counts match across arms. Hot requests have 128 output tokens at 64K/128K and 256 at 8K; these are not scored finished tasks. Cold wall is reported separately from summed engine prefill time.
+
+| Measurement | C4 reference | TF351 | TF29 |
+|---|---:|---:|---:|
+| 64K-C1 cold computed prefill tok/s | 1710.85 | 2111.26 | 2118.82 |
+| 64K-C1 hot cohort wall seconds | 2.93 | 1.50 | 1.39 |
+| 64K-C1 hot aggregate output/wall tok/s | 43.72 | 85.39 | 92.21 |
+| 64K-C1 cold prime cohort wall seconds | 38.42 | 31.12 | 31.01 |
+| 64K-C1 hot prefix hit | 99.81% | 100.00% | 100.00% |
+| 128K-C3 cold computed prefill tok/s | 1638.88 | 2040.97 | 2056.49 |
+| 128K-C3 hot cohort wall seconds | 5.15 | 3.00 | 2.68 |
+| 128K-C3 hot aggregate output/wall tok/s | 74.53 | 127.80 | 143.16 |
+| 128K-C3 cold prime cohort wall seconds | 230.24 | 192.80 | 191.36 |
+| 128K-C3 hot prefix hit | 99.92% | 100.00% | 100.00% |
+| 8K-C8 cold computed prefill tok/s | 877.68 | 1993.76 | 2007.10 |
+| 8K-C8 hot cohort wall seconds | 13.60 | 10.28 | 9.27 |
+| 8K-C8 hot aggregate output/wall tok/s | 150.59 | 199.25 | 221.02 |
+| 8K-C8 cold prime cohort wall seconds | 39.57 | 32.83 | 32.61 |
+| 8K-C8 hot prefix hit | 98.60% | 100.00% | 100.00% |
+
+**Mixed probe, V3:** three hot leaders and one verified cold 32K arrival, injected after a real streamed delta. All four owned requests completed; priming is separate from leader wall throughput. This phase is a bounded load test, not scored workflow completion.
+
+| Mixed measurement | C4 reference | TF351 | TF29 |
+|---|---:|---:|---:|
+| Phase wall, seconds | 52.55 | 37.35 | 35.31 |
+| Leader aggregate output/wall, tok/s | 58.46 | 82.25 | 87.00 |
+| Cold arrival TTFT, seconds | 21.30 | 15.51 | 15.45 |
+| Cold arrival wall, seconds | 25.89 | 18.68 | 17.90 |
+| All-phase weighted request decode, tok/s | 20.41 | 28.43 | 29.90 |
+
+**Earlier V3 workflow failures remain visible.** TF29 finished only two of the four scored tasks; it requested an unknown fixture path. Its short failed-task times are not speed wins. Final V7 repaired history and completed 4/4.
+
+| Full V3 workflow measurement | C4 reference | TF351 | TF29 |
+|---|---:|---:|---:|
+| C1 workflow wall, seconds | 22.97 | 16.26 | 11.03 (failed task) |
+| C3 cohort wall, seconds | 39.00 | 37.25 | 35.52 (failed task) |
+| Correct completed workflows | 4/4 | 4/4 | 2/4; final V7: 4/4 |
+
+The separately retained initial pre-repair campaign had incomplete native cache qualification and is **not** a whole-suite speed comparison. Its38-attempt strict quality scores were 26/38, 24/38 and 30/38 for C4/TF351/TF29; the later bounded Q20 screen is a different suite. [Initial speed tables, all strict regressions and failures](docs/TENSORFOLD-RESULTS.md#initial-full-comparison-before-cache-repairs). [Per-attempt Q20 outcomes](docs/TENSORFOLD-RESULTS.md#bounded-q20-quality-screen) and the three original quality seeds are retained. The corrected results do not turn failures into passes.
+
+<details>
+<summary>Initial pre-repair native matrix and strict quality scores (historical failures retained)</summary>
+
+This is the initial v22 capture, source `178f28a`, before V3/V7 cache/history repairs. The native Hermes suite was incomplete, so its total wall time is not a speed win. These are saved short decode probes; they are not completed-code/prose task rates. The C4 reference is reused, not newly measured at each repair.
+
+| Initial Owen short decode / prefill metric | C4 | TF351 initial | TF29 initial |
+|---|---:|---:|---:|
+| Code-prompt C1 / C2 / C4 / C8 | 53.51 / 85.18 / 128.43 / 208.62 | 83.55 / 149.43 / 216.90 / 297.04 | 93.28 / 166.76 / 253.91 / 310.91 |
+| Prose-prompt C1 / C2 / C4 / C8 | 37.42 / 64.63 / 99.80 / 152.51 | 82.30 / 147.28 / 219.27 / 299.36 | 85.22 / 150.46 / 208.54 / 308.40 |
+| Cold 32K / cold 256K input/TTFT | 1,610.05 / 1,680.63 | 2,145.69 / 1,978.39 | 2,162.50 / 1,991.50 |
+| Original strict greedy quality | 18/26 | 16/26 | 20/26 |
+| Original strict sampled quality, seed 2026 | 4/6 | 4/6 | 5/6 |
+| Original strict sampled quality, seed 1708 | 4/6 | 4/6 | 5/6 |
+| Total original strict attempts passed | 26/38 | 24/38 | 30/38 |
+| Actual code sandbox tasks passed | 5/6 | 5/6 | 5/6 |
+
+Those original native comparator gates were TF351 **REGRESSION** and TF29 **INCOMPLETE**, not unconditional quality passes. Hidden formatting/locale expectations and output truncation are documented; the original outcomes were not retrospectively regraded. The later Q20 is a separately frozen suite. [Original attempts, anonymous grades and sandbox evidence](results/20261013-tensorfold/evidence/initial-v22), [diagnosis and limitations](docs/TENSORFOLD-RESULTS.md#initial-full-comparison-before-cache-repairs).
+
+</details>
+
+<!-- tf-complete-saved:end -->
+
+### Owen short MAX-reasoning decode microbenchmark
+
+**Code/prose describe the input prompt. All 270 measured full V3 requests and 36 final V7 requests exhausted the 256-token cap in reasoning, with zero final-content characters. These figures are not rates for completed code or prose.** The original numbers remain visible, with their actual interpretation.
+
+| Version / measurement stage | Code-prompt C1 | Code-prompt C8 total | Prose-prompt C1 | Prose-prompt C8 total | Owen cold 32K | Owen cold 256K |
 |---|---:|---:|---:|---:|---:|---:|
 | X11c: historical B0 | 59.8 | 192.9 | 40.9 | 153.3 | 1,254.1 | 1,230.2 |
 | C4: fresh reference, V3 | 53.51 | 208.62 | 37.42 | 152.51 | 1,610.1 | 1,680.6 |
 | **TF351: final V7 subset** | **84.47** | **396.03** | **83.51** | **394.95** | **2,147.6** | not rerun; V3: **1,976.5** |
 | TF29: final V7 subset | 93.33 | 416.23 | 86.96 | 408.81 | 2,162.0 | not rerun; V3: 1,989.4 |
 
-All speeds are **tok/s**. Owen C8 is aggregate decode-window throughput, not per-stream speed. Cold prefill is actual input tokens / HTTP TTFT. C4 and historical X11c decode use three measured repeats; final V7 uses one measured wave after warmup. The full V3 matrix below has three repeats at C1/C2/C4/C8 for both TF arms. **All TF speed tests used a 3.3M pool; 10M capacity passed a separate stress test.** X11c is an earlier campaign, not a fresh paired TF baseline.
+All speeds are **tok/s**. Owen C8 is aggregate reasoning decode-window throughput, not per-stream speed; TF351's 396.03 total is about 49.5 per stream. Cold prefill is actual input tokens / HTTP TTFT. C4 and historical X11c decode use three measured repeats; final V7 uses one measured wave after warmup. The full V3 matrix has three repeats at C1/C2/C4/C8 for both TF arms. X11c is an earlier campaign, not a fresh paired TF baseline. The audit above directly checks the C4/TF V3 and final V7 cells.
 
 ### Hermes agent work, cache and bounded quality
 
@@ -40,7 +154,7 @@ All speeds are **tok/s**. Owen C8 is aggregate decode-window throughput, not per
 | Q20 bounded quality screen | 20/24 | 20/24 | 21/24 |
 | Six HumanEvalPlus-derived code tasks | 5/6 | 5/6 | 5/6 |
 
-The independently derived **Hermes 64K cold prefill for TF351 was 2,111.3 tok/s**, versus historical X11c 1,318.0, **+60.2%**. It counts 65,534 verified uncached input tokens over 31.0403 s engine prefill time. It is a different metric from Owen TTFT. Workflow output lengths differ, so lower wall time and percentage cache hit alone do not prove equal work. TF351 and TF29 compute exactly the same final workflow input counts despite different cache percentages.
+The independently derived **Hermes 64K cold prefill for TF351 was 2,111.3 tok/s**, versus fresh C4 **1,710.9, +23.4%**. It counts 65,534 verified uncached input tokens over 31.0403 s engine prefill time. The older X11c result was 1,318.0; its +60.2% difference is a historical cross-campaign comparison, not the C4 gain. TF351 and TF29 compute exactly the same final workflow input counts despite different output lengths and cache percentages.
 
 **[Full results, every repeat, failures and quality cases](docs/TENSORFOLD-RESULTS.md)** · **[Run Hermes, Owen and Q20](docs/TENSORFOLD-BENCHMARK.md)** · **[8,265 numerical receipts and hashes](results/20261013-tensorfold/evidence-manifest.json)**
 
@@ -67,7 +181,7 @@ Agents should read [AGENTS.md](AGENTS.md). Topology is operator-owned; private a
 | Long-context agent work | **C4 / DS41F 1.0.0**, N6 | The only two arms to finish the full bounded 128K-C3 cold/hot phase |
 | Hermes single-request decode | C3, C5-indexer | Highest and second-highest measured Hermes C1 |
 | Hermes eight-request throughput | C5-indexer, N8b, B0 | Highest measured Hermes C8 wall throughput |
-| Code generation at eight requests | N3, N1, N4 | Highest measured Owen code C8 decode-window throughput |
+| Short code-prompt decode at eight requests | N3, N1, N4 | Highest measured Owen code-prompt C8 decode-window throughput; capped reasoning probes |
 | Reference comparison | B0 | Fresh X11c baseline on the same upgraded hosts |
 
 These are candidates to evaluate, not universal winners. **C4 was the selected vLLM production recipe; the other vLLM arms remain experimental alternatives. TensorFold profiles above are separate recipes.**
@@ -101,9 +215,9 @@ All values are **tok/s**. C1/C3 are weighted **per-request engine decode**; C8 i
 
 `*` Cold prime measured, but the full 128K-C3 phase did not finish. `n/a` is missing, not zero. Only N6 and C4 completed that full phase.
 
-### Christopher Owen benchmark: code
+### Christopher Owen benchmark: code-prompt short decode
 
-Adapted from [Christopher Owen's spark-ds41f](https://github.com/christopherowen/spark-ds41f), with [frozen source, inputs and methodology](docs/OWEN-BENCHMARK.md). Values are aggregate **decode-window tok/s**, averaged over three measured repeats after a discarded warmup.
+Adapted from [Christopher Owen's spark-ds41f](https://github.com/christopherowen/spark-ds41f), with [frozen source, inputs and methodology](docs/OWEN-BENCHMARK.md). Values are aggregate **decode-window tok/s**, averaged over three measured repeats after a discarded warmup. The 256-token MAX probes can stop inside reasoning; they do not require a completed code answer. See the [audited TensorFold comparison limitation](docs/BENCHMARK-CORRECTION-20261014.md).
 
 | Variant | C1 | C2 | C4 | C8 |
 |---|---:|---:|---:|---:|
@@ -126,7 +240,7 @@ Adapted from [Christopher Owen's spark-ds41f](https://github.com/christopherowen
 | [C5-sp512](docs/VARIANTS.md#c5-sp512) | 57.2 | 82.9 | 131.1 | 198.6 |
 | [C5-sp256](docs/VARIANTS.md#c5-sp256) | 55.9 | 86.3 | **133.4** | 201.3 |
 
-### Christopher Owen benchmark: prose and cold prefill
+### Christopher Owen benchmark: prose-prompt short decode and cold prefill
 
 Prose uses the same decode-window metric. Prefill is **input tokens / TTFT**, including first-token overhead; it differs from the Hermes native computed-prefill metric.
 
