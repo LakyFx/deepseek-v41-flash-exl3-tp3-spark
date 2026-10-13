@@ -1,0 +1,18 @@
+{
+  "3300000": {
+    "rows": 3301376,
+    "half": 32,
+    "rope-plain-cos.f32": "66a47d6f185bdb2962ca0ffe13952ab70409dc15ea52f721a8e09189e5f26fe6",
+    "rope-plain-sin.f32": "4ca39e36077fced64beab67b879470deb8f641a1cc26b5d227835c8c09812ecb",
+    "rope-compressed-cos.f32": "e02d894c119fc61a26d2aea51488b87d35e4b33f4e266b8335e75aca5155b921",
+    "rope-compressed-sin.f32": "d3a39e5b47a1d36ba9c20bfacbdf8803f3df4b7fcf7a0f947e6ef008f0a0aa2b"
+  },
+  "10000000": {
+    "rows": 10002432,
+    "half": 32,
+    "rope-plain-cos.f32": "e03f5e3a1f51888ed7c45671f9e10fc6c12091b2076f11299a0ba8b4acc58b00",
+    "rope-plain-sin.f32": "ee17e9620292b35a0cd4afb0500ee41c32fcf121ef6d9139ab0111caf5920fe5",
+    "rope-compressed-cos.f32": "232935aeb2d027d53101a404f6cea701864a33e1193338d4bc892ddde1fdb668",
+    "rope-compressed-sin.f32": "a3f7f728812908d3d73982aa01c417bdfa732d95d819ab38e475f6309b051e37"
+  }
+}

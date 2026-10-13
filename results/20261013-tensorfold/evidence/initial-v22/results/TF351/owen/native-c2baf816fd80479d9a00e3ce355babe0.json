@@ -1,0 +1,61 @@
+{
+  "schema": "dgx.closed-workload-native-metrics.v1",
+  "identity": "owen-wave",
+  "before": {
+    "generation": "1791894788162557940",
+    "campaign_id": "public-owen-899f8a469cc04c988a8952f94d2d4ecf",
+    "values": {
+      "request_generation_tokens_sum": 37815.0,
+      "spec_decode_num_draft_tokens_total": 28013.0,
+      "spec_decode_num_accepted_tokens_total": 20441.0,
+      "request_generation_tokens_count": 162.0,
+      "request_decode_time_seconds_sum": 989.359539,
+      "request_prefill_time_seconds_sum": 430.916716,
+      "num_requests_running": 0.0,
+      "num_requests_waiting": 0.0
+    },
+    "metric_backend": "tensorfold",
+    "monotonic": 173421.26345135
+  },
+  "workload_error": null,
+  "metrics": {
+    "native_deltas": {
+      "request_generation_tokens_count": 2.0,
+      "request_generation_tokens_sum": 512.0,
+      "request_prefill_kv_computed_tokens_sum": null,
+      "request_prefill_time_seconds_sum": 0.4701589999999669,
+      "request_decode_time_seconds_sum": 6.672128999999927,
+      "request_success_total": null,
+      "spec_decode_num_accepted_tokens_total": 296.0,
+      "spec_decode_num_draft_tokens_total": 454.0,
+      "spec_decode_num_drafts_total": null
+    },
+    "coverage_verified": true,
+    "idle_before": true,
+    "idle_after": true,
+    "expected_requests": 2,
+    "observed_requests": 2.0,
+    "weighted_request_computed_prefill_tokens_per_second": null,
+    "weighted_request_decode_tokens_per_second": 76.73712543627462,
+    "draft_acceptance_fraction": 0.6519823788546255,
+    "scope": "summed per-request engine time; report cohort wall throughput separately",
+    "missing_or_overlapping_metrics": null,
+    "metric_backend": "tensorfold"
+  },
+  "after": {
+    "generation": "1791894788162557940",
+    "campaign_id": "public-owen-899f8a469cc04c988a8952f94d2d4ecf",
+    "values": {
+      "request_generation_tokens_sum": 38327.0,
+      "spec_decode_num_draft_tokens_total": 28467.0,
+      "spec_decode_num_accepted_tokens_total": 20737.0,
+      "request_generation_tokens_count": 164.0,
+      "request_decode_time_seconds_sum": 996.031668,
+      "request_prefill_time_seconds_sum": 431.386875,
+      "num_requests_running": 0.0,
+      "num_requests_waiting": 0.0
+    },
+    "metric_backend": "tensorfold",
+    "monotonic": 173424.956031066
+  }
+}

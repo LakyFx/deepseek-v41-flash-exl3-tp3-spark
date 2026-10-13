@@ -2,6 +2,8 @@ __pycache__/
 *.pyc
 .env
 config/cluster.local.json
+tensorfold/cluster.local.json
+tensorfold/benchmark.local.json
 .cache/
 .venv/
 local-results/

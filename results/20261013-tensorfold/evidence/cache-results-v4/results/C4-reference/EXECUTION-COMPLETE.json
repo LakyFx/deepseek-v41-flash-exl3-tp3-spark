@@ -1,0 +1,39 @@
+{
+  "arm": "C4-reference",
+  "stages": [
+    {
+      "stage": "hermes",
+      "exit_code": 0,
+      "started": 1791874290.1787474,
+      "elapsed_seconds": 612.1156876087189
+    },
+    {
+      "stage": "owen",
+      "exit_code": 0,
+      "started": 1791874902.294683,
+      "elapsed_seconds": 601.0683238506317
+    },
+    {
+      "stage": "quality-42",
+      "exit_code": 0,
+      "started": 1791875503.3632848,
+      "elapsed_seconds": 304.6782650947571
+    },
+    {
+      "stage": "quality-2026",
+      "exit_code": 0,
+      "started": 1791875808.0421002,
+      "elapsed_seconds": 51.30187726020813
+    },
+    {
+      "stage": "quality-1708",
+      "exit_code": 0,
+      "started": 1791875859.344586,
+      "elapsed_seconds": 66.00999903678894
+    }
+  ],
+  "quality_review": "PENDING",
+  "qualified_receipt_sha256": "cc850eb9c7952d027d6fa7514ddf3b32de1f3826afa2de33f007ec9ef383b5ab",
+  "token_input_receipt_sha256": "5c4e231bd31bf0685a577a6c7bb4844b690955757aa2b1acbad622b7666202b1",
+  "automatic_promotion": false
+}

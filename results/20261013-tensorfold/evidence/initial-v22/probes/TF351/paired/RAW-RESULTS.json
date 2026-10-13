@@ -1,0 +1,44 @@
+[
+  {
+    "rank": 0,
+    "exit_code": 0,
+    "diagnostics": [],
+    "state": {
+      "Result": "success",
+      "ExecMainPID": "2135787",
+      "ExecMainCode": "1",
+      "ExecMainStatus": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "exited"
+    }
+  },
+  {
+    "rank": 1,
+    "exit_code": 0,
+    "diagnostics": [],
+    "state": {
+      "Result": "success",
+      "ExecMainPID": "3752166",
+      "ExecMainCode": "1",
+      "ExecMainStatus": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "exited"
+    }
+  },
+  {
+    "rank": 2,
+    "exit_code": 0,
+    "diagnostics": [],
+    "state": {
+      "Result": "success",
+      "ExecMainPID": "2645990",
+      "ExecMainCode": "1",
+      "ExecMainStatus": "0",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "exited"
+    }
+  }
+]

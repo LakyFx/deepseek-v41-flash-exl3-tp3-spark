@@ -1,23 +1,64 @@
 # DeepSeek V4.1 Flash EXL3 on three DGX Sparks
 
-**A big thank you to [Christopher Owen](https://github.com/christopherowen), [@christopherowen on X](https://x.com/christopherowen), for sharing his recipes, networking work and benchmarks. His [spark-ds41f project](https://github.com/christopherowen/spark-ds41f) was a major source of inspiration for this recipe and our tuning work.**
+**A huge thank you to [Ashley Hart, @ashxhart](https://x.com/ashxhart), creator of [TensorFold](https://github.com/ashhart/TensorFold). Its native engine made our TF351 and TF29 TP3 recipes possible. Visit [tensorfold.dev](https://tensorfold.dev/).**
 
-**DS41F 1.0.0 is campaign C4**, our selected production recipe for Hermes agent work: TP3 on three DGX Sparks, the same approximately 3.51 bpw Pollard EXL3 experts, MAX reasoning, long prompts and a measured **3,299,563-token KV pool**.
+**A big thank you to [Christopher Owen](https://github.com/christopherowen), [@christopherowen on X](https://x.com/christopherowen), for his [spark-ds41f recipes](https://github.com/christopherowen/spark-ds41f), networking work and benchmark. The Owen code/prose benchmark below is explicitly adapted from his GitHub project.**
 
-The model, quantization, engine and upstream kernels are other people's work. Our contribution is integration, TP3 tuning, bounded correctness checks and workload measurements. Read [sources and credits](docs/SOURCES.md). The second benchmark is explicitly adapted from [Christopher Owen's spark-ds41f recipe](docs/OWEN-BENCHMARK.md).
+![TF351 on three DGX Sparks: historical X11c comparison, TensorFold and separately qualified 10M pool](assets/tf351-vs-x11c.png)
+
+## Choose an engine and recipe
+
+**Two TensorFold recipes, with the complete C4 and X11c tuning history preserved.** Our selected TensorFold profile is **TF351: TP3, approximately 3.51 bpw routed experts, MAX reasoning, 401K context and a separately stress-qualified 10M shared KV pool**. TF29 is the faster-decode 2.9 bpw alternative; its tested pool is 3.3M.
+
+| Version | Engine / routed experts | Shared KV pool | Recipe and complete tests |
+|---|---|---:|---|
+| X11c / B0 | vLLM / Pollard ~3.51 bpw | ~3.3M | [Historical baseline](docs/VARIANTS.md#b0), [all 18 host64k arms](docs/CAMPAIGN-20261012.md) |
+| C4 / DS41F 1.0.0 | vLLM / Pollard ~3.51 bpw | 3,299,563 observed | [Retained C4 recipe](docs/DS41F-1.0.0.md), [fresh TF comparison reference](docs/TENSORFOLD-RESULTS.md#c4-reference) |
+| **TF351** | **TensorFold / Pollard ~3.51 bpw** | **10M qualified; 3.3M speed profile** | [Recipe](docs/TF351.md), [source/build/install](docs/TENSORFOLD-INSTALL.md), [tests](docs/TENSORFOLD-RESULTS.md#tf351) |
+| TF29 | TensorFold / Mia 2.9 bpw | 3.3M qualified | [Recipe](docs/TF29.md), [tests](docs/TENSORFOLD-RESULTS.md#tf29) |
+
+### Latest code, prose and cold-prefill measurements
+
+| Version / measurement stage | Code C1 | Code C8 total | Prose C1 | Prose C8 total | Owen cold 32K | Owen cold 256K |
+|---|---:|---:|---:|---:|---:|---:|
+| X11c: historical B0 | 59.8 | 192.9 | 40.9 | 153.3 | 1,254.1 | 1,230.2 |
+| C4: fresh reference, V3 | 53.51 | 208.62 | 37.42 | 152.51 | 1,610.1 | 1,680.6 |
+| **TF351: final V7 subset** | **84.47** | **396.03** | **83.51** | **394.95** | **2,147.6** | not rerun; V3: **1,976.5** |
+| TF29: final V7 subset | 93.33 | 416.23 | 86.96 | 408.81 | 2,162.0 | not rerun; V3: 1,989.4 |
+
+All speeds are **tok/s**. Owen C8 is aggregate decode-window throughput, not per-stream speed. Cold prefill is actual input tokens / HTTP TTFT. C4 and historical X11c decode use three measured repeats; final V7 uses one measured wave after warmup. The full V3 matrix below has three repeats at C1/C2/C4/C8 for both TF arms. **All TF speed tests used a 3.3M pool; 10M capacity passed a separate stress test.** X11c is an earlier campaign, not a fresh paired TF baseline.
+
+### Hermes agent work, cache and bounded quality
+
+| Measurement | C4 reference | TF351 | TF29 |
+|---|---:|---:|---:|
+| Final workflow C1 wall time, lower is better | 22.97 s | **15.21 s** | 22.28 s |
+| Final workflow C3 cohort wall time, lower is better | 39.00 s | **35.60 s** | 43.67 s |
+| Newly computed workflow input, C1 / C3 | 8,667 / 25,807 | **8,352 / 25,249** | **8,352 / 25,249** |
+| Correct completed workflows | 4/4 | 4/4 final | 4/4 final; 2/4 in earlier V3 |
+| Identical-prefix hot cache, 64K-C1 / 128K-C3 / 8K-C8 | 99.81% / 99.92% / 98.60% | 100% / 100% / 100% V3 | 100% / 100% / 100% V3 |
+| Q20 bounded quality screen | 20/24 | 20/24 | 21/24 |
+| Six HumanEvalPlus-derived code tasks | 5/6 | 5/6 | 5/6 |
+
+The independently derived **Hermes 64K cold prefill for TF351 was 2,111.3 tok/s**, versus historical X11c 1,318.0, **+60.2%**. It counts 65,534 verified uncached input tokens over 31.0403 s engine prefill time. It is a different metric from Owen TTFT. Workflow output lengths differ, so lower wall time and percentage cache hit alone do not prove equal work. TF351 and TF29 compute exactly the same final workflow input counts despite different cache percentages.
+
+**[Full results, every repeat, failures and quality cases](docs/TENSORFOLD-RESULTS.md)** · **[Run Hermes, Owen and Q20](docs/TENSORFOLD-BENCHMARK.md)** · **[8,265 numerical receipts and hashes](results/20261013-tensorfold/evidence-manifest.json)**
+
+The tiny Q20 quality screen is a regression check, not a leaderboard or proof that 2.9 bpw is better. The [initial 38-attempt quality comparison and its strict regressions](docs/TENSORFOLD-RESULTS.md#initial-full-comparison-before-cache-repairs) are also preserved; they are a different suite and are not overwritten by Q20. TF changes ancillary weights, KV/index precision, sampler and engine in addition to routed-expert bits. Historical strict partial-prefix numerical mismatches and incomplete tests are retained. [Read verification limits](docs/TENSORFOLD-TP3.md#results-and-verification-scope).
+
+The model, quantization, engines and upstream kernels are other people's work. Our contribution is integration, TP3 adaptation, cache fixes, bounded correctness checks and workload measurements. All earlier [sources and credits](docs/SOURCES.md) remain.
 
 ## Start here
 
-- [Final 1.0.0 recipe and technical explanation](docs/DS41F-1.0.0.md): exactly what C4 contains and why it was selected.
-- [Complete latest campaign](docs/CAMPAIGN-20261012.md): all 18 measured arms, isolated changes, combinations, Hermes and Owen tables, C1?C8 curve, incomplete phases and tradeoffs.
-- [Earlier tuning history](docs/HISTORY.md): 0.8.x, A/B, X1?X11, X11a?e and reasoning tests, including rejected changes.
-- [Install](docs/INSTALL.md), [host environment](docs/HOST-ENVIRONMENT.md), [verification scope](docs/VERIFICATION.md), [architecture](docs/ARCHITECTURE.md).
-- [Run our benchmark](docs/BENCHMARKS.md), [run the Owen subset](docs/OWEN-BENCHMARK.md), [reconstruct experimental variants](docs/EXPERIMENT-REPLAY.md).
+- **TensorFold:** [overview](docs/TENSORFOLD-TP3.md), [TF351](docs/TF351.md), [TF29](docs/TF29.md), [installation](docs/TENSORFOLD-INSTALL.md), [results](docs/TENSORFOLD-RESULTS.md), [benchmark reproduction](docs/TENSORFOLD-BENCHMARK.md).
+- **Preserved vLLM C4:** [1.0.0 recipe](docs/DS41F-1.0.0.md), [installation](docs/INSTALL.md), [host environment](docs/HOST-ENVIRONMENT.md), [verification](docs/VERIFICATION.md), [architecture](docs/ARCHITECTURE.md).
+- **All historical versions:** [18-arm campaign](docs/CAMPAIGN-20261012.md), [variant picker](docs/VARIANTS.md), [earlier A/B/X history](docs/HISTORY.md), [materialize other vLLM recipes](docs/EXPERIMENT-REPLAY.md).
+- **Credits and workload sources:** [SOURCES.md](docs/SOURCES.md), [Owen attribution](docs/OWEN-BENCHMARK.md), [legacy Hermes methodology](docs/BENCHMARKS.md).
 
-Agents should read [AGENTS.md](AGENTS.md). The launcher takes your topology and paths; private production addresses are not part of the recipe.
+Agents should read [AGENTS.md](AGENTS.md). Topology is operator-owned; private addresses, secrets, conversations and generated private answers are excluded.
 
 <!-- variant-catalog:start -->
-## Choose your variant
+## Preserved vLLM campaign: choose your variant
 
 **18 measured recipes. Same EXL3 weights. Different workload tradeoffs.**
 
@@ -29,7 +70,7 @@ Agents should read [AGENTS.md](AGENTS.md). The launcher takes your topology and 
 | Code generation at eight requests | N3, N1, N4 | Highest measured Owen code C8 decode-window throughput |
 | Reference comparison | B0 | Fresh X11c baseline on the same upgraded hosts |
 
-These are candidates to evaluate, not universal winners. **C4 is our production choice; the others are experimental alternatives.**
+These are candidates to evaluate, not universal winners. **C4 was the selected vLLM production recipe; the other vLLM arms remain experimental alternatives. TensorFold profiles above are separate recipes.**
 Click any variant below for its changes, tradeoffs, build commands and verification scope.
 [All variant recipes](docs/VARIANTS.md) · [Reproduction guide](docs/EXPERIMENT-REPLAY.md) · [Verification status](docs/VARIANT-VALIDATION.md)
 
@@ -128,7 +169,7 @@ Fill in your topology and paths, then follow [installation](docs/INSTALL.md#3-do
 
 <!-- variant-catalog:end -->
 
-## Selected settings
+## Preserved C4 / 1.0.0 settings
 
 | Setting | DS41F 1.0.0 / C4 |
 |---|---|
@@ -164,7 +205,8 @@ These are different metric definitions, not interchangeable speeds. Hermes has o
 
 | Path | Contents |
 |---|---|
-| `config/ds41f-1.0.0.json` | Current exact profile; `config/x11c.json` is historical |
+| `config/ds41f-1.0.0.json` | Preserved exact C4 profile; `config/x11c.json` is historical |
+| `tensorfold/` | TF351 / TF29 profiles, native source/kernel snapshots, export plans and isolated benchmark kit |
 | `runtime/rootfs/`, `native/` | Selected C4 sources and rebuild inputs |
 | `runtime/source-provenance.json` | Measured source and portable export hashes |
 | `experiments/20261012/` | Baseline and per-arm source/settings archive |
@@ -172,4 +214,4 @@ These are different metric definitions, not interchangeable speeds. Hermes has o
 | `results/` | All retained historical campaigns and current numerical envelopes |
 | `licenses/` | Third-party notices |
 
-Private captured legacy prompts and generated private text are excluded. The public legacy surrogates can be measured as a new comparison; they are not identical historical inputs. Production C4 is tested; a newly built portable image still needs qualification on your cluster. This repository update did not reload the running model.
+Private captured legacy prompts and generated private text are excluded. The public legacy surrogates can be measured as a new comparison; they are not identical historical inputs. C4 has historical production qualification; a newly built portable image or native binary still needs acceptance on your cluster. This repository update did not reload the running model.

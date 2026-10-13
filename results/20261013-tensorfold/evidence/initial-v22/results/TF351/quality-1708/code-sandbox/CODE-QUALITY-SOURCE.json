@@ -1,0 +1,13 @@
+{
+  "scope": "ACTUAL_OUTPUT_CPU_CODE_TESTS_ONLY",
+  "arm": "TF351",
+  "seed": 1708,
+  "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+  "fixture_sha256": "6dfc48d3c8fcfe89c8edd22b522f16183aeef15ab9ee9b97d4637535f5902410",
+  "response_sha256": "8bf66b21c6e2da85be005f638201d196ec6c741bd0d7cbf8e790502864aba3b7",
+  "result_sha256": "d6cae43fcfee1f693f420f40d246d4b25b14e5fea936ceea17ec2a13198a4e19",
+  "sandbox_source_sha256": "9117f343d2373bca3acda2d4c44acc175eeecf844e75ee878aa90d76ff818630",
+  "cases": [
+    "code-weighted"
+  ]
+}

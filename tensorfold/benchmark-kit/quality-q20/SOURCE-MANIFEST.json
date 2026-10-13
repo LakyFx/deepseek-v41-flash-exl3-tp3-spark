@@ -1,0 +1,57 @@
+{
+  "time": 1791904774.2361593,
+  "google_commit": "e6890f85757dd84e27ca6df2dd30651dafad28e0",
+  "sources": [
+    {
+      "name": "ifeval-instructions.py",
+      "url": "https://raw.githubusercontent.com/google-research/google-research/e6890f85757dd84e27ca6df2dd30651dafad28e0/instruction_following_eval/instructions.py",
+      "bytes": 55162,
+      "sha256": "60e086f5342a03ce8e18b64bbcccf86308f523c08aa826707a562150a52f3edf"
+    },
+    {
+      "name": "ifeval-instructions_registry.py",
+      "url": "https://raw.githubusercontent.com/google-research/google-research/e6890f85757dd84e27ca6df2dd30651dafad28e0/instruction_following_eval/instructions_registry.py",
+      "bytes": 7240,
+      "sha256": "ec92d72c264f6d906978613085db262356174300370a3fffe6fefd5969ce9cfc"
+    },
+    {
+      "name": "ifeval-instructions_util.py",
+      "url": "https://raw.githubusercontent.com/google-research/google-research/e6890f85757dd84e27ca6df2dd30651dafad28e0/instruction_following_eval/instructions_util.py",
+      "bytes": 19538,
+      "sha256": "a73797261eee5bf447e279d82a2b700b1bdd3cb1193412dbab1270a85832bc6b"
+    },
+    {
+      "name": "ifeval-evaluation_lib.py",
+      "url": "https://raw.githubusercontent.com/google-research/google-research/e6890f85757dd84e27ca6df2dd30651dafad28e0/instruction_following_eval/evaluation_lib.py",
+      "bytes": 6984,
+      "sha256": "35decc06000718487f44d7deafa6d3f48a8ec0886281edf40162c0265b7d248c"
+    },
+    {
+      "name": "ifeval-input_data.jsonl",
+      "url": "https://raw.githubusercontent.com/google-research/google-research/e6890f85757dd84e27ca6df2dd30651dafad28e0/instruction_following_eval/data/input_data.jsonl",
+      "bytes": 207111,
+      "sha256": "67ffeee0fcb87c317c5b08a2de85557b4a7e96ada6178aa645b4954fe4b53d49"
+    },
+    {
+      "name": "google-LICENSE",
+      "url": "https://raw.githubusercontent.com/google-research/google-research/e6890f85757dd84e27ca6df2dd30651dafad28e0/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "name": "HumanEvalPlus-Mini-v0.1.10.jsonl.gz",
+      "url": "https://github.com/evalplus/humanevalplus_release/releases/download/v0.1.10/HumanEvalPlus-Mini.jsonl.gz",
+      "bytes": 57064,
+      "sha256": "91486741f1627101021fbe50523df08eebb5b0bf5e804b633dcd5ca3c14dbd2f"
+    }
+  ],
+  "code_task_selection_before_generation": [
+    "HumanEval/0",
+    "HumanEval/3",
+    "HumanEval/7",
+    "HumanEval/11",
+    "HumanEval/12",
+    "HumanEval/36"
+  ],
+  "qualification": "small workload regression subset; not a full public leaderboard score"
+}

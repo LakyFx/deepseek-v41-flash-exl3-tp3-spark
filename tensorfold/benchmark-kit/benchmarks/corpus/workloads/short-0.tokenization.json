@@ -1,0 +1,65 @@
+{
+  "schema": "dgx.offline-exact-tokenization.v1",
+  "request_sha256": "50d5b95df46000fe901a5246ab504638b54c0f9771c8723528c515192bf29cb3",
+  "count": 8191,
+  "target": 8192,
+  "source_units": [
+    {
+      "id": "vllm/entrypoints/serve/elastic_ep/api_router.py:88:attach_router",
+      "source_sha256": "2d6805874a868eb63747903f5e10331855b7c277d46a4cef3dca7f20a2e631db"
+    },
+    {
+      "id": "vllm/model_executor/kernels/attention/dsa/dcp_indexer_cutedsl.py:162:StableTopKFromGatheredCandidatesKernel",
+      "source_sha256": "aff489e6505b495db182bfaf95017e31e2ceab0cf1685b3e3a94976fec02bfce"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/nvidia/model_state.py:21:_gather_lookback_kernel",
+      "source_sha256": "066a458fbfeeca10a19b02c24b64b82b014ea59cef5fbd64277d207991dc0393"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/pynccl_allocator.py:124:_cleanup_nccl_allocator_wrapper",
+      "source_sha256": "390e2576cbf4ae06341ca4dab24fc7e4d4f7c24dd444329ed05d828a9ce91460"
+    },
+    {
+      "id": "vllm/entrypoints/serve/tokenize/serving.py:32:ServingTokenization",
+      "source_sha256": "fb9fd00cc71df5c052f420a959e39434ce5fd3c84556275eb9dc25d43ff59750"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/rocm_aiter_mla.py:58:_get_mla_gluon",
+      "source_sha256": "bd8e4d5d2c20dc791da52584fbc12a5a1e63a0eda0368a0362b22de1e5ac08b8"
+    },
+    {
+      "id": "vllm/entrypoints/serve/tokenize/protocol.py:46:TokenizeChatRequest",
+      "source_sha256": "0bb4ddf2c0b1412e88c9d853e2ef7163f62665df0b8bbef86df5bdbdd9a76e44"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/ray_communicator.py:22:RayPPCommunicator",
+      "source_sha256": "332c37f65495b60564d61db59bc2d30ca0236adc33442d01464790bde9aec897"
+    },
+    {
+      "id": "vllm/entrypoints/serve/utils/orca_metrics.py:100:metrics_header",
+      "source_sha256": "a8b266682e1258b49fbc6b70384091f037b19c25c156a619b8435820d3916202"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/all_reduce_utils.py:170:producer",
+      "source_sha256": "ed0ab4dd05b2519a6313892e68824c97b540034664d7f8c3d031b322e33e1bfc"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:1549:get_tp_group",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/model_executor/kernels/mhc/triton.py:140:_hc_collapse_triton_fake",
+      "source_sha256": "05f156e72987b6c57c6f82946969db625e1be8f2ae99609f18a064a624ad05e6"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/cache/api_router.py:69:attach_router",
+      "source_sha256": "ba0e9be90c4fe8f42526c163d073ee5889492e4cdd8231599901d0b3aab669ce"
+    }
+  ],
+  "token_ids_sha256": "84ec613a54d6294f89980331ebca3a414fe58c443ac5812ce0c29c835102be5b",
+  "current_tokenizer_receipt_sha256": "66c2ce0aa907a48f71d8d66f9bebc8df356acbaf3186ff6d0a6d3c445e919c5a",
+  "historical_eight_exact_matches": true,
+  "inference_requests": 0,
+  "original_request_sha256": "c4d055b36e0acb1b802b9547406b445d05d297ef0089be74d6ae66d315a74e25"
+}

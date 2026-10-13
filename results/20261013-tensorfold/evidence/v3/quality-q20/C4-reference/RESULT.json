@@ -1,0 +1,23 @@
+{
+  "status": "CAPTURED_PENDING_CODE_AND_EDITORIAL_REVIEW",
+  "arm": "C4-reference",
+  "fixture_sha256": "9e790240147a67de645f95042f7d81810946743fb41a0422c39b83ca49f8c7d6",
+  "elapsed_seconds": 360.1202423630166,
+  "hard_inference_budget_seconds": 360,
+  "attempts": 24,
+  "complete": 20,
+  "noncode_pass": 15,
+  "all_max": true,
+  "sampling": {
+    "reasoning_effort": "max",
+    "top_p": 1,
+    "top_k": 0,
+    "min_p": 0
+  },
+  "errors": [
+    {
+      "id": "long-digest-1-greedy",
+      "error": "TimeoutError: timed out"
+    }
+  ]
+}

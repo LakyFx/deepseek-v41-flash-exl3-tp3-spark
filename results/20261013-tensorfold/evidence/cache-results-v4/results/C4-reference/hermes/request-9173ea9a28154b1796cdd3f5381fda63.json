@@ -1,0 +1,27 @@
+{
+  "case_id": "code-tokenizer-binding-guard",
+  "phase": "prime",
+  "slot": 2,
+  "started_monotonic": 152490.665692724,
+  "input_tokens_expected": 18353,
+  "request_body_sha256": "6034b5b0c230c8b88fc4991eb513650cc9879fd00422c3d007a7e8deeceab3b2",
+  "complete": true,
+  "usage": {
+    "prompt_tokens": 18353,
+    "completion_tokens": 1,
+    "cached_tokens": 18304,
+    "computed_prompt_tokens": 49
+  },
+  "error": null,
+  "request_id": "dgx-gateway-74e1af816b0549e4aaeca1dc9afca8d6",
+  "first_any_delta_monotonic": 152491.094302317,
+  "first_visible_delta_monotonic": null,
+  "sse_chunk_times": [
+    152491.094302317
+  ],
+  "finish_reason": "length",
+  "ttft_seconds": 0.4286095930146985,
+  "ended_monotonic": 152491.094492477,
+  "wall_seconds": 0.4287997529900167,
+  "request_output_tokens_per_wall_second": 2.33209089563837
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "dgx.closed-workload-native-metrics.v1",
+  "identity": "owen-wave",
+  "before": {
+    "generation": "1.79187381347e+09",
+    "campaign_id": "public-owen-45f11ae85ab74b59a0277e89651766c1",
+    "values": {
+      "spec_decode_num_drafts_total": 11771.0,
+      "spec_decode_num_draft_tokens_total": 58855.0,
+      "spec_decode_num_accepted_tokens_total": 20237.0,
+      "num_requests_running": 0.0,
+      "num_requests_waiting": 0.0,
+      "request_success_total": 142.0,
+      "request_generation_tokens_count": 142.0,
+      "request_generation_tokens_sum": 32011.0,
+      "request_prefill_time_seconds_sum": 611.8612393075891,
+      "request_decode_time_seconds_sum": 1222.5941581074148,
+      "request_prefill_kv_computed_tokens_sum": 783689.0
+    },
+    "metric_backend": "vllm",
+    "monotonic": 153082.306873077
+  },
+  "workload_error": null,
+  "metrics": {
+    "native_deltas": {
+      "request_generation_tokens_count": 1.0,
+      "request_generation_tokens_sum": 256.0,
+      "request_prefill_kv_computed_tokens_sum": 75.0,
+      "request_prefill_time_seconds_sum": 0.20545697401394136,
+      "request_decode_time_seconds_sum": 5.102181218971964,
+      "request_success_total": 1.0,
+      "spec_decode_num_accepted_tokens_total": 176.0,
+      "spec_decode_num_draft_tokens_total": 395.0,
+      "spec_decode_num_drafts_total": 79.0
+    },
+    "coverage_verified": true,
+    "idle_before": true,
+    "idle_after": true,
+    "expected_requests": 1,
+    "observed_requests": 1.0,
+    "weighted_request_computed_prefill_tokens_per_second": 365.0399328616163,
+    "weighted_request_decode_tokens_per_second": 50.17461924874188,
+    "draft_acceptance_fraction": 0.44556962025316454,
+    "scope": "summed per-request engine time; report cohort wall throughput separately",
+    "missing_or_overlapping_metrics": null,
+    "metric_backend": "vllm"
+  },
+  "after": {
+    "generation": "1.79187381347e+09",
+    "campaign_id": "public-owen-45f11ae85ab74b59a0277e89651766c1",
+    "values": {
+      "spec_decode_num_drafts_total": 11850.0,
+      "spec_decode_num_draft_tokens_total": 59250.0,
+      "spec_decode_num_accepted_tokens_total": 20413.0,
+      "num_requests_running": 0.0,
+      "num_requests_waiting": 0.0,
+      "request_success_total": 143.0,
+      "request_generation_tokens_count": 143.0,
+      "request_generation_tokens_sum": 32267.0,
+      "request_prefill_time_seconds_sum": 612.0666962816031,
+      "request_decode_time_seconds_sum": 1227.6963393263868,
+      "request_prefill_kv_computed_tokens_sum": 783764.0
+    },
+    "metric_backend": "vllm",
+    "monotonic": 153087.670744725
+  }
+}

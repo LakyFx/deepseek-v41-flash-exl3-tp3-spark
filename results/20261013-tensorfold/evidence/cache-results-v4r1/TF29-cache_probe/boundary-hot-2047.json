@@ -1,0 +1,65 @@
+{
+  "request": {
+    "model": "DS41F-TF29-TP3",
+    "cache_salt": "boundary-2047",
+    "max_tokens": 16,
+    "temperature": 0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "min_p": 0.0,
+    "seed": 2026,
+    "stream": false,
+    "draft": true,
+    "ignore_eos": true,
+    "reasoning_effort": "max",
+    "return_token_ids": true
+  },
+  "response": {
+    "id": "cmpl-457fe2c953fdf1fca1921c2ef4aa4048",
+    "object": "text_completion",
+    "created": 1791912643,
+    "model": "DS41F-TF29-TP3",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "length",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2047,
+      "completion_tokens": 16,
+      "total_tokens": 2063,
+      "prompt_tokens_details": {
+        "cached_tokens": 2047
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "exact_mode": "exact",
+    "tensorfold": {
+      "enable_thinking": false,
+      "reasoning_effort": "none",
+      "engine": "lanes",
+      "tokens_per_second": 114.7519069127635,
+      "seconds": 0.134635757,
+      "prefill_seconds": 0.003793456,
+      "prefill_widths": [],
+      "prefill_raised": [],
+      "time_to_first_token": 0.004034383,
+      "sampling": "greedy",
+      "drafts": true,
+      "token_sha": "bdb11405bc3d",
+      "min_rows": 2
+    },
+    "speculative": {
+      "rounds": 4,
+      "drafted": 13,
+      "accepted": 11,
+      "acceptance_rate": 0.8461538461538461,
+      "tokens_per_round": 4.0
+    }
+  },
+  "seconds": 0.13563426499604248
+}

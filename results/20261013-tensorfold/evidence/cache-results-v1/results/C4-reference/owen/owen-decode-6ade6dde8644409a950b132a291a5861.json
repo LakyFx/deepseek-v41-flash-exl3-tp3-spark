@@ -1,0 +1,23 @@
+{
+  "point": "code-c1",
+  "sample": "sample3",
+  "requests": [
+    {
+      "ok": true,
+      "ttft_s": 0.2141,
+      "elapsed_s": 4.9554,
+      "prompt_tokens": 75,
+      "completion_tokens": 256,
+      "finish_reason": "length",
+      "decode_tps": 53.78,
+      "output_sha256": "7604b53641f34f2b",
+      "reasoning_chars": 1174,
+      "content_chars": 0,
+      "error": null,
+      "first_s": 153176.986713888,
+      "last_s": 153181.727464081
+    }
+  ],
+  "aggregate_decode_tps": 53.789,
+  "single_stream_decode_tps": 53.78
+}

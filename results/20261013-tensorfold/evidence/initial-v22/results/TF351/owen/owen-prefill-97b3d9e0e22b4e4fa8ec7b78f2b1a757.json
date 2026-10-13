@@ -1,0 +1,22 @@
+{
+  "nominal_tokens": 262144,
+  "repeat": 0,
+  "request": {
+    "ok": true,
+    "ttft_s": 119.1691,
+    "elapsed_s": 119.1694,
+    "prompt_tokens": 235805,
+    "completion_tokens": 1,
+    "finish_reason": "stop",
+    "decode_tps": null,
+    "output_sha256": "e3b0c44298fc1c14",
+    "reasoning_chars": 0,
+    "content_chars": 0,
+    "error": null,
+    "first_s": 173562.734027129,
+    "last_s": null
+  },
+  "prompt_tokens_per_ttft_second": 1978.7428116852439,
+  "prompt_sha256": "4a37f7356835746312ce6850775597dd80465d43059394e5948c8647f2e1355c",
+  "cache_salt": "ae07806e38674900800729fb6c8e30d1"
+}

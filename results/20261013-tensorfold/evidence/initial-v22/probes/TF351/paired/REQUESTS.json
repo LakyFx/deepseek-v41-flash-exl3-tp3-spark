@@ -1,0 +1,235 @@
+{
+  "schema": "ds41f.greedy-request-pairs.v1",
+  "requests": [
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "ref-0",
+      "serial": true,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "spec-c1-0",
+      "expect_request": 0,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "ref-1",
+      "serial": true,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "spec-c1-1",
+      "expect_request": 2,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "ref-2",
+      "serial": true,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "spec-c1-2",
+      "expect_request": 4,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "ref-3",
+      "serial": true,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "spec-c1-3",
+      "expect_request": 6,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "ref-4",
+      "serial": true,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "spec-c1-4",
+      "expect_request": 8,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "ref-5",
+      "serial": true,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "spec-c1-5",
+      "expect_request": 10,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "ref-6",
+      "serial": true,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "spec-c1-6",
+      "expect_request": 12,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "ref-7",
+      "serial": true,
+      "alone": true
+    },
+    {
+      "max_tokens": 64,
+      "temperature": 0,
+      "name": "spec-c1-7",
+      "expect_request": 14,
+      "alone": true
+    },
+    {
+      "name": "spec-c8-0",
+      "max_tokens": 64,
+      "temperature": 0,
+      "expect_request": 0
+    },
+    {
+      "name": "spec-c8-1",
+      "max_tokens": 64,
+      "temperature": 0,
+      "expect_request": 2
+    },
+    {
+      "name": "spec-c8-2",
+      "max_tokens": 64,
+      "temperature": 0,
+      "expect_request": 4
+    },
+    {
+      "name": "spec-c8-3",
+      "max_tokens": 64,
+      "temperature": 0,
+      "expect_request": 6
+    },
+    {
+      "name": "spec-c8-4",
+      "max_tokens": 64,
+      "temperature": 0,
+      "expect_request": 8
+    },
+    {
+      "name": "spec-c8-5",
+      "max_tokens": 64,
+      "temperature": 0,
+      "expect_request": 10
+    },
+    {
+      "name": "spec-c8-6",
+      "max_tokens": 64,
+      "temperature": 0,
+      "expect_request": 12
+    },
+    {
+      "name": "spec-c8-7",
+      "max_tokens": 64,
+      "temperature": 0,
+      "expect_request": 14
+    }
+  ],
+  "reference_token_receipt_sha256": "5c4e231bd31bf0685a577a6c7bb4844b690955757aa2b1acbad622b7666202b1",
+  "pairing_id": "7840fee51b14477ebc231fd061c16934",
+  "source_cases": [
+    {
+      "case": 0,
+      "source_id": "hermes-legacy/code/code-tokenizer-binding-guard",
+      "prompt_tokens": 18353,
+      "tokens_sha256": "7e2468af2fcc2c9b35b03d9ef3b52d051a637b897a8f3b2f481a539c3125d094",
+      "body_sha256": "168a0a808ba211e1df52967f6f862cc3d7d8a67c3a5b15fe9683b9dc98d34756"
+    },
+    {
+      "case": 1,
+      "source_id": "hermes-legacy/prose/683288a36ee149d0341b92ba844209d07186d5e1034a2806f7fd0f8851cee4f7",
+      "prompt_tokens": 24447,
+      "tokens_sha256": "a85638c2055d60970b5178a24d9fa7a71c84b9a17802d3aca346988793eb15f4",
+      "body_sha256": "57d21975f60e81b95283c93aca7d098cabedda45ff7dfa34d3841e895530f326"
+    },
+    {
+      "case": 2,
+      "source_id": "hermes-workflow/short-2",
+      "prompt_tokens": 8161,
+      "tokens_sha256": "d4d8d4e67029250cadfb4add1124197333efabb55112be87b85822431889ede5",
+      "body_sha256": "a1e1b6d1eb6d7f6478d3990640fedcbdb644fdba2db6cc3d39d92e3be3122bc0"
+    },
+    {
+      "case": 3,
+      "source_id": "hermes-workflow/long-128k-2",
+      "prompt_tokens": 131059,
+      "tokens_sha256": "9f613173f99f61acd4f2716af7e3c1654f0186be215ec665dbbef0d723ec484e",
+      "body_sha256": "528894d3807e0ec2e6855997b22f1b5a9f165d32842d523f16be4656d96e9fe1"
+    },
+    {
+      "case": 4,
+      "source_id": "owen-decode/11/0",
+      "prompt_tokens": 68,
+      "tokens_sha256": "552716eb59c93c096a85390b7b1c98d71476fc6e22e19ec6b9646b6bc3121735",
+      "body_sha256": "145ed905a2d5a43b8caf1f1d77cda69ba65c4e1b6107989593158f52ae0d3fc6"
+    },
+    {
+      "case": 5,
+      "source_id": "owen-decode/8/3",
+      "prompt_tokens": 75,
+      "tokens_sha256": "5845675f7707bf37b1fb4e184030caff0e1543656358691ec205a7294bb2af08",
+      "body_sha256": "6e252f969819040c15e9600f5e95b4dce596c3f7a56100358ebd865a730aa377"
+    },
+    {
+      "case": 6,
+      "source_id": "quality/cs-agreement",
+      "prompt_tokens": 131,
+      "tokens_sha256": "7e93e180eb92cc781ee3b0787fa93f67714d6966c4d19cc3adb56fedc1b58090",
+      "body_sha256": "32e6c34506d7efea9baf5b4f8eceb6356d6c0c0a61dab7115613fb6c4d6e0ed8"
+    },
+    {
+      "case": 7,
+      "source_id": "quality/long-digest-1",
+      "prompt_tokens": 65635,
+      "tokens_sha256": "e2c48a004ab484887a3d382c7ba3ffc86c23f9e8739341be232c164b33900fc0",
+      "body_sha256": "77cadbcda28959f60d52da9bb06008c67b5d3cefc056d410161fd10a62da404a"
+    }
+  ],
+  "expected": {
+    "requests": 24,
+    "serial_references": 8,
+    "paired": 16,
+    "required_speculative_requests_with_drafts": 16,
+    "required_shared_rounds_min": 1
+  },
+  "generation_executed": false,
+  "scope": "greedy text serial vs speculative C1/C8, same loaded weights",
+  "baseline_complete_sha256": "aa9d41032db497ebab340cc302b70d76dcce46e8126abec59f94a9b231331569"
+}

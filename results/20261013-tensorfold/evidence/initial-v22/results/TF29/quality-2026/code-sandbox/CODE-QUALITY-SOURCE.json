@@ -1,0 +1,13 @@
+{
+  "scope": "ACTUAL_OUTPUT_CPU_CODE_TESTS_ONLY",
+  "arm": "TF29",
+  "seed": 2026,
+  "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+  "fixture_sha256": "6dfc48d3c8fcfe89c8edd22b522f16183aeef15ab9ee9b97d4637535f5902410",
+  "response_sha256": "5dad831025a32e078d54ebfd84663fd904e0352bcae9c34074f081811647f7ee",
+  "result_sha256": "6b8feac2f26df4b8edb22d702037d92f88dbf89b4f0c16ac6d9175e319acd528",
+  "sandbox_source_sha256": "9117f343d2373bca3acda2d4c44acc175eeecf844e75ee878aa90d76ff818630",
+  "cases": [
+    "code-weighted"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "case_id": "translate-negation",
+  "seed": 1708,
+  "temperature": 0.6,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-01224c05f48143c7a64856e15b2d34e8",
+      "body_sha256": "85111c4bf2ecf38c31258541e349e47dd46d4652660242699f3333ebf9a8592c",
+      "usage": {
+        "prompt_tokens": 158,
+        "completion_tokens": 280,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 158
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 175862.353713939,
+      "ended_monotonic": 175869.401469977
+    }
+  ],
+  "category": "translation",
+  "elapsed_seconds": 7.048427411005832
+}

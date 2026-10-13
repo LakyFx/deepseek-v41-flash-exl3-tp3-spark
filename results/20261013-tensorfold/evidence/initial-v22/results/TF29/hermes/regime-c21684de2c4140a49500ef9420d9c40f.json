@@ -1,0 +1,172 @@
+{
+  "id": "64K-C1",
+  "started_monotonic": 174824.459424647,
+  "complete": true,
+  "result": {
+    "regime": "64K-C1",
+    "prime": {
+      "rows": [
+        {
+          "case_id": "long-64k",
+          "phase": "prime",
+          "slot": 0,
+          "started_monotonic": 174824.464049264,
+          "input_tokens_expected": 65534,
+          "request_body_sha256": "4234cc03057715617b8f141132e49442151de9c2ab7417ce30daef4ba5f33a81",
+          "complete": true,
+          "usage": {
+            "prompt_tokens": 65534,
+            "completion_tokens": 1,
+            "cached_tokens": 0,
+            "computed_prompt_tokens": 65534
+          },
+          "error": null,
+          "request_id": "dgx-gateway-0e0547b7d6ca4f2b9b1afd08e9df2234",
+          "first_any_delta_monotonic": 174855.34064435,
+          "first_visible_delta_monotonic": null,
+          "sse_chunk_times": [
+            174855.34064435
+          ],
+          "finish_reason": "length",
+          "ttft_seconds": 30.87659508601064,
+          "ended_monotonic": 174855.340906812,
+          "wall_seconds": 30.876857547991676,
+          "request_output_tokens_per_wall_second": 0.032386715469529474
+        }
+      ],
+      "wall_seconds": 30.877961010992294,
+      "usage_complete": true,
+      "aggregate_output_tokens_per_wall_second": 0.03238555808927955,
+      "concurrency_scope": "HTTP request overlap; GPU concurrency requires engine trace",
+      "native_metrics": {
+        "native_deltas": {
+          "request_generation_tokens_count": 1.0,
+          "request_generation_tokens_sum": 1.0,
+          "request_prefill_kv_computed_tokens_sum": null,
+          "request_prefill_time_seconds_sum": 30.782225999999994,
+          "request_decode_time_seconds_sum": 7.299999998622297e-05,
+          "request_success_total": null,
+          "spec_decode_num_accepted_tokens_total": 0.0,
+          "spec_decode_num_draft_tokens_total": 0.0,
+          "spec_decode_num_drafts_total": null
+        },
+        "coverage_verified": true,
+        "idle_before": true,
+        "idle_after": true,
+        "expected_requests": 1,
+        "observed_requests": 1.0,
+        "weighted_request_computed_prefill_tokens_per_second": null,
+        "weighted_request_decode_tokens_per_second": 13698.630139571595,
+        "draft_acceptance_fraction": null,
+        "scope": "summed per-request engine time; report cohort wall throughput separately",
+        "missing_or_overlapping_metrics": null,
+        "metric_backend": "tensorfold"
+      }
+    },
+    "hot": {
+      "rows": [
+        {
+          "case_id": "long-64k",
+          "phase": "hot",
+          "slot": 0,
+          "started_monotonic": 174855.345174825,
+          "input_tokens_expected": 65534,
+          "request_body_sha256": "30beac680625d36fa5c8ce70b1f7ef07471b878550325915198d7463f69264cf",
+          "complete": true,
+          "usage": {
+            "prompt_tokens": 65534,
+            "completion_tokens": 128,
+            "cached_tokens": 63488,
+            "computed_prompt_tokens": 2046
+          },
+          "error": null,
+          "request_id": "dgx-gateway-2260746a0ff34de3b99ff2e07e5d5280",
+          "first_any_delta_monotonic": 174856.676710811,
+          "first_visible_delta_monotonic": null,
+          "sse_chunk_times": [
+            174856.676710811,
+            174856.724190272,
+            174856.760999662,
+            174856.814953197,
+            174856.857090623,
+            174856.896941635,
+            174856.929908385,
+            174856.967703494,
+            174857.006790001,
+            174857.039876222,
+            174857.070204418,
+            174857.105175855,
+            174857.143411105,
+            174857.179745923,
+            174857.206151367,
+            174857.233696514,
+            174857.261392844,
+            174857.293320227,
+            174857.329484038,
+            174857.362403365,
+            174857.389613731,
+            174857.421094445,
+            174857.447370323,
+            174857.478105347,
+            174857.508186713,
+            174857.535859555,
+            174857.562817395,
+            174857.596772873,
+            174857.636452447,
+            174857.665885051,
+            174857.699091223,
+            174857.735642583,
+            174857.766763556,
+            174857.79548583,
+            174857.822168168,
+            174857.853006712
+          ],
+          "finish_reason": "length",
+          "ttft_seconds": 1.3315359860134777,
+          "ended_monotonic": 174857.853251334,
+          "wall_seconds": 2.5080765089951456,
+          "request_output_tokens_per_wall_second": 51.03512573915972
+        }
+      ],
+      "wall_seconds": 2.508661864005262,
+      "usage_complete": true,
+      "aggregate_output_tokens_per_wall_second": 51.023217531452666,
+      "concurrency_scope": "HTTP request overlap; GPU concurrency requires engine trace",
+      "native_metrics": {
+        "native_deltas": {
+          "request_generation_tokens_count": 1.0,
+          "request_generation_tokens_sum": 128.0,
+          "request_prefill_kv_computed_tokens_sum": null,
+          "request_prefill_time_seconds_sum": 1.252161000000001,
+          "request_decode_time_seconds_sum": 1.1768900000000144,
+          "request_success_total": null,
+          "spec_decode_num_accepted_tokens_total": 92.0,
+          "spec_decode_num_draft_tokens_total": 120.0,
+          "spec_decode_num_drafts_total": null
+        },
+        "coverage_verified": true,
+        "idle_before": true,
+        "idle_after": true,
+        "expected_requests": 1,
+        "observed_requests": 1.0,
+        "weighted_request_computed_prefill_tokens_per_second": null,
+        "weighted_request_decode_tokens_per_second": 108.76122662270767,
+        "draft_acceptance_fraction": 0.7666666666666667,
+        "scope": "summed per-request engine time; report cohort wall throughput separately",
+        "missing_or_overlapping_metrics": null,
+        "metric_backend": "tensorfold"
+      }
+    },
+    "cold_reset_receipt": {
+      "success": true,
+      "engine_generation": "1791896614892188907",
+      "scope": "in-memory reusable prefix states; learned disk states refused"
+    },
+    "cold_status": "RESET_PROVEN",
+    "prime_wall_separate_from_hot": true,
+    "cold_cache_verified": true,
+    "hot_cache_verified": true
+  },
+  "status": "OBSERVED",
+  "wall_seconds": 33.44887486900552
+}

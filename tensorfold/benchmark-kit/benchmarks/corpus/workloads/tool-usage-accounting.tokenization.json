@@ -1,0 +1,101 @@
+{
+  "schema": "dgx.offline-exact-tokenization.v1",
+  "request_sha256": "e1766a63e1235bcbb3fbfde7324d47563b204442961be7e13f70ba80d04f3b61",
+  "count": 8164,
+  "target": 8192,
+  "source_units": [
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py:47:_compute_global_residual_mass",
+      "source_sha256": "20ca2e5ac34e9ef93dca388bed72a00d4ff67d569ec6ec2393b21a92d74a1fae"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/indexer.py:585:KpoolTailMetadataBuilder",
+      "source_sha256": "392d93da110ec942db3ce17895dc358bf92501edb01a8b9c19b6bdfab917bb7f"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/common/ops/query_quant.py:21:_q_kv_norm_quant_kernel",
+      "source_sha256": "d676f925700ed2bedda43eb6de28b4321e1199982a74853869aaec7e09a22836"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/common/ops/cache_utils.py:532:combine_topk_swa_indices",
+      "source_sha256": "bb6bd4fa9ddcf7fb1a8858a0472c039001f436098a613f2679ba10820c2f3086"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/common/ops/cache_utils.py:620:_combine_topk_swa_warmup_inputs",
+      "source_sha256": "bb6bd4fa9ddcf7fb1a8858a0472c039001f436098a613f2679ba10820c2f3086"
+    },
+    {
+      "id": "vllm/model_executor/kernels/mhc/tilelang.py:599:mhc_post_tilelang",
+      "source_sha256": "ebb01974b8c29fa7f03dfc09a5b326a5305c0ec9731f1200cf605e23f0d707f5"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashmla_sparse.py:110:FlashMLASparseBackend",
+      "source_sha256": "07e39bd8df36b2f8a602441c129d4234e025fc11882d9c7c41b368cf7b230d5d"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/common/ops/query_quant.py:126:can_fuse_query_quant",
+      "source_sha256": "d676f925700ed2bedda43eb6de28b4321e1199982a74853869aaec7e09a22836"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/rocm_aiter_mla_sparse.py:91:_convert_req_index_to_global_index_kernel",
+      "source_sha256": "47b5a1f21e7857d9fc2a26d74783b8dc6b31902289eb95ba062d7b2d5e78abb1"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/rocm_aiter_mla_sparse.py:66:fit_kpool_indices_to_aiter",
+      "source_sha256": "47b5a1f21e7857d9fc2a26d74783b8dc6b31902289eb95ba062d7b2d5e78abb1"
+    },
+    {
+      "id": "vllm/entrypoints/serve/utils/api_utils.py:96:decrement_server_load",
+      "source_sha256": "2a489ca888e0ab1803f5561e29fb8c1f0c30149b56f0ae5f10917ae570596ee0"
+    },
+    {
+      "id": "vllm/entrypoints/serve/utils/api_utils.py:304:process_lora_modules",
+      "source_sha256": "2a489ca888e0ab1803f5561e29fb8c1f0c30149b56f0ae5f10917ae570596ee0"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/utils.py:55:get_parallel_drafting_token_id",
+      "source_sha256": "39ebdfdc8de50d7fddc324aa011275dccd38f2dcc32c4e3268dbbf3ea915fe49"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/common/ops/fused_compress_quant_cache.py:341:_rope_plain_insert_kernel",
+      "source_sha256": "cc486feefe40871f010c38ee97a2217ca70d86b7f42cdfc5884399045d5ac385"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/common/mm_preprocess.py:108:num_image_tokens",
+      "source_sha256": "4ce1a019d74b1933706432c8aa1c347be78882019f25a956599665cf6d105d63"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/xpu_mla_sparse.py:186:XPUMLASparseImpl",
+      "source_sha256": "ce41cc4964d0b8fa8cdcb5e7b40c13522142fb3f069916ad57d5336c3d46769c"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/rlhf/api_router.py:205:finish_weight_update",
+      "source_sha256": "438831c94338814a0c790910912f9af0efac3704a933102d1a827bce1bc035f5"
+    },
+    {
+      "id": "vllm/entrypoints/serve/tokenize/api_router.py:35:tokenize",
+      "source_sha256": "dac2a4d0cd6076d50b568f3bae65dea0c6a65547fda073217a7dab9a1e2d8ccc"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/rlhf/api_router.py:214:update_weight_version",
+      "source_sha256": "438831c94338814a0c790910912f9af0efac3704a933102d1a827bce1bc035f5"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:205:reduce_scatter",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashattn_mla_sparse.py:131:FlashAttnMLASparseMetadataBuilder",
+      "source_sha256": "0bedf19c378cc403b1af94b5faff5a1ed46858a623fd650af3fd65ba2d5bbb6a"
+    },
+    {
+      "id": "vllm/entrypoints/serve/engine/protocol.py:106:CompletionTokenUsageInfo",
+      "source_sha256": "14dd224411ee3362df48d4dce058ec98ff5b3c0e851f6110fe4e9bb65a25be38"
+    }
+  ],
+  "token_ids_sha256": "d1e91767450acec50dedea92e02845e0465060836f6903dc553cfc810a4e9f57",
+  "current_tokenizer_receipt_sha256": "66c2ce0aa907a48f71d8d66f9bebc8df356acbaf3186ff6d0a6d3c445e919c5a",
+  "historical_eight_exact_matches": true,
+  "inference_requests": 0,
+  "original_request_sha256": "2f0039da372933fddd96bb20eb66adcbbec1afdfb64e6530ef5e820ac4e267d4"
+}

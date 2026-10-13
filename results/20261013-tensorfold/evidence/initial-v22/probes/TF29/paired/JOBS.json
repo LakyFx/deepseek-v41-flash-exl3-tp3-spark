@@ -1,0 +1,47 @@
+[
+  {
+    "rank": 0,
+    "ssh_alias": "rank0",
+    "unit": "dsv41-tf-probe-r0-94579cbe19c0",
+    "readonly": [
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]"
+    ],
+    "state": "[operator-path]"
+  },
+  {
+    "rank": 1,
+    "ssh_alias": "rank1",
+    "unit": "dsv41-tf-probe-r1-94579cbe19c0",
+    "readonly": [
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]"
+    ],
+    "state": "[operator-path]"
+  },
+  {
+    "rank": 2,
+    "ssh_alias": "rank2",
+    "unit": "dsv41-tf-probe-r2-94579cbe19c0",
+    "readonly": [
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]",
+      "[operator-path]"
+    ],
+    "state": "[operator-path]"
+  }
+]

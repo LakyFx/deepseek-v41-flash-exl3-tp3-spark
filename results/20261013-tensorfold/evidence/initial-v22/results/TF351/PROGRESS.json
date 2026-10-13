@@ -1,0 +1,32 @@
+[
+  {
+    "stage": "hermes",
+    "exit_code": 0,
+    "started": 1791894800.3168633,
+    "elapsed_seconds": 486.0376751422882
+  },
+  {
+    "stage": "owen",
+    "exit_code": 0,
+    "started": 1791895286.3549466,
+    "elapsed_seconds": 425.84007453918457
+  },
+  {
+    "stage": "quality-42",
+    "exit_code": 0,
+    "started": 1791895712.1952841,
+    "elapsed_seconds": 322.27310943603516
+  },
+  {
+    "stage": "quality-2026",
+    "exit_code": 0,
+    "started": 1791896034.4686935,
+    "elapsed_seconds": 51.10407829284668
+  },
+  {
+    "stage": "quality-1708",
+    "exit_code": 0,
+    "started": 1791896085.573069,
+    "elapsed_seconds": 64.1349720954895
+  }
+]

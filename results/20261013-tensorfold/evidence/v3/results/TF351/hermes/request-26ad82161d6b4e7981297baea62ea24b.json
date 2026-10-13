@@ -1,0 +1,27 @@
+{
+  "case_id": "053cac496c43c863c71ef8d8b9c7e2febac37778c6b4458d5ec816399fea1159",
+  "phase": "prime",
+  "slot": 2,
+  "started_monotonic": 186345.556856142,
+  "input_tokens_expected": 21807,
+  "request_body_sha256": "bf239aa68a5d301f0d2e2c6346cae02514dbe79fbb691a601ed4c4e5d5127b0e",
+  "complete": true,
+  "usage": {
+    "prompt_tokens": 21807,
+    "completion_tokens": 1,
+    "cached_tokens": 21807,
+    "computed_prompt_tokens": 0
+  },
+  "error": null,
+  "request_id": "dgx-gateway-099384f6af36494792510c2048fd73a7",
+  "first_any_delta_monotonic": 186345.603634158,
+  "first_visible_delta_monotonic": null,
+  "sse_chunk_times": [
+    186345.603634158
+  ],
+  "finish_reason": "length",
+  "ttft_seconds": 0.046778015996096656,
+  "ended_monotonic": 186345.603907005,
+  "wall_seconds": 0.04705086298054084,
+  "request_output_tokens_per_wall_second": 21.253595293535362
+}

@@ -1,0 +1,15 @@
+{
+  "arm": "TF351",
+  "seed": 1708,
+  "code_cases": 1,
+  "passed": 1,
+  "quality_qualified": false,
+  "receipts": [
+    {
+      "case_id": "code-weighted",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-93d473ce59fb4bf5957a74f9b93afd94"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "case_id": "digest-correction",
+  "seed": 1708,
+  "temperature": 0.6,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-71cc40322c7b481fb49258b22cfc2f04",
+      "body_sha256": "934d7ba2d1d688ed48d72f070df8a45937c70434876ee134c5f2d58407fefa2c",
+      "usage": {
+        "prompt_tokens": 231,
+        "completion_tokens": 343,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 231
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 188959.2001815,
+      "ended_monotonic": 188971.184027894
+    }
+  ],
+  "category": "digest",
+  "elapsed_seconds": 11.9839339920145,
+  "attempt_id": "digest-correction-sample-1708",
+  "grade": {
+    "passed": true,
+    "complete": true,
+    "kind": "facts",
+    "factual_pass": true,
+    "format_pass": true,
+    "editorial_review_needed": true
+  },
+  "content_chars": 226,
+  "reasoning_chars": 1024
+}

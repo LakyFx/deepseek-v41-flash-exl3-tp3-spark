@@ -1,0 +1,19 @@
+{
+  "case_id": "long-digest-1",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": null,
+  "requests": [],
+  "category": "long_context",
+  "error": "TimeoutError: timed out",
+  "elapsed_seconds": 24.389771543996176,
+  "attempt_id": "long-digest-1-greedy",
+  "grade": {
+    "passed": false,
+    "complete": false,
+    "kind": "facts",
+    "reason": "incomplete, truncated, errored or empty final content"
+  },
+  "content_chars": 0,
+  "reasoning_chars": 0
+}

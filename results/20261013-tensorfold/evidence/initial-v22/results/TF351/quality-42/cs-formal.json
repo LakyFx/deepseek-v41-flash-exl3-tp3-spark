@@ -1,0 +1,23 @@
+{
+  "case_id": "cs-formal",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-19c478f84d574653b87614bc52f6739d",
+      "body_sha256": "9463ed6287bd60295e6c812c09ed18a218964e1e2775effb3ace81ba26ae3b4d",
+      "usage": {
+        "prompt_tokens": 137,
+        "completion_tokens": 14,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 137
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173817.756332699,
+      "ended_monotonic": 173818.434028862
+    }
+  ],
+  "category": "czech_instruction",
+  "elapsed_seconds": 0.6778256190009415
+}

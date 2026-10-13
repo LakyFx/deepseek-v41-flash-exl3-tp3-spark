@@ -1,0 +1,27 @@
+{
+  "case_id": "code-export-storage-guard",
+  "phase": "prime",
+  "slot": 0,
+  "started_monotonic": 152454.885533409,
+  "input_tokens_expected": 18365,
+  "request_body_sha256": "15b8274da6568c79d9398efda014f62086ba4cf6c1152e794482baf5b1982acf",
+  "complete": true,
+  "usage": {
+    "prompt_tokens": 18365,
+    "completion_tokens": 1,
+    "cached_tokens": 0,
+    "computed_prompt_tokens": 18365
+  },
+  "error": null,
+  "request_id": "dgx-gateway-f560880dfc1e48ba8292879bbc114b4e",
+  "first_any_delta_monotonic": 152466.760409973,
+  "first_visible_delta_monotonic": null,
+  "sse_chunk_times": [
+    152466.760409973
+  ],
+  "finish_reason": "length",
+  "ttft_seconds": 11.87487656401936,
+  "ended_monotonic": 152466.760598518,
+  "wall_seconds": 11.875065109023126,
+  "request_output_tokens_per_wall_second": 0.08421006460336475
+}

@@ -1,0 +1,23 @@
+{
+  "case_id": "code-dedup",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-7b026bf6105048d7a9f0ff37257e12a2",
+      "body_sha256": "d4a5c1a1ea1b0d756d5ce92331c54a61a3b0a5955de76c85fb182e74cf9a4741",
+      "usage": {
+        "prompt_tokens": 224,
+        "completion_tokens": 1645,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 224
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173760.1395679,
+      "ended_monotonic": 173794.880246375
+    }
+  ],
+  "category": "code",
+  "elapsed_seconds": 34.74073868300184
+}

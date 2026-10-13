@@ -1,0 +1,33 @@
+{
+  "arm": "C4-reference",
+  "seed": 42,
+  "code_cases": 4,
+  "passed": 3,
+  "quality_qualified": false,
+  "receipts": [
+    {
+      "case_id": "code-dedup",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-95ff69781f6b4ceab7a0e3cfa8a6c5f7"
+    },
+    {
+      "case_id": "code-money",
+      "passed": false,
+      "error": "incomplete model output",
+      "container": "ds41f-quality-836646a4c49745ec8c6e08819a9b8549"
+    },
+    {
+      "case_id": "code-cursor",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-90f1096fa4324736900426c6fd94e98a"
+    },
+    {
+      "case_id": "code-weighted",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-7bbee0e4c39b4db7add11130e8ce98ba"
+    }
+  ]
+}

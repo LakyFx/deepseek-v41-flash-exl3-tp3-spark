@@ -1,0 +1,23 @@
+{
+  "case_id": "cs-deadline-order",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-f388d041686e4888986ef6661efc5016",
+      "body_sha256": "6193e53b3798e0ff23ddbc4729c45926b8117838fbeeecd610e411aa6b442f40",
+      "usage": {
+        "prompt_tokens": 168,
+        "completion_tokens": 99,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 168
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 175619.558179117,
+      "ended_monotonic": 175650.171120877
+    }
+  ],
+  "category": "czech_instruction",
+  "elapsed_seconds": 30.61305940701277
+}

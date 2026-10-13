@@ -1,0 +1,67 @@
+{
+  "schema": "ds41f.tensorfold-public-inputs.v1",
+  "runtime_commit": "61357debe730ac9ffe20e760edcddbc253b0e525",
+  "cache_benchmark_commit": "c4844adfef8df07f2bd299a6a23e5d04a6ec43c0",
+  "files": {
+    "artifacts/kernel-files.json": {
+      "bytes": 106137,
+      "sha256": "5745615cfa610605912a3fc71d8b3a9c7f717eb8ca8a4a171e4def686ff0dd08"
+    },
+    "artifacts/rope-reference-files.json": {
+      "bytes": 64436,
+      "sha256": "0da439b16ef81b1d046cc68125eb9c29a325efd365b36939b1cd6492bda176af"
+    },
+    "artifacts/source-files.json": {
+      "bytes": 172230,
+      "sha256": "e7723a51a124217a474786c28a0fb700d7c22733b45555717283cf82b517a836"
+    },
+    "artifacts/tensorfold-kernels.tar.gz": {
+      "bytes": 39086953,
+      "sha256": "62fd88f23401f2469fab8841cfcdf1f354a317f040c9561179500880c579f562"
+    },
+    "artifacts/tensorfold-rope-reference.tar.gz": {
+      "bytes": 1188266,
+      "sha256": "3bb9295bd2809aa0c611082eac3d1e652abee166b804f741473f9010bd3d0405"
+    },
+    "artifacts/tensorfold-source.tar.gz": {
+      "bytes": 2025669,
+      "sha256": "7c018bfd705c9236787adeb9bd0ace98eb10206cb2bbbfdd1a7a79af88803939"
+    },
+    "preparation/mia-selected.json": {
+      "bytes": 1526,
+      "sha256": "5109b87a48e49550fd05beb7f717f5d16f2535c8f2da7a6bfda84442f129ce94"
+    },
+    "preparation/mia-upstream-manifest.json": {
+      "bytes": 41698,
+      "sha256": "4930258d771fb81e25de82d7b10ff43944ed8c28f471c8dd24b1a2476ee532d2"
+    },
+    "preparation/pollard-selected.json": {
+      "bytes": 1565,
+      "sha256": "c1ea5d38cb7c533acb425aae9d26d4d37fb28ed47168bcc2ee08776ed619e8c9"
+    },
+    "preparation/pollard-upstream-manifest.json": {
+      "bytes": 20984,
+      "sha256": "e66ba06262449e04083ccf98beac690b35234a9c2a023a8c728087539de88ef5"
+    },
+    "preparation/rank0.keys": {
+      "bytes": 6598555,
+      "sha256": "eb4b06e874f8642da36384bcce0cd4681f4cbad37c1705766ed3c88ebb959dbb"
+    },
+    "preparation/rank1.keys": {
+      "bytes": 7025737,
+      "sha256": "4628ea178bd2ed4fef0ca4adef6385fef3c083e76819924746e09f4a5a4b4b62"
+    },
+    "preparation/rank2.keys": {
+      "bytes": 7167823,
+      "sha256": "047de1944e4562d499f6a4146788136d694a0861d562365a818ea9a2ed0b4206"
+    },
+    "preparation/TF29.json": {
+      "bytes": 34041890,
+      "sha256": "71214047821d46fc29cfa71395c38e70dd9b172376681c8e9c006e160a525e85"
+    },
+    "preparation/TF351.json": {
+      "bytes": 34805288,
+      "sha256": "8e0067ce580c43b7438ea6041715d489e96988f30f0137d20c650d6bcda3369a"
+    }
+  }
+}

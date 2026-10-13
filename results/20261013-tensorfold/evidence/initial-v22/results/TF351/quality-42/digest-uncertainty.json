@@ -1,0 +1,23 @@
+{
+  "case_id": "digest-uncertainty",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-2133a05b7535428c97d06c53bc08e334",
+      "body_sha256": "e2866f22a4e9e53dd8e742a68a39a8b4ab0ab336bd6404438418d96a3b206a5d",
+      "usage": {
+        "prompt_tokens": 231,
+        "completion_tokens": 282,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 231
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173735.757087728,
+      "ended_monotonic": 173741.031942723
+    }
+  ],
+  "category": "digest",
+  "elapsed_seconds": 5.274981010996271
+}

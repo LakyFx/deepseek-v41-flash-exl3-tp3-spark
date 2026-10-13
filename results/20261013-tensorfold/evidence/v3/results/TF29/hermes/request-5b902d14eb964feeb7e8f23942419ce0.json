@@ -1,0 +1,27 @@
+{
+  "case_id": "code-closed-window-recovery",
+  "phase": "prime",
+  "slot": 1,
+  "started_monotonic": 188076.33686196,
+  "input_tokens_expected": 18354,
+  "request_body_sha256": "a7bd83dbfd0241d3404bfd64acd511219759977bf902ffe2458d65e8d10fe777",
+  "complete": true,
+  "usage": {
+    "prompt_tokens": 18354,
+    "completion_tokens": 1,
+    "cached_tokens": 18354,
+    "computed_prompt_tokens": 0
+  },
+  "error": null,
+  "request_id": "dgx-gateway-c47cbf81b22a45409e267c63e162f9ad",
+  "first_any_delta_monotonic": 188076.396234009,
+  "first_visible_delta_monotonic": null,
+  "sse_chunk_times": [
+    188076.396234009
+  ],
+  "finish_reason": "length",
+  "ttft_seconds": 0.05937204899964854,
+  "ended_monotonic": 188076.396442329,
+  "wall_seconds": 0.05958036897936836,
+  "request_output_tokens_per_wall_second": 16.784051813211875
+}

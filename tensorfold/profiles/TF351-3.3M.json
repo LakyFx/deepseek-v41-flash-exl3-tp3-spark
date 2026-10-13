@@ -1,0 +1,16 @@
+{
+  "schema": "ds41f.tensorfold-profile.v1",
+  "arm": "TF351",
+  "routed_expert_bpw": 3.51,
+  "pool_tokens": 3300000,
+  "context_tokens": 401408,
+  "parallel": 8,
+  "round_rows": 16,
+  "prompt_snapshot_gib_head": 1,
+  "reasoning": "max",
+  "qualified_pool": true,
+  "qualification_scope": "frozen speed, cache and scoped quality campaigns",
+  "native_kv": "FP4 compressed KV/index",
+  "source_commit": "61357debe730ac9ffe20e760edcddbc253b0e525",
+  "measured_cache_source_commit": "c4844adfef8df07f2bd299a6a23e5d04a6ec43c0"
+}

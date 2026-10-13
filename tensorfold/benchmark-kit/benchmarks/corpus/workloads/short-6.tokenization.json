@@ -1,0 +1,105 @@
+{
+  "schema": "dgx.offline-exact-tokenization.v1",
+  "request_sha256": "af8b66fc6b3f11247fe5e388cdc09bc1b51c284680dd46de82212f9c0e53d079",
+  "count": 8183,
+  "target": 8192,
+  "source_units": [
+    {
+      "id": "vllm/v1/worker/gpu/input_batch.py:326:_prepare_pos_seq_lens_kernel",
+      "source_sha256": "59b91bba8afe8382b86de24bc6eb8e44dfc1c08db5f60804a40ef8f3e76db5ce"
+    },
+    {
+      "id": "vllm/model_executor/kernels/mhc/tilelang.py:905:_mhc_post_tilelang_fake",
+      "source_sha256": "ebb01974b8c29fa7f03dfc09a5b326a5305c0ec9731f1200cf605e23f0d707f5"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:223:all_gather",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/entrypoints/serve/instrumentator/offline_docs.py:19:attach_router",
+      "source_sha256": "9b980a9524fbc47ae44eefabaecad607b468060eb962b3c8092bcdf1285cfde8"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/all_reduce_utils.py:204:consumer",
+      "source_sha256": "ed0ab4dd05b2519a6313892e68824c97b540034664d7f8c3d031b322e33e1bfc"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/amx_mla.py:117:AMXMLAMetadataBuilder",
+      "source_sha256": "7f5cddec30b2dfe22ccdbd3b9da673c879719bf6da4074317bd60add55f5d15f"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/shm_broadcast.py:99:to_bytes_big",
+      "source_sha256": "f3e7a3f3ff713fccbd535e0d41650ee05bdf8677e83d4b90519910645022c30b"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:1463:init_world_group",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py:695:_resample_kernel",
+      "source_sha256": "20ca2e5ac34e9ef93dca388bed72a00d4ff67d569ec6ec2393b21a92d74a1fae"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py:857:_insert_resampled_kernel",
+      "source_sha256": "20ca2e5ac34e9ef93dca388bed72a00d4ff67d569ec6ec2393b21a92d74a1fae"
+    },
+    {
+      "id": "vllm/entrypoints/serve/fault_tolerance/api_router.py:99:register_fault_tolerance_api_router",
+      "source_sha256": "84d9a86951547c9ac71a10c680dd12fc5c868d72fd8342b4b6e33ee91a5afa53"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/all_reduce_utils.py:345:gpu_p2p_access_check",
+      "source_sha256": "ed0ab4dd05b2519a6313892e68824c97b540034664d7f8c3d031b322e33e1bfc"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py:47:_compute_global_residual_mass",
+      "source_sha256": "20ca2e5ac34e9ef93dca388bed72a00d4ff67d569ec6ec2393b21a92d74a1fae"
+    },
+    {
+      "id": "vllm/entrypoints/serve/profile/api_router.py:29:stop_profile",
+      "source_sha256": "b943c3a2201134e2d0b38bfa86d00e8b5685f5be6a54f6c7178dee784c1b78e5"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:183:suspend_device_comms",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/cache/api_router.py:69:attach_router",
+      "source_sha256": "ba0e9be90c4fe8f42526c163d073ee5889492e4cdd8231599901d0b3aab669ce"
+    },
+    {
+      "id": "vllm/model_executor/kernels/mhc/aiter.py:135:mhc_fused_post_pre_aiter",
+      "source_sha256": "f346437781ab43d144f33c615cfee9a7d40eed3d893af5c2092432a2c22584a3"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/input_batch.py:600:post_update",
+      "source_sha256": "59b91bba8afe8382b86de24bc6eb8e44dfc1c08db5f60804a40ef8f3e76db5ce"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:112:_split_tensor_dict",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashmla.py:47:FlashMLABackend",
+      "source_sha256": "cace45fc3f99fd5bb6db6fe799f8237dec676be88e9c3ef0784318f7348a885c"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:141:_get_unique_name",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/entrypoints/serve/instrumentator/metrics.py:56:attach_router",
+      "source_sha256": "c20a120dccb9c443c6c194ff31725b285740fff692ea95065749c5c27b6bcc3e"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/sleep/api_router.py:47:attach_router",
+      "source_sha256": "f16d4e6e878d2872c7754e649b3b9b306b757789bd80df4530d72989b78b4eca"
+    }
+  ],
+  "token_ids_sha256": "37f64acbf4d30c8af3158cb78d2438a604a0b2da419c5017a1ace30ffdd69e5d",
+  "current_tokenizer_receipt_sha256": "66c2ce0aa907a48f71d8d66f9bebc8df356acbaf3186ff6d0a6d3c445e919c5a",
+  "historical_eight_exact_matches": true,
+  "inference_requests": 0,
+  "original_request_sha256": "200a4deb5cccddaf0086af308660f20e04c03d840b0219987c2a88b04a557435"
+}

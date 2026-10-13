@@ -1,0 +1,417 @@
+{
+  "passed": 5,
+  "total": 6,
+  "receipts": [
+    {
+      "attempt_id": "evalplus-0-greedy",
+      "container": "ds41f-q20-97851ea53d8b4c1a9396837ee3a0a596",
+      "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+      "source_sha256": "acf2e1c69a7be84cd36fbf9aec11197070d23d51a8c708e3cb4e2c46f6bdb85c",
+      "harness_sha256": "5046bb77d17c6e9cd82e58c974f7a8bbb8a00b22029dd58e200012d3946262be",
+      "gpu": false,
+      "network": false,
+      "passed": true,
+      "exit_code": 0,
+      "checks": [
+        {
+          "index": 0,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 10,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 11,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 12,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 13,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 14,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 15,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 16,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 17,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 18,
+          "passed": true,
+          "group": "plus_input"
+        }
+      ]
+    },
+    {
+      "attempt_id": "evalplus-11-greedy",
+      "container": "ds41f-q20-53f7b0ca1f48495ab9f3b7127685e130",
+      "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+      "source_sha256": "f4d0bc3101f3381ea871c963b18893aee4633f4ca7490f449aa6bda11f1e4413",
+      "harness_sha256": "5046bb77d17c6e9cd82e58c974f7a8bbb8a00b22029dd58e200012d3946262be",
+      "gpu": false,
+      "network": false,
+      "passed": true,
+      "exit_code": 0,
+      "checks": [
+        {
+          "index": 0,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "group": "plus_input"
+        }
+      ]
+    },
+    {
+      "attempt_id": "evalplus-12-greedy",
+      "container": "ds41f-q20-175612dbf79c412fa3a9f74260cb0eb8",
+      "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+      "source_sha256": "3418192830f858987082856a296787a176ac2c965c70dacd222a67598c07af2a",
+      "harness_sha256": "5046bb77d17c6e9cd82e58c974f7a8bbb8a00b22029dd58e200012d3946262be",
+      "gpu": false,
+      "network": false,
+      "passed": true,
+      "exit_code": 0,
+      "checks": [
+        {
+          "index": 0,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 10,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 11,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 12,
+          "passed": true,
+          "group": "plus_input"
+        }
+      ]
+    },
+    {
+      "attempt_id": "evalplus-3-greedy",
+      "container": "ds41f-q20-4d7cf7021f3e4ddba801c4c8f5728b64",
+      "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+      "source_sha256": "5b5ff217b16014c68ffd461d70afa9a684c1bb355da68270a12952e1c873f669",
+      "harness_sha256": "5046bb77d17c6e9cd82e58c974f7a8bbb8a00b22029dd58e200012d3946262be",
+      "gpu": false,
+      "network": false,
+      "passed": true,
+      "exit_code": 0,
+      "checks": [
+        {
+          "index": 0,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 10,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 11,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 12,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 13,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 14,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 15,
+          "passed": true,
+          "group": "plus_input"
+        }
+      ]
+    },
+    {
+      "attempt_id": "evalplus-36-greedy",
+      "container": "ds41f-q20-a8861ed5ca5449c9b254b99cb9bdba65",
+      "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "harness_sha256": "5046bb77d17c6e9cd82e58c974f7a8bbb8a00b22029dd58e200012d3946262be",
+      "gpu": false,
+      "network": false,
+      "passed": false,
+      "error": "incomplete code"
+    },
+    {
+      "attempt_id": "evalplus-7-greedy",
+      "container": "ds41f-q20-b7aea34315ee4255b41187c47f76b985",
+      "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+      "source_sha256": "e7b7a2c32a343199535e4710fe1d65a28d84fdc65a80568f4b255b5e5571ac72",
+      "harness_sha256": "5046bb77d17c6e9cd82e58c974f7a8bbb8a00b22029dd58e200012d3946262be",
+      "gpu": false,
+      "network": false,
+      "passed": true,
+      "exit_code": 0,
+      "checks": [
+        {
+          "index": 0,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "group": "base_input"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "group": "plus_input"
+        },
+        {
+          "index": 10,
+          "passed": true,
+          "group": "plus_input"
+        }
+      ]
+    }
+  ]
+}

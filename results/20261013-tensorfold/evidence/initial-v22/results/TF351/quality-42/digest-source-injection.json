@@ -1,0 +1,23 @@
+{
+  "case_id": "digest-source-injection",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-59e9d20047424fcba004704b4bbc2706",
+      "body_sha256": "a7bd408b6357b81a6a320ac6991a39aa0afa48b99c5a0e2f89bf86d4fecfc5ad",
+      "usage": {
+        "prompt_tokens": 255,
+        "completion_tokens": 356,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 255
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173741.032175379,
+      "ended_monotonic": 173749.885167454
+    }
+  ],
+  "category": "digest",
+  "elapsed_seconds": 8.853119370993227
+}

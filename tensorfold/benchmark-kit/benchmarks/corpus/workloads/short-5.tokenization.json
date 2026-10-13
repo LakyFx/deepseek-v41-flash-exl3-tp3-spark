@@ -1,0 +1,101 @@
+{
+  "schema": "dgx.offline-exact-tokenization.v1",
+  "request_sha256": "a3f7072f71cefe25a3608a6764e16a4f50c1cb2b3a9326639293a0f60921d1ac",
+  "count": 8189,
+  "target": 8192,
+  "source_units": [
+    {
+      "id": "vllm/entrypoints/serve/profile/api_router.py:29:stop_profile",
+      "source_sha256": "b943c3a2201134e2d0b38bfa86d00e8b5685f5be6a54f6c7178dee784c1b78e5"
+    },
+    {
+      "id": "vllm/model_executor/kernels/attention/dsa/dcp_indexer_cutedsl.py:127:_warp_scan_inclusive_i32",
+      "source_sha256": "aff489e6505b495db182bfaf95017e31e2ceab0cf1685b3e3a94976fec02bfce"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/pynccl_allocator.py:68:compile_nccl_allocator",
+      "source_sha256": "390e2576cbf4ae06341ca4dab24fc7e4d4f7c24dd444329ed05d828a9ce91460"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/cache/api_router.py:20:reset_prefix_cache",
+      "source_sha256": "ba0e9be90c4fe8f42526c163d073ee5889492e4cdd8231599901d0b3aab669ce"
+    },
+    {
+      "id": "vllm/entrypoints/serve/instrumentator/metrics.py:52:PrometheusResponse",
+      "source_sha256": "c20a120dccb9c443c6c194ff31725b285740fff692ea95065749c5c27b6bcc3e"
+    },
+    {
+      "id": "vllm/entrypoints/serve/profile/api_router.py:21:start_profile",
+      "source_sha256": "b943c3a2201134e2d0b38bfa86d00e8b5685f5be6a54f6c7178dee784c1b78e5"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:1581:get_ep_group",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/entrypoints/serve/engine/protocol.py:110:UsageInfo",
+      "source_sha256": "14dd224411ee3362df48d4dce058ec98ff5b3c0e851f6110fe4e9bb65a25be38"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:2293:cleanup_dist_env_and_memory",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/nvidia/vl_model.py:115:DeepseekV41ForCausalLM",
+      "source_sha256": "e2d00691ce516157fc76fe7379a8c4ebec79e1a86f560917615d22ae29f0fa7f"
+    },
+    {
+      "id": "vllm/entrypoints/serve/sagemaker/api_router.py:101:sagemaker_standards_bootstrap",
+      "source_sha256": "2d44de3a47ccc4963ef0660020d61975b879b109bf672d84adcdc5bf610aa210"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/shm_broadcast.py:78:memory_fence",
+      "source_sha256": "f3e7a3f3ff713fccbd535e0d41650ee05bdf8677e83d4b90519910645022c30b"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/common/mm_preprocess.py:325:DeepseekV4VLDummyInputsBuilder",
+      "source_sha256": "4ce1a019d74b1933706432c8aa1c347be78882019f25a956599665cf6d105d63"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/rocm_aiter_mla_sparse.py:216:generate_sparse_seqlen_kernel",
+      "source_sha256": "47b5a1f21e7857d9fc2a26d74783b8dc6b31902289eb95ba062d7b2d5e78abb1"
+    },
+    {
+      "id": "vllm/entrypoints/serve/exception_handling/handlers/validation.py:84:_summarize_error_input",
+      "source_sha256": "ed14c81cc5685c7521ed1b5b8c51b4e7a5de05d2fb6310e7a3faa3d31548cca0"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/dflash/utils.py:14:load_dflash_model",
+      "source_sha256": "cba41a772dd057a54fb38ad756c6a0780a847eb0cbbc6af2edac89a37bd39a3f"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/eagle/speculator.py:12:EagleSpeculator",
+      "source_sha256": "746e318a4f266d75522ff7f3731ea9b4527b7b4824f71364d1a62184ea1f7b3d"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/all_reduce_utils.py:170:producer",
+      "source_sha256": "ed0ab4dd05b2519a6313892e68824c97b540034664d7f8c3d031b322e33e1bfc"
+    },
+    {
+      "id": "vllm/models/deepseek_v4_1/nvidia/model.py:902:_make_deepseek_v4_weights_mapper",
+      "source_sha256": "d47dbdf400e63307fbf88cdd4f6db2a2d4a5912f235bfc6a31e89147e85058df"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/pynccl_allocator.py:119:_cleanup_nccl_mem_pool",
+      "source_sha256": "390e2576cbf4ae06341ca4dab24fc7e4d4f7c24dd444329ed05d828a9ce91460"
+    },
+    {
+      "id": "vllm/entrypoints/serve/exception_handling/handlers/validation.py:127:_is_internal_loc_segment",
+      "source_sha256": "ed14c81cc5685c7521ed1b5b8c51b4e7a5de05d2fb6310e7a3faa3d31548cca0"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/all_reduce_utils.py:158:should_nccl_symm_mem_ag_rs",
+      "source_sha256": "ed0ab4dd05b2519a6313892e68824c97b540034664d7f8c3d031b322e33e1bfc"
+    }
+  ],
+  "token_ids_sha256": "ed04a27944c70182a721127c159ffea9b8e6facb2a63a307fbb57e9385746f2d",
+  "current_tokenizer_receipt_sha256": "66c2ce0aa907a48f71d8d66f9bebc8df356acbaf3186ff6d0a6d3c445e919c5a",
+  "historical_eight_exact_matches": true,
+  "inference_requests": 0,
+  "original_request_sha256": "cf8859c4929585b6baa023aa7b3d0c39c228c9f50ae82e52084106dba068c1c4"
+}

@@ -1,0 +1,19 @@
+[Unit]
+Description=DeepSeek V4.1 Flash TensorFold TP3 rank %i
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/ds41f-tensorfold.env
+WorkingDirectory=/srv/deepseek-v41-flash-exl3-tp3-spark
+ExecStart=/usr/bin/python3 /srv/deepseek-v41-flash-exl3-tp3-spark/tensorfold/launch.py --config /etc/ds41f-tensorfold.json --variant ${TF_PROFILE} --rank %i --run
+Restart=on-failure
+RestartSec=20
+TimeoutStartSec=0
+TimeoutStopSec=60
+KillMode=control-group
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

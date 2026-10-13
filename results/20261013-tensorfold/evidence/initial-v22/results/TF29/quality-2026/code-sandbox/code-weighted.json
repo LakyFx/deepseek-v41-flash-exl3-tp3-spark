@@ -1,0 +1,26 @@
+{
+  "case_id": "code-weighted",
+  "source_sha256": "76e5edadd039ed658190b454b3d00c27afb7079fd02bb0be8eec462db00e7ee6",
+  "checks_sha256": "935564bab23fc2a67dc9e3413cc27f08bbffe861b8247574ea9d5f32374d9dc7",
+  "harness_sha256": "263099db447f156ec5d6f80eaa88943b79f770ef09c5c2fce45075869490edbd",
+  "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+  "container": "ds41f-quality-6f77eb3ddd8646e9b77b0a4d171f7ba0",
+  "gpu": false,
+  "network": false,
+  "passed": true,
+  "exit_code": 0,
+  "checks": [
+    {
+      "index": 0,
+      "pass": true
+    },
+    {
+      "index": 1,
+      "pass": true
+    },
+    {
+      "index": 2,
+      "pass": true
+    }
+  ]
+}

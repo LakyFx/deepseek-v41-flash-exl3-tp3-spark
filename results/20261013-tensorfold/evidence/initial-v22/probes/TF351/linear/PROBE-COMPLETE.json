@@ -1,0 +1,95 @@
+{
+  "schema": "ds41f.native-probe-result.v1",
+  "arm": "TF351",
+  "phase": "linear",
+  "campaign": "94579cbe19c0",
+  "launch_plan_sha256": "20234b5dfa71ced2f592f7dd83c44c226b2a7a7e81be351cb5e7af0a6ef5c2b4",
+  "result": {
+    "status": "LINEAR_PROBES_PASSED_NOT_MODEL_QUALIFIED",
+    "ranks": 3,
+    "cases_per_rank": 22
+  },
+  "artifact_bindings": [
+    {
+      "arm": "TF351",
+      "rank": 0,
+      "weights_sha256": "eaae3bbdf84c1f220b7c0dff2b1680b75e271729dd2ebb52319ca5044e3bb1dc",
+      "weights_stat": {
+        "size": 85904982190,
+        "mtime_ns": 1791840414221230008,
+        "ino": 34902775,
+        "dev": 66306
+      },
+      "model_config_sha256": "d1dd0ad6783b4efc146dab07f0825b6b31c00b1c1399d2f5136a45223e9fe30e",
+      "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+      "tokenizer_config_sha256": "e81000b448596c20a261a54c4311501778bce9f70b018376aab924532c775ed1",
+      "kernel_staged_sha256": "a46a3080b7a566c0a208519aa8bf14821db6bf1e403e60313118bf4b9e7cdbe9",
+      "aot_manifest_sha256": "11e9b5227879d5a1f578be3f4e15e56f5019facc6bddce2618420ae902e57dff",
+      "rope_manifest_sha256": "a65f518bfbe1ba49c8cc4ff2b7c1b340bc090d4df9efebba92138af65c2c5a6c",
+      "engram_binding_sha256": "dff8009a301a93d38655313922a8d450071f38eba1df6d6192d7e442c86caa8d",
+      "token_map_sha256": "de40bcdd71f24430ba82752ef385093be962adbf845a1c97db39161597d5dc28",
+      "serving_binary_sha256": "05fa76b4f02a12094f392faedb7a353e813d535814146c936d609c7d81b01ac7"
+    },
+    {
+      "arm": "TF351",
+      "rank": 1,
+      "weights_sha256": "a6f50672a0ebc3c62e4cd694eb8357bed1bd746d5a550585a3f3ae3c91a7466b",
+      "weights_stat": {
+        "size": 85905409372,
+        "mtime_ns": 1791847282057825362,
+        "ino": 15221327,
+        "dev": 66306
+      },
+      "model_config_sha256": "d1dd0ad6783b4efc146dab07f0825b6b31c00b1c1399d2f5136a45223e9fe30e",
+      "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+      "tokenizer_config_sha256": "e81000b448596c20a261a54c4311501778bce9f70b018376aab924532c775ed1",
+      "kernel_staged_sha256": "a46a3080b7a566c0a208519aa8bf14821db6bf1e403e60313118bf4b9e7cdbe9",
+      "aot_manifest_sha256": "11e9b5227879d5a1f578be3f4e15e56f5019facc6bddce2618420ae902e57dff",
+      "rope_manifest_sha256": "a65f518bfbe1ba49c8cc4ff2b7c1b340bc090d4df9efebba92138af65c2c5a6c",
+      "engram_binding_sha256": "fb7895ff7882ab012dad8c9df86af0e757ca8a91325d78bfb1073fa7e6293885",
+      "token_map_sha256": "de40bcdd71f24430ba82752ef385093be962adbf845a1c97db39161597d5dc28",
+      "serving_binary_sha256": "d60a3ba2364bcfd8556bfc15a434dff0d18ab15c2cb2ff40acaaa65d77d97af6"
+    },
+    {
+      "arm": "TF351",
+      "rank": 2,
+      "weights_sha256": "e68648cce95ed5c1ab6d251469889c2fdd543b84406387e21a5c9e38f8422a31",
+      "weights_stat": {
+        "size": 85905551458,
+        "mtime_ns": 1791838257667643537,
+        "ino": 93086131,
+        "dev": 66306
+      },
+      "model_config_sha256": "d1dd0ad6783b4efc146dab07f0825b6b31c00b1c1399d2f5136a45223e9fe30e",
+      "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+      "tokenizer_config_sha256": "e81000b448596c20a261a54c4311501778bce9f70b018376aab924532c775ed1",
+      "kernel_staged_sha256": "a46a3080b7a566c0a208519aa8bf14821db6bf1e403e60313118bf4b9e7cdbe9",
+      "aot_manifest_sha256": "11e9b5227879d5a1f578be3f4e15e56f5019facc6bddce2618420ae902e57dff",
+      "rope_manifest_sha256": "a65f518bfbe1ba49c8cc4ff2b7c1b340bc090d4df9efebba92138af65c2c5a6c",
+      "engram_binding_sha256": "1fd4e1d2ecd43a0ff64f302ff3c9ba68e133928973fd5170d23eacd262a0225b",
+      "token_map_sha256": "de40bcdd71f24430ba82752ef385093be962adbf845a1c97db39161597d5dc28",
+      "serving_binary_sha256": "d60a3ba2364bcfd8556bfc15a434dff0d18ab15c2cb2ff40acaaa65d77d97af6"
+    }
+  ],
+  "qualification_kit_checks": [
+    {
+      "rank": 0,
+      "manifest_sha256": "11e7588dfc082abc1be97b7c64d0d1d93ab7158715c6396ce8a07797da2521ed",
+      "verified": true
+    },
+    {
+      "rank": 1,
+      "manifest_sha256": "11e7588dfc082abc1be97b7c64d0d1d93ab7158715c6396ce8a07797da2521ed",
+      "verified": true
+    },
+    {
+      "rank": 2,
+      "manifest_sha256": "11e7588dfc082abc1be97b7c64d0d1d93ab7158715c6396ce8a07797da2521ed",
+      "verified": true
+    }
+  ],
+  "raw_results_sha256": "6f41873cb030c390ff857afc9551b0edad743a55023109efbb45bbfd18dab968",
+  "jobs_sha256": "ff2cf05afa1c89f1ed6c066d3212efc8ac17396840c5e0e96a6ac88a737eec63",
+  "quality_qualified": false,
+  "fixture_manifest_sha256": "7273af757a8c6ec8283c2939509b05c5b824f19842d7889b9a474261781c8e92"
+}

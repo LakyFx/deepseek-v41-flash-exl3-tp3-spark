@@ -1,0 +1,58 @@
+{
+  "label": "target-36-accepted",
+  "prompt_tokens": 8579,
+  "cached": 8286,
+  "tokens": [
+    104287
+  ],
+  "seconds": 0.5148750829976052,
+  "logits_file": "target-36-accepted.f32",
+  "logits_sha256": "41a9ffd5b6763970f4d7a4366d7532ec14a2d05b7b82bc0d14cd2abe36b31256",
+  "response": {
+    "id": "cmpl-0a4f4e27884f3bde3ddd178bff05c0ff",
+    "object": "text_completion",
+    "created": 1791906140,
+    "model": "DS41F-TF351-TP3",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "length",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 8579,
+      "completion_tokens": 1,
+      "total_tokens": 8580,
+      "prompt_tokens_details": {
+        "cached_tokens": 8286
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "exact_mode": "exact",
+    "tensorfold": {
+      "enable_thinking": false,
+      "reasoning_effort": "none",
+      "engine": "lanes",
+      "tokens_per_second": 0.0,
+      "seconds": 0.51313133,
+      "prefill_seconds": 0.512579299,
+      "prefill_widths": [],
+      "prefill_raised": [],
+      "time_to_first_token": 0.51313509,
+      "sampling": "greedy",
+      "drafts": true,
+      "token_sha": "e56cf18a4827",
+      "min_rows": 0
+    },
+    "speculative": {
+      "rounds": 0,
+      "drafted": 0,
+      "accepted": 0,
+      "acceptance_rate": 0.0,
+      "tokens_per_round": 0.0
+    }
+  }
+}

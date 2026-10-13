@@ -1,0 +1,15 @@
+{
+  "arm": "TF29",
+  "seed": 2026,
+  "code_cases": 1,
+  "passed": 1,
+  "quality_qualified": false,
+  "receipts": [
+    {
+      "case_id": "code-weighted",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-6f77eb3ddd8646e9b77b0a4d171f7ba0"
+    }
+  ]
+}

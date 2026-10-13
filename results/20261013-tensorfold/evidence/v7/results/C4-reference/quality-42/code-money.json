@@ -1,0 +1,23 @@
+{
+  "case_id": "code-money",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "length",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-89345f0421e24db78fbff1c9cf659a04",
+      "body_sha256": "97c7b466f7808acfc8319637514e3488f890fe38bf9ad0c7da924f0ae153616f",
+      "usage": {
+        "prompt_tokens": 238,
+        "completion_tokens": 4096,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 238
+      },
+      "finish_reason": "length",
+      "started_monotonic": 153572.744966554,
+      "ended_monotonic": 153813.120428868
+    }
+  ],
+  "category": "code",
+  "elapsed_seconds": 240.37561103398912
+}

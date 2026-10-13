@@ -1,0 +1,415 @@
+{
+  "status": "ROLLED_BACK_TO_3P3M",
+  "baseline": {
+    "origin_main": "002437cd8b1ed7ec92c31858b718f69d19eee58c",
+    "production": [
+      {
+        "rank": 0,
+        "host": "rank0",
+        "active": "active",
+        "enabled": "enabled",
+        "restarts": "0",
+        "c4": "inactive",
+        "gateway": null,
+        "unit_sha256": "e5fd1a6825e214a1acb7cc5fa1792b5a3127bbc0b284665f55bbcf4937c8ce6e",
+        "mem": {
+          "MemAvailable": 19175374848,
+          "SwapFree": 15541600256
+        }
+      },
+      {
+        "rank": 1,
+        "host": "rank1",
+        "active": "active",
+        "enabled": "enabled",
+        "restarts": "0",
+        "c4": "inactive",
+        "gateway": null,
+        "unit_sha256": "661a56ba3a31cc6b92138967b82db723852b337eddc1e47fc23b7c9161b569a6",
+        "mem": {
+          "MemAvailable": 22520397824,
+          "SwapFree": 15856304128
+        }
+      },
+      {
+        "rank": 2,
+        "host": "rank2",
+        "active": "active",
+        "enabled": "enabled",
+        "restarts": "0",
+        "c4": "inactive",
+        "gateway": "active",
+        "unit_sha256": "6d3dbaeab64b81a2a3f25a7b5a7d2b8dc4163648d363ba90aa6e9314e4f211eb",
+        "mem": {
+          "MemAvailable": 21428764672,
+          "SwapFree": 13693550592
+        }
+      }
+    ],
+    "kits": [
+      {
+        "rank": 0,
+        "manifest_sha256": "75778ea432276badc16c4961950189c4907b343348fe7e58d2aec6ea4b646f01",
+        "rows": 10002432
+      },
+      {
+        "rank": 1,
+        "manifest_sha256": "75778ea432276badc16c4961950189c4907b343348fe7e58d2aec6ea4b646f01",
+        "rows": 10002432
+      },
+      {
+        "rank": 2,
+        "manifest_sha256": "75778ea432276badc16c4961950189c4907b343348fe7e58d2aec6ea4b646f01",
+        "rows": 10002432
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "label": "10m",
+      "pool": 10000000,
+      "status": "FAIL",
+      "error": "rank0: Traceback (most recent call last):\n  File \"<stdin>\", line 5, in <module>\nAssertionError: candidate source absent\n",
+      "post_failure_status": [
+        {
+          "rank": 0,
+          "host": "rank0",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": null,
+          "unit_sha256": "e5fd1a6825e214a1acb7cc5fa1792b5a3127bbc0b284665f55bbcf4937c8ce6e",
+          "mem": {
+            "MemAvailable": 125565534208,
+            "SwapFree": 15541600256
+          }
+        },
+        {
+          "rank": 1,
+          "host": "rank1",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": null,
+          "unit_sha256": "661a56ba3a31cc6b92138967b82db723852b337eddc1e47fc23b7c9161b569a6",
+          "mem": {
+            "MemAvailable": 125974740992,
+            "SwapFree": 15856304128
+          }
+        },
+        {
+          "rank": 2,
+          "host": "rank2",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": "inactive",
+          "unit_sha256": "6d3dbaeab64b81a2a3f25a7b5a7d2b8dc4163648d363ba90aa6e9314e4f211eb",
+          "mem": {
+            "MemAvailable": 124883697664,
+            "SwapFree": 13693550592
+          }
+        }
+      ]
+    },
+    {
+      "label": "9m",
+      "pool": 9000000,
+      "status": "FAIL",
+      "error": "rank0: Traceback (most recent call last):\n  File \"<stdin>\", line 5, in <module>\nAssertionError: candidate source absent\n",
+      "post_failure_status": [
+        {
+          "rank": 0,
+          "host": "rank0",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": null,
+          "unit_sha256": "e5fd1a6825e214a1acb7cc5fa1792b5a3127bbc0b284665f55bbcf4937c8ce6e",
+          "mem": {
+            "MemAvailable": 125504389120,
+            "SwapFree": 15541600256
+          }
+        },
+        {
+          "rank": 1,
+          "host": "rank1",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": null,
+          "unit_sha256": "661a56ba3a31cc6b92138967b82db723852b337eddc1e47fc23b7c9161b569a6",
+          "mem": {
+            "MemAvailable": 125980901376,
+            "SwapFree": 15856304128
+          }
+        },
+        {
+          "rank": 2,
+          "host": "rank2",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": "inactive",
+          "unit_sha256": "6d3dbaeab64b81a2a3f25a7b5a7d2b8dc4163648d363ba90aa6e9314e4f211eb",
+          "mem": {
+            "MemAvailable": 124884156416,
+            "SwapFree": 13693550592
+          }
+        }
+      ]
+    },
+    {
+      "label": "8m",
+      "pool": 8000000,
+      "status": "FAIL",
+      "error": "rank0: Traceback (most recent call last):\n  File \"<stdin>\", line 5, in <module>\nAssertionError: candidate source absent\n",
+      "post_failure_status": [
+        {
+          "rank": 0,
+          "host": "rank0",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": null,
+          "unit_sha256": "e5fd1a6825e214a1acb7cc5fa1792b5a3127bbc0b284665f55bbcf4937c8ce6e",
+          "mem": {
+            "MemAvailable": 125476208640,
+            "SwapFree": 15541600256
+          }
+        },
+        {
+          "rank": 1,
+          "host": "rank1",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": null,
+          "unit_sha256": "661a56ba3a31cc6b92138967b82db723852b337eddc1e47fc23b7c9161b569a6",
+          "mem": {
+            "MemAvailable": 125968187392,
+            "SwapFree": 15856304128
+          }
+        },
+        {
+          "rank": 2,
+          "host": "rank2",
+          "active": "inactive",
+          "enabled": "enabled",
+          "restarts": "0",
+          "c4": "inactive",
+          "gateway": "inactive",
+          "unit_sha256": "6d3dbaeab64b81a2a3f25a7b5a7d2b8dc4163648d363ba90aa6e9314e4f211eb",
+          "mem": {
+            "MemAvailable": 124861808640,
+            "SwapFree": 13693550592
+          }
+        }
+      ]
+    }
+  ],
+  "rollback_ready": [
+    {
+      "rank": 0,
+      "host": "rank0",
+      "active": "active",
+      "enabled": "enabled",
+      "restarts": "0",
+      "c4": "inactive",
+      "gateway": null,
+      "unit_sha256": "e5fd1a6825e214a1acb7cc5fa1792b5a3127bbc0b284665f55bbcf4937c8ce6e",
+      "mem": {
+        "MemAvailable": 22926983168,
+        "SwapFree": 15541665792
+      }
+    },
+    {
+      "rank": 1,
+      "host": "rank1",
+      "active": "active",
+      "enabled": "enabled",
+      "restarts": "0",
+      "c4": "inactive",
+      "gateway": null,
+      "unit_sha256": "661a56ba3a31cc6b92138967b82db723852b337eddc1e47fc23b7c9161b569a6",
+      "mem": {
+        "MemAvailable": 24657592320,
+        "SwapFree": 15856304128
+      }
+    },
+    {
+      "rank": 2,
+      "host": "rank2",
+      "active": "active",
+      "enabled": "enabled",
+      "restarts": "0",
+      "c4": "inactive",
+      "gateway": "inactive",
+      "unit_sha256": "6d3dbaeab64b81a2a3f25a7b5a7d2b8dc4163648d363ba90aa6e9314e4f211eb",
+      "mem": {
+        "MemAvailable": 24167907328,
+        "SwapFree": 13693550592
+      }
+    }
+  ],
+  "rollback_gateway": {
+    "status": "ok",
+    "upstream": "ok",
+    "gateway_version": "1.15.0",
+    "model": "deepseek-v4.1-flash",
+    "model_aliases": [
+      "qwen3.8-27b-ud-q4-k-xl-mtp",
+      "qwen3.8-27b-fp8-dspark-k7",
+      "qwen3.8-27b-fp8-dspark-k14",
+      "qwen3.8-27b-q8-dspark",
+      "qwen3.8-27b-nvfp4-mtp3"
+    ],
+    "backend_family": "qwen38_vllm",
+    "active": 2,
+    "waiting": 0,
+    "admitted_tokens": 320876,
+    "max_admitted_tokens": 3557376,
+    "max_concurrency": 8,
+    "max_queue": 64,
+    "stream_heartbeat_seconds": 15.0,
+    "upstream_connect_recovery_seconds": 900.0,
+    "default_max_tokens": 32768,
+    "max_max_tokens": 131072,
+    "profiles": {
+      "standard": {
+        "thinking": "max",
+        "default_max_tokens": 32768,
+        "hard_max_tokens": 131072
+      },
+      "xhigh": {
+        "thinking": "max",
+        "default_max_tokens": 131072,
+        "hard_max_tokens": 131072
+      },
+      "max": {
+        "thinking": "max",
+        "default_max_tokens": 131072,
+        "hard_max_tokens": 131072
+      }
+    },
+    "sampling_defaults": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 20,
+      "presence_penalty": 0.0
+    },
+    "native_thinking_modes": [
+      "none",
+      "low",
+      "medium",
+      "max"
+    ],
+    "effective_thinking_modes": [
+      "none",
+      "low",
+      "medium",
+      "max"
+    ],
+    "reasoning_policy": "client_or_default",
+    "configured_thinking_default": "max",
+    "preserve_thinking": true,
+    "reasoning_visibility": "private_nonstream_gateway_cache",
+    "reasoning_cache": {
+      "entries": 0,
+      "max_entries": 512,
+      "ttl_seconds": 21600,
+      "durable": false
+    },
+    "reasoning_token_measurement": "upstream_tokenizer",
+    "admission_token_measurement": "upstream_visible_plus_hidden_reasoning_guard",
+    "max_model_len": 401408,
+    "compact_trigger_tokens": 262144,
+    "chat_context_management": {
+      "physical_context_tokens": 401408,
+      "full_output_input_ceiling": 262144,
+      "emergency_input_ceiling_at_max_output": 262144,
+      "adaptive_output": true,
+      "minimum_output_tokens": 131072,
+      "compact_trigger_tokens": 262144,
+      "compact_target_tokens": 258048,
+      "validated_checkpoint": true,
+      "authoritative_context_retry": true,
+      "thinking_budget": false
+    },
+    "responses_context_management": {
+      "emergency_compaction": true,
+      "physical_context_tokens": 401408,
+      "minimum_output_tokens": 131072,
+      "emergency_input_ceiling_at_max_output": 262144,
+      "compact_target_tokens": 258048,
+      "adaptive_output": true,
+      "thinking_budget": false,
+      "authoritative_context_retry": true,
+      "tool_output_max_chars": 0,
+      "usage_reports_original_history": true,
+      "call_output_groups_are_atomic": true,
+      "latest_user_query_is_pinned": true,
+      "structured_checkpoint": {
+        "api_scope": "chat_and_responses",
+        "mode": "enforce",
+        "extraction_concurrency": 2,
+        "shadow_sample_rate": 1.0,
+        "schema_version": "responses-checkpoint/v2",
+        "prompt_version": "2026-09-05.2",
+        "task_conditioned": true,
+        "provenance_validated": true,
+        "critical_evidence_ledger": "exact_bounded_fail_closed",
+        "affects_forwarded_context": true,
+        "chat_completions_unchanged": false,
+        "execution": "before_live_response_fail_closed",
+        "pending_jobs": 0,
+        "observations_total": 0,
+        "latest_observation": {
+          "status": "never",
+          "valid": false,
+          "source_items": 0,
+          "claim_count": 0,
+          "evidence_coverage": 0.0,
+          "critical_evidence_coverage": 0.0,
+          "literal_recall": 0.0,
+          "error_count": 0,
+          "serving_evidence_complete": false,
+          "serving_evidence_chars": 0,
+          "cache_hit": false
+        }
+      }
+    },
+    "context_safety": {
+      "max_output_reserve_tokens": 131072,
+      "safety_reserve_tokens": 8192,
+      "safe_input_limit_at_max_output": 262144,
+      "responses_safe_input_limit_at_max_output": 262144
+    },
+    "enforce_czech": true,
+    "max_request_bytes": 67108864,
+    "routing": {
+      "image": "vision",
+      "video": "vision",
+      "selection": "message_content_type"
+    },
+    "vision": {
+      "enabled": true,
+      "upstream": "ok",
+      "max_model_len": 401408,
+      "max_images_per_prompt": 32,
+      "chat_image_overflow_mode": "off",
+      "chat_image_note_cache_entries": 0,
+      "image_token_reserve": 16384,
+      "video_token_reserve": 32768,
+      "speculative_decoding": true
+    }
+  }
+}

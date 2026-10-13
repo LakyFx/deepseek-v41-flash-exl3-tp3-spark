@@ -1,0 +1,190 @@
+{
+  "status": "Q20_TOOL_DELTA_CAPTURED",
+  "arm": "TF29",
+  "attempts": [
+    {
+      "case_id": "tools-digest-0",
+      "seed": 42,
+      "temperature": 0,
+      "finish_reason": "stop",
+      "requests": [
+        {
+          "request_id": "dgx-gateway-2ae2f55751e448a4a60fb9280a55acfd",
+          "body_sha256": "344760af0b9e9f06ae09ded376d5c240856f58e2c56c6aa44708724bd740567a",
+          "usage": {
+            "prompt_tokens": 598,
+            "completion_tokens": 56,
+            "cached_tokens": 0,
+            "computed_prompt_tokens": 598
+          },
+          "finish_reason": "tool_calls",
+          "started_monotonic": 195057.528271835,
+          "ended_monotonic": 195058.625067748
+        },
+        {
+          "request_id": "dgx-gateway-8ab114e57dc94ebdba7d40fc20c9becc",
+          "body_sha256": "b679f694a1be2fd7dd1a7d59b7dac33694ff5adee78e136ad4e70f786e083aed",
+          "usage": {
+            "prompt_tokens": 775,
+            "completion_tokens": 228,
+            "cached_tokens": 654,
+            "computed_prompt_tokens": 121
+          },
+          "finish_reason": "tool_calls",
+          "started_monotonic": 195058.625232978,
+          "ended_monotonic": 195060.73215125
+        },
+        {
+          "request_id": "dgx-gateway-8f077dd708a04a14ba700f7d81b92dc8",
+          "body_sha256": "e924e3bed352bf7053597efa56d07972940e02f6bb5637ac6be9b6684a8d4f6a",
+          "usage": {
+            "prompt_tokens": 1024,
+            "completion_tokens": 60,
+            "cached_tokens": 1002,
+            "computed_prompt_tokens": 22
+          },
+          "finish_reason": "stop",
+          "started_monotonic": 195060.732317616,
+          "ended_monotonic": 195061.350940537
+        }
+      ],
+      "category": "tools",
+      "elapsed_seconds": 3.8227676450042054,
+      "attempt_id": "tools-digest-0-greedy",
+      "grade": {
+        "passed": true,
+        "complete": true,
+        "kind": "tools",
+        "tool_trace_pass": true,
+        "final_after_save_result": true,
+        "confirms_saved": true,
+        "editorial_review_needed": true
+      }
+    },
+    {
+      "case_id": "tools-digest-0",
+      "seed": 2026,
+      "temperature": 0.6,
+      "finish_reason": "stop",
+      "requests": [
+        {
+          "request_id": "dgx-gateway-911e57e5f6be48d2bc8829d53e23eff3",
+          "body_sha256": "16bccf66c159487cf0ba054865cf10d47d6644bf232b592bbaddbbce3526b39b",
+          "usage": {
+            "prompt_tokens": 598,
+            "completion_tokens": 118,
+            "cached_tokens": 0,
+            "computed_prompt_tokens": 598
+          },
+          "finish_reason": "tool_calls",
+          "started_monotonic": 195061.352139116,
+          "ended_monotonic": 195063.099736526
+        },
+        {
+          "request_id": "dgx-gateway-061443d4867047329755cd221eb2fdab",
+          "body_sha256": "11efb6848a04ad351f38b892ee3d709fb8332460a706a9a88b9a86e98c814a6d",
+          "usage": {
+            "prompt_tokens": 837,
+            "completion_tokens": 211,
+            "cached_tokens": 716,
+            "computed_prompt_tokens": 121
+          },
+          "finish_reason": "tool_calls",
+          "started_monotonic": 195063.099897852,
+          "ended_monotonic": 195065.555442803
+        },
+        {
+          "request_id": "dgx-gateway-d7d11f490ad24ccfb5de54fba350f5a7",
+          "body_sha256": "8301c211ad77b8d7613a2da3450f7668f7b91951a7e1e1c008dbde2feacd0bfc",
+          "usage": {
+            "prompt_tokens": 1069,
+            "completion_tokens": 180,
+            "cached_tokens": 1048,
+            "computed_prompt_tokens": 21
+          },
+          "finish_reason": "stop",
+          "started_monotonic": 195065.555748191,
+          "ended_monotonic": 195067.868434738
+        }
+      ],
+      "category": "tools",
+      "elapsed_seconds": 6.516402357025072,
+      "attempt_id": "tools-digest-0-sample-2026",
+      "grade": {
+        "passed": true,
+        "complete": true,
+        "kind": "tools",
+        "tool_trace_pass": true,
+        "final_after_save_result": true,
+        "confirms_saved": true,
+        "editorial_review_needed": true
+      }
+    },
+    {
+      "case_id": "tools-digest-0",
+      "seed": 1708,
+      "temperature": 0.6,
+      "finish_reason": "stop",
+      "requests": [
+        {
+          "request_id": "dgx-gateway-e1f0cd0242c34868a910fba85bf775d7",
+          "body_sha256": "935557f50877df5a65a1c2b953219ed883bdf2c8e80514a596a768842da13c98",
+          "usage": {
+            "prompt_tokens": 598,
+            "completion_tokens": 111,
+            "cached_tokens": 0,
+            "computed_prompt_tokens": 598
+          },
+          "finish_reason": "tool_calls",
+          "started_monotonic": 195067.869062923,
+          "ended_monotonic": 195069.573657837
+        },
+        {
+          "request_id": "dgx-gateway-988ba1e6d511487c8baa2800add7d431",
+          "body_sha256": "715376eaf3a598d0a171e1fab58cb3622cc34f3487f00c0759817fabe8a30d53",
+          "usage": {
+            "prompt_tokens": 830,
+            "completion_tokens": 196,
+            "cached_tokens": 708,
+            "computed_prompt_tokens": 122
+          },
+          "finish_reason": "tool_calls",
+          "started_monotonic": 195069.573880059,
+          "ended_monotonic": 195071.682738253
+        },
+        {
+          "request_id": "dgx-gateway-a1de31c0a5d844049132390927e24e96",
+          "body_sha256": "e750d32b5757ee29ccc637ccf64953bdb647dcfbeaa58852a06a277b7bf5e8ea",
+          "usage": {
+            "prompt_tokens": 1047,
+            "completion_tokens": 61,
+            "cached_tokens": 1026,
+            "computed_prompt_tokens": 21
+          },
+          "finish_reason": "stop",
+          "started_monotonic": 195071.68299441,
+          "ended_monotonic": 195072.38669476
+        }
+      ],
+      "category": "tools",
+      "elapsed_seconds": 4.517802266986109,
+      "attempt_id": "tools-digest-0-sample-1708",
+      "grade": {
+        "passed": true,
+        "complete": true,
+        "kind": "tools",
+        "tool_trace_pass": true,
+        "final_after_save_result": true,
+        "confirms_saved": true,
+        "editorial_review_needed": true
+      }
+    }
+  ],
+  "all_passed": true,
+  "seconds": 14.869816171994898,
+  "hard_inference_budget_seconds": 120,
+  "max_tokens": 4096,
+  "fixture_sha256": "9e790240147a67de645f95042f7d81810946743fb41a0422c39b83ca49f8c7d6",
+  "full_quality_screen": false,
+  "production_qualified": false
+}

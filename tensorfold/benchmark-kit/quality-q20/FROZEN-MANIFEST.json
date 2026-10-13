@@ -1,0 +1,19 @@
+{
+  "fixture_sha256": "2fac75a11f95e50ad822b4a4ac7b635d7ece6ef6d083291018972ab97acecdd7",
+  "files": {
+    "evalplus-six-selected.json": "1d7c45dca39d6268dcf8682d85f4a1772e32021702facef662d4f6dfb9895e02",
+    "FIXTURES.json": "2fac75a11f95e50ad822b4a4ac7b635d7ece6ef6d083291018972ab97acecdd7",
+    "freeze_q20.py": "7e637c8435466daf5bf9319defb8a02b92ad42ebe382f0f0f2d53f8a5fb51881",
+    "google-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "HumanEvalPlus-Mini-v0.1.10.jsonl.gz": "91486741f1627101021fbe50523df08eebb5b0bf5e804b633dcd5ca3c14dbd2f",
+    "ifeval-evaluation_lib.py": "35decc06000718487f44d7deafa6d3f48a8ec0886281edf40162c0265b7d248c",
+    "ifeval-input_data.jsonl": "67ffeee0fcb87c317c5b08a2de85557b4a7e96ada6178aa645b4954fe4b53d49",
+    "ifeval-instructions.py": "60e086f5342a03ce8e18b64bbcccf86308f523c08aa826707a562150a52f3edf",
+    "ifeval-instructions_registry.py": "ec92d72c264f6d906978613085db262356174300370a3fffe6fefd5969ce9cfc",
+    "ifeval-instructions_util.py": "a73797261eee5bf447e279d82a2b700b1bdd3cb1193412dbab1270a85832bc6b",
+    "ifeval_selected.py": "75478174b03422c0d77bf7f3f2a52d0a34b29a1ed6af6ffe8993484d31a1000a",
+    "inspect_sources.py": "1c1181d696c861fda85e2f69cceeb4acb1ee439b68bdf3a0076c9e559e1f1d14",
+    "SOURCE-MANIFEST.json": "009c0502a9904b54c76fdea0f554caefe34d9b8bf0c06058bd69bb86af31ec42"
+  },
+  "generations_before_freeze": 0
+}

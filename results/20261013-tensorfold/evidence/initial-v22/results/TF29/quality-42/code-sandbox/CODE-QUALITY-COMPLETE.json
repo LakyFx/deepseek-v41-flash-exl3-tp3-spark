@@ -1,0 +1,33 @@
+{
+  "arm": "TF29",
+  "seed": 42,
+  "code_cases": 4,
+  "passed": 3,
+  "quality_qualified": false,
+  "receipts": [
+    {
+      "case_id": "code-dedup",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-1fcec45628b442599d84146ff5b3d3b6"
+    },
+    {
+      "case_id": "code-money",
+      "passed": false,
+      "error": "incomplete model output",
+      "container": "ds41f-quality-9fb9cc0e00b043528842e97b272b1fd1"
+    },
+    {
+      "case_id": "code-cursor",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-77554c785f9849828d10cd8ab2aa4e3a"
+    },
+    {
+      "case_id": "code-weighted",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-d5bd5c93662544288d89c11e7f3193de"
+    }
+  ]
+}

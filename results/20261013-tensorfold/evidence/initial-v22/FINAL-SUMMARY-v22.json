@@ -1,0 +1,1397 @@
+{
+  "created_at": 1791898938.9105535,
+  "campaign": "94579cbe19c0",
+  "arms": {
+    "C4-reference": {
+      "owen_decode": {
+        "code-c4": {
+          "aggregate_tok_s": 128.42566666666667,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 0.0
+        },
+        "prose-c1": {
+          "aggregate_tok_s": 37.42133333333333,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 0.0
+        },
+        "code-c2": {
+          "aggregate_tok_s": 85.18166666666667,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 0.0
+        },
+        "prose-c2": {
+          "aggregate_tok_s": 64.62733333333334,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 0.0
+        },
+        "code-c8": {
+          "aggregate_tok_s": 208.61566666666667,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 0.0
+        },
+        "prose-c4": {
+          "aggregate_tok_s": 99.801,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 0.0
+        },
+        "prose-c8": {
+          "aggregate_tok_s": 152.508,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 0.0
+        },
+        "code-c1": {
+          "aggregate_tok_s": 53.51,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 0.0
+        }
+      },
+      "owen_cold": {
+        "32768": {
+          "weighted_actual_prompt_tokens_per_ttft_second": 1610.05420509696,
+          "change_vs_C4_percent": 0.0,
+          "repeats": [
+            {
+              "nominal_tokens": 32768,
+              "repeat": 0,
+              "actual_prompt_tokens": 30739,
+              "ttft_s": 18.9793,
+              "prompt_tokens_per_ttft_second": 1619.6066240588432,
+              "ok": true
+            },
+            {
+              "nominal_tokens": 32768,
+              "repeat": 1,
+              "actual_prompt_tokens": 30568,
+              "ttft_s": 19.0983,
+              "prompt_tokens_per_ttft_second": 1600.5613065037203,
+              "ok": true
+            }
+          ]
+        },
+        "262144": {
+          "weighted_actual_prompt_tokens_per_ttft_second": 1680.6282976512996,
+          "change_vs_C4_percent": 0.0,
+          "repeats": [
+            {
+              "nominal_tokens": 262144,
+              "repeat": 0,
+              "actual_prompt_tokens": 235805,
+              "ttft_s": 144.2678,
+              "prompt_tokens_per_ttft_second": 1634.4950155197487,
+              "ok": true
+            },
+            {
+              "nominal_tokens": 262144,
+              "repeat": 1,
+              "actual_prompt_tokens": 249185,
+              "ttft_s": 144.3088,
+              "prompt_tokens_per_ttft_second": 1726.7484727196124,
+              "ok": true
+            }
+          ]
+        }
+      },
+      "workflows": {
+        "workflow-C1": {
+          "wall_seconds": 22.965218548022676,
+          "latency_change_vs_C4_percent": 0.0,
+          "correct_tasks": 1,
+          "prompt_tokens": 35035,
+          "completion_tokens": 1003,
+          "computed_prompt_tokens": 8667,
+          "cached_tokens": 26368,
+          "computed_tokens_change_vs_C4_percent": 0.0,
+          "per_request_weighted_decode_tps": 62.318883941724515,
+          "draft_acceptance_fraction": 0.6358333333333334,
+          "note": "Real task latency; different output lengths, not fixed-output throughput"
+        },
+        "workflow-C3": {
+          "wall_seconds": 39.00322859999142,
+          "latency_change_vs_C4_percent": 0.0,
+          "correct_tasks": 3,
+          "prompt_tokens": 76495,
+          "completion_tokens": 2185,
+          "computed_prompt_tokens": 25807,
+          "cached_tokens": 50688,
+          "computed_tokens_change_vs_C4_percent": 0.0,
+          "per_request_weighted_decode_tps": 31.82620922753224,
+          "draft_acceptance_fraction": 0.6047882136279926,
+          "note": "Real task latency; different output lengths, not fixed-output throughput"
+        }
+      },
+      "hermes_complete": true,
+      "hermes_wall_seconds": 610.8679882959987,
+      "quality": {
+        "42": {
+          "mechanical_passes": 18,
+          "cases": 26,
+          "failed": [
+            {
+              "case": "digest-correction",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "digest-uncertainty",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-1",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-2",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-3",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "code-money",
+              "failures": [
+                "not_completed_stop",
+                "empty_visible_answer"
+              ]
+            },
+            {
+              "case": "cs-deadline-order",
+              "failures": [
+                "exact_instruction_answer"
+              ]
+            }
+          ]
+        },
+        "2026": {
+          "mechanical_passes": 4,
+          "cases": 6,
+          "failed": [
+            {
+              "case": "digest-correction",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            }
+          ]
+        },
+        "1708": {
+          "mechanical_passes": 4,
+          "cases": 6,
+          "failed": [
+            {
+              "case": "digest-correction",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            }
+          ]
+        }
+      },
+      "code": {
+        "passed": 5,
+        "cases": 6,
+        "receipts": [
+          {
+            "case_id": "code-dedup",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-95ff69781f6b4ceab7a0e3cfa8a6c5f7"
+          },
+          {
+            "case_id": "code-money",
+            "passed": false,
+            "error": "incomplete model output",
+            "container": "ds41f-quality-836646a4c49745ec8c6e08819a9b8549"
+          },
+          {
+            "case_id": "code-cursor",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-90f1096fa4324736900426c6fd94e98a"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-7bbee0e4c39b4db7add11130e8ce98ba"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-5edfb977b7784da29b1f3486a9999cb3"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-6b8fd39e6ea446a3ab79e80186a1c8fa"
+          }
+        ]
+      },
+      "oracle_diagnostics": [
+        {
+          "seed": 42,
+          "case": "cs-deadline-order",
+          "observed": "C, A, B",
+          "oracle": "C,A,B",
+          "classification": "correct ordering; undocumented internal-spacing strictness; original failure preserved"
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-1",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-2",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-3",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 2026,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 1708,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        }
+      ]
+    },
+    "TF351": {
+      "owen_decode": {
+        "code-c4": {
+          "aggregate_tok_s": 216.90333333333334,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 68.8940684234979
+        },
+        "prose-c1": {
+          "aggregate_tok_s": 82.29766666666667,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 119.92179149148438
+        },
+        "code-c2": {
+          "aggregate_tok_s": 149.43366666666665,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 75.42937643076559
+        },
+        "prose-c2": {
+          "aggregate_tok_s": 147.27933333333334,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 127.89015999422327
+        },
+        "code-c8": {
+          "aggregate_tok_s": 297.038,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 42.385279469263246
+        },
+        "prose-c4": {
+          "aggregate_tok_s": 219.268,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 119.70521337461548
+        },
+        "prose-c8": {
+          "aggregate_tok_s": 299.35966666666667,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 96.2911235257604
+        },
+        "code-c1": {
+          "aggregate_tok_s": 83.545,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 56.12969538404038
+        }
+      },
+      "owen_cold": {
+        "32768": {
+          "weighted_actual_prompt_tokens_per_ttft_second": 2145.6870664492058,
+          "change_vs_C4_percent": 33.26800176395235,
+          "repeats": [
+            {
+              "nominal_tokens": 32768,
+              "repeat": 0,
+              "actual_prompt_tokens": 30739,
+              "ttft_s": 14.3441,
+              "prompt_tokens_per_ttft_second": 2142.9716747652346,
+              "ok": true
+            },
+            {
+              "nominal_tokens": 32768,
+              "repeat": 1,
+              "actual_prompt_tokens": 30568,
+              "ttft_s": 14.2281,
+              "prompt_tokens_per_ttft_second": 2148.4245963972703,
+              "ok": true
+            }
+          ]
+        },
+        "262144": {
+          "weighted_actual_prompt_tokens_per_ttft_second": 1978.3930548405547,
+          "change_vs_C4_percent": 17.717466593022692,
+          "repeats": [
+            {
+              "nominal_tokens": 262144,
+              "repeat": 0,
+              "actual_prompt_tokens": 235805,
+              "ttft_s": 119.1691,
+              "prompt_tokens_per_ttft_second": 1978.7428116852439,
+              "ok": true
+            },
+            {
+              "nominal_tokens": 262144,
+              "repeat": 1,
+              "actual_prompt_tokens": 249185,
+              "ttft_s": 125.9743,
+              "prompt_tokens_per_ttft_second": 1978.0621920502833,
+              "ok": true
+            }
+          ]
+        }
+      },
+      "workflows": {
+        "workflow-C1": {
+          "wall_seconds": 16.923458540986758,
+          "latency_change_vs_C4_percent": -26.308306164829066,
+          "correct_tasks": 1,
+          "prompt_tokens": 34735,
+          "completion_tokens": 867,
+          "computed_prompt_tokens": 12207,
+          "cached_tokens": 22528,
+          "computed_tokens_change_vs_C4_percent": 40.84458290065767,
+          "per_request_weighted_decode_tps": 85.2569829353281,
+          "draft_acceptance_fraction": 0.7254004576659039,
+          "note": "Real task latency; different output lengths, not fixed-output throughput"
+        },
+        "workflow-C3": {
+          "wall_seconds": 40.12029913300648,
+          "latency_change_vs_C4_percent": 2.8640463190150234,
+          "correct_tasks": 3,
+          "prompt_tokens": 76672,
+          "completion_tokens": 2670,
+          "computed_prompt_tokens": 33664,
+          "cached_tokens": 43008,
+          "computed_tokens_change_vs_C4_percent": 30.44522803890417,
+          "per_request_weighted_decode_tps": 31.320593038889104,
+          "draft_acceptance_fraction": 0.7823506133755441,
+          "note": "Real task latency; different output lengths, not fixed-output throughput"
+        }
+      },
+      "hermes_complete": false,
+      "hermes_wall_seconds": 485.4052025069832,
+      "quality": {
+        "42": {
+          "mechanical_passes": 16,
+          "cases": 26,
+          "failed": [
+            {
+              "case": "digest-correction",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "digest-uncertainty",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "digest-source-injection",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-1",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-2",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-3",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "code-money",
+              "failures": [
+                "not_completed_stop",
+                "empty_visible_answer"
+              ]
+            },
+            {
+              "case": "cs-agreement",
+              "failures": [
+                "exact_instruction_answer"
+              ]
+            },
+            {
+              "case": "cs-deadline-order",
+              "failures": [
+                "exact_instruction_answer"
+              ]
+            }
+          ]
+        },
+        "2026": {
+          "mechanical_passes": 4,
+          "cases": 6,
+          "failed": [
+            {
+              "case": "digest-correction",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            }
+          ]
+        },
+        "1708": {
+          "mechanical_passes": 4,
+          "cases": 6,
+          "failed": [
+            {
+              "case": "digest-correction",
+              "failures": [
+                "invalid_json_or_schema"
+              ]
+            },
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            }
+          ]
+        }
+      },
+      "code": {
+        "passed": 5,
+        "cases": 6,
+        "receipts": [
+          {
+            "case_id": "code-dedup",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-4f2127e8bf434b1fb0bfee2f8add0e79"
+          },
+          {
+            "case_id": "code-money",
+            "passed": false,
+            "error": "incomplete model output",
+            "container": "ds41f-quality-f968da841e9146ea9c8632a4aaf97f29"
+          },
+          {
+            "case_id": "code-cursor",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-0617a4bc66574f99a305d74c4fadbeec"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-c760a01bf8da40d89a77917513508bb9"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-6a4c503964a0487c86bae9fd5f1f1dc4"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-93d473ce59fb4bf5957a74f9b93afd94"
+          }
+        ]
+      },
+      "oracle_diagnostics": [
+        {
+          "seed": 42,
+          "case": "cs-deadline-order",
+          "observed": "C, A, B",
+          "oracle": "C,A,B",
+          "classification": "correct ordering; undocumented internal-spacing strictness; original failure preserved"
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-1",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-2",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-3",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 2026,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 1708,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        }
+      ]
+    },
+    "TF29": {
+      "owen_decode": {
+        "code-c4": {
+          "aggregate_tok_s": 253.91,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 97.70969977444798
+        },
+        "prose-c1": {
+          "aggregate_tok_s": 85.223,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 127.73907931304782
+        },
+        "code-c2": {
+          "aggregate_tok_s": 166.75900000000001,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 95.76865131385861
+        },
+        "prose-c2": {
+          "aggregate_tok_s": 150.46233333333333,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 132.81532065895746
+        },
+        "code-c8": {
+          "aggregate_tok_s": 310.91,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 49.03482800109293
+        },
+        "prose-c4": {
+          "aggregate_tok_s": 208.538,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 108.95381809801505
+        },
+        "prose-c8": {
+          "aggregate_tok_s": 308.40066666666667,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 102.2193371276698
+        },
+        "code-c1": {
+          "aggregate_tok_s": 93.279,
+          "repeats": 3,
+          "all_requests_ok": true,
+          "change_vs_C4_percent": 74.32068772192113
+        }
+      },
+      "owen_cold": {
+        "32768": {
+          "weighted_actual_prompt_tokens_per_ttft_second": 2162.496781316468,
+          "change_vs_C4_percent": 34.31204828201664,
+          "repeats": [
+            {
+              "nominal_tokens": 32768,
+              "repeat": 0,
+              "actual_prompt_tokens": 30739,
+              "ttft_s": 14.2175,
+              "prompt_tokens_per_ttft_second": 2162.0538069280815,
+              "ok": true
+            },
+            {
+              "nominal_tokens": 32768,
+              "repeat": 1,
+              "actual_prompt_tokens": 30568,
+              "ttft_s": 14.1326,
+              "prompt_tokens_per_ttft_second": 2162.9424168235146,
+              "ok": true
+            }
+          ]
+        },
+        "262144": {
+          "weighted_actual_prompt_tokens_per_ttft_second": 1991.495931721078,
+          "change_vs_C4_percent": 18.497108165096353,
+          "repeats": [
+            {
+              "nominal_tokens": 262144,
+              "repeat": 0,
+              "actual_prompt_tokens": 235805,
+              "ttft_s": 118.3481,
+              "prompt_tokens_per_ttft_second": 1992.46967209444,
+              "ok": true
+            },
+            {
+              "nominal_tokens": 262144,
+              "repeat": 1,
+              "actual_prompt_tokens": 249185,
+              "ttft_s": 125.1824,
+              "prompt_tokens_per_ttft_second": 1990.5753524457111,
+              "ok": true
+            }
+          ]
+        }
+      },
+      "workflows": {
+        "workflow-C1": {
+          "wall_seconds": 19.34161404898623,
+          "latency_change_vs_C4_percent": -15.778663248769476,
+          "correct_tasks": 1,
+          "prompt_tokens": 35192,
+          "completion_tokens": 1070,
+          "computed_prompt_tokens": 12664,
+          "cached_tokens": 22528,
+          "computed_tokens_change_vs_C4_percent": 46.11745702088381,
+          "per_request_weighted_decode_tps": 85.91149446015385,
+          "draft_acceptance_fraction": 0.6531492666091459,
+          "note": "Real task latency; different output lengths, not fixed-output throughput"
+        },
+        "workflow-C3": {
+          "wall_seconds": 40.36712436599191,
+          "latency_change_vs_C4_percent": 3.4968791429763835,
+          "correct_tasks": 3,
+          "prompt_tokens": 77114,
+          "completion_tokens": 2811,
+          "computed_prompt_tokens": 34106,
+          "cached_tokens": 43008,
+          "computed_tokens_change_vs_C4_percent": 32.15794164374006,
+          "per_request_weighted_decode_tps": 36.51849718394449,
+          "draft_acceptance_fraction": 0.755268022181146,
+          "note": "Real task latency; different output lengths, not fixed-output throughput"
+        }
+      },
+      "hermes_complete": false,
+      "hermes_wall_seconds": 479.42709444698994,
+      "quality": {
+        "42": {
+          "mechanical_passes": 20,
+          "cases": 26,
+          "failed": [
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-1",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-2",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "tools-digest-3",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            },
+            {
+              "case": "code-money",
+              "failures": [
+                "not_completed_stop",
+                "empty_visible_answer"
+              ]
+            },
+            {
+              "case": "cs-deadline-order",
+              "failures": [
+                "exact_instruction_answer"
+              ]
+            }
+          ]
+        },
+        "2026": {
+          "mechanical_passes": 5,
+          "cases": 6,
+          "failed": [
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            }
+          ]
+        },
+        "1708": {
+          "mechanical_passes": 5,
+          "cases": 6,
+          "failed": [
+            {
+              "case": "tools-digest-0",
+              "failures": [
+                "request_error",
+                "not_completed_stop",
+                "empty_visible_answer",
+                "unprocessed_final_tool_call",
+                "tool_sequence_or_arguments"
+              ]
+            }
+          ]
+        }
+      },
+      "code": {
+        "passed": 5,
+        "cases": 6,
+        "receipts": [
+          {
+            "case_id": "code-dedup",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-1fcec45628b442599d84146ff5b3d3b6"
+          },
+          {
+            "case_id": "code-money",
+            "passed": false,
+            "error": "incomplete model output",
+            "container": "ds41f-quality-9fb9cc0e00b043528842e97b272b1fd1"
+          },
+          {
+            "case_id": "code-cursor",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-77554c785f9849828d10cd8ab2aa4e3a"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-d5bd5c93662544288d89c11e7f3193de"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-6f77eb3ddd8646e9b77b0a4d171f7ba0"
+          },
+          {
+            "case_id": "code-weighted",
+            "passed": true,
+            "error": null,
+            "container": "ds41f-quality-9889acfb624841148b61565c8d604edb"
+          }
+        ]
+      },
+      "oracle_diagnostics": [
+        {
+          "seed": 42,
+          "case": "cs-deadline-order",
+          "observed": "C, A, B",
+          "oracle": "C,A,B",
+          "classification": "correct ordering; undocumented internal-spacing strictness; original failure preserved"
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-1",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-2",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 42,
+          "case": "tools-digest-3",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 2026,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        },
+        {
+          "seed": 1708,
+          "case": "tools-digest-0",
+          "observed_locale": "cs",
+          "hidden_oracle_locale": "cs-CZ",
+          "classification": "Schema accepts arbitrary string; required region not provided. Correct tool names/order/other arguments. Final turn not run after oracle abort; not counted as tool PASS."
+        }
+      ]
+    }
+  },
+  "anonymous_review": [
+    {
+      "arm": "TF351",
+      "seed": 42,
+      "status": "REGRESSION",
+      "preferences": {
+        "tie": 11,
+        "candidate": 2,
+        "baseline": 1
+      },
+      "critical_interface_errors": {
+        "candidate": 3,
+        "baseline": 2
+      },
+      "regressions": [
+        "digest-source-injection:new_mechanical_failure",
+        "cs-agreement:new_mechanical_failure",
+        "digest-source-injection:new_critical_editorial_error"
+      ],
+      "details": [
+        {
+          "case": "translate-negation",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "A 'neodstra\u0148uje' and B 'nemaz\u030ce' both preserve the negation, temporary hiding and 'Nebyla potvrzena \u017e\u00e1dn\u00e1 ztr\u00e1ta dat'; decomposed Unicode in B does not alter Czech meaning."
+        },
+        {
+          "case": "translate-prices",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both preserve '1 250 EUR bez DPH', optional '90 EUR m\u011bs\u00ed\u010dn\u011b', support exclusion and exact '21. \u0159\u00edjna 2026' expiry. Wording differences are stylistic and both are natural."
+        },
+        {
+          "case": "translate-attribution",
+          "winner": "candidate",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "A 'v\u00fdsledek nez\u00e1visle nezopakoval' specifically preserves 'has not independently reproduced'. B 'nez\u00e1visle neov\u011b\u0159il' is broader and loses the reproduction nuance. Both preserve attribution, 180 requests/minute and no production SLA; this is a minor precision preference, not a critical reversal."
+        },
+        {
+          "case": "translate-deadline",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Answers are identical and preserve '9:30 pra\u017esk\u00e9ho \u010dasu ... 14. \u0159\u00edjna 2026, nikoli do p\u016flnoci' and moving late approval to the next business day."
+        },
+        {
+          "case": "translate-technical",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both avoid recomputing the matching prefix, do not count reused tokens as newly processed throughput, and state 'KV pool je sd\u00edlen mezi po\u017eadavky'. Technical meaning is preserved."
+        },
+        {
+          "case": "translate-conditional",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "A 'Dokud ... neschv\u00e1l\u00ed oba ... nepos\u00edlejte' and B 'Pokud ... neschv\u00e1l\u00ed oba ... neodes\u00edlejte' preserve the joint approval condition, receipt distinction and 'Ml\u010den\u00ed nen\u00ed schv\u00e1len\u00ed'."
+        },
+        {
+          "case": "digest-correction",
+          "winner": "candidate",
+          "critical_baseline": true,
+          "critical_candidate": true,
+          "evidence": "Both correctly give 102 and null but both use ```json fences, violating the raw JSON-object interface. A's 'skute\u010dn\u00fd po\u010det instalac\u00ed je 102' is idiomatic; B's 'skute\u010dn\u00fd po\u010det je 102 instalace' is awkward Czech. Preference is for grammar, not different facts."
+        },
+        {
+          "case": "digest-duplicates",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both return raw JSON with R=15, S=8, total=23 and explicitly identify B as a duplicate and C's additional 3 as no correction. Both Czech summaries faithfully explain the count."
+        },
+        {
+          "case": "digest-uncertainty",
+          "winner": "tie",
+          "critical_baseline": true,
+          "critical_candidate": true,
+          "evidence": "Both preserve current 7, possible future 3 and guaranteed=false, with 'by mohla'/'m\u016f\u017ee' and no guarantee invented. Both wrap the answer in ```json fences, failing the same required JSON-object interface."
+        },
+        {
+          "case": "digest-source-injection",
+          "winner": "baseline",
+          "critical_baseline": false,
+          "critical_candidate": true,
+          "evidence": "Both preserve approved_limit_czk=45000 and sending_authorized=false and treat 90000/send-email as an untrusted quotation. A returns the requested raw JSON and concise summary; B uses ```json fences and cannot be directly parsed as the requested object."
+        },
+        {
+          "case": "long-digest-0",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both raw JSON answers preserve the later correction to budget_czk=19000, approved=false and exact owner '\u017daneta \u0158\u00edhov\u00e1'. Neither infers approval from the repeated operational notes."
+        },
+        {
+          "case": "long-digest-1",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both give the corrected 19100, approved=false and '\u017daneta \u0158\u00edhov\u00e1', explicitly retaining the original 17100 only as superseded history. Both are factual natural Czech JSON."
+        },
+        {
+          "case": "long-digest-2",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both return corrected budget_czk=19200, approved=false and the correct owner. A includes the superseded 17200 while B is shorter; both satisfy the concise current conclusion without added facts."
+        },
+        {
+          "case": "long-digest-3",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both preserve the correction 17300 to 19300, exact owner and approval=false. The 'jej'/'je' pronoun variation does not change the conclusion; both return valid raw JSON."
+        }
+      ]
+    },
+    {
+      "arm": "TF351",
+      "seed": 2026,
+      "status": "REGRESSION",
+      "preferences": {
+        "baseline": 1,
+        "tie": 2
+      },
+      "critical_interface_errors": {
+        "baseline": 1,
+        "candidate": 1
+      },
+      "regressions": [
+        "translate-negation:baseline_preferred_review_evidence"
+      ],
+      "details": [
+        {
+          "case": "translate-negation",
+          "winner": "baseline",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both preserve no deletion, temporary hiding and no confirmed data loss. B's 'dokud se nedokon\u010d\u00ed indexov\u00e1n\u00ed' naturally preserves an indexing process finishing; A's 'dokud nedokon\u010d\u00ed indexov\u00e1n\u00ed' awkwardly makes the update the implied actor. This is a minor Czech naturalness/precision preference, not a material factual error."
+        },
+        {
+          "case": "translate-conditional",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both require approval from both reviewers before sending, preserve that the second only acknowledged receipt and explicitly state silence is not approval. 'Dokud' and 'Pokud' preserve the approval condition."
+        },
+        {
+          "case": "digest-correction",
+          "winner": "tie",
+          "critical_baseline": true,
+          "critical_candidate": true,
+          "evidence": "Both preserve the correction from 120 to 102 installations and unknown price=null, with natural supported Czech summaries. Both enclose the otherwise valid JSON object in ```json fences, breaking the raw JSON-object interface."
+        }
+      ]
+    },
+    {
+      "arm": "TF351",
+      "seed": 1708,
+      "status": "REGRESSION",
+      "preferences": {
+        "baseline": 1,
+        "tie": 1,
+        "candidate": 1
+      },
+      "critical_interface_errors": {
+        "baseline": 1,
+        "candidate": 1
+      },
+      "regressions": [
+        "translate-negation:baseline_preferred_review_evidence"
+      ],
+      "details": [
+        {
+          "case": "translate-negation",
+          "winner": "baseline",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both preserve no deletion and no confirmed loss. A's 'dokud se nedokon\u010d\u00ed indexace' naturally preserves an indexing process finishing. B's 'dokud nedokon\u010d\u00ed indexov\u00e1n\u00ed' awkwardly makes the update the implied actor. This is a minor Czech precision/naturalness preference, not a material factual error."
+        },
+        {
+          "case": "translate-conditional",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "A 'kone\u010dn\u00fd n\u00e1vrh' and B 'fin\u00e1ln\u00ed n\u00e1vrh' both preserve both-reviewer approval, receipt not approval and 'Ml\u010den\u00ed nen\u00ed schv\u00e1len\u00ed'; the rest is identical."
+        },
+        {
+          "case": "digest-correction",
+          "winner": "candidate",
+          "critical_baseline": true,
+          "critical_candidate": true,
+          "evidence": "Both preserve installations=102 and price_czk=null but both use ```json fences, breaking the raw JSON-object interface. B's 'skute\u010dn\u00fd po\u010det je 102' avoids A's awkward '102 instalace'; preference is grammatical, not factual."
+        }
+      ]
+    },
+    {
+      "arm": "TF29",
+      "seed": 42,
+      "status": "INCOMPLETE",
+      "preferences": {
+        "tie": 11,
+        "candidate": 3
+      },
+      "critical_interface_errors": {
+        "baseline": 2
+      },
+      "regressions": [],
+      "details": [
+        {
+          "case": "translate-negation",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both preserve no deletion, temporary hiding until indexing finishes and no confirmed data loss. The combining diacritic in B's 'nemaz\u030ce' changes Unicode normalization only, not meaning or Czech correctness."
+        },
+        {
+          "case": "translate-prices",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both preserve EUR 1,250 excluding VAT, optional EUR 90 per month not included and expiry on 21 October 2026. 'Platnost nab\u00eddky kon\u010d\u00ed' and 'Nab\u00eddka plat\u00ed do' are equivalent here."
+        },
+        {
+          "case": "translate-attribution",
+          "winner": "candidate",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both retain vendor attribution, laboratory 180 requests/minute and no production SLA. A's 'nez\u00e1visle nezopakoval' more precisely preserves 'not independently reproduced' than B's broader 'nez\u00e1visle neov\u011b\u0159il'; this is a minor translation precision preference, not a material factual error."
+        },
+        {
+          "case": "translate-deadline",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Identical answers preserve 09:30 Prague time on 14 October 2026, not midnight, and next-business-day publication if approval arrives later."
+        },
+        {
+          "case": "translate-technical",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both state that a matching cached prefix is not recomputed, displayed throughput is not new processing of those tokens and the KV pool is shared across requests."
+        },
+        {
+          "case": "translate-conditional",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both require approval by both reviewers before sending and distinguish receipt from approval; both explicitly retain 'Ml\u010den\u00ed nen\u00ed schv\u00e1len\u00ed'. 'Pokud ... neschv\u00e1l\u00ed' and 'Dokud ... neschv\u00e1l\u00ed' preserve the condition."
+        },
+        {
+          "case": "digest-correction",
+          "winner": "candidate",
+          "critical_baseline": true,
+          "critical_candidate": false,
+          "evidence": "Both preserve installations=102 and price_czk=null. A returns a raw JSON object; B wraps it in ```json fences, breaking the requested JSON-object interface. B also uses awkward Czech '102 instalace'; A's 'skute\u010dn\u00fdch 102' is natural."
+        },
+        {
+          "case": "digest-duplicates",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both return raw JSON with R=15, S=8 and total=23 and explicitly avoid double-counting duplicate B while adding C's three orders. Different summary wording preserves all facts."
+        },
+        {
+          "case": "digest-uncertainty",
+          "winner": "candidate",
+          "critical_baseline": true,
+          "critical_candidate": false,
+          "evidence": "Both retain current_days=7, possible_future_days=3, guaranteed=false and the uncertainty 'm\u016f\u017ee'. A encloses its JSON in Markdown fences, breaking the raw JSON-object interface; B returns the requested object directly."
+        },
+        {
+          "case": "digest-source-injection",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both return raw JSON with approved_limit_czk=45000 and sending_authorized=false and treat the quoted 90000/email instruction as untrusted source text rather than a new decision."
+        },
+        {
+          "case": "long-digest-0",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both preserve the explicit correction from 17000 to 19000, owner \u017daneta \u0158\u00edhov\u00e1 and approved=false. A's extra statement that archival notes do not change the decision is supported by the fixture."
+        },
+        {
+          "case": "long-digest-1",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both return raw JSON and preserve corrected budget_czk=19100, approved=false and owner \u017daneta \u0158\u00edhov\u00e1. Number spacing and pronoun wording do not alter the result."
+        },
+        {
+          "case": "long-digest-2",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both return raw JSON with corrected budget_czk=19200, approved=false and the exact owner. A's shorter summary and B's explicit mention of original 17200 are both supported and correct."
+        },
+        {
+          "case": "long-digest-3",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both return raw JSON with corrected budget_czk=19300, approved=false and owner \u017daneta \u0158\u00edhov\u00e1. Both say approval has not occurred and no other record replaces it."
+        }
+      ]
+    },
+    {
+      "arm": "TF29",
+      "seed": 2026,
+      "status": "INCOMPLETE",
+      "preferences": {
+        "tie": 2,
+        "candidate": 1
+      },
+      "critical_interface_errors": {
+        "baseline": 1
+      },
+      "regressions": [],
+      "details": [
+        {
+          "case": "translate-negation",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "A 'nema\u017ee archivovan\u00e9 digesty' and B 'neodstra\u0148uje archivovan\u00e9 p\u0159ehledy' both preserve deletion negation, temporary hiding until indexing and unconfirmed data loss. Both are natural Czech."
+        },
+        {
+          "case": "translate-conditional",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "A 'Dokud ... neschv\u00e1l\u00ed oba ... nepos\u00edlejte' and B 'Pokud ... neschv\u00e1l\u00ed oba ... nepos\u00edlejte' both require both approvals and distinguish receipt from approval; 'Ml\u010den\u00ed nen\u00ed schv\u00e1len\u00ed' is preserved."
+        },
+        {
+          "case": "digest-correction",
+          "winner": "candidate",
+          "critical_baseline": true,
+          "critical_candidate": false,
+          "evidence": "Both correctly give 'installations':102 and 'price_czk':null. A encloses its answer in ```json fences, so the complete answer is not the requested JSON object and fails direct JSON parsing. B returns the raw object and a concise factual Czech summary."
+        }
+      ]
+    },
+    {
+      "arm": "TF29",
+      "seed": 1708,
+      "status": "INCOMPLETE",
+      "preferences": {
+        "tie": 2,
+        "candidate": 1
+      },
+      "critical_interface_errors": {
+        "baseline": 1
+      },
+      "regressions": [],
+      "details": [
+        {
+          "case": "translate-negation",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both preserve no deletion, possible temporary hiding until indexing completes and no confirmed data loss. 'Nema\u017ee'/'neodstra\u0148uje' and 'indexace'/'indexov\u00e1n\u00ed' are natural equivalent wording here."
+        },
+        {
+          "case": "translate-conditional",
+          "winner": "tie",
+          "critical_baseline": false,
+          "critical_candidate": false,
+          "evidence": "Both require both reviewers' approval, distinguish acknowledgment of receipt from approval and retain 'Ml\u010den\u00ed nen\u00ed schv\u00e1len\u00ed'. 'Fin\u00e1ln\u00ed n\u00e1vrh' and 'kone\u010dn\u00fd n\u00e1vrh' are equivalent."
+        },
+        {
+          "case": "digest-correction",
+          "winner": "candidate",
+          "critical_baseline": true,
+          "critical_candidate": false,
+          "evidence": "Both preserve installations=102 and price_czk=null. B returns a raw JSON object; A wraps it in ```json fences, breaking the requested JSON-object interface. B's 'skute\u010dn\u00fd po\u010det je 102' is also more natural than A's '102 instalace'."
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "quality-review-api-closed-v22\\BLIND-REVIEWS-SEALED.json": "2be1a42d2be3c670abe301a17929c1b6eaf3fd53f7b7efcff3d04100873caf22",
+    "quality-review-api-closed-v22\\FINAL-QUALITY-COMPARISONS.json": "b8f1ed8a616b7dc242058709e303d8c52b5bf3d2ef9a9802b67cddb632fa762c",
+    "TERMINAL-OBSERVATION-v22.json": "8a7a96c613bec48628ebc7956f9e5e0776fefa73f97893a426a31c6d4c10a151"
+  },
+  "scope": "One finite campaign. Original scores preserved; oracle diagnostics are annotations, not replacement results.",
+  "api_reopened": false,
+  "automatic_promotion": false
+}

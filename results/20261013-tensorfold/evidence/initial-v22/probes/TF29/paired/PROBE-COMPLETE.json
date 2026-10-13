@@ -1,0 +1,95 @@
+{
+  "schema": "ds41f.native-probe-result.v1",
+  "arm": "TF29",
+  "phase": "paired",
+  "campaign": "94579cbe19c0",
+  "launch_plan_sha256": "20234b5dfa71ced2f592f7dd83c44c226b2a7a7e81be351cb5e7af0a6ef5c2b4",
+  "result": {
+    "status": "GREEDY_SERIAL_SPEC_MATCH_NOT_QUALITY_QUALIFIED",
+    "paired": 16,
+    "model_quality_qualified": false
+  },
+  "artifact_bindings": [
+    {
+      "arm": "TF29",
+      "rank": 0,
+      "weights_sha256": "7101f58105db8b8d14a91b6cb229d653f94123b176d0e4dd8636c0b5a1bfdf3c",
+      "weights_stat": {
+        "size": 71749196331,
+        "mtime_ns": 1791846319567056590,
+        "ino": 34902784,
+        "dev": 66306
+      },
+      "model_config_sha256": "4c4045774128b444c06a2039a61f06f671be5e1cfaea157147acfaab03b95a26",
+      "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+      "tokenizer_config_sha256": "e81000b448596c20a261a54c4311501778bce9f70b018376aab924532c775ed1",
+      "kernel_staged_sha256": "a46a3080b7a566c0a208519aa8bf14821db6bf1e403e60313118bf4b9e7cdbe9",
+      "aot_manifest_sha256": "11e9b5227879d5a1f578be3f4e15e56f5019facc6bddce2618420ae902e57dff",
+      "rope_manifest_sha256": "a65f518bfbe1ba49c8cc4ff2b7c1b340bc090d4df9efebba92138af65c2c5a6c",
+      "engram_binding_sha256": "dff8009a301a93d38655313922a8d450071f38eba1df6d6192d7e442c86caa8d",
+      "token_map_sha256": "de40bcdd71f24430ba82752ef385093be962adbf845a1c97db39161597d5dc28",
+      "serving_binary_sha256": "05fa76b4f02a12094f392faedb7a353e813d535814146c936d609c7d81b01ac7"
+    },
+    {
+      "arm": "TF29",
+      "rank": 1,
+      "weights_sha256": "ceac6b4cadcf7e44b9754e93d310dfcb854d3e3e6f7166b0f9bc847199fc7614",
+      "weights_stat": {
+        "size": 71749623513,
+        "mtime_ns": 1791849097865228704,
+        "ino": 19791876,
+        "dev": 66306
+      },
+      "model_config_sha256": "4c4045774128b444c06a2039a61f06f671be5e1cfaea157147acfaab03b95a26",
+      "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+      "tokenizer_config_sha256": "e81000b448596c20a261a54c4311501778bce9f70b018376aab924532c775ed1",
+      "kernel_staged_sha256": "a46a3080b7a566c0a208519aa8bf14821db6bf1e403e60313118bf4b9e7cdbe9",
+      "aot_manifest_sha256": "11e9b5227879d5a1f578be3f4e15e56f5019facc6bddce2618420ae902e57dff",
+      "rope_manifest_sha256": "a65f518bfbe1ba49c8cc4ff2b7c1b340bc090d4df9efebba92138af65c2c5a6c",
+      "engram_binding_sha256": "fb7895ff7882ab012dad8c9df86af0e757ca8a91325d78bfb1073fa7e6293885",
+      "token_map_sha256": "de40bcdd71f24430ba82752ef385093be962adbf845a1c97db39161597d5dc28",
+      "serving_binary_sha256": "d60a3ba2364bcfd8556bfc15a434dff0d18ab15c2cb2ff40acaaa65d77d97af6"
+    },
+    {
+      "arm": "TF29",
+      "rank": 2,
+      "weights_sha256": "c6fa90689c8fcae82dee1a37bab80dab0d682718246747b3baf3440873ce4884",
+      "weights_stat": {
+        "size": 71749765599,
+        "mtime_ns": 1791843097561530280,
+        "ino": 93086395,
+        "dev": 66306
+      },
+      "model_config_sha256": "4c4045774128b444c06a2039a61f06f671be5e1cfaea157147acfaab03b95a26",
+      "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+      "tokenizer_config_sha256": "e81000b448596c20a261a54c4311501778bce9f70b018376aab924532c775ed1",
+      "kernel_staged_sha256": "a46a3080b7a566c0a208519aa8bf14821db6bf1e403e60313118bf4b9e7cdbe9",
+      "aot_manifest_sha256": "11e9b5227879d5a1f578be3f4e15e56f5019facc6bddce2618420ae902e57dff",
+      "rope_manifest_sha256": "a65f518bfbe1ba49c8cc4ff2b7c1b340bc090d4df9efebba92138af65c2c5a6c",
+      "engram_binding_sha256": "1fd4e1d2ecd43a0ff64f302ff3c9ba68e133928973fd5170d23eacd262a0225b",
+      "token_map_sha256": "de40bcdd71f24430ba82752ef385093be962adbf845a1c97db39161597d5dc28",
+      "serving_binary_sha256": "d60a3ba2364bcfd8556bfc15a434dff0d18ab15c2cb2ff40acaaa65d77d97af6"
+    }
+  ],
+  "qualification_kit_checks": [
+    {
+      "rank": 0,
+      "manifest_sha256": "11e7588dfc082abc1be97b7c64d0d1d93ab7158715c6396ce8a07797da2521ed",
+      "verified": true
+    },
+    {
+      "rank": 1,
+      "manifest_sha256": "11e7588dfc082abc1be97b7c64d0d1d93ab7158715c6396ce8a07797da2521ed",
+      "verified": true
+    },
+    {
+      "rank": 2,
+      "manifest_sha256": "11e7588dfc082abc1be97b7c64d0d1d93ab7158715c6396ce8a07797da2521ed",
+      "verified": true
+    }
+  ],
+  "raw_results_sha256": "2246c9a8c32f0cde37c794ec05fb99aae167dbb6fd376f2df0537add02f04bf1",
+  "jobs_sha256": "a1f45e300de293a82287c7d78ead888ad7268417e0c2bef92bada6856c7025c1",
+  "quality_qualified": false,
+  "request_spec_sha256": "89ffa2ae6de57edf6af004042a1ae4bf67153dce05ef32b69f8fdb3530177ec4"
+}

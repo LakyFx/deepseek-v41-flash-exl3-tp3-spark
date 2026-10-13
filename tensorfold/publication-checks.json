@@ -1,0 +1,24 @@
+{
+  "status": "CPU_CROSS_BUILD_PASS",
+  "target": "aarch64-linux-gnu",
+  "zig": "0.17.0",
+  "steps": [
+    "native",
+    "dsv41-tools"
+  ],
+  "files": {
+    "built/bin/tf-dsv41-lanes": {
+      "bytes": 10441016,
+      "sha256": "62e141c6e258c50e827548628cf5a879efe865289ecd6ff02b8a560eebe7a3b2"
+    },
+    "built/bin/tf-dsv41-check": {
+      "bytes": 4868536,
+      "sha256": "b3849c4a092f320827230674a05ee09b68bb1a3309917b2d768cbb16438a22e9"
+    },
+    "built/native/bin/tensorfold-native": {
+      "bytes": 22902520,
+      "sha256": "87b8b1a9be8b072058547511f214a53efe919be51b7a73d7dbb10433a5edf673"
+    }
+  },
+  "gpu_or_services_touched": false
+}

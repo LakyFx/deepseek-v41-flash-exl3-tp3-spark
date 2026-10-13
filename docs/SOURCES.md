@@ -2,6 +2,23 @@
 
 This deployment is assembled on the work of the following projects and authors. A source used in the runtime is distinct from a recipe studied for inspiration. Weight quality, upstream kernel microbenchmarks and our model-level measurements are also distinct claims.
 
+## TensorFold TP3 recipes: primary thanks
+
+**Thank you to [Ashley Hart / @ashxhart](https://x.com/ashxhart), the creator of [TensorFold](https://github.com/ashhart/TensorFold), [tensorfold.dev](https://tensorfold.dev/). TensorFold is the engine used by both TF351 and TF29.** Existing vLLM, kernel, networking, model and benchmark credits below remain applicable to the retained C4 recipe and the work that led here.
+
+| Source | Role / pin |
+|---|---|
+| [TensorFold, ashxhart](https://github.com/ashhart/TensorFold) | Native Zig CUDA engine, EXL3 infrastructure, DeepSeek kernels and speculation; frozen TP3 source snapshot `61357debe730ac9ffe20e760edcddbc253b0e525` is supplied here, not fetched as an upstream commit |
+| [bertholomus/TensorFold](https://github.com/bertholomus/TensorFold) | Community DeepSeek Zig base at `6a1af414`; our TP3 layout/cache patches extend it |
+| [Mia EXL3 2.9 bpw](https://huggingface.co/Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw) | TF29 experts and both TF variants' ancillary tensors; pinned `64ba41b6c916a587db06eae2e19b7845f7be6e6b`; BF16 vision remains intact |
+| [Pollard EXL3 checkpoint](https://huggingface.co/bot-lab-21/DeepSeek-V4.1-Flash-EXL3-3.5bpw-Pollard) | TF351 routed experts retain the approximately 3.51 bpw bundles, revision `f129e31a81e1337aa33e129e2d847fc7e37c8733` |
+| [Christopher Owen / @christopherowen](https://x.com/christopherowen), [spark-ds41f](https://github.com/christopherowen/spark-ds41f) | Benchmark source and earlier communication/tuning inspiration, as detailed below; our results are not Owen's own hardware measurements |
+| [Google IFEval](https://github.com/google-research/google-research/tree/e6890f85757dd84e27ca6df2dd30651dafad28e0/instruction_following_eval), [EvalPlus](https://github.com/evalplus/evalplus) | Frozen small public quality subsets, retained notices and upstream SHA manifests; no full leaderboard claim |
+
+Native source and kernel packages retain `LICENSE`, `NOTICE`, `THIRD_PARTY_NOTICES` and `LICENSES/`. The separate Python RoPE reference also carries the upstream TensorFold license. Our integration license does not relicense model weights, CUDA components or copied upstream work. See [TF source pins](TENSORFOLD-TP3.md#frozen-software-and-data).
+
+The launch poster is generated artwork incorporating the TensorFold mesh logo from its public repository, credited to @ashxhart. It is a community recipe illustration; NVIDIA and TensorFold branding remains with its respective owners. Values and measurement scopes come from the linked result receipts.
+
 ## Model and quantization
 
 | Source | Contribution |
@@ -35,9 +52,9 @@ License notices supplied with copied source remain in the tree. Licensing the in
 | [Christopher Owen spark-ds41f](https://github.com/christopherowen/spark-ds41f), formerly [spark3-vllm-ds41f](https://github.com/christopherowen/spark3-vllm-ds41f) | Major inspiration for TP3 communication, B12X projections, row partitioning, shared draft work and adaptive verification. The repository moved; retain both links to make the history clear. Our checkpoint remains EXL3 rather than adopting that recipe's weight configuration. |
 | [sfxnz two-Spark DeepSeek EXL3 recipe](https://github.com/sfxnz/DeepSeek-V4.1-Flash-EXL3-vLLM-2x-DGX-Spark) | Dense GEMV and fused MoE preparation source at `3de914682d0880c8e478712a60ada930339c22e4`, ported to our TP3 dimensions in the earlier B experiments. Imported code retains its MIT notice. These historical experiments did not change our checkpoint to that recipe's 2-bit pack. |
 | [0xSero two-Spark DeepSeek recipe](https://github.com/0xSero/DeepSeek-V4.1-Flash-Two-Sparks) | Studied for DeepSeek prefill and EXL3 serving ideas. Its expert partitioning, checkpoint and KV geometry differ from ours. Its TP2 measurements are not our TP3 results. |
-| [nacyot vLLM DS4F GB10](https://github.com/nacyot/vllm-ds4f-gb10) | Studied as an alternative for GB10 serving, cold-start throughput and long-session cache handling. Its experimental disk KV offloading is a separate proposal. Our current KV pool retains the native GPU FP8 layout; the disk-backed component in this recipe is Engram. |
+| [nacyot vLLM DS4F GB10](https://github.com/nacyot/vllm-ds4f-gb10) | Studied as an alternative for GB10 serving, cold-start throughput and long-session cache handling. Its experimental disk KV offloading is a separate proposal. The retained C4 recipe uses native GPU FP8 KV; TF recipes use native FP4 compressed KV/index. Local disk-backed Engram is separate from KV offloading. |
 | [jakejharris jspark3](https://github.com/jakejharris/jspark3) | Studied as a three-Spark recipe for another model and as inspiration for reproducible deployment and performance work. Its reported GLM results are not attributed to DeepSeek. |
-| [TensorFold](https://github.com/ashhart/TensorFold) | Investigated as an alternative engine and source of kernel and speculation ideas. Current production and this installation target use vLLM. |
+| [TensorFold](https://github.com/ashhart/TensorFold) | Engine used by the published TF351/TF29 native TP3 recipes. The original vLLM C4 installation remains independently available; see the TensorFold credits above. |
 | [kindlingai GLM GX10](https://github.com/kindlingai/glm-5.3-flash-gx10), [jayleaton GLM TensorFold Spark](https://github.com/jayleaton/glm53-tensorfold-spark), [MiaAI Lab GLM TensorFold](https://github.com/MiaAI-Lab/GLM-5.3-Flash-EXL3-2x-DGX-Sparks-TensorFold) | Research and comparisons of alternative GLM serving recipes. They are not installed by this DeepSeek recipe. |
 | [NousResearch Hermes agent](https://github.com/NousResearch/hermes-agent) | Main real agent workload motivating the selection of long context, reusable prefixes, tool behavior and concurrent work. Private Hermes conversations are excluded. |
 

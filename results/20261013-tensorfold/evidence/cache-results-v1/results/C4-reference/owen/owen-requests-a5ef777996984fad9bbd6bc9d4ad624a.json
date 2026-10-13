@@ -1,0 +1,32 @@
+[
+  {
+    "ok": true,
+    "ttft_s": 0.2786,
+    "elapsed_s": 5.7935,
+    "prompt_tokens": 75,
+    "completion_tokens": 256,
+    "finish_reason": "length",
+    "decode_tps": 46.24,
+    "output_sha256": "e496ccf08d66136a",
+    "reasoning_chars": 1175,
+    "content_chars": 0,
+    "error": null,
+    "first_at": 153115.351144412,
+    "last_at": 153120.865520214
+  },
+  {
+    "ok": true,
+    "ttft_s": 0.2782,
+    "elapsed_s": 5.0797,
+    "prompt_tokens": 75,
+    "completion_tokens": 256,
+    "finish_reason": "length",
+    "decode_tps": 53.11,
+    "output_sha256": "d5778697de092b8f",
+    "reasoning_chars": 1162,
+    "content_chars": 0,
+    "error": null,
+    "first_at": 153115.350994492,
+    "last_at": 153120.151725888
+  }
+]

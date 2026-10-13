@@ -1,0 +1,23 @@
+{
+  "case_id": "cs-agreement",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-b1bcf5de5d8a4904b44032a33135d236",
+      "body_sha256": "d2e718bca2e50e6fabcc0f24c98cfa0fbba1704d51dc7afbc502d7b0778d6c0c",
+      "usage": {
+        "prompt_tokens": 131,
+        "completion_tokens": 533,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 131
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173805.009624717,
+      "ended_monotonic": 173817.756069803
+    }
+  ],
+  "category": "czech_instruction",
+  "elapsed_seconds": 12.74656070198398
+}

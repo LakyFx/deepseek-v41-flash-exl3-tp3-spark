@@ -1,0 +1,576 @@
+{
+  "_id": "6aa5b704536927640b7ad2a7",
+  "id": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+  "private": false,
+  "pipeline_tag": "image-text-to-text",
+  "library_name": "exllamav3",
+  "tags": [
+    "exllamav3",
+    "safetensors",
+    "deepseek_v41",
+    "exl3",
+    "quantized",
+    "moe",
+    "vllm",
+    "deepseek",
+    "multimodal",
+    "image-text-to-text",
+    "conversational",
+    "base_model:deepseek-ai/DeepSeek-V4.1-Flash",
+    "base_model:quantized:deepseek-ai/DeepSeek-V4.1-Flash",
+    "license:mit",
+    "region:us"
+  ],
+  "downloads": 3935,
+  "likes": 16,
+  "modelId": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+  "author": "Mia-AiLab",
+  "sha": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+  "lastModified": "2026-09-13T02:32:11.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "DeepseekV41ForCausalLM"
+    ],
+    "model_type": "deepseek_v41",
+    "quantization_config": {
+      "quant_method": "exl3"
+    },
+    "tokenizer_config": {
+      "bos_token": {
+        "__type": "AddedToken",
+        "content": "<\uff5cbegin\u2581of\u2581sentence\uff5c>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "eos_token": {
+        "__type": "AddedToken",
+        "content": "<\uff5cend\u2581of\u2581sentence\uff5c>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "pad_token": {
+        "__type": "AddedToken",
+        "content": "<\uff5cend\u2581of\u2581sentence\uff5c>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "unk_token": null,
+      "chat_template": "{#-\n    DeepSeek-V4.1 chat template.\n\n    Ported from the checkpoint's own encoding/encoding.py (encode_messages with\n    add_default_bos_token=True, drop_thinking=True and no `context`), which is the only\n    prompt-format spec DeepSeek ships for this model. Verified string-for-string against\n    that implementation by tools/test_chat_template_v41.py.\n\n    Inputs beyond the usual `messages` / `tools` / `add_generation_prompt`:\n      enable_thinking     bool, default true   -- reference `thinking_mode`\n      reasoning_effort    \"low\"|\"high\"|\"max\" or int 1..100, default \"high\"\n      response_format     JSON schema object, rendered into the system block\n\n    Notes:\n      * Role markers use FULLWIDTH vertical bars (U+FF5C).\n      * BOS is part of the template, so tokenize with add_special_tokens=False.\n      * Tool messages are merged into the preceding user turn as <tool_result> blocks,\n        and consecutive user messages merge into one turn, both as the reference does.\n      * Tool-call arguments are expected as an object. The reference also accepts a JSON\n        string and parses it; Jinja cannot, so a string lands in the reference's own\n        fallback shape (one parameter named \"arguments\").\n-#}\n\n{%- set dsml = \"\uff5cDSML\uff5c\" -%}\n{%- set bos = \"<\uff5cbegin\u2581of\u2581sentence\uff5c>\" -%}\n{%- set eos = \"<\uff5cend\u2581of\u2581sentence\uff5c>\" -%}\n{%- set sys_tok = \"<\uff5cSystem\uff5c>\" -%}\n{%- set user_tok = \"<\uff5cUser\uff5c>\" -%}\n{%- set asst_tok = \"<\uff5cAssistant\uff5c>\" -%}\n{%- set reminder_tok = \"<\uff5clatest_reminder\uff5c>\" -%}\n{%- set think_open = \"<think>\" -%}\n{%- set think_close = \"</think>\" -%}\n{%- set thinking = enable_thinking if enable_thinking is defined else true -%}\n{#- The reference disables thinking-dropping for the whole conversation as soon as any message\n    carries tools, which keeps reasoning in every assistant turn -#}\n{%- set drop_thinking = not (tools is defined and tools) -%}\n\n{#- Reasoning effort: \"low\"/\"high\"/\"max\" map to 50/75/100, ints pass through -#}\n{%- set effort_in = reasoning_effort if reasoning_effort is defined and reasoning_effort is not none else \"high\" -%}\n{%- if effort_in is string -%}\n    {%- if effort_in == \"low\" -%}{%- set effort = 50 -%}\n    {%- elif effort_in == \"high\" -%}{%- set effort = 75 -%}\n    {%- elif effort_in == \"max\" -%}{%- set effort = 100 -%}\n    {%- else -%}{{ raise_exception(\"Invalid reasoning effort: \" ~ effort_in ~ \", expected int 1..100 or low/high/max\") }}{%- endif -%}\n{%- else -%}\n    {%- set effort = effort_in -%}\n{%- endif -%}\n\n{%- set tools_tmpl -%}\n## Tools\n\nYou have access to a set of tools to help answer the user's question. You can invoke tools by writing a \"<{{ dsml }} calls>\" block like the following:\n\n<{{ dsml }} calls>\n<{{ dsml }} invoke name=\"$TOOL_NAME\">\n<{{ dsml }} parameter name=\"$PARAMETER_NAME\" string=\"true|false\">$PARAMETER_VALUE</{{ dsml }} parameter>\n...\n</{{ dsml }} invoke>\n<{{ dsml }} invoke name=\"$TOOL_NAME2\">\n...\n</{{ dsml }} invoke>\n</{{ dsml }} calls>\n\nString parameters should be specified as is and set `string=\"true\"`. For all other types (numbers, booleans, arrays, objects), pass the value in JSON format and set `string=\"false\"`.\n\nIf thinking_mode is enabled (triggered by {{ think_open }}), you MUST output your complete reasoning inside {{ think_open }}...{{ think_close }} BEFORE any tool calls or final response.\n\nOtherwise, output directly after {{ think_close }} with tool calls or final response.\n\n### Available Tool Schemas\n\n{% for tool in (tools or []) %}{{ (tool.function if tool.function is defined else tool) | tojson }}\n{% endfor %}\n\nYou MUST strictly follow the above defined tool name and parameter schemas to invoke tool calls.\n{% endset -%}\n\n{#- ---- 1. Merge tool results into user turns (reference merge_tool_messages) and rank each\n     result by its position in the preceding assistant's tool_calls (sort_tool_results_by_call_order).\n     The template environment is sandboxed, so lists are rebuilt rather than mutated. ---- -#}\n{%- set ns = namespace(msgs = [], out = \"\", last_calls = []) -%}\n{%- for message in messages -%}\n    {%- set role = message.role -%}\n    {%- if role == \"tool\" or role == \"user\" -%}\n        {%- if role == \"tool\" -%}\n            {%- set text = \"<tool_result>\" ~ (message.content if message.content is string else (message.content | tojson)) ~ \"</tool_result>\" -%}\n            {%- set rk = namespace(v = 0) -%}\n            {%- for tc in ns.last_calls -%}\n                {%- if (tc.id if tc.id is defined else \"\") and tc.id == (message.tool_call_id if message.tool_call_id is defined else \"\") -%}\n                    {%- set rk.v = loop.index0 -%}\n                {%- endif -%}\n            {%- endfor -%}\n            {%- set part = {\"t\": text, \"tool\": true, \"rank\": rk.v} -%}\n        {%- else -%}\n            {%- set part = {\"t\": message.content if message.content is string else (message.content | tojson),\n                            \"tool\": false, \"rank\": 0} -%}\n        {%- endif -%}\n        {%- if ns.msgs and ns.msgs[-1].role == \"user\" -%}\n            {%- set ns.msgs = ns.msgs[:-1] + [{\"role\": \"user\", \"parts\": ns.msgs[-1].parts + [part],\n                                               \"reasoning_content\": none, \"tool_calls\": none}] -%}\n        {%- else -%}\n            {%- set ns.msgs = ns.msgs + [{\"role\": \"user\", \"parts\": [part],\n                                          \"reasoning_content\": none, \"tool_calls\": none}] -%}\n        {%- endif -%}\n    {%- else -%}\n        {%- set calls = message.tool_calls if message.tool_calls is defined else none -%}\n        {%- if role == \"assistant\" and calls -%}{%- set ns.last_calls = calls -%}{%- endif -%}\n        {%- set ns.msgs = ns.msgs + [{\n            \"role\": role,\n            \"parts\": [{\"t\": message.content if message.content is defined and message.content is not none else \"\",\n                       \"tool\": false, \"rank\": 0}],\n            \"reasoning_content\": message.reasoning_content if message.reasoning_content is defined else none,\n            \"tool_calls\": calls,\n        }] -%}\n    {%- endif -%}\n{%- endfor -%}\n\n{#- ---- 2. Index of the last user turn (mid-conversation systems count) ---- -#}\n{%- set li = namespace(last_user = -1) -%}\n{%- for m in ns.msgs -%}\n    {%- if m.role == \"user\" or (m.role == \"system\" and not loop.first) -%}\n        {%- set li.last_user = loop.index0 -%}\n    {%- endif -%}\n{%- endfor -%}\n\n{%- set ns.out = bos -%}\n\n{#- ---- 3. Render ---- -#}\n{%- for m in ns.msgs -%}\n    {%- set idx = loop.index0 -%}\n    {%- set role = m.role -%}\n\n    {#- Reasoning-effort prefix, first message only, thinking mode only. The System token\n        also leads when the conversation opens with a system message. -#}\n    {%- if idx == 0 and (thinking or role == \"system\") -%}\n        {%- set ns.out = ns.out + sys_tok -%}\n    {%- endif -%}\n    {%- if idx == 0 and thinking -%}\n        {%- set ns.out = ns.out + \"Reasoning Effort: \" ~ effort ~ \" (range 1-100, the higher the value, the more thorough the reasoning)\\n\\n\" -%}\n    {%- endif -%}\n\n    {%- if role == \"system\" -%}\n        {%- if idx > 0 -%}{%- set ns.out = ns.out + sys_tok -%}{%- endif -%}\n        {%- set ns.out = ns.out + m.parts[0].t -%}\n        {%- if idx == 0 and tools is defined and tools -%}\n            {%- set ns.out = ns.out + \"\\n\\n\" + tools_tmpl -%}\n        {%- endif -%}\n        {%- if idx == 0 and response_format is defined and response_format -%}\n            {%- set ns.out = ns.out + \"\\n\\n## Response Format:\\n\\nYou MUST strictly adhere to the following schema to reply:\\n\" + (response_format | tojson) -%}\n        {%- endif -%}\n\n    {%- elif role == \"user\" -%}\n        {#- Tools with no leading system message still have to reach the model -#}\n        {%- if idx == 0 and tools is defined and tools -%}\n            {%- if not thinking -%}{%- set ns.out = ns.out + sys_tok -%}{%- endif -%}\n            {%- set ns.out = ns.out + tools_tmpl -%}\n        {%- endif -%}\n        {#- More than one tool result in a turn is emitted in call order, not arrival order -#}\n        {%- set tool_parts = m.parts | selectattr(\"tool\") | list -%}\n        {%- if tool_parts | length > 1 -%}\n            {%- set ranked = tool_parts | sort(attribute = \"rank\") -%}\n            {%- set pn = namespace(i = 0, texts = []) -%}\n            {%- for p in m.parts -%}\n                {%- if p.tool -%}\n                    {%- set pn.texts = pn.texts + [ranked[pn.i].t] -%}\n                    {%- set pn.i = pn.i + 1 -%}\n                {%- else -%}\n                    {%- set pn.texts = pn.texts + [p.t] -%}\n                {%- endif -%}\n            {%- endfor -%}\n            {%- set body = pn.texts | join(\"\\n\\n\") -%}\n        {%- else -%}\n            {%- set body = m.parts | map(attribute = \"t\") | join(\"\\n\\n\") -%}\n        {%- endif -%}\n        {%- set ns.out = ns.out + user_tok + body -%}\n\n    {%- elif role == \"latest_reminder\" -%}\n        {%- set ns.out = ns.out + reminder_tok + m.parts[0].t -%}\n\n    {%- elif role == \"assistant\" -%}\n        {#- Reasoning is kept for turns after the last user message, or everywhere with tools -#}\n        {%- if thinking and (not drop_thinking or idx > li.last_user) -%}\n            {%- set ns.out = ns.out + (m.reasoning_content if m.reasoning_content else \"\") + think_close -%}\n        {%- endif -%}\n        {%- set ns.out = ns.out + m.parts[0].t -%}\n        {%- if m.tool_calls -%}\n            {%- set ns.out = ns.out + \"\\n\\n<\" ~ dsml ~ \" calls>\\n\" -%}\n            {%- for tc in m.tool_calls -%}\n                {%- set fn = tc.function if tc.function is defined else tc -%}\n                {%- set ns.out = ns.out + \"<\" ~ dsml ~ \" invoke name=\\\"\" ~ fn.name ~ \"\\\">\\n\" -%}\n                {%- if fn.arguments is mapping -%}\n                    {%- for k, v in fn.arguments.items() -%}\n                        {%- set ns.out = ns.out + \"<\" ~ dsml ~ \" parameter name=\\\"\" ~ k ~ \"\\\" string=\\\"\" ~ (\"true\" if v is string else \"false\") ~ \"\\\">\" ~ (v if v is string else (v | tojson)) ~ \"</\" ~ dsml ~ \" parameter>\" ~ (\"\\n\" if not loop.last else \"\") -%}\n                    {%- endfor -%}\n                {%- else -%}\n                    {%- set ns.out = ns.out + \"<\" ~ dsml ~ \" parameter name=\\\"arguments\\\" string=\\\"true\\\">\" ~ fn.arguments ~ \"</\" ~ dsml ~ \" parameter>\" -%}\n                {%- endif -%}\n                {%- set ns.out = ns.out + \"\\n</\" ~ dsml ~ \" invoke>\" ~ (\"\\n\" if not loop.last else \"\") -%}\n            {%- endfor -%}\n            {%- set ns.out = ns.out + \"\\n</\" ~ dsml ~ \" calls>\" -%}\n        {%- endif -%}\n        {%- set ns.out = ns.out + eos -%}\n    {%- else -%}\n        {{ raise_exception(\"Unknown role: \" ~ role) }}\n    {%- endif -%}\n\n    {#- Assistant generation header: after a user turn (or a mid-conversation system) that is\n        either the last message or directly followed by an assistant turn -#}\n    {%- set is_last = loop.last -%}\n    {%- set next_is_asst = (not loop.last) and (ns.msgs[idx + 1].role in [\"assistant\", \"latest_reminder\"]) -%}\n    {%- if (is_last and add_generation_prompt) or next_is_asst -%}\n        {%- if role == \"user\" or (role == \"system\" and idx > 0) -%}\n            {%- set ns.out = ns.out + asst_tok -%}\n            {%- if thinking and (not drop_thinking or idx >= li.last_user) -%}\n                {%- set ns.out = ns.out + think_open -%}\n            {%- else -%}\n                {%- set ns.out = ns.out + think_close -%}\n            {%- endif -%}\n        {%- endif -%}\n    {%- endif -%}\n{%- endfor -%}\n{{- ns.out -}}\n"
+    },
+    "chat_template_jinja": "{#-\n    DeepSeek-V4.1 chat template.\n\n    Ported from the checkpoint's own encoding/encoding.py (encode_messages with\n    add_default_bos_token=True, drop_thinking=True and no `context`), which is the only\n    prompt-format spec DeepSeek ships for this model. Verified string-for-string against\n    that implementation by tools/test_chat_template_v41.py.\n\n    Inputs beyond the usual `messages` / `tools` / `add_generation_prompt`:\n      enable_thinking     bool, default true   -- reference `thinking_mode`\n      reasoning_effort    \"low\"|\"high\"|\"max\" or int 1..100, default \"high\"\n      response_format     JSON schema object, rendered into the system block\n\n    Notes:\n      * Role markers use FULLWIDTH vertical bars (U+FF5C).\n      * BOS is part of the template, so tokenize with add_special_tokens=False.\n      * Tool messages are merged into the preceding user turn as <tool_result> blocks,\n        and consecutive user messages merge into one turn, both as the reference does.\n      * Tool-call arguments are expected as an object. The reference also accepts a JSON\n        string and parses it; Jinja cannot, so a string lands in the reference's own\n        fallback shape (one parameter named \"arguments\").\n-#}\n\n{%- set dsml = \"\uff5cDSML\uff5c\" -%}\n{%- set bos = \"<\uff5cbegin\u2581of\u2581sentence\uff5c>\" -%}\n{%- set eos = \"<\uff5cend\u2581of\u2581sentence\uff5c>\" -%}\n{%- set sys_tok = \"<\uff5cSystem\uff5c>\" -%}\n{%- set user_tok = \"<\uff5cUser\uff5c>\" -%}\n{%- set asst_tok = \"<\uff5cAssistant\uff5c>\" -%}\n{%- set reminder_tok = \"<\uff5clatest_reminder\uff5c>\" -%}\n{%- set think_open = \"<think>\" -%}\n{%- set think_close = \"</think>\" -%}\n{%- set thinking = enable_thinking if enable_thinking is defined else true -%}\n{#- The reference disables thinking-dropping for the whole conversation as soon as any message\n    carries tools, which keeps reasoning in every assistant turn -#}\n{%- set drop_thinking = not (tools is defined and tools) -%}\n\n{#- Reasoning effort: \"low\"/\"high\"/\"max\" map to 50/75/100, ints pass through -#}\n{%- set effort_in = reasoning_effort if reasoning_effort is defined and reasoning_effort is not none else \"high\" -%}\n{%- if effort_in is string -%}\n    {%- if effort_in == \"low\" -%}{%- set effort = 50 -%}\n    {%- elif effort_in == \"high\" -%}{%- set effort = 75 -%}\n    {%- elif effort_in == \"max\" -%}{%- set effort = 100 -%}\n    {%- else -%}{{ raise_exception(\"Invalid reasoning effort: \" ~ effort_in ~ \", expected int 1..100 or low/high/max\") }}{%- endif -%}\n{%- else -%}\n    {%- set effort = effort_in -%}\n{%- endif -%}\n\n{%- set tools_tmpl -%}\n## Tools\n\nYou have access to a set of tools to help answer the user's question. You can invoke tools by writing a \"<{{ dsml }} calls>\" block like the following:\n\n<{{ dsml }} calls>\n<{{ dsml }} invoke name=\"$TOOL_NAME\">\n<{{ dsml }} parameter name=\"$PARAMETER_NAME\" string=\"true|false\">$PARAMETER_VALUE</{{ dsml }} parameter>\n...\n</{{ dsml }} invoke>\n<{{ dsml }} invoke name=\"$TOOL_NAME2\">\n...\n</{{ dsml }} invoke>\n</{{ dsml }} calls>\n\nString parameters should be specified as is and set `string=\"true\"`. For all other types (numbers, booleans, arrays, objects), pass the value in JSON format and set `string=\"false\"`.\n\nIf thinking_mode is enabled (triggered by {{ think_open }}), you MUST output your complete reasoning inside {{ think_open }}...{{ think_close }} BEFORE any tool calls or final response.\n\nOtherwise, output directly after {{ think_close }} with tool calls or final response.\n\n### Available Tool Schemas\n\n{% for tool in (tools or []) %}{{ (tool.function if tool.function is defined else tool) | tojson }}\n{% endfor %}\n\nYou MUST strictly follow the above defined tool name and parameter schemas to invoke tool calls.\n{% endset -%}\n\n{#- ---- 1. Merge tool results into user turns (reference merge_tool_messages) and rank each\n     result by its position in the preceding assistant's tool_calls (sort_tool_results_by_call_order).\n     The template environment is sandboxed, so lists are rebuilt rather than mutated. ---- -#}\n{%- set ns = namespace(msgs = [], out = \"\", last_calls = []) -%}\n{%- for message in messages -%}\n    {%- set role = message.role -%}\n    {%- if role == \"tool\" or role == \"user\" -%}\n        {%- if role == \"tool\" -%}\n            {%- set text = \"<tool_result>\" ~ (message.content if message.content is string else (message.content | tojson)) ~ \"</tool_result>\" -%}\n            {%- set rk = namespace(v = 0) -%}\n            {%- for tc in ns.last_calls -%}\n                {%- if (tc.id if tc.id is defined else \"\") and tc.id == (message.tool_call_id if message.tool_call_id is defined else \"\") -%}\n                    {%- set rk.v = loop.index0 -%}\n                {%- endif -%}\n            {%- endfor -%}\n            {%- set part = {\"t\": text, \"tool\": true, \"rank\": rk.v} -%}\n        {%- else -%}\n            {%- set part = {\"t\": message.content if message.content is string else (message.content | tojson),\n                            \"tool\": false, \"rank\": 0} -%}\n        {%- endif -%}\n        {%- if ns.msgs and ns.msgs[-1].role == \"user\" -%}\n            {%- set ns.msgs = ns.msgs[:-1] + [{\"role\": \"user\", \"parts\": ns.msgs[-1].parts + [part],\n                                               \"reasoning_content\": none, \"tool_calls\": none}] -%}\n        {%- else -%}\n            {%- set ns.msgs = ns.msgs + [{\"role\": \"user\", \"parts\": [part],\n                                          \"reasoning_content\": none, \"tool_calls\": none}] -%}\n        {%- endif -%}\n    {%- else -%}\n        {%- set calls = message.tool_calls if message.tool_calls is defined else none -%}\n        {%- if role == \"assistant\" and calls -%}{%- set ns.last_calls = calls -%}{%- endif -%}\n        {%- set ns.msgs = ns.msgs + [{\n            \"role\": role,\n            \"parts\": [{\"t\": message.content if message.content is defined and message.content is not none else \"\",\n                       \"tool\": false, \"rank\": 0}],\n            \"reasoning_content\": message.reasoning_content if message.reasoning_content is defined else none,\n            \"tool_calls\": calls,\n        }] -%}\n    {%- endif -%}\n{%- endfor -%}\n\n{#- ---- 2. Index of the last user turn (mid-conversation systems count) ---- -#}\n{%- set li = namespace(last_user = -1) -%}\n{%- for m in ns.msgs -%}\n    {%- if m.role == \"user\" or (m.role == \"system\" and not loop.first) -%}\n        {%- set li.last_user = loop.index0 -%}\n    {%- endif -%}\n{%- endfor -%}\n\n{%- set ns.out = bos -%}\n\n{#- ---- 3. Render ---- -#}\n{%- for m in ns.msgs -%}\n    {%- set idx = loop.index0 -%}\n    {%- set role = m.role -%}\n\n    {#- Reasoning-effort prefix, first message only, thinking mode only. The System token\n        also leads when the conversation opens with a system message. -#}\n    {%- if idx == 0 and (thinking or role == \"system\") -%}\n        {%- set ns.out = ns.out + sys_tok -%}\n    {%- endif -%}\n    {%- if idx == 0 and thinking -%}\n        {%- set ns.out = ns.out + \"Reasoning Effort: \" ~ effort ~ \" (range 1-100, the higher the value, the more thorough the reasoning)\\n\\n\" -%}\n    {%- endif -%}\n\n    {%- if role == \"system\" -%}\n        {%- if idx > 0 -%}{%- set ns.out = ns.out + sys_tok -%}{%- endif -%}\n        {%- set ns.out = ns.out + m.parts[0].t -%}\n        {%- if idx == 0 and tools is defined and tools -%}\n            {%- set ns.out = ns.out + \"\\n\\n\" + tools_tmpl -%}\n        {%- endif -%}\n        {%- if idx == 0 and response_format is defined and response_format -%}\n            {%- set ns.out = ns.out + \"\\n\\n## Response Format:\\n\\nYou MUST strictly adhere to the following schema to reply:\\n\" + (response_format | tojson) -%}\n        {%- endif -%}\n\n    {%- elif role == \"user\" -%}\n        {#- Tools with no leading system message still have to reach the model -#}\n        {%- if idx == 0 and tools is defined and tools -%}\n            {%- if not thinking -%}{%- set ns.out = ns.out + sys_tok -%}{%- endif -%}\n            {%- set ns.out = ns.out + tools_tmpl -%}\n        {%- endif -%}\n        {#- More than one tool result in a turn is emitted in call order, not arrival order -#}\n        {%- set tool_parts = m.parts | selectattr(\"tool\") | list -%}\n        {%- if tool_parts | length > 1 -%}\n            {%- set ranked = tool_parts | sort(attribute = \"rank\") -%}\n            {%- set pn = namespace(i = 0, texts = []) -%}\n            {%- for p in m.parts -%}\n                {%- if p.tool -%}\n                    {%- set pn.texts = pn.texts + [ranked[pn.i].t] -%}\n                    {%- set pn.i = pn.i + 1 -%}\n                {%- else -%}\n                    {%- set pn.texts = pn.texts + [p.t] -%}\n                {%- endif -%}\n            {%- endfor -%}\n            {%- set body = pn.texts | join(\"\\n\\n\") -%}\n        {%- else -%}\n            {%- set body = m.parts | map(attribute = \"t\") | join(\"\\n\\n\") -%}\n        {%- endif -%}\n        {%- set ns.out = ns.out + user_tok + body -%}\n\n    {%- elif role == \"latest_reminder\" -%}\n        {%- set ns.out = ns.out + reminder_tok + m.parts[0].t -%}\n\n    {%- elif role == \"assistant\" -%}\n        {#- Reasoning is kept for turns after the last user message, or everywhere with tools -#}\n        {%- if thinking and (not drop_thinking or idx > li.last_user) -%}\n            {%- set ns.out = ns.out + (m.reasoning_content if m.reasoning_content else \"\") + think_close -%}\n        {%- endif -%}\n        {%- set ns.out = ns.out + m.parts[0].t -%}\n        {%- if m.tool_calls -%}\n            {%- set ns.out = ns.out + \"\\n\\n<\" ~ dsml ~ \" calls>\\n\" -%}\n            {%- for tc in m.tool_calls -%}\n                {%- set fn = tc.function if tc.function is defined else tc -%}\n                {%- set ns.out = ns.out + \"<\" ~ dsml ~ \" invoke name=\\\"\" ~ fn.name ~ \"\\\">\\n\" -%}\n                {%- if fn.arguments is mapping -%}\n                    {%- for k, v in fn.arguments.items() -%}\n                        {%- set ns.out = ns.out + \"<\" ~ dsml ~ \" parameter name=\\\"\" ~ k ~ \"\\\" string=\\\"\" ~ (\"true\" if v is string else \"false\") ~ \"\\\">\" ~ (v if v is string else (v | tojson)) ~ \"</\" ~ dsml ~ \" parameter>\" ~ (\"\\n\" if not loop.last else \"\") -%}\n                    {%- endfor -%}\n                {%- else -%}\n                    {%- set ns.out = ns.out + \"<\" ~ dsml ~ \" parameter name=\\\"arguments\\\" string=\\\"true\\\">\" ~ fn.arguments ~ \"</\" ~ dsml ~ \" parameter>\" -%}\n                {%- endif -%}\n                {%- set ns.out = ns.out + \"\\n</\" ~ dsml ~ \" invoke>\" ~ (\"\\n\" if not loop.last else \"\") -%}\n            {%- endfor -%}\n            {%- set ns.out = ns.out + \"\\n</\" ~ dsml ~ \" calls>\" -%}\n        {%- endif -%}\n        {%- set ns.out = ns.out + eos -%}\n    {%- else -%}\n        {{ raise_exception(\"Unknown role: \" ~ role) }}\n    {%- endif -%}\n\n    {#- Assistant generation header: after a user turn (or a mid-conversation system) that is\n        either the last message or directly followed by an assistant turn -#}\n    {%- set is_last = loop.last -%}\n    {%- set next_is_asst = (not loop.last) and (ns.msgs[idx + 1].role in [\"assistant\", \"latest_reminder\"]) -%}\n    {%- if (is_last and add_generation_prompt) or next_is_asst -%}\n        {%- if role == \"user\" or (role == \"system\" and idx > 0) -%}\n            {%- set ns.out = ns.out + asst_tok -%}\n            {%- if thinking and (not drop_thinking or idx >= li.last_user) -%}\n                {%- set ns.out = ns.out + think_open -%}\n            {%- else -%}\n                {%- set ns.out = ns.out + think_close -%}\n            {%- endif -%}\n        {%- endif -%}\n    {%- endif -%}\n{%- endfor -%}\n{{- ns.out -}}\n"
+  },
+  "cardData": {
+    "license": "mit",
+    "base_model": "deepseek-ai/DeepSeek-V4.1-Flash",
+    "base_model_relation": "quantized",
+    "library_name": "exllamav3",
+    "pipeline_tag": "image-text-to-text",
+    "tags": [
+      "exl3",
+      "exllamav3",
+      "quantized",
+      "moe",
+      "vllm",
+      "deepseek",
+      "multimodal"
+    ]
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "9b59a7525c7b7870bd2cbdc41a4e91fd63fcb6cb",
+      "size": 1701
+    },
+    {
+      "rfilename": "DeepSeek_V41_Tech_Report.pdf",
+      "blobId": "9a327deea3393d204f789f261ceb4eb472ea910d",
+      "size": 1809802,
+      "lfs": {
+        "sha256": "ba68e2e40408125ae6d2f63a9a241b61c73910691c74ec1a2a7023c851eac08d",
+        "size": 1809802,
+        "pointerSize": 132
+      }
+    },
+    {
+      "rfilename": "LICENSE",
+      "blobId": "d62e3bef9f054f21b7fc616365850fbf879a99ff",
+      "size": 1084
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "88ebc26bbc50a3482866b353c0aaa7effcefeaee",
+      "size": 4797
+    },
+    {
+      "rfilename": "chat_template.jinja",
+      "blobId": "f01484ca7c16bbf507c077c2b99456bbfe9e3d3a",
+      "size": 11410
+    },
+    {
+      "rfilename": "config.json",
+      "blobId": "eeec94126b6dfaa83b737a4d69aa9226e4720ce4",
+      "size": 4482
+    },
+    {
+      "rfilename": "model-00001-of-00039.safetensors",
+      "blobId": "e664eed7a4cc39e74def4ebe46b5484cd3bef26a",
+      "size": 6548044501,
+      "lfs": {
+        "sha256": "a4f64372b9b62839b74af245583d0bbfd716c183f1fa7b5c5efbf43ce1641e65",
+        "size": 6548044501,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00002-of-00039.safetensors",
+      "blobId": "c058519e0222ef659e6cafd8cf4a46ee6ac9e12c",
+      "size": 5321600229,
+      "lfs": {
+        "sha256": "7c6f42288584c66e73089d18c30ba117c4040d273a97d44af5806431065f5957",
+        "size": 5321600229,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00003-of-00039.safetensors",
+      "blobId": "b42878395f14a136876c2bf153374046a64a84cd",
+      "size": 5230052995,
+      "lfs": {
+        "sha256": "96b53052025480f6b3bb77c71740f67549ec1c4e799799d4b4abd1f8b944de76",
+        "size": 5230052995,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00004-of-00039.safetensors",
+      "blobId": "73190abc1222aef1a77689e35f13fe63952fca8e",
+      "size": 5223068306,
+      "lfs": {
+        "sha256": "00b6755b2be1e23209133fa530bad3075daf393635f24dcee4568c6286242656",
+        "size": 5223068306,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00005-of-00039.safetensors",
+      "blobId": "4ce7df392931786864fe490f0b9332e306bf9557",
+      "size": 5223068306,
+      "lfs": {
+        "sha256": "cf600746d279a9cc72002d5c9fca19470fa895f04e3717e27a25a7a9e9039cde",
+        "size": 5223068306,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00006-of-00039.safetensors",
+      "blobId": "53225617ebbf432d30da1a17e939a21a2557a023",
+      "size": 5223068306,
+      "lfs": {
+        "sha256": "69d9d4cc8020f84dd4a8313a9abc9567f9ff30b761abf48edeb50e3208797ffa",
+        "size": 5223068306,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00007-of-00039.safetensors",
+      "blobId": "160f56d82c65be837941e9807250dacf0347dded",
+      "size": 5223068306,
+      "lfs": {
+        "sha256": "fe30eae28340d8f6b3dba8a8de56fcff6582951a31c5e52fe31950d40ae49ef4",
+        "size": 5223068306,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00008-of-00039.safetensors",
+      "blobId": "a997e4b787348685b717672800b937ea2c3a7afe",
+      "size": 5223068306,
+      "lfs": {
+        "sha256": "59f5ddeb5a707bea4ea79b73a542becf68905e6968819b160c6deda93bfc74cf",
+        "size": 5223068306,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00009-of-00039.safetensors",
+      "blobId": "a2b8cebd8d49b162709863408d999c5ffaf3fe3f",
+      "size": 5230052995,
+      "lfs": {
+        "sha256": "525eb19e98d128e5d44f9815246a08d698b67ee8cab86322d041c3d3553c027c",
+        "size": 5230052995,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00010-of-00039.safetensors",
+      "blobId": "1498ee9c424e830359c9ffa150802d54024fbcc9",
+      "size": 5223068306,
+      "lfs": {
+        "sha256": "e21d19cd05240c92390d1fe79f3182749b4dffb56a76d1cbb4f9f909a8dfec7c",
+        "size": 5223068306,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00011-of-00039.safetensors",
+      "blobId": "3ade689f7dfe80b0a1f51e1701fbc8a4edd30476",
+      "size": 5223072987,
+      "lfs": {
+        "sha256": "b3ce83d74704866b5cefdb5b7c32ad7d1d3690c9ffc2374af27cf8dfab83490d",
+        "size": 5223072987,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00012-of-00039.safetensors",
+      "blobId": "f147ccdb679dcb378947a957748392ff820f503c",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "46aca54ebbcb9db7caab8eef397c87f4688b63291a6772b19d8091f4c2492ce9",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00013-of-00039.safetensors",
+      "blobId": "1ba16f92fa6d8c23c408a85323a1345116a45b67",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "e7076f3c089fefc359c0a9fa70e15ca851e527a8641d4df23a43e1acc153d1b4",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00014-of-00039.safetensors",
+      "blobId": "8804cb33f12415169eaf8a74c26257a4c46333c4",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "611e59e7424e8022ec8f3fbcebcdd96b975043ce6ee032760b5d96bddf9abf1a",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00015-of-00039.safetensors",
+      "blobId": "086a3342e1db93da6a2c022e34957fdd2773dd4c",
+      "size": 5304505144,
+      "lfs": {
+        "sha256": "2cf5357b75ebd49acbd6ac65a7d913adabaf3706970788e6ab5aac9e73e7a36f",
+        "size": 5304505144,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00016-of-00039.safetensors",
+      "blobId": "d18d5484c67b65d3a3978f26e4f2fc101c9dcf08",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "0def761dac33623172965c8389cfe83a4dd1f756306309619cae07b0b84f5d58",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00017-of-00039.safetensors",
+      "blobId": "fbad1fdd4cce1f7d9443d647bdcc732b67008bc1",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "358db52ff31ee93e95463f1f24269e184f15a856a0944601ec541a26fe256d43",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00018-of-00039.safetensors",
+      "blobId": "a8676b484afeebece92a179fab229a9c7ebfa418",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "df3c7016c0e9034e6d5eb7d7dadebf8f4b7a05d63ea4350bd8b681886fffe782",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00019-of-00039.safetensors",
+      "blobId": "d2b1af57e6b1b62a948021e3ba30bc1d31b22080",
+      "size": 7039913404,
+      "lfs": {
+        "sha256": "112e9a7553ddbd3856c7e7b143f77084861545731b73afaf56cbe27f0f0f691e",
+        "size": 7039913404,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00020-of-00039.safetensors",
+      "blobId": "041c5bce12cdb6e3fee235c1a2c780c45a48294c",
+      "size": 7045248007,
+      "lfs": {
+        "sha256": "dfec038e987ed7e6fa47594cb25b0d680a7f771a6be7be0775c45fe501f10068",
+        "size": 7045248007,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00021-of-00039.safetensors",
+      "blobId": "77f3305902c8b033293b2ddfb6c6752e690d1a2a",
+      "size": 3519955195,
+      "lfs": {
+        "sha256": "fd8b3384ad7b5fd1fd8a1b1baca636bcf623a5403a6a920494e697e8342714dc",
+        "size": 3519955195,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00022-of-00039.safetensors",
+      "blobId": "b997c35991bb4b55c701ec638966cd12099693a3",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "8b0119b56fc0f4a90a8b97f1ab0909d2eb48587511c6dff659c14b378e20263a",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00023-of-00039.safetensors",
+      "blobId": "078d0cd9ccfbbb1fef338216be670e41100c73f3",
+      "size": 5222265083,
+      "lfs": {
+        "sha256": "bac75629e86cd57ca46772646ca54e7718a14f7cd7a7f86f2f7bdce9bb4489b4",
+        "size": 5222265083,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00024-of-00039.safetensors",
+      "blobId": "b6ecb939b5311f1d8ae11342cf9a9feb18df1b40",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "ac3a8216e5a0ccf1da89dbced636acd82a00aa29d528e1d39031e89a1b7306db",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00025-of-00039.safetensors",
+      "blobId": "5c54e0eb2e38cd730aea04803b80afbffae62b2a",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "350c5155c601a4fa94ffd6fe3964e4328b0897cda2be8dcc080ac01681129579",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00026-of-00039.safetensors",
+      "blobId": "5d97d64aad6c06d76f808cdc1063b6337b520c5f",
+      "size": 5218649307,
+      "lfs": {
+        "sha256": "e419a674256f8cfe7c97800b26c35a555a8b168557017cd31f90fa6b83e524f8",
+        "size": 5218649307,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00027-of-00039.safetensors",
+      "blobId": "c58296d91864ba082f579b7397b79f3009490878",
+      "size": 5222265083,
+      "lfs": {
+        "sha256": "0a43f6d44f03b4a88cc76dd8c882043d53fa56b131599470afd5028eff265cbb",
+        "size": 5222265083,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00028-of-00039.safetensors",
+      "blobId": "aac99cd3aac2a93002972ad3f5b54fe9549fca36",
+      "size": 5220123867,
+      "lfs": {
+        "sha256": "009ff46bcdbe2e9a893562a4ea0400a213d0103d54bd43a7cee53e726af989df",
+        "size": 5220123867,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00029-of-00039.safetensors",
+      "blobId": "8b513551202abe9d463f43f2c2bdf496b3d60e81",
+      "size": 5223072987,
+      "lfs": {
+        "sha256": "af001e6806a471a0ffd72f45a602ad303ba30ffbeffdd55a49c2e1ae208db055",
+        "size": 5223072987,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00030-of-00039.safetensors",
+      "blobId": "c431a4f369b2fd0e8377b3eb9d5bb70cb4c4503e",
+      "size": 5223072987,
+      "lfs": {
+        "sha256": "ffbdae1e5e2ff63fb7d09613258b6335f5b1ef4e7f459830a5c7807eeb5e025c",
+        "size": 5223072987,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00031-of-00039.safetensors",
+      "blobId": "23d8afe87501867f81d6f4b353b6f90d54fcae57",
+      "size": 5226688763,
+      "lfs": {
+        "sha256": "b8311ec0892b3f218f972a2ecb774cb2b6639913bb597da8416d0ff79212a1d8",
+        "size": 5226688763,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00032-of-00039.safetensors",
+      "blobId": "33b16ed45799fe548fe691502200ee28a1ecffd5",
+      "size": 5223072987,
+      "lfs": {
+        "sha256": "63a37b6acf2e44a7954be7b5dbb2ef7c1398dd82264efff8499c3097a4b34020",
+        "size": 5223072987,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00033-of-00039.safetensors",
+      "blobId": "45c7db08d40b58806bb6c33dc1c8f06695392843",
+      "size": 5223072987,
+      "lfs": {
+        "sha256": "0440b562e46659f14cbff7569e4e9c0871b244e6f356330d77c5032133c01067",
+        "size": 5223072987,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00034-of-00039.safetensors",
+      "blobId": "128157477555388b61a63ad0b83abd16d2b71528",
+      "size": 5223072987,
+      "lfs": {
+        "sha256": "fe77c23bfb562a0f11e09da4eff8e523de94bd05e2b0809c5468adfa0763d8ff",
+        "size": 5223072987,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00035-of-00039.safetensors",
+      "blobId": "94cd931f4d32bde17e6d439adea8c69b93cb1ff7",
+      "size": 5226688763,
+      "lfs": {
+        "sha256": "fff364d35b8f18487d69c29a63477eec53666566ca790c5a34bd130c7cc0f988",
+        "size": 5226688763,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00036-of-00039.safetensors",
+      "blobId": "4881be1f3991154a9e9d1e5b78cf0fc0922531f9",
+      "size": 5223072987,
+      "lfs": {
+        "sha256": "b0a88ebf3dfa5f5c6f46d69230fb5678c8ec4aa8dfff83c71681e6738fc17307",
+        "size": 5223072987,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00037-of-00039.safetensors",
+      "blobId": "d970d1f689208f44e72bb0dc0da034629102141d",
+      "size": 5223072987,
+      "lfs": {
+        "sha256": "74af1518df9ffcf95150fb44a8564e24530748ee330b586b8f9fb5b5a7ebb0a9",
+        "size": 5223072987,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00038-of-00039.safetensors",
+      "blobId": "ca91bb47f7d62f1375aef51c6594256382319af9",
+      "size": 8116467451,
+      "lfs": {
+        "sha256": "1c5276c42203c4c2bc71ad45469abc5bfd73bb53862e809826f71aaa28d6af40",
+        "size": 8116467451,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00039-of-00039.safetensors",
+      "blobId": "b5ecd913e59f47412188e19f3e063bfbf0c8a671",
+      "size": 5817580796,
+      "lfs": {
+        "sha256": "eaa32d71ee333f78eec4b2974d830cd085357dec8359d93cb0fb08ad6e6d2934",
+        "size": 5817580796,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model.safetensors.index.json",
+      "blobId": "704eeb29ccd338041416108d610013f1a78eb0ec",
+      "size": 15501050,
+      "lfs": {
+        "sha256": "e35cb7c2f779a04e564accbdc6ddb01d775793255b2c6d8ca2b0492c21fc88f2",
+        "size": 15501050,
+        "pointerSize": 133
+      }
+    },
+    {
+      "rfilename": "quantization_config.json",
+      "blobId": "50f62c981dfb94ef368ce10f40fe5647642be9af",
+      "size": 54643851,
+      "lfs": {
+        "sha256": "2949806ec66ff269a539caebe8afc55ba7d7c7220e011edc478fa67812a95ae1",
+        "size": 54643851,
+        "pointerSize": 133
+      }
+    },
+    {
+      "rfilename": "tokenizer.json",
+      "blobId": "6a15814dd25c934028034531da744c689f87ff21",
+      "size": 6367257
+    },
+    {
+      "rfilename": "tokenizer_config.json",
+      "blobId": "436f58e5d72bf8233e1022a77a77b22e1e6f1b39",
+      "size": 12719
+    }
+  ],
+  "spaces": [
+    "tardellirs/model-pulse",
+    "fastgpu/vram-and-gpu-cost-calculator",
+    "cookiemonster778/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity",
+    "timmaythetoolmann/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity",
+    "Cenzer0/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity"
+  ],
+  "createdAt": "2026-09-12T20:33:08.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 1180813056,
+      "F16": 471263360,
+      "I16": 103553417216,
+      "F32": 42357714
+    },
+    "total": 105247851346
+  },
+  "usedStorage": 210672893781
+}

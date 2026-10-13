@@ -1,0 +1,23 @@
+{
+  "case_id": "code-cursor",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-6b54e4d957624846b27cd6bf801e995b",
+      "body_sha256": "d5d6ae57bdfcae632d2caa689d1059a11d1891d520d876ad722e41c695280df1",
+      "usage": {
+        "prompt_tokens": 219,
+        "completion_tokens": 2839,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 219
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 175571.116752502,
+      "ended_monotonic": 175619.557852863
+    }
+  ],
+  "category": "code",
+  "elapsed_seconds": 48.44122224897728
+}

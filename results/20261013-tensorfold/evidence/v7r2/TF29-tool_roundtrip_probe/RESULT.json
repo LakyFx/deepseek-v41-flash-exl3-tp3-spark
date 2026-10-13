@@ -1,0 +1,18 @@
+{
+  "status": "NATIVE_TOOL_ROUNDTRIP_TOKEN_IDS_PASS",
+  "checks": [
+    {
+      "name": "recorded-SSE-history",
+      "passed": true,
+      "count": 9105
+    },
+    {
+      "name": "clean-history",
+      "passed": true,
+      "count": 9105
+    }
+  ],
+  "arm": "TF29",
+  "fixture_sha256": "3353038e5b7290bb367e42b664c1c597cbe1ad79988d4552e74e401636bf8139",
+  "production_qualified": false
+}

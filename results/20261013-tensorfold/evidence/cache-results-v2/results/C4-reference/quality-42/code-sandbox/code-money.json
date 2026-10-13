@@ -1,0 +1,12 @@
+{
+  "case_id": "code-money",
+  "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checks_sha256": "f26e84ce40b6aca5e4d40fcbaedb6eb0e6ae2ec6e4cb1c84d311a1330a08e5c8",
+  "harness_sha256": "263099db447f156ec5d6f80eaa88943b79f770ef09c5c2fce45075869490edbd",
+  "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+  "container": "ds41f-quality-836646a4c49745ec8c6e08819a9b8549",
+  "gpu": false,
+  "network": false,
+  "passed": false,
+  "error": "incomplete model output"
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "dgx.closed-workload-native-metrics.v1",
+  "identity": [
+    "cold",
+    "prose",
+    3
+  ],
+  "before": {
+    "generation": "1.79187381347e+09",
+    "campaign_id": "public-6ac757a7f4354548add4933e63cecd23",
+    "values": {
+      "spec_decode_num_drafts_total": 1026.0,
+      "spec_decode_num_draft_tokens_total": 5130.0,
+      "spec_decode_num_accepted_tokens_total": 2930.0,
+      "num_requests_running": 0.0,
+      "num_requests_waiting": 0.0,
+      "request_success_total": 16.0,
+      "request_generation_tokens_count": 16.0,
+      "request_generation_tokens_sum": 3956.0,
+      "request_prefill_time_seconds_sum": 86.40665468401858,
+      "request_decode_time_seconds_sum": 140.62594291300047,
+      "request_prefill_kv_computed_tokens_sum": 89546.0
+    },
+    "metric_backend": "vllm",
+    "monotonic": 152403.303132888
+  },
+  "workload_error": null,
+  "metrics": {
+    "native_deltas": {
+      "request_generation_tokens_count": 3.0,
+      "request_generation_tokens_sum": 768.0,
+      "request_prefill_kv_computed_tokens_sum": 64945.0,
+      "request_prefill_time_seconds_sum": 55.75577051594155,
+      "request_decode_time_seconds_sum": 62.94148757203948,
+      "request_success_total": 3.0,
+      "spec_decode_num_accepted_tokens_total": 512.0,
+      "spec_decode_num_draft_tokens_total": 1270.0,
+      "spec_decode_num_drafts_total": 254.0
+    },
+    "coverage_verified": true,
+    "idle_before": true,
+    "idle_after": true,
+    "expected_requests": 3,
+    "observed_requests": 3.0,
+    "weighted_request_computed_prefill_tokens_per_second": 1164.8121691983629,
+    "weighted_request_decode_tokens_per_second": 12.201808848591131,
+    "draft_acceptance_fraction": 0.4031496062992126,
+    "scope": "summed per-request engine time; report cohort wall throughput separately",
+    "missing_or_overlapping_metrics": null,
+    "metric_backend": "vllm"
+  },
+  "after": {
+    "generation": "1.79187381347e+09",
+    "campaign_id": "public-6ac757a7f4354548add4933e63cecd23",
+    "values": {
+      "spec_decode_num_drafts_total": 1280.0,
+      "spec_decode_num_draft_tokens_total": 6400.0,
+      "spec_decode_num_accepted_tokens_total": 3442.0,
+      "num_requests_running": 0.0,
+      "num_requests_waiting": 0.0,
+      "request_success_total": 19.0,
+      "request_generation_tokens_count": 19.0,
+      "request_generation_tokens_sum": 4724.0,
+      "request_prefill_time_seconds_sum": 142.16242519996013,
+      "request_decode_time_seconds_sum": 203.56743048503995,
+      "request_prefill_kv_computed_tokens_sum": 154491.0
+    },
+    "metric_backend": "vllm",
+    "monotonic": 152454.878307727
+  }
+}

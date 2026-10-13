@@ -1,0 +1,18 @@
+{
+  "status": "CAPTURED_PENDING_CODE_AND_EDITORIAL_REVIEW",
+  "arm": "TF351",
+  "fixture_sha256": "9e790240147a67de645f95042f7d81810946743fb41a0422c39b83ca49f8c7d6",
+  "elapsed_seconds": 271.63773105299333,
+  "hard_inference_budget_seconds": 360,
+  "attempts": 24,
+  "complete": 20,
+  "noncode_pass": 15,
+  "all_max": true,
+  "sampling": {
+    "reasoning_effort": "max",
+    "top_p": 1,
+    "top_k": 0,
+    "min_p": 0
+  },
+  "errors": []
+}

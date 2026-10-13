@@ -1,0 +1,23 @@
+{
+  "case_id": "code-weighted",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-a9a577527e394ec79117eb193f3dd2d1",
+      "body_sha256": "9dd8dcae27c8a449e6d00e0866e49a2b9c198adc1abf629da4bd64a0c28534ff",
+      "usage": {
+        "prompt_tokens": 226,
+        "completion_tokens": 3929,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 226
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173794.880362615,
+      "ended_monotonic": 174039.469035563
+    }
+  ],
+  "category": "code",
+  "elapsed_seconds": 244.5887340999907
+}

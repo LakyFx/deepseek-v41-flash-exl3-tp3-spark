@@ -1,0 +1,154 @@
+{
+  "arm": "TF351",
+  "rows": [
+    {
+      "arm": "TF351",
+      "rank": 0,
+      "ssh_alias": "rank0",
+      "model_dir": "[operator-path]",
+      "cache_dir": "[operator-path]",
+      "unit": "dsv41-tf-tf351-r0-56cd1c9d8135",
+      "launch_only_after": "explicit closed GPU test window",
+      "required_readonly_paths": [
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]"
+      ]
+    },
+    {
+      "arm": "TF351",
+      "rank": 1,
+      "ssh_alias": "rank1",
+      "model_dir": "[operator-path]",
+      "cache_dir": "[operator-path]",
+      "unit": "dsv41-tf-tf351-r1-56cd1c9d8135",
+      "launch_only_after": "explicit closed GPU test window",
+      "required_readonly_paths": [
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]"
+      ]
+    },
+    {
+      "arm": "TF351",
+      "rank": 2,
+      "ssh_alias": "rank2",
+      "model_dir": "[operator-path]",
+      "cache_dir": "[operator-path]",
+      "unit": "dsv41-tf-tf351-r2-56cd1c9d8135",
+      "launch_only_after": "explicit closed GPU test window",
+      "required_readonly_paths": [
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]",
+        "[operator-path]"
+      ]
+    }
+  ],
+  "guard_session": {
+    "campaign": "56cd1c9d8135",
+    "rows": [
+      {
+        "rank": 0,
+        "ssh_alias": "rank0",
+        "directory": "[operator-path]",
+        "guard_unit": "dsv41-tf-guard-r0-56cd1c9d8135",
+        "config": {
+          "rank": 0,
+          "campaign": "56cd1c9d8135",
+          "units": [
+            "dsv41-tf-tf351-r0-56cd1c9d8135",
+            "dsv41-tf-tf29-r0-56cd1c9d8135",
+            "dsv41-tf-probe-r0-56cd1c9d8135"
+          ],
+          "head_url": "http://[operator-address]:8003",
+          "ttl_seconds": 300,
+          "max_window_seconds": 21600,
+          "gateway_policy": "keep_closed",
+          "baseline_container": {
+            "name": "dsv41-tf-c4-reference-r0-56cd1c9d8135",
+            "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+            "labels": {
+              "ds41f.tf.campaign": "56cd1c9d8135",
+              "ds41f.tf.rank": "0",
+              "ds41f.tf.role": "C4-reference",
+              "ds41f.tf.source_payload": "ffbfc238f6d927871b5776ee72eeb7a7b3435727adc3d323d4d22c7d4336f1b2",
+              "ds41f.tf.create_sha256": "04d49a5077599104413bc52f8d5eebb35cde6d035ad9405be55edb36f67215c2"
+            }
+          }
+        }
+      },
+      {
+        "rank": 1,
+        "ssh_alias": "rank1",
+        "directory": "[operator-path]",
+        "guard_unit": "dsv41-tf-guard-r1-56cd1c9d8135",
+        "config": {
+          "rank": 1,
+          "campaign": "56cd1c9d8135",
+          "units": [
+            "dsv41-tf-tf351-r1-56cd1c9d8135",
+            "dsv41-tf-tf29-r1-56cd1c9d8135",
+            "dsv41-tf-probe-r1-56cd1c9d8135"
+          ],
+          "head_url": "http://[operator-address]:8003",
+          "ttl_seconds": 300,
+          "max_window_seconds": 21600,
+          "gateway_policy": "keep_closed",
+          "baseline_container": {
+            "name": "dsv41-tf-c4-reference-r1-56cd1c9d8135",
+            "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+            "labels": {
+              "ds41f.tf.campaign": "56cd1c9d8135",
+              "ds41f.tf.rank": "1",
+              "ds41f.tf.role": "C4-reference",
+              "ds41f.tf.source_payload": "565c8f842e0209d82a72e658a88581f275f94f67e4a7975110fd061fe6bf8e41",
+              "ds41f.tf.create_sha256": "5edd3fac76930b516bf720ddf23590eb71d0dd0b9d5607d5e88fe4f0074a87be"
+            }
+          }
+        }
+      },
+      {
+        "rank": 2,
+        "ssh_alias": "rank2",
+        "directory": "[operator-path]",
+        "guard_unit": "dsv41-tf-guard-r2-56cd1c9d8135",
+        "config": {
+          "rank": 2,
+          "campaign": "56cd1c9d8135",
+          "units": [
+            "dsv41-tf-tf351-r2-56cd1c9d8135",
+            "dsv41-tf-tf29-r2-56cd1c9d8135",
+            "dsv41-tf-probe-r2-56cd1c9d8135"
+          ],
+          "head_url": "http://[operator-address]:8003",
+          "ttl_seconds": 300,
+          "max_window_seconds": 21600,
+          "gateway_policy": "keep_closed",
+          "baseline_container": {
+            "name": "dsv41-tf-c4-reference-r2-56cd1c9d8135",
+            "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+            "labels": {
+              "ds41f.tf.campaign": "56cd1c9d8135",
+              "ds41f.tf.rank": "2",
+              "ds41f.tf.role": "C4-reference",
+              "ds41f.tf.source_payload": "f5cee56644f8147d4df9bd6e26479b8c125ab24b089a2a3551bbe8d5b9249bd9",
+              "ds41f.tf.create_sha256": "2807c24c05c9780a456a39ea756b40f7e46cd9385809c4d609106e6841feb2c6"
+            }
+          }
+        }
+      }
+    ],
+    "status": "ALL_THREE_GUARDS_ARMED",
+    "production_policy": "Restore C4 with public API closed",
+    "launch_plan_sha256": "d3e1595ff0db8a524c2d8cd79037997e885ef4cf43246fbed24519b593152dad"
+  }
+}

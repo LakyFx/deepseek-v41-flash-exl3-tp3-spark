@@ -1,0 +1,31 @@
+{
+  "case_id": "cs-deadline-order",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-fd44cc5dd3944cb0b7635a10b1f93d29",
+      "body_sha256": "ab4e91028a877e0e457dfc2eced3d5695464fe685ebbfd705e1f3a4597085f84",
+      "usage": {
+        "prompt_tokens": 168,
+        "completion_tokens": 106,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 168
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 188944.376799063,
+      "ended_monotonic": 188947.213300368
+    }
+  ],
+  "category": "czech_instruction",
+  "elapsed_seconds": 2.836608198005706,
+  "attempt_id": "cs-deadline-order-greedy",
+  "grade": {
+    "passed": true,
+    "complete": true,
+    "kind": "comma_ids"
+  },
+  "content_chars": 7,
+  "reasoning_chars": 297
+}

@@ -1,0 +1,79 @@
+{
+  "status": "TERMINAL_UPGRADE_REGRESSION_PASS",
+  "arm": "TF29",
+  "checks": [
+    {
+      "name": "8192-initial-cold",
+      "passed": true,
+      "cached": 0
+    },
+    {
+      "name": "8192-encoder-only-not-used-as-full",
+      "passed": true,
+      "cached": 0
+    },
+    {
+      "name": "8192-complete-snapshot-upgraded",
+      "passed": true,
+      "cached": 8192
+    },
+    {
+      "name": "8192-exact-repeat-token-equality",
+      "passed": true
+    },
+    {
+      "name": "8192-complete-snapshot-preserved",
+      "passed": true,
+      "cached": 8192
+    },
+    {
+      "name": "8192-preserved-token-equality",
+      "passed": true
+    },
+    {
+      "name": "8192-namespace-isolated",
+      "passed": true,
+      "cached": 0
+    },
+    {
+      "name": "65536-initial-cold",
+      "passed": true,
+      "cached": 0
+    },
+    {
+      "name": "65536-encoder-only-not-used-as-full",
+      "passed": true,
+      "cached": 0
+    },
+    {
+      "name": "65536-complete-snapshot-upgraded",
+      "passed": true,
+      "cached": 65536
+    },
+    {
+      "name": "65536-exact-repeat-token-equality",
+      "passed": true
+    },
+    {
+      "name": "65536-complete-snapshot-preserved",
+      "passed": true,
+      "cached": 65536
+    },
+    {
+      "name": "65536-preserved-token-equality",
+      "passed": true
+    },
+    {
+      "name": "65536-namespace-isolated",
+      "passed": true,
+      "cached": 0
+    },
+    {
+      "name": "same-engine-generation",
+      "passed": true
+    }
+  ],
+  "fixture_sha256": "012a3b8a7c69198450dac9d66fe855b612e02fcc54c22a52745e02b1f4e6c628",
+  "engine_generation": "1791912441680255627",
+  "production_qualified": false
+}

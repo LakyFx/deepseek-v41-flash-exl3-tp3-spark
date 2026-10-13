@@ -1,0 +1,294 @@
+{
+  "arm": "C4-reference",
+  "seed": 42,
+  "fixture_sha256": "6dfc48d3c8fcfe89c8edd22b522f16183aeef15ab9ee9b97d4637535f5902410",
+  "sampled": false,
+  "score": {
+    "cases": [
+      {
+        "case_id": "translate-negation",
+        "category": "translation",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "translate-prices",
+        "category": "translation",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "translate-attribution",
+        "category": "translation",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "translate-deadline",
+        "category": "translation",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "translate-technical",
+        "category": "translation",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "translate-conditional",
+        "category": "translation",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "digest-correction",
+        "category": "digest",
+        "mechanical_pass": false,
+        "failures": [
+          "invalid_json_or_schema"
+        ],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "digest-duplicates",
+        "category": "digest",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "digest-uncertainty",
+        "category": "digest",
+        "mechanical_pass": false,
+        "failures": [
+          "invalid_json_or_schema"
+        ],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "digest-source-injection",
+        "category": "digest",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "tools-digest-0",
+        "category": "tools",
+        "mechanical_pass": false,
+        "failures": [
+          "request_error",
+          "not_completed_stop",
+          "unprocessed_final_tool_call",
+          "tool_sequence_or_arguments"
+        ],
+        "pending": [],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "tools-digest-1",
+        "category": "tools",
+        "mechanical_pass": false,
+        "failures": [
+          "request_error",
+          "not_completed_stop",
+          "empty_visible_answer",
+          "unprocessed_final_tool_call",
+          "tool_sequence_or_arguments"
+        ],
+        "pending": [],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "tools-digest-2",
+        "category": "tools",
+        "mechanical_pass": false,
+        "failures": [
+          "request_error",
+          "not_completed_stop",
+          "empty_visible_answer",
+          "unprocessed_final_tool_call",
+          "tool_sequence_or_arguments"
+        ],
+        "pending": [],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "tools-digest-3",
+        "category": "tools",
+        "mechanical_pass": false,
+        "failures": [
+          "request_error",
+          "not_completed_stop",
+          "empty_visible_answer",
+          "unprocessed_final_tool_call",
+          "tool_sequence_or_arguments"
+        ],
+        "pending": [],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "code-dedup",
+        "category": "code",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "isolated_code_execution"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "code-money",
+        "category": "code",
+        "mechanical_pass": false,
+        "failures": [
+          "not_completed_stop",
+          "empty_visible_answer"
+        ],
+        "pending": [
+          "isolated_code_execution"
+        ],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "code-cursor",
+        "category": "code",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "isolated_code_execution"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "code-weighted",
+        "category": "code",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "isolated_code_execution"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "cs-agreement",
+        "category": "czech_instruction",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [],
+        "quality_status": "PASS"
+      },
+      {
+        "case_id": "cs-formal",
+        "category": "czech_instruction",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [],
+        "quality_status": "PASS"
+      },
+      {
+        "case_id": "cs-negation",
+        "category": "czech_instruction",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [],
+        "quality_status": "PASS"
+      },
+      {
+        "case_id": "cs-deadline-order",
+        "category": "czech_instruction",
+        "mechanical_pass": false,
+        "failures": [
+          "exact_instruction_answer"
+        ],
+        "pending": [],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "long-digest-0",
+        "category": "long_context",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "long-digest-1",
+        "category": "long_context",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "long-digest-2",
+        "category": "long_context",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "long-digest-3",
+        "category": "long_context",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      }
+    ],
+    "mechanical_pass": false,
+    "quality_pass": false,
+    "pending_review": 18,
+    "note": "A mechanical pass alone is not evidence of unchanged Czech quality."
+  },
+  "generation": "1.79187381347e+09",
+  "cache_policy": "salted-case",
+  "metric_backend": "vllm",
+  "quality_speed_is_not_Hermes_or_Owen": true
+}

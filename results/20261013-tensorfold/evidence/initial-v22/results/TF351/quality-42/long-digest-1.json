@@ -1,0 +1,23 @@
+{
+  "case_id": "long-digest-1",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-145af91918a842beb70f92d21ffecd64",
+      "body_sha256": "c4b4a5799fdda7dbf8c9f83d6fba9a71bd926110ecfcb334f8e2bd3291d6629f",
+      "usage": {
+        "prompt_tokens": 65635,
+        "completion_tokens": 461,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 65635
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173864.274680094,
+      "ended_monotonic": 173901.519864634
+    }
+  ],
+  "category": "long_context",
+  "elapsed_seconds": 37.24632919501164
+}

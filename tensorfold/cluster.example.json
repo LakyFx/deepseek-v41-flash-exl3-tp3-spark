@@ -1,0 +1,66 @@
+{
+  "schema": "ds41f.tensorfold-topology.v1",
+  "master_address": "192.0.2.10",
+  "master_port": 29660,
+  "api_host": "127.0.0.1",
+  "api_port": 8003,
+  "nccl_interface": "REPLACE_WITH_MANAGEMENT_INTERFACE",
+  "nccl_hcas": [
+    "REPLACE_WITH_HCA_0",
+    "REPLACE_WITH_HCA_1",
+    "REPLACE_WITH_HCA_2",
+    "REPLACE_WITH_HCA_3"
+  ],
+  "nccl_address_range": "REPLACE_WITH_FABRIC_CIDR",
+  "library_path": "",
+  "ranks": [
+    {
+      "rank": 0,
+      "root": "/srv/ds41f-tensorfold",
+      "rdma_devices": [
+        "REPLACE_WITH_RAIL_0",
+        "REPLACE_WITH_RAIL_1",
+        "REPLACE_WITH_RAIL_2",
+        "REPLACE_WITH_RAIL_3"
+      ],
+      "gid_index": 3,
+      "peer_masks": [
+        0,
+        12,
+        3
+      ]
+    },
+    {
+      "rank": 1,
+      "root": "/srv/ds41f-tensorfold",
+      "rdma_devices": [
+        "REPLACE_WITH_RAIL_0",
+        "REPLACE_WITH_RAIL_1",
+        "REPLACE_WITH_RAIL_2",
+        "REPLACE_WITH_RAIL_3"
+      ],
+      "gid_index": 3,
+      "peer_masks": [
+        3,
+        0,
+        12
+      ]
+    },
+    {
+      "rank": 2,
+      "root": "/srv/ds41f-tensorfold",
+      "rdma_devices": [
+        "REPLACE_WITH_RAIL_0",
+        "REPLACE_WITH_RAIL_1",
+        "REPLACE_WITH_RAIL_2",
+        "REPLACE_WITH_RAIL_3"
+      ],
+      "gid_index": 3,
+      "peer_masks": [
+        12,
+        3,
+        0
+      ]
+    }
+  ]
+}

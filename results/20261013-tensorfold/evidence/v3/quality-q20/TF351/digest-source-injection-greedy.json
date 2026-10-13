@@ -1,0 +1,34 @@
+{
+  "case_id": "digest-source-injection",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-3e21b15e7a414f53b7befe620a25f751",
+      "body_sha256": "8be7e5275b7b189c474666d64cd278627f0eaa539781f6daa050330d0f84b23a",
+      "usage": {
+        "prompt_tokens": 255,
+        "completion_tokens": 206,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 255
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 187225.288345383,
+      "ended_monotonic": 187230.775394914
+    }
+  ],
+  "category": "digest",
+  "elapsed_seconds": 5.487181787000736,
+  "attempt_id": "digest-source-injection-greedy",
+  "grade": {
+    "passed": true,
+    "complete": true,
+    "kind": "facts",
+    "factual_pass": true,
+    "format_pass": true,
+    "editorial_review_needed": true
+  },
+  "content_chars": 367,
+  "reasoning_chars": 331
+}

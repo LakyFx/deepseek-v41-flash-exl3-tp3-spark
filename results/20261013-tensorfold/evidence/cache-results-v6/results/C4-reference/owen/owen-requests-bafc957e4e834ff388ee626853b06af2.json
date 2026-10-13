@@ -1,0 +1,17 @@
+[
+  {
+    "ok": true,
+    "ttft_s": 0.2637,
+    "elapsed_s": 4.7571,
+    "prompt_tokens": 75,
+    "completion_tokens": 256,
+    "finish_reason": "length",
+    "decode_tps": 56.75,
+    "output_sha256": "67c6c9f24edadafc",
+    "reasoning_chars": 1159,
+    "content_chars": 0,
+    "error": null,
+    "first_at": 153037.861639001,
+    "last_at": 153042.354448242
+  }
+]

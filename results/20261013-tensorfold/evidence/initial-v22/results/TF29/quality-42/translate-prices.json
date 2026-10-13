@@ -1,0 +1,23 @@
+{
+  "case_id": "translate-prices",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-13c957e2899742ae839c3a0d8b5b35d4",
+      "body_sha256": "a12548e6369a78a57a72f514ee28e4e155ef2d0d516dea425442cca032f19312",
+      "usage": {
+        "prompt_tokens": 175,
+        "completion_tokens": 337,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 175
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 175531.514931531,
+      "ended_monotonic": 175537.513674619
+    }
+  ],
+  "category": "translation",
+  "elapsed_seconds": 5.998848479997832
+}

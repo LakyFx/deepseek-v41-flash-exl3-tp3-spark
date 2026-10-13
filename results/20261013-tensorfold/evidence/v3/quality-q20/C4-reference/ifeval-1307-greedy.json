@@ -1,0 +1,34 @@
+{
+  "case_id": "ifeval-1307",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-d024d50695c144d38d246cabf07712bb",
+      "body_sha256": "cec00c73159faaa0c318b9033afd8bf599922c1819371b697b7fa40aafc668c8",
+      "usage": {
+        "prompt_tokens": 74,
+        "completion_tokens": 3154,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 74
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 185287.285643616,
+      "ended_monotonic": 185426.881801917
+    }
+  ],
+  "category": "instruction_following",
+  "elapsed_seconds": 139.59632271699957,
+  "attempt_id": "ifeval-1307-greedy",
+  "grade": {
+    "passed": true,
+    "complete": true,
+    "kind": "ifeval",
+    "checks": [
+      true
+    ]
+  },
+  "content_chars": 5063,
+  "reasoning_chars": 8264
+}

@@ -1,0 +1,81 @@
+{
+  "schema": "dgx.offline-exact-tokenization.v1",
+  "request_sha256": "08cadaac275d541eca8d3d794f4c6041792194847038aeb7e751576794bb216e",
+  "count": 8177,
+  "target": 8192,
+  "source_units": [
+    {
+      "id": "vllm/v1/worker/gpu/input_batch.py:673:_expand_idx_mapping_kernel",
+      "source_sha256": "59b91bba8afe8382b86de24bc6eb8e44dfc1c08db5f60804a40ef8f3e76db5ce"
+    },
+    {
+      "id": "vllm/distributed/device_communicators/all_reduce_utils.py:345:gpu_p2p_access_check",
+      "source_sha256": "ed0ab4dd05b2519a6313892e68824c97b540034664d7f8c3d031b322e33e1bfc"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashinfer_mla.py:75:_get_workspace_buffer",
+      "source_sha256": "deab16d2e7ff29628a1b06405ccecd02f7e00be1bc9ac71aff344bb327dc4ede"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashmla.py:47:FlashMLABackend",
+      "source_sha256": "cace45fc3f99fd5bb6db6fe799f8237dec676be88e9c3ef0784318f7348a885c"
+    },
+    {
+      "id": "vllm/entrypoints/serve/utils/api_utils.py:51:with_cancellation",
+      "source_sha256": "2a489ca888e0ab1803f5561e29fb8c1f0c30149b56f0ae5f10917ae570596ee0"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/amx_mla.py:117:AMXMLAMetadataBuilder",
+      "source_sha256": "7f5cddec30b2dfe22ccdbd3b9da673c879719bf6da4074317bd60add55f5d15f"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/dflash/speculator.py:487:_prepare_dflash_inputs_kernel",
+      "source_sha256": "c14815574ba63baccafada080305379f426441d0a54b1bf9c7c51529066193e0"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/flashattn_mla.py:93:FlashAttnMLADecodeMetadata",
+      "source_sha256": "cff991f1a787033c6b9e267c350c45fbb6822bb667b261c0a712137460f5d49c"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/attn_utils.py:156:get_attn_cg_support",
+      "source_sha256": "f97c054920a382cbbf844b6029aa6561e7a158fce0aaf9915dcd00a6ec817aa9"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py:9:_compute_max_and_sumexp",
+      "source_sha256": "20ca2e5ac34e9ef93dca388bed72a00d4ff67d569ec6ec2393b21a92d74a1fae"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py:192:_compute_local_logits_stats_kernel",
+      "source_sha256": "20ca2e5ac34e9ef93dca388bed72a00d4ff67d569ec6ec2393b21a92d74a1fae"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:183:suspend_device_comms",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/v1/attention/backends/mla/indexer.py:663:_supports_flattened_device_query_lens",
+      "source_sha256": "392d93da110ec942db3ce17895dc358bf92501edb01a8b9c19b6bdfab917bb7f"
+    },
+    {
+      "id": "vllm/distributed/parallel_state.py:1648:_init_process_group_for_split_group",
+      "source_sha256": "2c9b1c11c48a8e1650a3faa01fdb696314a7c6c236a61605d19f266c447a5353"
+    },
+    {
+      "id": "vllm/v1/worker/gpu/input_batch.py:657:post_update_num_computed_tokens",
+      "source_sha256": "59b91bba8afe8382b86de24bc6eb8e44dfc1c08db5f60804a40ef8f3e76db5ce"
+    },
+    {
+      "id": "vllm/model_executor/kernels/mhc/tilelang.py:905:_mhc_post_tilelang_fake",
+      "source_sha256": "ebb01974b8c29fa7f03dfc09a5b326a5305c0ec9731f1200cf605e23f0d707f5"
+    },
+    {
+      "id": "vllm/entrypoints/serve/dev/server_info/api_router.py:62:attach_router",
+      "source_sha256": "06af82ff18d062d0b4035c27c8454fd2062ae758df1ee4b7053aaa7f0d411901"
+    }
+  ],
+  "token_ids_sha256": "1ff645a0a48594248a3e6b99b750e5877174e92328fdfcedf7b463a21a2768bd",
+  "current_tokenizer_receipt_sha256": "66c2ce0aa907a48f71d8d66f9bebc8df356acbaf3186ff6d0a6d3c445e919c5a",
+  "historical_eight_exact_matches": true,
+  "inference_requests": 0,
+  "original_request_sha256": "bd49de608aaf2c5761870a22e8b1f4db09c3001e573b55bdee5a91c47a32dcdc"
+}

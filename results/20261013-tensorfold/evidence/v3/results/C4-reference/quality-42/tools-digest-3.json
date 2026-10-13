@@ -1,0 +1,37 @@
+{
+  "case_id": "tools-digest-3",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "tool_calls",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-177730322a244a708bad040701bae4d8",
+      "body_sha256": "c4b71e86aab4161fc50254e604c7eac0cc8099baf6a5d5d07d643f2b2f7ebfc9",
+      "usage": {
+        "prompt_tokens": 588,
+        "completion_tokens": 114,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 588
+      },
+      "finish_reason": "tool_calls",
+      "started_monotonic": 153566.579902966,
+      "ended_monotonic": 153570.540839967
+    },
+    {
+      "request_id": "dgx-gateway-fb8cc6ca605c492a8e3fc8c178180c2e",
+      "body_sha256": "b155bba9109bbf0a494b02c6fe02c55240ba02f4bdc772d5f9e58364dec95df3",
+      "usage": {
+        "prompt_tokens": 769,
+        "completion_tokens": 192,
+        "cached_tokens": 640,
+        "computed_prompt_tokens": 129
+      },
+      "finish_reason": "tool_calls",
+      "started_monotonic": 153570.541061199,
+      "ended_monotonic": 153575.708417342
+    }
+  ],
+  "category": "tools",
+  "error": "ValueError: wrong tool name, order, arguments or types",
+  "elapsed_seconds": 9.12870287199621
+}

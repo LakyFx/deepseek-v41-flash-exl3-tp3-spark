@@ -1,0 +1,23 @@
+{
+  "case_id": "translate-conditional",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-5ff2ae78ebf44c549ebe8af67ca3e77b",
+      "body_sha256": "27a85f2fd2597f3d9ea7f56da2b7f82305d56132e61496b2043261c529c5f248",
+      "usage": {
+        "prompt_tokens": 165,
+        "completion_tokens": 576,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 165
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 175539.147214644,
+      "ended_monotonic": 175549.86132163
+    }
+  ],
+  "category": "translation",
+  "elapsed_seconds": 10.714184857002692
+}

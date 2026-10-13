@@ -1,0 +1,80 @@
+{
+  "arm": "TF29",
+  "seed": 1708,
+  "fixture_sha256": "6dfc48d3c8fcfe89c8edd22b522f16183aeef15ab9ee9b97d4637535f5902410",
+  "sampled": true,
+  "score": {
+    "cases": [
+      {
+        "case_id": "translate-negation",
+        "category": "translation",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "translate-conditional",
+        "category": "translation",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "digest-correction",
+        "category": "digest",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "blind_Czech_editorial_review"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "tools-digest-0",
+        "category": "tools",
+        "mechanical_pass": false,
+        "failures": [
+          "request_error",
+          "not_completed_stop",
+          "empty_visible_answer",
+          "unprocessed_final_tool_call",
+          "tool_sequence_or_arguments"
+        ],
+        "pending": [],
+        "quality_status": "FAIL"
+      },
+      {
+        "case_id": "code-weighted",
+        "category": "code",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [
+          "isolated_code_execution"
+        ],
+        "quality_status": "PENDING"
+      },
+      {
+        "case_id": "cs-negation",
+        "category": "czech_instruction",
+        "mechanical_pass": true,
+        "failures": [],
+        "pending": [],
+        "quality_status": "PASS"
+      }
+    ],
+    "mechanical_pass": false,
+    "quality_pass": false,
+    "pending_review": 4,
+    "note": "A mechanical pass alone is not evidence of unchanged Czech quality."
+  },
+  "generation": "1791896614892188907",
+  "cache_policy": "salted-case",
+  "metric_backend": "tensorfold",
+  "quality_speed_is_not_Hermes_or_Owen": true
+}

@@ -1,0 +1,54 @@
+{
+  "status": "C4_REFERENCE_HTTP_READY_NOT_QUALIFIED",
+  "states": [
+    {
+      "rank": 0,
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 3013931,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-13T15:51:52.455746495Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "ready": true
+    },
+    {
+      "rank": 1,
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 186413,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-13T15:51:52.494000114Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "rank": 2,
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 3546830,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-13T15:51:52.525803599Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      }
+    }
+  ]
+}

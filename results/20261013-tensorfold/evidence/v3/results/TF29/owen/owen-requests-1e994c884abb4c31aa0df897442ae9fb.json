@@ -1,0 +1,17 @@
+[
+  {
+    "ok": true,
+    "ttft_s": 125.2419,
+    "elapsed_s": 125.2421,
+    "prompt_tokens": 249185,
+    "completion_tokens": 1,
+    "finish_reason": "stop",
+    "decode_tps": null,
+    "output_sha256": "e3b0c44298fc1c14",
+    "reasoning_chars": 0,
+    "content_chars": 0,
+    "error": null,
+    "first_at": 188776.927608325,
+    "last_at": null
+  }
+]

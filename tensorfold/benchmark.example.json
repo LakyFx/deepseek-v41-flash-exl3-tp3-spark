@@ -1,0 +1,10 @@
+{
+  "backend_bind": "127.0.0.1",
+  "backend_port": 8003,
+  "benchmark_engine": "tensorfold",
+  "benchmark_control": {
+    "enabled": true,
+    "peer_address": "127.0.0.1",
+    "lease_path": "/srv/ds41f-bench/leases/REPLACE_WITH_UNIQUE_RUN"
+  }
+}

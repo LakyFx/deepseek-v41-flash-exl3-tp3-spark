@@ -1,0 +1,34 @@
+{
+  "case_id": "long-digest-1",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-9e181b38b4ba495f83091629b86ed187",
+      "body_sha256": "92c8dad2e6b1ec3feb1f5b36723e1d226ebd4878426948498e46121dc8e82d9f",
+      "usage": {
+        "prompt_tokens": 65635,
+        "completion_tokens": 310,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 65635
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 187318.506420399,
+      "ended_monotonic": 187350.680911361
+    }
+  ],
+  "category": "long_context",
+  "elapsed_seconds": 32.17547912301961,
+  "attempt_id": "long-digest-1-greedy",
+  "grade": {
+    "passed": true,
+    "complete": true,
+    "kind": "facts",
+    "factual_pass": true,
+    "format_pass": true,
+    "editorial_review_needed": true
+  },
+  "content_chars": 271,
+  "reasoning_chars": 826
+}

@@ -1,0 +1,38 @@
+{
+  "point": "prose-c2",
+  "sample": "sample1",
+  "requests": [
+    {
+      "ok": true,
+      "ttft_s": 0.0073,
+      "elapsed_s": 3.1902,
+      "prompt_tokens": 68,
+      "completion_tokens": 256,
+      "finish_reason": "length",
+      "decode_tps": 80.12,
+      "output_sha256": "09fdf7d1c56ffa2c",
+      "reasoning_chars": 1223,
+      "content_chars": 0,
+      "error": null,
+      "first_s": 186713.667231216,
+      "last_s": 186716.849801697
+    },
+    {
+      "ok": true,
+      "ttft_s": 0.004,
+      "elapsed_s": 3.1902,
+      "prompt_tokens": 68,
+      "completion_tokens": 256,
+      "finish_reason": "length",
+      "decode_tps": 80.03,
+      "output_sha256": "09fdf7d1c56ffa2c",
+      "reasoning_chars": 1223,
+      "content_chars": 0,
+      "error": null,
+      "first_s": 186713.66417705,
+      "last_s": 186716.849704113
+    }
+  ],
+  "aggregate_decode_tps": 160.094,
+  "single_stream_decode_tps": null
+}

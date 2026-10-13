@@ -1,0 +1,32 @@
+{
+  "case_id": "ifeval-1307",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "length",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-9fb9ed82541f46ec91808cce4c548a4d",
+      "body_sha256": "53f5f932ce431713d91f164655ddc8a82509ad80046d8e204e9fdf1704a3ed72",
+      "usage": {
+        "prompt_tokens": 74,
+        "completion_tokens": 4096,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 74
+      },
+      "finish_reason": "length",
+      "started_monotonic": 188882.331098809,
+      "ended_monotonic": 188988.972647772
+    }
+  ],
+  "category": "instruction_following",
+  "elapsed_seconds": 106.64167449600063,
+  "attempt_id": "ifeval-1307-greedy",
+  "grade": {
+    "passed": false,
+    "complete": false,
+    "kind": "ifeval",
+    "reason": "incomplete, truncated, errored or empty final content"
+  },
+  "content_chars": 4772,
+  "reasoning_chars": 12061
+}

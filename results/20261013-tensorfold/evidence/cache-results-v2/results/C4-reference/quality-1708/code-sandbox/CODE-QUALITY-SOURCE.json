@@ -1,0 +1,13 @@
+{
+  "scope": "ACTUAL_OUTPUT_CPU_CODE_TESTS_ONLY",
+  "arm": "C4-reference",
+  "seed": 1708,
+  "image": "sha256:24b2387d00c974f9aba0c38135457b045e24025b0eec525e8a5e04e9d2c7775c",
+  "fixture_sha256": "6dfc48d3c8fcfe89c8edd22b522f16183aeef15ab9ee9b97d4637535f5902410",
+  "response_sha256": "c854d8bf9a66be0f021a60e211b9d8567199f9d3cfbb99b4b5d9c5f434d01b24",
+  "result_sha256": "06c43b549e409b52ac96377bd81b8b29a408562f093a3f9ddb1a2d5e851136f8",
+  "sandbox_source_sha256": "9117f343d2373bca3acda2d4c44acc175eeecf844e75ee878aa90d76ff818630",
+  "cases": [
+    "code-weighted"
+  ]
+}

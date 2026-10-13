@@ -1,0 +1,27 @@
+{
+  "case_id": "short-3",
+  "phase": "prime",
+  "slot": 3,
+  "started_monotonic": 186628.78660644,
+  "input_tokens_expected": 8191,
+  "request_body_sha256": "5a4c7d67d8d4c7516b90ffbe5a0e9a1d5b84b0425bf2509797aae56f3e3ac3b7",
+  "complete": true,
+  "usage": {
+    "prompt_tokens": 8191,
+    "completion_tokens": 1,
+    "cached_tokens": 0,
+    "computed_prompt_tokens": 8191
+  },
+  "error": null,
+  "request_id": "dgx-gateway-5233b39c39ca485399970df35c22d07e",
+  "first_any_delta_monotonic": 186657.530878545,
+  "first_visible_delta_monotonic": null,
+  "sse_chunk_times": [
+    186657.530878545
+  ],
+  "finish_reason": "length",
+  "ttft_seconds": 28.74427210498834,
+  "ended_monotonic": 186657.531181347,
+  "wall_seconds": 28.74457490700297,
+  "request_output_tokens_per_wall_second": 0.03478917337394238
+}

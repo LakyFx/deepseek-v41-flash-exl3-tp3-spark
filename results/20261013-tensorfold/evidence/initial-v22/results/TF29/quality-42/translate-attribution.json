@@ -1,0 +1,23 @@
+{
+  "case_id": "translate-attribution",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-3fbcc92168054cbd93e8cc10f816af97",
+      "body_sha256": "99ef5cc8e4bd7bb9f814aec6e64b88b98e577a98a9c8ffb704b0995bdcee8e82",
+      "usage": {
+        "prompt_tokens": 167,
+        "completion_tokens": 350,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 167
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 175531.517363999,
+      "ended_monotonic": 175538.657725013
+    }
+  ],
+  "category": "translation",
+  "elapsed_seconds": 7.142551451019244
+}

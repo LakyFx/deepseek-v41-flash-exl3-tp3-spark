@@ -1,0 +1,23 @@
+{
+  "case_id": "translate-deadline",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-89e1fc3b8fc54565b49cfc9283238cf5",
+      "body_sha256": "7ba2e6b6384a234f66038ffc24a28acdeb33897221ade3aced1f63bc1b548a98",
+      "usage": {
+        "prompt_tokens": 168,
+        "completion_tokens": 282,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 168
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173724.565181165,
+      "ended_monotonic": 173730.834752451
+    }
+  ],
+  "category": "translation",
+  "elapsed_seconds": 6.269666918000439
+}

@@ -1,0 +1,23 @@
+{
+  "point": "prose-c1",
+  "sample": "sample2",
+  "requests": [
+    {
+      "ok": true,
+      "ttft_s": 0.2589,
+      "elapsed_s": 7.8628,
+      "prompt_tokens": 68,
+      "completion_tokens": 256,
+      "finish_reason": "length",
+      "decode_tps": 33.54,
+      "output_sha256": "48cdefe769e4bc22",
+      "reasoning_chars": 1466,
+      "content_chars": 0,
+      "error": null,
+      "first_s": 153096.479420961,
+      "last_s": 153104.08294476
+    }
+  ],
+  "aggregate_decode_tps": 33.537,
+  "single_stream_decode_tps": 33.54
+}

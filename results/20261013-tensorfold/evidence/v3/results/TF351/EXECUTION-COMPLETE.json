@@ -1,0 +1,21 @@
+{
+  "arm": "TF351",
+  "stages": [
+    {
+      "stage": "hermes",
+      "exit_code": 0,
+      "started": 1791908189.885266,
+      "elapsed_seconds": 476.9783504009247
+    },
+    {
+      "stage": "owen",
+      "exit_code": 0,
+      "started": 1791908666.8638442,
+      "elapsed_seconds": 398.0992810726166
+    }
+  ],
+  "quality_review": "PENDING",
+  "qualified_receipt_sha256": "cdba66d0ebe0ca51c9acc3bea19f91ec9779b82358251de268976b9d13786964",
+  "token_input_receipt_sha256": "0986be0a16c284f15f03358a56119596f757c7fac2196cba10d3a5cf20244460",
+  "automatic_promotion": false
+}

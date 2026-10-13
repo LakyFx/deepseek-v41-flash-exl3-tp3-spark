@@ -1,0 +1,47 @@
+{
+  "baseline": "historical 20261012 B0 X11c host64k",
+  "candidate": "TF351 final cache parity V7, long prefill V3",
+  "scope": "historical cross-campaign comparison, not fresh paired AB; MAX; speed tests 3.3M, 10M capacity separately qualified",
+  "values": {
+    "code_c1": {
+      "x11c": 59.8,
+      "tf351": 84.47,
+      "change_percent": 41.2541806020067
+    },
+    "code_c8": {
+      "x11c": 192.9,
+      "tf351": 396.03,
+      "change_percent": 105.30326594090198
+    },
+    "prose_c1": {
+      "x11c": 40.9,
+      "tf351": 83.513,
+      "change_percent": 104.18826405867972
+    },
+    "prose_c8": {
+      "x11c": 153.3,
+      "tf351": 394.949,
+      "change_percent": 157.63144161774298
+    },
+    "cold32k": {
+      "x11c": 1254.1,
+      "tf351": 2147.6430353038168,
+      "change_percent": 71.24974366508387
+    },
+    "cold256k": {
+      "x11c": 1230.2,
+      "tf351": 1976.48,
+      "change_percent": 60.66330677938545
+    },
+    "pool": {
+      "x11c": 3300000,
+      "tf351": 10000000,
+      "change_percent": 203.03030303030303
+    },
+    "hermes64k": {
+      "x11c": 1318.0,
+      "tf351": 2111.257544554706,
+      "change_percent": 60.18646013313398
+    }
+  }
+}

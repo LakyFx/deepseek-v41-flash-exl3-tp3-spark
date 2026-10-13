@@ -1,0 +1,112 @@
+{
+  "status": "SHORT_CONTINUATION_PROBES_PASS_REVIEW_REQUIRED",
+  "arm": "TF351",
+  "expect_short": true,
+  "checks": [
+    {
+      "name": "512-token-parent-serial-spec-exact",
+      "passed": true
+    },
+    {
+      "name": "reference-parent-0",
+      "passed": true
+    },
+    {
+      "name": "short-reuse-0",
+      "passed": true,
+      "cached": 8702
+    },
+    {
+      "name": "C8-parent-0",
+      "passed": true
+    },
+    {
+      "name": "reference-parent-1",
+      "passed": true
+    },
+    {
+      "name": "short-reuse-1",
+      "passed": true,
+      "cached": 8702
+    },
+    {
+      "name": "C8-parent-1",
+      "passed": true
+    },
+    {
+      "name": "reference-parent-2",
+      "passed": true
+    },
+    {
+      "name": "short-reuse-2",
+      "passed": true,
+      "cached": 8702
+    },
+    {
+      "name": "C8-parent-2",
+      "passed": true
+    },
+    {
+      "name": "reference-parent-3",
+      "passed": true
+    },
+    {
+      "name": "short-reuse-3",
+      "passed": true,
+      "cached": 8702
+    },
+    {
+      "name": "C8-parent-3",
+      "passed": true
+    },
+    {
+      "name": "C8-short-resume-vs-serial-exact",
+      "passed": true
+    },
+    {
+      "name": "C8-short-all-retained",
+      "passed": true,
+      "cached": [
+        8702,
+        8702,
+        8767,
+        8702,
+        8704,
+        8720,
+        8702,
+        8829
+      ]
+    },
+    {
+      "name": "same-generation",
+      "passed": true
+    }
+  ],
+  "cold_numerical_differences": [
+    {
+      "suffix": 1,
+      "equal": false,
+      "first_difference": 28
+    },
+    {
+      "suffix": 17,
+      "equal": false,
+      "first_difference": 57
+    },
+    {
+      "suffix": 64,
+      "equal": false,
+      "first_difference": 0
+    },
+    {
+      "suffix": 126,
+      "equal": true,
+      "first_difference": null
+    }
+  ],
+  "semantic_quality_qualified": false,
+  "production_qualified": false,
+  "paired_cache_frontiers": true,
+  "fixture_sha256": "012a3b8a7c69198450dac9d66fe855b612e02fcc54c22a52745e02b1f4e6c628",
+  "engine_generation": "1791914061121082260"
+}

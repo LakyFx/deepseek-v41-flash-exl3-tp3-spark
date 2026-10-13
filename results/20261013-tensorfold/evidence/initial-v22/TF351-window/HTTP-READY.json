@@ -1,0 +1,53 @@
+{
+  "status": "HTTP_READY_NOT_GPU_QUALIFIED",
+  "arm": "TF351",
+  "states": [
+    {
+      "MainPID": "2182220",
+      "Result": "success",
+      "ActiveState": "active",
+      "SubState": "running",
+      "health": {
+        "status": "ok",
+        "model": "DS41F-TF351-TP3",
+        "model_ids": [
+          "DS41F-TF351-TP3"
+        ],
+        "max_batch_size": 8,
+        "warming": false,
+        "memory": {
+          "active": 97027742916,
+          "cache": 0,
+          "peak": 97027742916
+        },
+        "live": {
+          "connections": 0,
+          "waiting": 0,
+          "decode_tokens_per_second": 0.0,
+          "prefill_tokens_per_second": 0.0
+        }
+      },
+      "benchmark": {
+        "schema": "tensorfold.benchmark-control.v1",
+        "engine_generation": "1791894788162557940",
+        "running": 0,
+        "waiting": 0,
+        "preparing": 0,
+        "reset_supported": true,
+        "cache_salt_supported": true
+      }
+    },
+    {
+      "MainPID": "3796043",
+      "Result": "success",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    {
+      "MainPID": "2732319",
+      "Result": "success",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  ]
+}

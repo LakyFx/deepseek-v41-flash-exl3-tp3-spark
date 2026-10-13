@@ -1,0 +1,23 @@
+{
+  "case_id": "digest-duplicates",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-9bd5a4d972c54451b610eb3c0c78385b",
+      "body_sha256": "ec3ac80735f82bdb3279971060ce75ef38371644cef13021da63e658e47d2c56",
+      "usage": {
+        "prompt_tokens": 243,
+        "completion_tokens": 598,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 243
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 175546.598885143,
+      "ended_monotonic": 175558.677031416
+    }
+  ],
+  "category": "digest",
+  "elapsed_seconds": 12.078236000990728
+}

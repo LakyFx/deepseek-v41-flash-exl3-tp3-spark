@@ -1,0 +1,10 @@
+{
+  "scope": "V3 cold Hermes nominal64K, computed tokens from usage minus cache, summed engine prefill time; not HTTP TTFT",
+  "prompt_tokens": 65534,
+  "cached_tokens": 0,
+  "computed_tokens": 65534,
+  "prefill_seconds": 31.040267999999998,
+  "tok_s": 2111.257544554706,
+  "raw_source_sha256": "504c8f35552b2d03c540088963c3402b7c0bbce71aec2dfdcd854226a79a755a",
+  "cold_cache_verified": true
+}

@@ -1,0 +1,34 @@
+{
+  "case_id": "digest-uncertainty",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-17fdb04f605940808df56adea0f1e9e2",
+      "body_sha256": "df6b6fb98705707463d26747887ada251a516a1b386197b5a41717fb4d96589e",
+      "usage": {
+        "prompt_tokens": 231,
+        "completion_tokens": 461,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 231
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 185384.305321574,
+      "ended_monotonic": 185398.826238705
+    }
+  ],
+  "category": "digest",
+  "elapsed_seconds": 14.521032602991909,
+  "attempt_id": "digest-uncertainty-greedy",
+  "grade": {
+    "passed": true,
+    "complete": true,
+    "kind": "facts",
+    "factual_pass": true,
+    "format_pass": true,
+    "editorial_review_needed": true
+  },
+  "content_chars": 234,
+  "reasoning_chars": 1402
+}

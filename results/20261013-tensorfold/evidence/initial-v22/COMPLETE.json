@@ -1,0 +1,10 @@
+{
+  "status": "BENCHMARK_RUNS_FINISHED_QUALITY_REVIEW_PENDING",
+  "arms": [
+    "C4-reference",
+    "TF351",
+    "TF29"
+  ],
+  "quality_qualified": false,
+  "automatic_promotion": false
+}

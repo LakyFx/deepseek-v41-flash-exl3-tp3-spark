@@ -1,0 +1,32 @@
+{
+  "case_id": "evalplus-36",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "length",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-1db432319358401e8c9d664d4ea622b9",
+      "body_sha256": "7c2ef69e8a22dc0a019ec6615abe7ec3482d70df32fd421d1910f14ae04bf3da",
+      "usage": {
+        "prompt_tokens": 141,
+        "completion_tokens": 4096,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 141
+      },
+      "finish_reason": "length",
+      "started_monotonic": 185199.288202671,
+      "ended_monotonic": 185345.454967923
+    }
+  ],
+  "category": "code",
+  "elapsed_seconds": 146.1668802119966,
+  "attempt_id": "evalplus-36-greedy",
+  "grade": {
+    "passed": false,
+    "complete": false,
+    "kind": "code",
+    "reason": "incomplete, truncated, errored or empty final content"
+  },
+  "content_chars": 0,
+  "reasoning_chars": 14057
+}

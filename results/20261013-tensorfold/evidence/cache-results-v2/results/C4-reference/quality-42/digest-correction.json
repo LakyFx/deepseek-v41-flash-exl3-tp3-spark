@@ -1,0 +1,23 @@
+{
+  "case_id": "digest-correction",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-d7dc0221fca14c6bbdf58cac68492c87",
+      "body_sha256": "9fbfcbce0d9a6f8f842f81ecdff609c4d0c64c86e627d0a875e19519447201f7",
+      "usage": {
+        "prompt_tokens": 231,
+        "completion_tokens": 293,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 231
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 153535.059849731,
+      "ended_monotonic": 153545.58477528
+    }
+  ],
+  "category": "digest",
+  "elapsed_seconds": 10.525066076981602
+}

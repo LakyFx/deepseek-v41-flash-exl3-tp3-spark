@@ -1,0 +1,38 @@
+{
+  "point": "code-c2",
+  "sample": "warmup",
+  "requests": [
+    {
+      "ok": true,
+      "ttft_s": 0.0075,
+      "elapsed_s": 2.8051,
+      "prompt_tokens": 75,
+      "completion_tokens": 256,
+      "finish_reason": "length",
+      "decode_tps": 91.15,
+      "output_sha256": "5349c0e16a87fa14",
+      "reasoning_chars": 1134,
+      "content_chars": 0,
+      "error": null,
+      "first_s": 188422.532206519,
+      "last_s": 188425.32939299
+    },
+    {
+      "ok": true,
+      "ttft_s": 0.0041,
+      "elapsed_s": 2.8043,
+      "prompt_tokens": 75,
+      "completion_tokens": 256,
+      "finish_reason": "length",
+      "decode_tps": 91.07,
+      "output_sha256": "5349c0e16a87fa14",
+      "reasoning_chars": 1134,
+      "content_chars": 0,
+      "error": null,
+      "first_s": 188422.529046952,
+      "last_s": 188425.32898115
+    }
+  ],
+  "aggregate_decode_tps": 182.12,
+  "single_stream_decode_tps": null
+}

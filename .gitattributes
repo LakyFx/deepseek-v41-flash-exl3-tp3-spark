@@ -8,3 +8,7 @@ Dockerfile text eol=lf
 experiments/20261012/sources/* -text -whitespace
 benchmarks/owen/owen-source.py -text
 benchmarks/owen/owen-fixture.json -text
+
+# Frozen hashes bind exact bytes across Windows/Linux checkouts.
+tensorfold/** -text -whitespace
+results/20261013-tensorfold/** -text -whitespace

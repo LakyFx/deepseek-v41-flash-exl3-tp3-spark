@@ -1,0 +1,23 @@
+{
+  "time": 1791922262.3398504,
+  "image": "[operator-path] Spark a Bench\\.cogniremote\\uploads\\MrqVzUkIz0Au\\1791798630513-0-cX2iQa-image.png",
+  "result": {
+    "status": 200,
+    "elapsed_seconds": 14.863,
+    "model": "deepseek-v4.1-flash",
+    "usage": {
+      "prompt_tokens": 16567,
+      "completion_tokens": 280,
+      "total_tokens": 16847,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 247
+      }
+    },
+    "reasoning_length": 0,
+    "finish_reason": "stop",
+    "error": null
+  }
+}

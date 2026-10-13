@@ -1,0 +1,23 @@
+{
+  "case_id": "cs-negation",
+  "seed": 42,
+  "temperature": 0,
+  "finish_reason": "stop",
+  "requests": [
+    {
+      "request_id": "dgx-gateway-813c1f60a02749b3b514b4f5c0a499a7",
+      "body_sha256": "2727977db6bae2ebb2e579705c9223b9fd84bc8e8dfd5215298f4c71c0833c2f",
+      "usage": {
+        "prompt_tokens": 155,
+        "completion_tokens": 130,
+        "cached_tokens": 0,
+        "computed_prompt_tokens": 155
+      },
+      "finish_reason": "stop",
+      "started_monotonic": 173818.434337901,
+      "ended_monotonic": 173821.225364802
+    }
+  ],
+  "category": "czech_instruction",
+  "elapsed_seconds": 2.7912163879955187
+}

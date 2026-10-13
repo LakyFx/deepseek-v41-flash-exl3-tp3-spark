@@ -1,0 +1,15 @@
+{
+  "arm": "C4-reference",
+  "seed": 1708,
+  "code_cases": 1,
+  "passed": 1,
+  "quality_qualified": false,
+  "receipts": [
+    {
+      "case_id": "code-weighted",
+      "passed": true,
+      "error": null,
+      "container": "ds41f-quality-6b8fd39e6ea446a3ab79e80186a1c8fa"
+    }
+  ]
+}

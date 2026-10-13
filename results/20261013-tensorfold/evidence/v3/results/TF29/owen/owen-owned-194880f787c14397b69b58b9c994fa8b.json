@@ -1,0 +1,4 @@
+{
+  "server_id": "chatcmpl-dgx-gateway-2bb13075a71147408d3612844c3b8961",
+  "path": "http://127.0.0.1:18003/v1/chat/completions"
+}

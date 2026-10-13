@@ -1,0 +1,13 @@
+{
+  "additional_phases": {
+    "initial-v22": 1500,
+    "cache-results-v1": 533,
+    "cache-results-v2": 579,
+    "cache-results-v4": 506,
+    "cache-results-v4r1": 633,
+    "cache-results-v5r1": 510,
+    "cache-results-v6": 607
+  },
+  "total_receipts": 8265,
+  "source_summary_v22_sha256": "6146493c6739211a72c657600e95f9dc923ac68f73825af7181c5b3517768122"
+}
