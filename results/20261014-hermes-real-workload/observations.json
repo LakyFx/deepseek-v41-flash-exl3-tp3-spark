@@ -1,0 +1,240 @@
+{
+  "kind": "passive production observations, not matched benchmark or controlled A/B",
+  "source_archive": "secondary-observatory-48h.jsonl.gz",
+  "source_sha256": "3129b39d0da51d0cb913b793c51ea6b0ce6532ff0ff1363d1a2b4090337dc748",
+  "windows": [
+    {
+      "by_concurrency": [
+        {
+          "concurrency": 1,
+          "seconds": 10078.200246572495,
+          "observed_decode_tokens": 510054.0,
+          "samples": 5038,
+          "avg_aggregate_decode_tps": 50.60963143428955,
+          "avg_per_request_decode_tps": 50.60963143428955
+        },
+        {
+          "concurrency": 2,
+          "seconds": 4301.936623573303,
+          "observed_decode_tokens": 297228.0,
+          "samples": 2147,
+          "avg_aggregate_decode_tps": 69.09167335736213,
+          "avg_per_request_decode_tps": 34.54583667868106
+        },
+        {
+          "concurrency": 3,
+          "seconds": 1951.058501958847,
+          "observed_decode_tokens": 202098.0,
+          "samples": 975,
+          "avg_aggregate_decode_tps": 103.58377249943824,
+          "avg_per_request_decode_tps": 34.527924166479416
+        },
+        {
+          "concurrency": 4,
+          "seconds": 536.228613615036,
+          "observed_decode_tokens": 53805.0,
+          "samples": 268,
+          "avg_aggregate_decode_tps": 100.33966601906693,
+          "avg_per_request_decode_tps": 25.08491650476673
+        }
+      ],
+      "concurrency_sources": [
+        "streaming_generation_counter"
+      ],
+      "concurrency_covered_s": 16867.42398571968,
+      "concurrency_window_seconds": 18000.0,
+      "label": "C4 / DS41F 1.0.0",
+      "start_utc": "2026-10-12T22:00:00Z",
+      "end_utc": "2026-10-13T03:00:00Z",
+      "samples": 8997,
+      "observed_seconds": 17998.645542144775,
+      "runs": [
+        "['vllm', 'deepseek-v4.1-flash', 1791796237.32, 'vllm:deepseek-v4.1-flash:1']"
+      ]
+    },
+    {
+      "by_concurrency": [
+        {
+          "concurrency": 1,
+          "seconds": 3171.642337322235,
+          "observed_decode_tokens": 265527.07462513447,
+          "samples": 1585,
+          "avg_aggregate_decode_tps": 83.71911028571859,
+          "avg_per_request_decode_tps": 83.71911028571859
+        },
+        {
+          "concurrency": 2,
+          "seconds": 2010.9368681907654,
+          "observed_decode_tokens": 223988.15112304688,
+          "samples": 1005,
+          "avg_aggregate_decode_tps": 111.38497417105313,
+          "avg_per_request_decode_tps": 55.692487085526565
+        },
+        {
+          "concurrency": 3,
+          "seconds": 1288.5565259456635,
+          "observed_decode_tokens": 161733.10191488266,
+          "samples": 644,
+          "avg_aggregate_decode_tps": 125.51494533481002,
+          "avg_per_request_decode_tps": 41.83831511160334
+        },
+        {
+          "concurrency": 4,
+          "seconds": 1330.6606843471527,
+          "observed_decode_tokens": 179772.70390629768,
+          "samples": 665,
+          "avg_aggregate_decode_tps": 135.10033475926852,
+          "avg_per_request_decode_tps": 33.77508368981713
+        },
+        {
+          "concurrency": 5,
+          "seconds": 1454.6716232299805,
+          "observed_decode_tokens": 206591.0209619999,
+          "samples": 728,
+          "avg_aggregate_decode_tps": 142.01900804477182,
+          "avg_per_request_decode_tps": 28.403801608954364
+        },
+        {
+          "concurrency": 6,
+          "seconds": 769.4000172615051,
+          "observed_decode_tokens": 112068.6430671215,
+          "samples": 386,
+          "avg_aggregate_decode_tps": 145.65718813732676,
+          "avg_per_request_decode_tps": 24.276198022887794
+        },
+        {
+          "concurrency": 7,
+          "seconds": 522.2767989635468,
+          "observed_decode_tokens": 76041.65607893467,
+          "samples": 261,
+          "avg_aggregate_decode_tps": 145.59646576267335,
+          "avg_per_request_decode_tps": 20.799495108953334
+        },
+        {
+          "concurrency": 8,
+          "seconds": 4527.772655963898,
+          "observed_decode_tokens": 681832.0488203764,
+          "samples": 2264,
+          "avg_aggregate_decode_tps": 150.58884370492407,
+          "avg_per_request_decode_tps": 18.82360546311551
+        }
+      ],
+      "concurrency_sources": [
+        "tensorfold_health_live"
+      ],
+      "concurrency_covered_s": 15075.917511224747,
+      "concurrency_window_seconds": 18000.0,
+      "label": "TF351 / 10M",
+      "start_utc": "2026-10-13T22:00:00Z",
+      "end_utc": "2026-10-14T03:00:00Z",
+      "samples": 8998,
+      "observed_seconds": 18000.746825933456,
+      "runs": [
+        "['tensorfold', 'deepseek-v4.1-flash', None, 'tensorfold:deepseek-v4.1-flash:1']"
+      ]
+    }
+  ],
+  "observer_windows": [
+    {
+      "label": "X11c",
+      "start_utc": "2026-10-10T22:00:00Z",
+      "end_utc": "2026-10-11T03:00:00Z",
+      "by_concurrency": [
+        {
+          "concurrency": 1,
+          "output_tokens": 687902.0,
+          "output_positive_seconds": 13296.172156572342,
+          "running_seconds": 13705.231295585632,
+          "samples": 13411,
+          "output_active_tps": 51.736845153585634,
+          "running_wall_tps": 50.19265893174447
+        },
+        {
+          "concurrency": 2,
+          "output_tokens": 142234.0,
+          "output_positive_seconds": 1779.2868673801422,
+          "running_seconds": 1828.2946655750275,
+          "samples": 1824,
+          "output_active_tps": 79.93876794551302,
+          "running_wall_tps": 77.79599354421633
+        },
+        {
+          "concurrency": 3,
+          "output_tokens": 58069.0,
+          "output_positive_seconds": 573.0819478034973,
+          "running_seconds": 581.0830502510071,
+          "samples": 581,
+          "output_active_tps": 101.32756793782508,
+          "running_wall_tps": 99.93235902323475
+        },
+        {
+          "concurrency": 4,
+          "output_tokens": 35346.0,
+          "output_positive_seconds": 341.06652188301086,
+          "running_seconds": 374.07203435897827,
+          "samples": 374,
+          "output_active_tps": 103.6337421945037,
+          "running_wall_tps": 94.48982215569798
+        },
+        {
+          "concurrency": 5,
+          "output_tokens": 20172.0,
+          "output_positive_seconds": 180.02529644966125,
+          "running_seconds": 212.03011465072632,
+          "samples": 212,
+          "output_active_tps": 112.05091949753019,
+          "running_wall_tps": 95.13742910165851
+        }
+      ]
+    },
+    {
+      "label": "C4 / DS41F 1.0.0",
+      "start_utc": "2026-10-12T22:00:00Z",
+      "end_utc": "2026-10-13T03:00:00Z",
+      "by_concurrency": [
+        {
+          "concurrency": 1,
+          "output_tokens": 513599.0,
+          "output_positive_seconds": 10045.59899687767,
+          "running_seconds": 10360.640677928925,
+          "samples": 10055,
+          "output_active_tps": 51.126767070797335,
+          "running_wall_tps": 49.57212743552724
+        },
+        {
+          "concurrency": 2,
+          "output_tokens": 291196.0,
+          "output_positive_seconds": 4099.626780748367,
+          "running_seconds": 4253.649706840515,
+          "samples": 4253,
+          "output_active_tps": 71.02988041922283,
+          "running_wall_tps": 68.45791733431001
+        },
+        {
+          "concurrency": 3,
+          "output_tokens": 202251.0,
+          "output_positive_seconds": 1910.3170237541199,
+          "running_seconds": 1963.324416399002,
+          "samples": 1959,
+          "output_active_tps": 105.87300300687268,
+          "running_wall_tps": 103.01455954536297
+        },
+        {
+          "concurrency": 4,
+          "output_tokens": 49656.0,
+          "output_positive_seconds": 479.0761413574219,
+          "running_seconds": 503.0791654586792,
+          "samples": 503,
+          "output_active_tps": 103.64949475318038,
+          "running_wall_tps": 98.70414719863516
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Different prompts, context lengths, cache warmth and workload composition.",
+    "TF observed work integrates /health live rates; old vLLM rows use streaming generation-counter deltas.",
+    "Per-request rate divides aggregate by observed C; it is not a timed measurement of each task.",
+    "Long-term observer has no valid TensorFold output deltas after the engine switch; no TF result is inferred from its zero counters."
+  ]
+}

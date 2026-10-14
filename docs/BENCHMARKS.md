@@ -2,6 +2,10 @@
 
 The published results preserve separate measurement campaigns. Do not combine their numbers into one paired experiment. Tests keep the EXL3 checkpoint and TP3 architecture, but output length, accepted draft tokens and cache state affect observed throughput.
 
+## Real Hermes Agent production observations
+
+The [14 October operational comparison](HERMES-REAL-WORKLOAD.md) reports all available C1–C8 aggregate decode observations for X11c, C4 and TF351. It uses separate five-hour windows and positive active-time weighting; the jobs, contexts and cache states differ. It is not a matched-prompt speed benchmark, and it excludes idle/prefill/stalled intervals from the decode average. [Published aggregates](../results/20261014-hermes-real-workload/observations.json) and [offline audit](../tools/audit_real_workload.py) accompany it. Existing controlled measurements below retain their original definitions and results.
+
 ## Metrics
 
 - **Request decode tok/s:** generated tokens divided by measured decode time, weighted across requests. Cold concurrent requests may have interleaved prefill stalls during this interval.

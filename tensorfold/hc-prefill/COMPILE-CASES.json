@@ -1,0 +1,344 @@
+[
+  {
+    "module": "tp3_triton_kernels",
+    "function": "_hc_mix_pf",
+    "consts": {
+      "WIDE": 20480,
+      "D": 5120,
+      "NB": 40,
+      "SUB": 128,
+      "MB": 8,
+      "RB": 4,
+      "WORLD": 1,
+      "POSTED": 0
+    },
+    "params": {
+      "X": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "XO": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "G": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "RS": {
+        "type": "i32",
+        "div16": false
+      },
+      "POST": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "COMB": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "FN": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "PART": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "rows": {
+        "type": "i32",
+        "div16": false
+      }
+    },
+    "options": {
+      "num_warps": 2,
+      "num_stages": 3,
+      "launch_pdl": false
+    }
+  },
+  {
+    "module": "tp3_triton_kernels",
+    "function": "_hc_mix_pf",
+    "consts": {
+      "WIDE": 20480,
+      "D": 5120,
+      "NB": 40,
+      "SUB": 128,
+      "MB": 8,
+      "RB": 5,
+      "WORLD": 1,
+      "POSTED": 0
+    },
+    "params": {
+      "X": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "XO": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "G": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "RS": {
+        "type": "i32",
+        "div16": false
+      },
+      "POST": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "COMB": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "FN": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "PART": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "rows": {
+        "type": "i32",
+        "div16": false
+      }
+    },
+    "options": {
+      "num_warps": 2,
+      "num_stages": 3,
+      "launch_pdl": false
+    }
+  },
+  {
+    "module": "tp3_triton_kernels",
+    "function": "_hc_mix_pf",
+    "consts": {
+      "WIDE": 20480,
+      "D": 5120,
+      "NB": 40,
+      "SUB": 128,
+      "MB": 8,
+      "RB": 6,
+      "WORLD": 1,
+      "POSTED": 0
+    },
+    "params": {
+      "X": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "XO": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "G": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "RS": {
+        "type": "i32",
+        "div16": false
+      },
+      "POST": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "COMB": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "FN": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "PART": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "rows": {
+        "type": "i32",
+        "div16": false
+      }
+    },
+    "options": {
+      "num_warps": 2,
+      "num_stages": 3,
+      "launch_pdl": false
+    }
+  },
+  {
+    "module": "tp3_triton_kernels",
+    "function": "_hc_mix_pf",
+    "consts": {
+      "WIDE": 20480,
+      "D": 5120,
+      "NB": 40,
+      "SUB": 128,
+      "MB": 8,
+      "RB": 4,
+      "WORLD": 3,
+      "POSTED": 1
+    },
+    "params": {
+      "X": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "XO": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "G": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "RS": {
+        "type": "i32",
+        "div16": false
+      },
+      "POST": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "COMB": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "FN": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "PART": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "rows": {
+        "type": "i32",
+        "div16": false
+      }
+    },
+    "options": {
+      "num_warps": 2,
+      "num_stages": 3,
+      "launch_pdl": false
+    }
+  },
+  {
+    "module": "tp3_triton_kernels",
+    "function": "_hc_mix_pf",
+    "consts": {
+      "WIDE": 20480,
+      "D": 5120,
+      "NB": 40,
+      "SUB": 128,
+      "MB": 8,
+      "RB": 5,
+      "WORLD": 3,
+      "POSTED": 1
+    },
+    "params": {
+      "X": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "XO": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "G": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "RS": {
+        "type": "i32",
+        "div16": false
+      },
+      "POST": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "COMB": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "FN": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "PART": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "rows": {
+        "type": "i32",
+        "div16": false
+      }
+    },
+    "options": {
+      "num_warps": 2,
+      "num_stages": 3,
+      "launch_pdl": false
+    }
+  },
+  {
+    "module": "tp3_triton_kernels",
+    "function": "_hc_mix_pf",
+    "consts": {
+      "WIDE": 20480,
+      "D": 5120,
+      "NB": 40,
+      "SUB": 128,
+      "MB": 8,
+      "RB": 6,
+      "WORLD": 3,
+      "POSTED": 1
+    },
+    "params": {
+      "X": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "XO": {
+        "type": "*bf16",
+        "div16": true
+      },
+      "G": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "RS": {
+        "type": "i32",
+        "div16": false
+      },
+      "POST": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "COMB": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "FN": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "PART": {
+        "type": "*fp32",
+        "div16": true
+      },
+      "rows": {
+        "type": "i32",
+        "div16": false
+      }
+    },
+    "options": {
+      "num_warps": 2,
+      "num_stages": 3,
+      "launch_pdl": false
+    }
+  }
+]

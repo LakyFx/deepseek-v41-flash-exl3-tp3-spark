@@ -41,6 +41,10 @@ The monitor extension after `c4844ad` adds observations; it does not change weig
 
 `tensorfold/inputs.json` binds the archives, frozen tensor-selection plans, native key order and public upstream manifests. `tensorfold/rope-hashes.json` binds every generated 3.3M/10M RoPE table. Kernel provenance builder paths were replaced with generic labels; kernel cubin bytes were preserved. The prebuilt kernels target SM121 and require a matching CUDA/driver environment; they are not portable kernels for arbitrary GPUs.
 
+### 14 October short-prefill kit overlay
+
+The kernel archive now includes six `_hc_mix_pf` row-4/5/6 additions and its 542-entry manifest. The published base runtime pin above is unchanged; only the expanded CPU checker source is overlaid from `5fa66fc`. Production serving binaries and weights were unchanged in that repair. [Exact inventory, provenance and tests](TENSORFOLD-HC-PREFILL-FIX.md). [Real Hermes production observations](HERMES-REAL-WORKLOAD.md) supplement the controlled results below and are labelled separately.
+
 ## Install and start
 
 Follow [the complete preparation and launch procedure](TENSORFOLD-INSTALL.md). It includes source extraction, native head **and follower** build, pinned checkpoint verification, six rank exports, BF16 vision extraction, local Engram ownership, offline RoPE generation, topology and launch commands. Preparation is CPU/file work; it does not stop an existing deployment.

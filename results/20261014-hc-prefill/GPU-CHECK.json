@@ -1,0 +1,35 @@
+{
+  "status": "GPU_BITWISE_PASS",
+  "cases": [
+    {
+      "rows": 4,
+      "posted": false,
+      "bitwise_equal_to_RB8": true
+    },
+    {
+      "rows": 5,
+      "posted": false,
+      "bitwise_equal_to_RB8": true
+    },
+    {
+      "rows": 6,
+      "posted": false,
+      "bitwise_equal_to_RB8": true
+    },
+    {
+      "rows": 4,
+      "posted": true,
+      "bitwise_equal_to_RB8": true
+    },
+    {
+      "rows": 5,
+      "posted": true,
+      "bitwise_equal_to_RB8": true
+    },
+    {
+      "rows": 6,
+      "posted": true,
+      "bitwise_equal_to_RB8": true
+    }
+  ]
+}

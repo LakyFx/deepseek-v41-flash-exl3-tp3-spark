@@ -1,0 +1,1 @@
+{"status":"MATRIX_COVERED_NOT_GPU_QUALIFIED","scope":"mHC, main RoPE, sparse attention, indexer, Triton top-k and optional native-plan dense prefill GEMM; CUDA launches excluded","dense_projection_shapes":0,"dense_launches":[],"launches":8699,"position_view_launches":3459,"missing":[]}

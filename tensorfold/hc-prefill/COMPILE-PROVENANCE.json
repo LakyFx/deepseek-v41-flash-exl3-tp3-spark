@@ -1,0 +1,80 @@
+{
+  "target": "cuda:121:32",
+  "triton": "3.8.0",
+  "cases_sha256": "4b259740799727c52380e764a33b5cfa25c6fe72f0f371d3100906a142a9746b",
+  "status": "COMPILED_NOT_GPU_QUALIFIED",
+  "sources": [
+    {
+      "module_file": "tools/dsv41-tp3/tp3_triton_kernels.py",
+      "module_sha256": "4301f70b936fd7e8cac6ce4406f6ad372296d626660dedbb015fbc5a3fc85596",
+      "compiler_hash": "045fcb5d19b9257ed8b7e0b09937bc7654805364df25e5b56f939ee51ce51cee",
+      "ptx_sha256": "d027227de5d94f3c831a4681e6813e58dbce03c90c22b43e0c04fea316385dc6",
+      "source_dependencies": [
+        {
+          "file": "python-reference/src/tensorfold/families/deepseek_v41/cuda/kernels.py",
+          "sha256": "723c3af1c9c1608f7c6439eb4e05d1cadfc7e633727a3b71f10552a67dd4a530"
+        }
+      ]
+    },
+    {
+      "module_file": "tools/dsv41-tp3/tp3_triton_kernels.py",
+      "module_sha256": "4301f70b936fd7e8cac6ce4406f6ad372296d626660dedbb015fbc5a3fc85596",
+      "compiler_hash": "79cdbf115c8d7f3ef82dbe2bcee6630895337b6e8a879509975fd5e0538e0bf6",
+      "ptx_sha256": "290d6180a3718656f97e3a1e5302a3e28de2946d1cd29dc10d34ec4ecf2a5d50",
+      "source_dependencies": [
+        {
+          "file": "python-reference/src/tensorfold/families/deepseek_v41/cuda/kernels.py",
+          "sha256": "723c3af1c9c1608f7c6439eb4e05d1cadfc7e633727a3b71f10552a67dd4a530"
+        }
+      ]
+    },
+    {
+      "module_file": "tools/dsv41-tp3/tp3_triton_kernels.py",
+      "module_sha256": "4301f70b936fd7e8cac6ce4406f6ad372296d626660dedbb015fbc5a3fc85596",
+      "compiler_hash": "b40d4d5d77275a8c9b27c11a8ff863de39f021b72da80c917636ea783893d874",
+      "ptx_sha256": "50e5d190bbe91e690c3e02be1544cc71398510fc04133cfa143a263dee23d935",
+      "source_dependencies": [
+        {
+          "file": "python-reference/src/tensorfold/families/deepseek_v41/cuda/kernels.py",
+          "sha256": "723c3af1c9c1608f7c6439eb4e05d1cadfc7e633727a3b71f10552a67dd4a530"
+        }
+      ]
+    },
+    {
+      "module_file": "tools/dsv41-tp3/tp3_triton_kernels.py",
+      "module_sha256": "4301f70b936fd7e8cac6ce4406f6ad372296d626660dedbb015fbc5a3fc85596",
+      "compiler_hash": "7d24aedfd1a9606b9a227417f7be333b3e7c9901e8809a3d9e0dcb8b4c3f1e95",
+      "ptx_sha256": "3e30d8bb68318862a7fdaf7b5694409f9d31ae02c340d049cdd874aa72f41389",
+      "source_dependencies": [
+        {
+          "file": "python-reference/src/tensorfold/families/deepseek_v41/cuda/kernels.py",
+          "sha256": "723c3af1c9c1608f7c6439eb4e05d1cadfc7e633727a3b71f10552a67dd4a530"
+        }
+      ]
+    },
+    {
+      "module_file": "tools/dsv41-tp3/tp3_triton_kernels.py",
+      "module_sha256": "4301f70b936fd7e8cac6ce4406f6ad372296d626660dedbb015fbc5a3fc85596",
+      "compiler_hash": "c2855c48c023fa3c9c92f2a0f181bf1c6dd828448804ffec2369c2967f91a7f5",
+      "ptx_sha256": "2da96922983ddcf394f43fb0864493ca83733b0e3de8443f105fe1889abe9a13",
+      "source_dependencies": [
+        {
+          "file": "python-reference/src/tensorfold/families/deepseek_v41/cuda/kernels.py",
+          "sha256": "723c3af1c9c1608f7c6439eb4e05d1cadfc7e633727a3b71f10552a67dd4a530"
+        }
+      ]
+    },
+    {
+      "module_file": "tools/dsv41-tp3/tp3_triton_kernels.py",
+      "module_sha256": "4301f70b936fd7e8cac6ce4406f6ad372296d626660dedbb015fbc5a3fc85596",
+      "compiler_hash": "6e7ef28396c223a2362b4d0b956ecf606b63615dfeba0fcfe61d1020c9d27653",
+      "ptx_sha256": "62fe1761fe223396b293e323c765cb45f4438ed381ddc8459708dd99b5171be6",
+      "source_dependencies": [
+        {
+          "file": "python-reference/src/tensorfold/families/deepseek_v41/cuda/kernels.py",
+          "sha256": "723c3af1c9c1608f7c6439eb4e05d1cadfc7e633727a3b71f10552a67dd4a530"
+        }
+      ]
+    }
+  ]
+}

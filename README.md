@@ -6,7 +6,26 @@
 
 **Measurement correction, 14 October:** the audited Owen code/prose decode cells generated only the first 256 MAX-reasoning tokens, with no final answer. Their timing is valid, but they are not completed-code/prose rates. The main comparison below now uses **completed Hermes C1/C3 workflows and verified cold prefill against the fresh C4 / 1.0.0 reference**. No model tests were rerun. [Audit, exact scopes and all retained results](docs/BENCHMARK-CORRECTION-20261014.md).
 
-![TF351 on three DGX Sparks: verified Hermes C1/C3 and cold-prefill comparison against C4 / 1.0.0; separately qualified 10M pool](assets/tf351-vs-c4-hermes.png)
+![TF351 on three DGX Sparks: real Hermes production observations for X11c, C4 and TF351, separate cold-prefill benchmarks and 10M shared KV pool](assets/tf351-real-workload.png)
+
+**Production update, 14 October:** the TF351 recipe includes the deployed fix for missing short-prefill `_hc_mix_pf` kernels. Six real SM121 cubins and their AOT entries are added; the expanded checker and CPU/GPU/warm-cache receipts are included. Weights and the **10M shared KV pool** stay unchanged. [Root cause, reproduction and recorded acceptance](docs/TENSORFOLD-HC-PREFILL-FIX.md).
+
+### Real workload: Hermes Agent in production
+
+Observed **aggregate decode tok/s**, weighted by active decode time. Parentheses show active sample minutes. Each version has its own five-hour production window; prompts, contexts and cache warmth differ. These observations supplement the controlled benchmarks below.
+
+| Concurrency | X11c tok/s (min) | C4 / 1.0.0 tok/s (min) | TF351 tok/s (min) | TF351 vs C4 |
+|---|---:|---:|---:|---:|
+| C1 | 51.7 (221.6) | 50.6 (168.0) | **83.7 (52.9)** | **+65.4%** |
+| C2 | 79.9 (29.7) | 69.1 (71.7) | **111.4 (33.5)** | **+61.2%** |
+| C3 | 101.3 (9.6) | 103.6 (32.5) | **125.5 (21.5)** | **+21.2%** |
+| C4 | 103.6 (5.7) | 100.3 (8.9) | **135.1 (22.2)** | **+34.6%** |
+| C5 | 112.1 (3.0) | not observed | 142.0 (24.2) | — |
+| C6 | not observed | not observed | 145.7 (12.8) | — |
+| C7 | not observed | not observed | 145.6 (8.7) | — |
+| C8 | not observed | not observed | **150.6 (75.5)** | — |
+
+**This is not a matched-prompt A/B test or a completed-job rate.** The windows are 00:00–05:00 CEST on 11 October (X11c), 13 October (C4) and 14 October (TF351 / 10M). vLLM uses streaming token-counter deltas; TF integrates native live decode rates. Idle/prefill/stalled periods do not become zero-rate decode samples. The TF window precedes the short-prefill repair, so these are not new post-fix speed results. No production TF29 window is available. [Method, full saved data and limitations](docs/HERMES-REAL-WORKLOAD.md) · [Offline recalculation](tools/audit_real_workload.py).
 
 ## Choose an engine and recipe
 

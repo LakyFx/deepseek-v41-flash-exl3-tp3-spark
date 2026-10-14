@@ -75,6 +75,24 @@ class TensorFoldRecipe(unittest.TestCase):
                      'materialize_checkpoint', 'tp3_layout', 'vision_export', 'export_campaign']:
             self.assertIn('tools/dsv41-tp3/' + name + '.py', json.loads((TF / 'artifacts/source-files.json').read_bytes()))
 
+    def test_short_prefill_kernel_cartesian_coverage_and_cubins(self):
+        patch = json.loads((TF / 'hc-prefill/PATCH.json').read_bytes())
+        with tarfile.open(TF / 'artifacts/tensorfold-kernels.tar.gz') as pack:
+            raw = pack.extractfile('aot/aot.json').read()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), patch['aot_sha256'])
+            kernels = json.loads(raw)['kernels']
+            self.assertEqual(len(kernels), 542)
+            for rows in (4, 5, 6):
+                for world, posted in ((1, 0), (3, 1)):
+                    selected = [k for k in kernels if k['fn'] == '_hc_mix_pf'
+                                and k['consts']['RB']['int'] == rows
+                                and k['consts']['WORLD']['int'] == world
+                                and k['consts']['POSTED']['int'] == posted]
+                    self.assertEqual(len(selected), 1)
+                    k = selected[0]
+                    binary = pack.extractfile('aot/cubins/' + k['hash'] + '.cubin').read()
+                    self.assertEqual(hashlib.sha256(binary).hexdigest(), k['hash'])
+
     def test_all_public_receipts_match_inventory(self):
         folder = ROOT / 'results/20261013-tensorfold'
         rows = json.loads((folder / 'evidence-manifest.json').read_bytes())

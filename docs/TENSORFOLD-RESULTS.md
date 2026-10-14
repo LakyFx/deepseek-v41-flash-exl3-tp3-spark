@@ -1,5 +1,9 @@
 # Complete TensorFold TP3 test results
 
+## New production observations and correctness repair
+
+The [14 October real Hermes workload export](HERMES-REAL-WORKLOAD.md) contains X11c/C4/TF351 active-time aggregate rates across separate five-hour windows, including all available C1–C8 data. This is a passive production sample with different tasks and cache states, not another exclusive benchmark run. Its TF351 window used 10M and precedes the [short-prefill AOT repair](TENSORFOLD-HC-PREFILL-FIX.md). The saved controlled campaigns below remain unchanged.
+
 [Recipe overview](TENSORFOLD-TP3.md) · [Run the same public adapters](TENSORFOLD-BENCHMARK.md) · [Numerical summary](../results/20261013-tensorfold/summary.json) · [Every exported receipt and hash](../results/20261013-tensorfold/evidence-manifest.json)
 
 TP3, MAX, context 401,408, eight streams. Full V3 uses source `6b7c3ac6df05e8041a4a77c26152723c795fad42`; final V7 uses `c4844adfef8df07f2bd299a6a23e5d04a6ec43c0`. The published runtime snapshot `61357debe730ac9ffe20e760edcddbc253b0e525` adds monitor observations. All speed/quality runs used the 3.3M pool. TF351 10M qualification is a separate phase. C4 reference files were frozen and SHA-verified, not rerun at every native iteration.

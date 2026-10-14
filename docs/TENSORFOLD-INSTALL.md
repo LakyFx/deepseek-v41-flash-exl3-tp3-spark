@@ -12,6 +12,8 @@ python3 tensorfold/extract.py --out /srv/ds41f-tf-build
 
 The extractor checks `tensorfold/inputs.json` before creating a new directory. It produces `source/`, `kit/` and `reference/`. The kit contains the qualified SM121 cubins, Triton AOT manifest, frozen model metadata, compressed Engram token map and fatbins used when building the native executable. RoPE binaries are generated separately; model and Engram weights are not distributed in this Git repository.
 
+**14 October kit update:** extraction now includes all 542 AOT variants, including the six short-prefill `_hc_mix_pf` additions. The source snapshot also includes the expanded CPU prefill selector check. [Patch hashes, recorded acceptance and existing-kit migration](TENSORFOLD-HC-PREFILL-FIX.md). Use the same updated kit on all ranks; the matching pool RoPE generation below remains required.
+
 ## 2. Build the head and followers
 
 Use Zig **0.17.0**, as recorded by `.zig-version`. On an x86 Linux build host, cross compilation can use:

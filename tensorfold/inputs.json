@@ -4,28 +4,28 @@
   "cache_benchmark_commit": "c4844adfef8df07f2bd299a6a23e5d04a6ec43c0",
   "files": {
     "artifacts/kernel-files.json": {
-      "bytes": 106137,
-      "sha256": "5745615cfa610605912a3fc71d8b3a9c7f717eb8ca8a4a171e4def686ff0dd08"
+      "bytes": 109575,
+      "sha256": "f23f16019fe037d62b39c15e4c9906abb6cfe11504746293fcbd449380d974ee"
     },
     "artifacts/rope-reference-files.json": {
       "bytes": 64436,
       "sha256": "0da439b16ef81b1d046cc68125eb9c29a325efd365b36939b1cd6492bda176af"
     },
     "artifacts/source-files.json": {
-      "bytes": 172230,
-      "sha256": "e7723a51a124217a474786c28a0fb700d7c22733b45555717283cf82b517a836"
+      "bytes": 176752,
+      "sha256": "d9336d3f25d1a442b6fe55f9f561284b4c6e727ac69adcdecc6c2ef55916a7ec"
     },
     "artifacts/tensorfold-kernels.tar.gz": {
-      "bytes": 39086953,
-      "sha256": "62fd88f23401f2469fab8841cfcdf1f354a317f040c9561179500880c579f562"
+      "bytes": 39844643,
+      "sha256": "3e94bac39a953165b05930fc9ef91c905f6238e92640fab3dd984973d761f341"
     },
     "artifacts/tensorfold-rope-reference.tar.gz": {
       "bytes": 1188266,
       "sha256": "3bb9295bd2809aa0c611082eac3d1e652abee166b804f741473f9010bd3d0405"
     },
     "artifacts/tensorfold-source.tar.gz": {
-      "bytes": 2025669,
-      "sha256": "7c018bfd705c9236787adeb9bd0ace98eb10206cb2bbbfdd1a7a79af88803939"
+      "bytes": 2025673,
+      "sha256": "8d4b2f808827fd247048082d122b8fab31b75e798b5ed86fd370103ef178469a"
     },
     "preparation/mia-selected.json": {
       "bytes": 1526,
@@ -62,6 +62,23 @@
     "preparation/TF351.json": {
       "bytes": 34805288,
       "sha256": "8e0067ce580c43b7438ea6041715d489e96988f30f0137d20c650d6bcda3369a"
+    },
+    "hc-prefill/PATCH.json": {
+      "bytes": 1510,
+      "sha256": "a1a74168f017c1b4c965f823f73e2e2a9d8e4d4aa0ee665586051c654697375d"
+    },
+    "hc-prefill/COMPILE-CASES.json": {
+      "bytes": 6263,
+      "sha256": "4b259740799727c52380e764a33b5cfa25c6fe72f0f371d3100906a142a9746b"
+    },
+    "hc-prefill/COMPILE-PROVENANCE.json": {
+      "bytes": 3770,
+      "sha256": "269e3bfb5b16bb889d02c89e0915e71777fc300f3d78c9078e38613280dfc25a"
     }
+  },
+  "hc_prefill_patch": {
+    "manifest": "hc-prefill/PATCH.json",
+    "date": "2026-10-14",
+    "aot_sha256": "d2a74f96ead50f86f7fcaab2905dee651bd6e27d3c831ee5c4fef1f07130b684"
   }
 }

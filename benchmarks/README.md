@@ -1,5 +1,7 @@
 # Repeatable public workloads
 
+The separate [real Hermes production observation](../docs/HERMES-REAL-WORKLOAD.md) is included in the results catalog and the main README. It does not use the exclusive runner below: different five-hour operational windows and active-time averages are explicitly labelled. Recalculate its published metric-only aggregates with `python3 tools/audit_real_workload.py` from the repository root; no model calls are made.
+
 `corpus/workloads` contains the sixteen reviewed source-reference and authored tool-task inputs used for the expanded workload suite. Decoded messages, tools and context text are unchanged. Files use ASCII JSON escaping so the repository prose has no em dash; the text passed to the model remains the original text. Published file hashes bind that encoding, while original request/context hashes remain available as provenance.
 
 The original legacy corpus included captured private prose and synthetic code packets containing private operational source. Those complete bodies are excluded. Historical results, input token counts and opaque case fingerprints remain published. The public runner prepares safe legacy surrogate cases instead. A surrogate replay is not an exact paired comparison to the historical legacy results.

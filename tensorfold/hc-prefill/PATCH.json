@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-14",
+  "base_runtime_commit": "61357debe730ac9ffe20e760edcddbc253b0e525",
+  "expanded_cpu_check_source_commit": "5fa66fc",
+  "native_binary_changed_in_deployment": false,
+  "weights_changed": false,
+  "pool_tokens": 10000000,
+  "old_variants": 536,
+  "new_variants": 542,
+  "aot_sha256": "d2a74f96ead50f86f7fcaab2905dee651bd6e27d3c831ee5c4fef1f07130b684",
+  "new_kernels": [
+    {
+      "hash": "c08253a4e2c56613d18403ab7b3b9a97a1f3622495a2af2505ecc2c01c61cc86",
+      "rows": 4,
+      "world": 1,
+      "posted": 0
+    },
+    {
+      "hash": "30605a5444bd5f941613aef6e0492a0a29f3dc7118766354e7d5988162ae969f",
+      "rows": 5,
+      "world": 1,
+      "posted": 0
+    },
+    {
+      "hash": "c4d4f4d36c55fb2564eac8b291b2eea0d0c39492c59a38c44b21a31287e12bea",
+      "rows": 6,
+      "world": 1,
+      "posted": 0
+    },
+    {
+      "hash": "92a6ed073ad78c5933dba9524a422f5b8c007227705ae6a8e0d28250d4cda973",
+      "rows": 4,
+      "world": 3,
+      "posted": 1
+    },
+    {
+      "hash": "01ab6c2e39b43fb9d3d367bbb293cec7706166db7b49f277f412a845f5e0c8ba",
+      "rows": 5,
+      "world": 3,
+      "posted": 1
+    },
+    {
+      "hash": "715a6e737dae238e465eea26fe7d19fbfa008c12e8e78f897737f4e86394e661",
+      "rows": 6,
+      "world": 3,
+      "posted": 1
+    }
+  ],
+  "scope": "Missing _hc_mix_pf short-prefill variants only; no speculative or cache policy change",
+  "gpu_evidence": "../../results/20261014-hc-prefill/GPU-CHECK.json"
+}

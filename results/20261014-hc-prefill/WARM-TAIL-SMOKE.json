@@ -1,0 +1,70 @@
+[
+  {
+    "prompt_tokens": 12288,
+    "tail": 0,
+    "status": 200,
+    "usage": {
+      "prompt_tokens": 12288,
+      "completion_tokens": 2,
+      "total_tokens": 12290,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "seconds": 5.116556406021118
+  },
+  {
+    "prompt_tokens": 12292,
+    "tail": 4,
+    "status": 200,
+    "usage": {
+      "prompt_tokens": 12292,
+      "completion_tokens": 2,
+      "total_tokens": 12294,
+      "prompt_tokens_details": {
+        "cached_tokens": 12288
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "seconds": 0.1147909164428711
+  },
+  {
+    "prompt_tokens": 12293,
+    "tail": 5,
+    "status": 200,
+    "usage": {
+      "prompt_tokens": 12293,
+      "completion_tokens": 2,
+      "total_tokens": 12295,
+      "prompt_tokens_details": {
+        "cached_tokens": 12288
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "seconds": 0.12652921676635742
+  },
+  {
+    "prompt_tokens": 12294,
+    "tail": 6,
+    "status": 200,
+    "usage": {
+      "prompt_tokens": 12294,
+      "completion_tokens": 2,
+      "total_tokens": 12296,
+      "prompt_tokens_details": {
+        "cached_tokens": 12288
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "seconds": 0.139939546585083
+  }
+]

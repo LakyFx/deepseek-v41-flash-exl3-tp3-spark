@@ -17,7 +17,7 @@ This deployment is assembled on the work of the following projects and authors. 
 
 Native source and kernel packages retain `LICENSE`, `NOTICE`, `THIRD_PARTY_NOTICES` and `LICENSES/`. The separate Python RoPE reference also carries the upstream TensorFold license. Our integration license does not relicense model weights, CUDA components or copied upstream work. See [TF source pins](TENSORFOLD-TP3.md#frozen-software-and-data).
 
-The launch poster is generated artwork incorporating the TensorFold mesh logo from its public repository, credited to @ashxhart. It is a community recipe illustration; NVIDIA and TensorFold branding remains with its respective owners. Values and measurement scopes come from the linked result receipts.
+The launch poster is generated artwork incorporating the TensorFold mesh logo from its public repository, credited to @ashxhart. It is a community recipe illustration; NVIDIA and TensorFold branding remains with its respective owners. Values and measurement scopes come from the linked result receipts. The current poster adds [real Hermes Agent production observations](HERMES-REAL-WORKLOAD.md), which are our own separate operational sample, not Owen's measurements. The [short-prefill AOT repair](TENSORFOLD-HC-PREFILL-FIX.md) compiles missing row-4/5/6 variants of the existing credited TensorFold arithmetic, preserving earlier sources and notices.
 
 ## Model and quantization
 

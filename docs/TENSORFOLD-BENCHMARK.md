@@ -2,6 +2,8 @@
 
 The frozen adapter is in `tensorfold/benchmark-kit/`. The second benchmark is **adapted from [Christopher Owen's GitHub recipe](https://github.com/christopherowen/spark-ds41f)**, `bin/spark` at `dd35633edeadd8864ec177890025b6e7c5df47ce`, source SHA `b130f172ec4e039532e9fb0b7d4d6256ddc5f16918c88d0689841146631ba46a`. Existing [Owen methodology](OWEN-BENCHMARK.md) explains the common-context subset. We retain his stream timing and decode-window definitions, and add backend isolation, native counter coverage and cold-cache receipts.
 
+The separate [real Hermes production workload comparison](HERMES-REAL-WORKLOAD.md) is a passive operational sample, published with [exact observation aggregates](../results/20261014-hermes-real-workload/observations.json) and an [offline audit](../tools/audit_real_workload.py). Its different five-hour windows and active-time rates must not be blended into the frozen benchmark tables below.
+
 ## Frozen conditions and metric definitions
 
 Use `TF351-3.3M` or `TF29`, the same **3.3M** kit on every rank, context 401,408, eight streams, MAX and the supplied cache/tool fixes. Run one variant at a time. Loading time is separate from the measurement budget. Do not label a new 10M run as a reproduction of the 3.3M campaign.
