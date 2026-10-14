@@ -12,3 +12,5 @@ benchmarks/owen/owen-fixture.json -text
 # Frozen hashes bind exact bytes across Windows/Linux checkouts.
 tensorfold/** -text -whitespace
 results/20261013-tensorfold/** -text -whitespace
+results/20261014-hermes-real-workload/** -text -whitespace
+results/20261014-hc-prefill/** -text -whitespace

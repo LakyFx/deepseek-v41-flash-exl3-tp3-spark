@@ -4,16 +4,16 @@
   "cache_benchmark_commit": "c4844adfef8df07f2bd299a6a23e5d04a6ec43c0",
   "files": {
     "artifacts/kernel-files.json": {
-      "bytes": 109575,
-      "sha256": "f23f16019fe037d62b39c15e4c9906abb6cfe11504746293fcbd449380d974ee"
+      "bytes": 107313,
+      "sha256": "165cf58ba3afcc8e6802f52b56f8b820a3ecbaa6a560c542d582194b03a579ba"
     },
     "artifacts/rope-reference-files.json": {
       "bytes": 64436,
       "sha256": "0da439b16ef81b1d046cc68125eb9c29a325efd365b36939b1cd6492bda176af"
     },
     "artifacts/source-files.json": {
-      "bytes": 176752,
-      "sha256": "d9336d3f25d1a442b6fe55f9f561284b4c6e727ac69adcdecc6c2ef55916a7ec"
+      "bytes": 172230,
+      "sha256": "23a208b0bf1a9a4d799bb4242b7c706e850cf029c6b6bc740b2f8d82963a08a0"
     },
     "artifacts/tensorfold-kernels.tar.gz": {
       "bytes": 39844643,
