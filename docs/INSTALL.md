@@ -84,14 +84,14 @@ curl --fail http://127.0.0.1:8003/v1/models
 
 ## 6. Reasoning policy and clients
 
-The model defaults to thinking enabled and native `max`. Our production gateway forces main agent requests to MAX and image requests to MEDIUM, mapped to native `high` strength 50. For a direct vision request set `reasoning_effort: "high"` at both the top level and in `chat_template_kwargs`, with thinking enabled. The native encoder rejects the literal `medium`. A top-level reasoning field overrides a conflicting template field.
+The model defaults to thinking enabled and native `max`. The current [production gateway](GATEWAY.md) defaults main agent requests to MAX and preserves supported explicit client effort overrides. For a standalone vision question use the canonical model with public `medium`, `thinking_budget:3072` and `max_tokens:6144`; the gateway maps public MEDIUM to native `high`. For a direct historical C4 vision request use native `high` at both the top level and in `chat_template_kwargs`, with thinking enabled. A top-level reasoning field overrides a conflicting template field.
 
-The model-side serial renderer and one-image encoder batches are included. The separate private multi-protocol gateway, HTTPS certificates, user accounts and WhatsApp retry/cursor state are not copied. A direct model connection allows request-level effort overrides. If you require the same forced policy, use [gateway.py](../tools/gateway.py), which provides an OpenAI chat forwarding lane, before connecting Hermes. For Responses or other adapters, preserve the same policy in the adapter and verify the final model-bound body.
+The model-side serial renderer and one-image encoder batches are included. The separate [gateway package](GATEWAY.md) now also publishes the production multi-protocol engine and policy profile, including durable vision jobs. Operator credentials, TLS material, accounts, agent sessions and messaging state are excluded. A direct model connection allows request-level effort overrides.
 
-Run the forwarding lane on rank 0 in a host environment with `httpx`, `starlette` and `uvicorn`, or inside the built image with host networking and this script mounted read-only. Supply an API key through the environment; do not put it in the repository. It defaults to loopback port 8000. A trusted reverse proxy can terminate TLS and forward to that port. Its configurable upstream read timeout defaults to 1,200 seconds; this does not override a shorter Hermes client timeout or add queue priority.
+Install the gateway in a separate host virtual environment as described in [GATEWAY.md](GATEWAY.md), with your own `LAGUNA_GATEWAY_API_KEY`. It defaults to loopback port18002 and the operator-configured head backend. `tools/gateway.py` launches the installed production package. Vision jobs have a900-second total deadline including queues; client total/read timeouts remain independent. The earlier small1200-second proxy and `RECIPE_*` environment settings apply only to older recipe revisions.
 
 ```bash
-# RECIPE_API_KEY must already be set in the process environment.
+# Install ./gateway; LAGUNA_GATEWAY_API_KEY must already be set privately.
 python3 tools/gateway.py
 ```
 

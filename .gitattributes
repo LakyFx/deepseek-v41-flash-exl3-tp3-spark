@@ -14,3 +14,6 @@ tensorfold/** -text -whitespace
 results/20261013-tensorfold/** -text -whitespace
 results/20261014-hermes-real-workload/** -text -whitespace
 results/20261014-hc-prefill/** -text -whitespace
+
+# Gateway provenance binds production module bytes.
+gateway/laguna_gateway/*.py -text whitespace=trailing-space,space-before-tab,cr-at-eol

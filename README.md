@@ -1,5 +1,12 @@
 # DeepSeek V4.1 Flash EXL3 on three DGX Sparks
 
+**Recipe v1.2.1 gateway update:** the optional [gateway package](docs/GATEWAY.md)
+now includes the same Chat/Responses engine, policy defaults and durable vision
+jobs as our deployment. Accepted image work survives client disconnection;
+retries share a job and only a validated final answer is returned. The package
+requires your own API secret, backend URL and private state directory. Model
+weights, engine profiles and historical benchmark results retain their scope.
+
 [![DeepSeek V4.1 Flash 1017: EXL3 3.51 bpw main experts, TensorFold TP3 on three DGX Sparks. Weights live and recipe v1.2.0 ready.](assets/deepseek-1017-release.png)](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold)
 
 **New model revision: [DS41F 1.2.0 / DeepSeek 1017](docs/DS41F-1.2.0.md).** This adds our [EXL3 3.5bpw TensorFold weights on Hugging Face](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold) and the `--variant 1.2.0` launcher profile: TP3, MAX, 401,408 context, 8M configured KV pool, 2 GiB prompt-state cache, S12/R32. The native engine is retained. **All previous variants and test results remain below; no comparative benchmark was rerun for 1017.** [Exact revision, download and launch instructions](docs/DS41F-1.2.0.md).
