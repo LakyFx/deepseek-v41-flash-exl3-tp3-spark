@@ -111,3 +111,7 @@ Private captured bodies and generated private text are omitted from public evide
 - **X11e:** genuinely dynamic generated depth, K5 at 1?3 requests, K4 at 4?5 and K3 at 6?8. Downshift after two matching steps; upshift immediately. Extra graph shapes cover physical depths 3?6. It was weaker than X11c on the shown C1/C3/C8 and prefill cells, so dynamic generation was not carried into production.
 
 The X1?X11 table above likewise shows non-additive behavior: X4 gave the largest isolated C1 in that campaign, X9's shorter K3 favored C8 but lost C1, and X10's combined fixed-K5 changes did not dominate. X11 added adaptive verification to X10 and improved C8 in that pass. These observations motivated combination tests rather than assuming every individually plausible kernel change must stay enabled.
+
+## 18 October 2026: DS41F 1.2.0 / DeepSeek 1017
+
+Added [1.2.0](DS41F-1.2.0.md) as a new model-revision variant with our pinned [Hugging Face EXL3 3.5bpw TensorFold release](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold). It retains the existing native engine and uses the observed TF351-1017 TP3 settings: MAX, 401,408 context, 8M configured KV pool, 2 GiB prompt-state cache, S12/R32. Existing comparative tests and result files were retained without rerunning model benchmarks. The new revision's recorded functional serving smoke is linked from its recipe; old benchmark scores are not assigned to 1017.

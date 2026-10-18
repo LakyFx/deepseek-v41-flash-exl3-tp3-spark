@@ -1,5 +1,11 @@
 # Sources and credits
 
+## 1.2.0 / DeepSeek 1017 addition
+
+[DS41F 1.2.0](DS41F-1.2.0.md) uses our independent [EXL3 3.5bpw TensorFold export](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold), pinned on the Hub to `8621801c1fc74aece1fa83e67c6ade3fde1e7894`, from [DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) at `1bae0e1088993b9b82de08f59de5be5a34e42170`. DeepSeek created the base model. All model weight values in that release come from the new source revision; older Pollard/Mia bytes are not reused.
+
+Thank you to [TensorFold](https://tensorfold.dev/) and [Ashley Hart / @ashxhart](https://x.com/ashxhart) for the persistent, open work that inspired this export. The Pollard precision map and quantization work by bot-lab-21/WestWaters, Mia-AiLab's earlier EXL3 export and turboderp's ExLlamaV3 remain credited methods, tools and earlier integration sources. The source and measurement attributions below retain their historical scope; older quality measurements are not new 1017 results.
+
 This deployment is assembled on the work of the following projects and authors. A source used in the runtime is distinct from a recipe studied for inspiration. Weight quality, upstream kernel microbenchmarks and our model-level measurements are also distinct claims.
 
 ## TensorFold TP3 recipes: primary thanks
@@ -28,7 +34,7 @@ The launch poster is generated artwork incorporating the TensorFold mesh logo fr
 | [WestWaters pollard-weights](https://github.com/WestWaters/pollard-weights) | Quantization methodology explicitly credited by the checkpoint publisher |
 | [ExLlamaV3](https://github.com/turboderp-org/exllamav3) | EXL3 trellis format and original implementations; related code retains its original license notices |
 
-The EXL3 number describes routed experts. It is not the precision of every tensor in the hybrid checkpoint. We did not train the model or produce this quantization.
+The EXL3 number describes routed experts. It is not the precision of every tensor in the hybrid checkpoint. We did not train the model or produce the historical Pollard/Mia quantizations described in this section; our separate 1017 export is identified above.
 
 ## Original serving recipe and software actually used
 

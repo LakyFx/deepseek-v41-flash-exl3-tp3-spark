@@ -1,5 +1,7 @@
 # Prepare and run the two TensorFold TP3 recipes
 
+For the new **DeepSeek 1017 / 1.2.0** variant, follow [its separate recipe](DS41F-1.2.0.md). It reuses the source/build/kit procedures below but downloads the prebuilt 1017 model/rank/Engram artifacts instead of performing the older Pollard/Mia checkpoint preparation. The original procedures below remain available for TF351 and TF29.
+
 Read [the recipe and qualification scope](TENSORFOLD-TP3.md) first. This procedure prepares independent files and gives explicit per-rank commands. It does not modify the old C4 image or stop a production service. Substitute your storage paths and topology.
 
 ## 1. Extract the pinned source and kernels

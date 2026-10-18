@@ -1,5 +1,7 @@
 # DeepSeek V4.1 Flash EXL3 on three DGX Sparks
 
+**New model revision: [DS41F 1.2.0 / DeepSeek 1017](docs/DS41F-1.2.0.md).** This adds our [EXL3 3.5bpw TensorFold weights on Hugging Face](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold) and the `--variant 1.2.0` launcher profile: TP3, MAX, 401,408 context, 8M configured KV pool, 2 GiB prompt-state cache, S12/R32. The native engine is retained. **All previous variants and test results remain below; no comparative benchmark was rerun for 1017.** [Exact revision, download and launch instructions](docs/DS41F-1.2.0.md).
+
 **A huge thank you to [Ashley Hart, @ashxhart](https://x.com/ashxhart), creator of [TensorFold](https://github.com/ashhart/TensorFold). Its native engine made our TF351 and TF29 TP3 recipes possible. Visit [tensorfold.dev](https://tensorfold.dev/).**
 
 **A big thank you to [Christopher Owen](https://github.com/christopherowen), [@christopherowen on X](https://x.com/christopherowen), for his [spark-ds41f recipes](https://github.com/christopherowen/spark-ds41f), networking work and benchmark. The Owen code/prose benchmark below is explicitly adapted from his GitHub project.**
@@ -29,10 +31,11 @@ Observed **aggregate decode tok/s**, weighted by active decode time. Parentheses
 
 ## Choose an engine and recipe
 
-**Two TensorFold recipes, with the complete C4 and X11c tuning history preserved.** Our selected TensorFold profile is **TF351: TP3, approximately 3.51 bpw routed experts, MAX reasoning, 401K context and a separately stress-qualified 10M shared KV pool**. TF29 is the faster-decode 2.9 bpw alternative; its tested pool is 3.3M.
+**The new 1.2.0 / 1017 recipe is additive; the two earlier TensorFold recipes and complete C4/X11c tuning history are preserved.** The preceding selected TensorFold profile was **TF351: TP3, approximately 3.51 bpw routed experts, MAX reasoning, 401K context and a separately stress-qualified 10M shared KV pool**. TF29 is the earlier faster-decode 2.9 bpw alternative; its tested pool is 3.3M. The historical tables on this page retain those older checkpoints and settings.
 
 | Version | Engine / routed experts | Shared KV pool | Recipe and complete tests |
 |---|---|---:|---|
+| **1.2.0 / 1017** | **TensorFold / new DeepSeek 1017 EXL3 ~3.51 bpw** | **8M configured** | [New recipe and pinned HF weights](docs/DS41F-1.2.0.md); recorded functional smoke only, no new comparative benchmark |
 | X11c / B0 | vLLM / Pollard ~3.51 bpw | ~3.3M | [Historical baseline](docs/VARIANTS.md#b0), [all 18 host64k arms](docs/CAMPAIGN-20261012.md) |
 | C4 / DS41F 1.0.0 | vLLM / Pollard ~3.51 bpw | 3,299,563 observed | [Retained C4 recipe](docs/DS41F-1.0.0.md), [fresh TF comparison reference](docs/TENSORFOLD-RESULTS.md#c4-reference) |
 | **TF351** | **TensorFold / Pollard ~3.51 bpw** | **10M qualified; 3.3M speed profile** | [Recipe](docs/TF351.md), [source/build/install](docs/TENSORFOLD-INSTALL.md), [tests](docs/TENSORFOLD-RESULTS.md#tf351) |

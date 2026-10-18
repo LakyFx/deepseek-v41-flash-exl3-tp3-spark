@@ -1,17 +1,20 @@
 # DeepSeek V4.1 Flash: TensorFold on three DGX Sparks
 
+**New model revision:** [DS41F 1.2.0 / DeepSeek 1017](DS41F-1.2.0.md) uses our pinned [Hugging Face EXL3 weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold), the existing native engine and a separate 8M / 2 GiB / S12 / R32 profile. The earlier recipes and results on this page are retained; no comparative benchmark was rerun for 1017.
+
 Thank you to **[@ashxhart](https://x.com/ashxhart)**, creator of [TensorFold](https://github.com/ashhart/TensorFold), [tensorfold.dev](https://tensorfold.dev/). This engine made the new serving path possible. Thank you also to [bertholomus](https://github.com/bertholomus/TensorFold) for the community DeepSeek implementation, [Mia AI Lab](https://huggingface.co/Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw) for its checkpoint and contributions, and [Christopher Owen](https://github.com/christopherowen/spark-ds41f), [@christopherowen](https://x.com/christopherowen), for networking, tuning inspiration and the benchmark methodology. All earlier [sources and credits](SOURCES.md) remain applicable to the historical vLLM recipes.
 
 ## Choose a recipe
 
 | Recipe | Routed experts | Other rank tensors | Logical KV pool | Status |
 |---|---|---|---:|---|
+| [1.2.0 / 1017](DS41F-1.2.0.md) | New 1017 EXL3 approximately 3.51 bpw | All model weights from pinned 1017 source | **8,000,000 configured** | Three-Spark serving smoke passed; no new comparative or full-capacity benchmark |
 | [TF351](TF351.md) | Pollard EXL3 approximately 3.51 bpw | Mia EXL3/ancillary export | **10,000,000 tokens** | Current selected production profile; separate short pool stress and API qualification |
 | [TF351-3.3M](TF351.md#the-frozen-benchmark-profile) | Same experts | Same export | 3,300,000 | Frozen comparative speed, prefix-cache and scoped quality profile |
 | [TF29](TF29.md) | Mia EXL3 approximately 2.9 bpw | Mia export | 3,300,000 | Tested alternative; 10M on TF29 has not been tested |
 | [DS41F 1.0.0 / C4](DS41F-1.0.0.md) | Pollard EXL3 approximately 3.51 bpw | Original hybrid checkpoint | 3,299,563 observed | Preserved vLLM recipe and independent rollback option |
 
-All TF profiles keep **TP3, no EP, 401,408 tokens per request, eight streams, MAX reasoning**, round rows 16 and a separate 1 GiB prompt snapshot budget on the head. The 10M shared pool is 3.03 times the configured 3.3M pool, not a 10M per-request context or 30M across the cluster. Vision tensors remain BF16.
+The earlier TF351/TF351-3.3M/TF29 profiles keep **TP3, no EP, 401,408 tokens per request, eight streams, MAX reasoning**, round rows 16 and a separate 1 GiB prompt snapshot budget on the head. The 10M shared pool is 3.03 times the configured 3.3M pool, not a 10M per-request context or 30M across the cluster. Vision tensors remain BF16. The separate 1.2.0 profile uses S12/R32 and 2 GiB, as specified in its recipe.
 
 This is our **custom DeepSeek TP3 port**, not a claim that the current upstream installer supports this exact cluster. Use the source and kernel snapshots shipped here. Updating upstream TensorFold independently can change model, cache and API behavior.
 
