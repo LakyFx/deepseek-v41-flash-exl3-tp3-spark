@@ -1,8 +1,9 @@
 # DeepSeek V4.1 Flash EXL3 on three DGX Sparks
 
-**Recipe v1.2.1 gateway update:** the optional [gateway package](docs/GATEWAY.md)
+**Production release 1.2.2TF:** the optional [gateway package](docs/GATEWAY.md)
 now includes the same Chat/Responses engine, policy defaults and durable vision
-jobs as our deployment. Accepted image work survives client disconnection;
+jobs as our deployment, with **two image requests processed concurrently** and
+all additional accepted jobs queued. Accepted image work survives client disconnection;
 retries share a job and only a validated final answer is returned. The package
 requires your own API secret, backend URL and private state directory. Model
 weights, engine profiles and historical benchmark results retain their scope.

@@ -8,7 +8,10 @@ from pathlib import Path
 from laguna_gateway.app import create_app as _create_app
 from laguna_gateway.config import Settings
 
-SOURCE_REVISION = 'd021774d38c0e7c684e6da44f39f22e735deb14b'
+SOURCE_REVISION = 'cbec16961b9a23825bc186cbb6ea91b7d7c859c9'
+RECIPE_VERSION = '1.2.2TF'
+# Preserve implicit deduplication across this compatible scheduler-only upgrade.
+VISION_JOBS_REVISION = 'd021774d38c0e7c684e6da44f39f22e735deb14b'
 
 
 def production_settings():
@@ -42,8 +45,10 @@ def create_app(*, upstream_transport=None, vision_transport=None):
     if os.name == 'posix' and state.parent.stat().st_mode & 0o077:
         raise ValueError('Vision state directory must have mode0700')
     os.environ['DGX_VISION_JOBS_DB'] = str(state)
-    os.environ.setdefault('DGX_VISION_JOBS_REVISION', SOURCE_REVISION)
+    os.environ.setdefault('DGX_VISION_JOBS_REVISION', VISION_JOBS_REVISION)
     os.environ.setdefault('DGX_MEDIA_SERIAL_REQUESTS', '1')
+    os.environ.setdefault('DGX_MEDIA_MAX_CONCURRENCY', '2')
+    os.environ.setdefault('DS41F_RECIPE_VERSION', RECIPE_VERSION)
     return _create_app(settings, upstream_transport=upstream_transport, vision_transport=vision_transport)
 
 

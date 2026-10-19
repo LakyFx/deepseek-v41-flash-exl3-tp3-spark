@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ds41f-gateway"
-version = "1.0.0"
+version = "1.2.2"
 description = "Production OpenAI-compatible DGX gateway with durable vision jobs"
 requires-python = ">=3.11"
 dependencies = [

@@ -1,5 +1,5 @@
 {
-  "scope": "Portable production gateway publication, 2026-10-18",
+  "scope": "Production release1.2.2TF,2026-10-19; two concurrent image requests",
   "production_policy_fields": 72,
   "runtime_modules": 29,
   "byte_identical_production_modules": 27,
@@ -7,21 +7,23 @@
     "lan_bridge.py": "Default upstream uses loopback",
     "tailscale_bridge.py": "Default upstream uses loopback"
   },
-  "gateway_tests_passed": 80,
+  "gateway_tests_passed": 95,
   "original_recipe_tests_passed": 23,
   "production_dependency_versions_tested": true,
-  "installed_wheel_fake_upstream_smoke": "PASS",
+  "installed_wheel_fake_upstream_smoke": "Previous1.2.1 installed-wheel check retained; current1.2.2 wheel zip-import fake-stream smoke PASS",
   "new_model_benchmarks": false,
   "new_public_three_node_build_load_qualification": false,
   "privacy": {
-    "reviewed_public_base_revision": "26a033e0ef668b1ae70f3b915fa091b56738e8ce",
+    "reviewed_public_base_revision": "16998a49ae8c9c6140888368e2e706ad99accbee",
     "published_history_commits_at_base": 25,
-    "scope": "Current source, published history, embedded source archives and public metadata; new gateway included in prepublication review",
+    "scope": "Prior full public-source/history/archive/metadata review retained for unchanged bytes;1.2.2TF changed commit and release notes receive new secret/private-identifier checks",
     "scanner": "Gitleaks 8.30.1 plus private-identifier review",
     "confirmed_sensitive_public_findings": 0,
     "candidate_review": "Artifact SHA256 values, code/kernel identifiers and private-CIDR constants in the frozen standard-library benchmark fixture",
     "unchanged_base_image_assets_digest_checked": 11,
     "docker_layer_coverage": "Prior full-layer audit reused only after exact manifest and current asset digest/size match",
     "limitation": "Pattern-based review is not an absolute guarantee against arbitrary encoded secrets"
-  }
+  },
+  "production_image_overlap_measured": false,
+  "original_recipe_tests_scope": "23 unchanged recipe tests passed at1.2.1; unchanged native recipes and benchmark assets retained without rerunning"
 }

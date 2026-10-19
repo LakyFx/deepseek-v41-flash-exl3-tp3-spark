@@ -10,6 +10,8 @@ WorkingDirectory=/srv/ds41f-gateway
 EnvironmentFile=/etc/ds41f-gateway.env
 Environment=DS41F_GATEWAY_STATE_DIR=/var/lib/ds41f-gateway
 Environment=DGX_MEDIA_SERIAL_REQUESTS=1
+Environment=DGX_MEDIA_MAX_CONCURRENCY=2
+Environment=DS41F_RECIPE_VERSION=1.2.2TF
 StateDirectory=ds41f-gateway
 StateDirectoryMode=0700
 UMask=0077

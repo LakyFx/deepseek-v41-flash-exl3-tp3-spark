@@ -1,4 +1,4 @@
-# Production gateway and durable vision jobs
+# Production gateway 1.2.2TF and durable vision jobs
 
 This optional gateway publishes the serving behavior used with the native
 TensorFold deployment. Install it in front of the head API. It does not manage
@@ -66,7 +66,7 @@ tokenizer configured.
 | Chat and Responses checkpoint |enforce, trigger262144, target258048 |
 | Image/video token reserve |16384 /32768 |
 | Images per prompt |32; overflow mode off |
-| Image admission |one image-bearing request at a time, including agent routes |
+| Image admission |two image-bearing requests at a time, including agent routes; further accepted jobs queue |
 | SSE heartbeat |15 seconds |
 | Connection / read / write / pool timeout |10 /3600 /120 /30 seconds |
 | Upstream connection recovery window |900 seconds |
@@ -74,6 +74,12 @@ tokenizer configured.
 | Czech output enforcement |on, matching production |
 
 For another output language set `LAGUNA_GATEWAY_ENFORCE_CZECH=false`.
+`DGX_MEDIA_MAX_CONCURRENCY=2` is the public entry point and systemd default,
+matching production. Set it to `1` for serial processing. Keep
+`DGX_MEDIA_SERIAL_REQUESTS=1` to enable this admission gate. These are concurrent
+request slots, not a two-image payload limit. Vision and text share C12; two
+vision requests leave up to ten slots for text. Native image encoding still
+uses its serialized workspace; this release makes no throughput or RAM claim.
 For deliberate policy changes copy the JSON to your own untracked file and set
 `DS41F_GATEWAY_PROFILE` to its path. Keep all fields; credentials and operator
 paths are rejected in that file. Changes are your own profile, rather than the
@@ -136,12 +142,16 @@ Accepted work survives client disconnection. Queued jobs survive a gateway
 restart. A running or ambiguously interrupted dispatch becomes `unknown` and is
 never automatically replayed. UNKNOWN blocks new standalone image dispatch
 until an operator verifies backend termination. Ordinary text/agent routes
-remain available. An HTTP disconnect alone is not termination evidence.
+remain available. An already running peer image job may finish, while UNKNOWN
+blocks new dispatch into either slot. An HTTP disconnect alone is not termination evidence.
 
 For controlled maintenance wait for active work to finish before restarting the
 API. Existing HTTP connections cannot be migrated into a queue across process
 restart. Keep the same API credential, database and revision for retained jobs.
 Changing the revision invalidates implicit dedup for new submissions.
+Release1.2.2TF preserves the previous default job identity revision so upgrading
+this compatible scheduler does not invalidate retained implicit jobs. Runtime
+source provenance is recorded separately in `source-manifest.json`.
 
 The local operator tool is read-only without a receipt:
 

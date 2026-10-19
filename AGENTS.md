@@ -1,5 +1,9 @@
 # Agent installation guide
 
+The integrated production release is **1.2.2TF**: the unchanged1.2.0/1017
+native recipe plus the gateway with two concurrent image-request slots. Read
+`docs/DS41F-1.2.2TF.md` and `docs/GATEWAY.md`; keep historical profiles intact.
+
 For the optional production serving layer read `docs/GATEWAY.md`, install
 `./gateway` in its own virtual environment and use `ds41f-gateway`. The package
 matches the published production settings, requires an operator-supplied API key

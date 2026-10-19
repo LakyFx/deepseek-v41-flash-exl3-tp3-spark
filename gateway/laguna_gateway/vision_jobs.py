@@ -16,7 +16,7 @@ import time
 import uuid
 from pathlib import Path
 
-from .media_admission import has_images
+from .media_admission import has_images, media_concurrency
 
 log = logging.getLogger(__name__)
 TERMINAL = {'succeeded', 'failed', 'unknown'}
@@ -61,6 +61,7 @@ class AdmissionError(ValueError):
 class Ledger:
     def __init__(self, path, clock=time.time):
         self.path, self.clock = Path(path), clock
+        self.max_running = media_concurrency()
         self.path.parent.mkdir(parents=True, mode=0o700, exist_ok=True)
         with self.connect() as db:
             db.execute('PRAGMA journal_mode=WAL')
@@ -125,7 +126,9 @@ class Ledger:
             db.execute('BEGIN IMMEDIATE')
             db.execute("UPDATE jobs SET state='failed',updated=?,result=? WHERE state='queued' AND deadline<=?",
                        (now,json.dumps(error('queue_deadline','Job expired before dispatch')),now))
-            if db.execute("SELECT count(*) FROM jobs WHERE state IN ('running','unknown')").fetchone()[0]:
+            if db.execute("SELECT count(*) FROM jobs WHERE state='unknown'").fetchone()[0]:
+                return None
+            if db.execute("SELECT count(*) FROM jobs WHERE state='running'").fetchone()[0] >= self.max_running:
                 return None
             row = db.execute("SELECT * FROM jobs WHERE state='queued' ORDER BY created,rowid LIMIT 1").fetchone()
             if row:
@@ -164,7 +167,7 @@ class Jobs:
         self.sender = sender or self.collect
         self.wake = asyncio.Event()
         self.runner = None
-        self.active = None
+        self.active = {}
 
     async def start(self):
         self.lease = self.ledger.path.with_suffix('.lock').open('a')
@@ -188,17 +191,29 @@ class Jobs:
         return identity, created
 
     async def run(self):
+        workers = [asyncio.create_task(self.work()) for _ in range(self.ledger.max_running)]
+        try:
+            await asyncio.gather(*workers)
+        finally:
+            for worker in workers:
+                worker.cancel()
+            await asyncio.gather(*workers, return_exceptions=True)
+
+    async def work(self):
         while True:
             self.wake.clear()
             row = self.ledger.claim()
             if not row:
                 try:
-                    await asyncio.wait_for(self.wake.wait(),5)
+                    # Register the waiter in this task before yielding; a peer
+                    # clearing the shared event must not lose a wakeup here.
+                    async with asyncio.timeout(5):
+                        await self.wake.wait()
                 except TimeoutError:
                     pass
                 continue
             identity = row['id']
-            task = self.active = asyncio.create_task(self.sender(row))
+            task = self.active[identity] = asyncio.create_task(self.sender(row))
             try:
                 done,_ = await asyncio.wait({task},timeout=max(0,row['deadline']-self.ledger.clock()))
                 if not done:
@@ -219,7 +234,8 @@ class Jobs:
                 self.ledger.finish(identity,'unknown',{'status_code':409,'data':error('backend_outcome_unknown',
                     'Backend outcome unknown. Keep the job ID; do not resubmit.',identity),'headers':{}})
             finally:
-                self.active = None
+                self.active.pop(identity, None)
+                self.wake.set()
 
     async def wait(self, identity, owner):
         while True:

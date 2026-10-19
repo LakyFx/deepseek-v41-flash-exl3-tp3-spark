@@ -1,6 +1,6 @@
 {
   "schema": "ds41f.gateway-source/v1",
-  "source_revision": "d021774d38c0e7c684e6da44f39f22e735deb14b",
+  "source_revision": "cbec16961b9a23825bc186cbb6ea91b7d7c859c9",
   "modules": {
     "__init__.py": {
       "production_sha256": "c86d50d5a8404a3be0ce18898bb095fa4924937b9c8a2a68a926a95880d4f92a",
@@ -68,8 +68,8 @@
       "adaptation": "default upstream changed to loopback"
     },
     "media_admission.py": {
-      "production_sha256": "82a6ae14b0393ad626e882a530485bca7c5450f84ad49e9197a771afd064c68b",
-      "public_sha256": "82a6ae14b0393ad626e882a530485bca7c5450f84ad49e9197a771afd064c68b",
+      "production_sha256": "8ed780b895b4f95c251b3006e0c0c36f2a96df8fd12226bc59b3e5b1a395fee5",
+      "public_sha256": "8ed780b895b4f95c251b3006e0c0c36f2a96df8fd12226bc59b3e5b1a395fee5",
       "adaptation": null
     },
     "media_history.py": {
@@ -133,8 +133,8 @@
       "adaptation": null
     },
     "vision_jobs.py": {
-      "production_sha256": "f11ec3903c7172f7bf0aa390911f41576b8300371a67c8090b537ad7c7d7688c",
-      "public_sha256": "f11ec3903c7172f7bf0aa390911f41576b8300371a67c8090b537ad7c7d7688c",
+      "production_sha256": "1c39bd3a6d63610378afd8440997927e94201853035cf57ec6e71975b122e1f5",
+      "public_sha256": "1c39bd3a6d63610378afd8440997927e94201853035cf57ec6e71975b122e1f5",
       "adaptation": null
     },
     "vision_jobs_operator.py": {
@@ -147,5 +147,6 @@
       "public_sha256": "76897ee9f35c785160d9083b1cf60a80ec10cc551dfa4a3dc58cf7ae26b268a5",
       "adaptation": null
     }
-  }
+  },
+  "production_release": "1.2.2TF"
 }

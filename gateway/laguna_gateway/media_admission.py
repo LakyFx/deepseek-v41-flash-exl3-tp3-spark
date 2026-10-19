@@ -1,4 +1,4 @@
-"""One image-bearing request at a time, including preparation and streaming.
+"""Bound image-bearing requests, including preparation and streaming.
 
 Original image payloads are preserved. Text requests bypass this admission.
 The existing route heartbeat runs while admission waits.
@@ -16,6 +16,14 @@ except ImportError:  # Standalone regression test runner.
 
 _owner = contextvars.ContextVar('media_admission_owner', default=None)
 log = logging.getLogger(__name__)
+
+
+def media_concurrency():
+    """One shared limit for the durable dispatcher and native media admission."""
+    value = os.getenv('DGX_MEDIA_MAX_CONCURRENCY', '1')
+    if value not in {'1', '2'}:
+        raise ValueError('DGX_MEDIA_MAX_CONCURRENCY must be 1 or 2')
+    return int(value)
 
 
 def has_images(value):
@@ -44,7 +52,7 @@ def media_request(*, stream=False, close_method=None):
                 return await fn(self, request_body, *args, **kwargs)
             gate = getattr(self, '_media_request_gate', None)
             if gate is None:
-                self._media_request_gate = gate = asyncio.Semaphore(1)
+                self._media_request_gate = gate = asyncio.Semaphore(media_concurrency())
             queued = time.monotonic()
             await gate.acquire()
             released = False

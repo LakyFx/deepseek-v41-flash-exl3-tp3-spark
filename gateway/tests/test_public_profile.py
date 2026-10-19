@@ -56,6 +56,9 @@ def test_original_source_and_explicit_address_only_adaptations():
 
 
 def test_installed_profile_runs_authenticated_durable_vision(monkeypatch, tmp_path):
+    monkeypatch.delenv('DGX_MEDIA_MAX_CONCURRENCY', raising=False)
+    monkeypatch.delenv('DGX_VISION_JOBS_REVISION', raising=False)
+    monkeypatch.delenv('DS41F_RECIPE_VERSION', raising=False)
     monkeypatch.setenv('LAGUNA_GATEWAY_API_KEY', 'offline-fixture-only')
     monkeypatch.setenv('DGX_VISION_JOBS_DB', str(tmp_path/'private/jobs.sqlite3'))
     monkeypatch.setenv('LAGUNA_GATEWAY_ENFORCE_CZECH', 'false')
@@ -78,3 +81,8 @@ def test_installed_profile_runs_authenticated_durable_vision(monkeypatch, tmp_pa
             'messages':[{'role':'user','content':'A text task'}]})
         assert normalized['reasoning_effort'] == 'max' and cap == 32768
         assert app.state.settings.max_concurrency == 12
+        assert app.state.vision_jobs.ledger.max_running == 2
+        import os
+        assert os.environ['DS41F_RECIPE_VERSION'] == '1.2.2TF'
+        # This release changes scheduling without expiring existing job identities.
+        assert os.environ['DGX_VISION_JOBS_REVISION'] == 'd021774d38c0e7c684e6da44f39f22e735deb14b'
