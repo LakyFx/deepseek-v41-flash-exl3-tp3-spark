@@ -1,0 +1,32 @@
+{
+  "version": "1.2.3",
+  "measured_as": "1.2.2xTF",
+  "release_changes": "Version naming and publication; native numeric configuration is the measured xTF recipe.",
+  "publication_checks": {
+    "recipe_cpu_tests_passed": 27,
+    "gateway_fake_backend_tests_passed": 108,
+    "markdown_numeric_values_verified": 1188,
+    "comparison_cells": 36,
+    "workflow_tasks": 234,
+    "request_rows": 1031,
+    "new_gpu_requests_performed": 0
+  },
+  "native_source_parity": {
+    "overlay_sha256": "b87a677df14ec297ad7adbad9a5fce9a57f8129b338d50e2183fc976b97c024a",
+    "integrated_sources_match_measured_build": true,
+    "previously_recorded_full_native_cpu_tests": 322,
+    "new_portable_ARM_build_performed_during_publication": false
+  },
+  "production_version_promotion": {
+    "persistent_boot_version": "1.2.3",
+    "numeric_settings_unchanged": true,
+    "model_and_API_processes_restarted": false,
+    "online_learner_state_preserved": true
+  },
+  "test_portability_note": "The mocked in-flight vision deadline test allows 0.5 s dispatch margin rather than 0.05 s; production deadlines are unchanged.",
+  "limits": [
+    "Single matched-initial-input workflow pass; no statistical confidence interval or isolated learner ablation.",
+    "No full 7M KV capacity, long-session repetition or mixed vision/text performance qualification.",
+    "Rebuilt public binaries require local GPU acceptance; source parity and CPU tests do not establish that new build qualification."
+  ]
+}

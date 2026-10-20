@@ -1,8 +1,12 @@
 # Agent installation guide
 
-The integrated production release is **1.2.2TF**: the unchanged1.2.0/1017
-native recipe plus the gateway with two concurrent image-request slots. Read
-`docs/DS41F-1.2.2TF.md` and `docs/GATEWAY.md`; keep historical profiles intact.
+The integrated production release is **1.2.3**, the same configuration measured
+as **1.2.2xTF**: DeepSeek 1017, C12/R48, 7M KV, 3 GiB prompt-state cache and
+online cost/acceptance learning. Read `docs/DS41F-1.2.3.md`,
+`docs/ADAPTIVE-SPECULATION.md` and `docs/WORKFLOW-BENCHMARK-20261020.md`.
+Use `--variant 1.2.3` and its separately built `bin-1.2.3/` binaries/receipt;
+the old engine plus a new environment flag is not the released adaptive build.
+The gateway keeps two queued vision slots. Preserve older profiles and evidence.
 
 For the optional production serving layer read `docs/GATEWAY.md`, install
 `./gateway` in its own virtual environment and use `ds41f-gateway`. The package

@@ -15,6 +15,7 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
     profile = json.loads((HERE / 'profiles' / (variant + '.json')).read_text())
     node = config['ranks'][rank]
     root = Path(node['root'])
+    binary_root = root / profile.get('binary_subdir', 'bin')
     kit = root / 'kit'
     model = root / 'weights/models' / profile['arm']
     cache = root / profile.get('rank_cache_subdir', 'weights/' + profile['arm'])
@@ -47,22 +48,36 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
            'TENSORFOLD_NO_UPDATE_CHECK': '1', 'HF_HUB_OFFLINE': '1'}
     if profile.get('round_ms'):
         env['TF_DS_ROUND_MS'] = profile['round_ms']
+    if profile.get('adaptive_learning'):
+        env['TF_DS_ADAPTIVE_LEARNING'] = '1'
     if config.get('library_path'):
         env['LD_LIBRARY_PATH'] = config['library_path']
     if rank == 0:
-        argv = [str(root / 'bin/tensorfold-native'), 'serve', str(model), '--backend', 'cuda',
+        argv = [str(binary_root / 'tensorfold-native'), 'serve', str(model), '--backend', 'cuda',
                 '--host', '127.0.0.1' if benchmark else config['api_host'], '--port', str(config['api_port']),
                 '--name', 'deepseek-v4.1-flash', '--context', str(profile['context_tokens']), '--parallel', streams,
                 '--reasoning-effort', profile['reasoning'], '--prompt-cache-gib', str(profile['prompt_snapshot_gib_head']), '--no-update-check']
         if benchmark:
             argv.append('--benchmark-control')
     else:
-        argv = [str(root / 'bin/tf-dsv41-lanes'), str(model), str(cache), str(rank), '3',
+        argv = [str(binary_root / 'tf-dsv41-lanes'), str(model), str(cache), str(rank), '3',
                 config['master_address'], str(config['master_port']), str(kit), '--pool', str(pool),
                 '--round-rows', rows, '--streams', streams, '--drafts', '1', '--graphs', '1',
                 '--side', '1', '--prefetch', '1', '--aio', '1', '--engram', str(engram),
                 '--token-map', str(kit / 'engram-token-map.json'), '--rdma', devices]
     if validate_files:
+        if profile.get('adaptive_learning'):
+            import hashlib
+            receipt = json.loads((binary_root / 'BUILD.json').read_text(encoding='utf-8'))
+            manifest = json.loads((HERE/'adaptive/manifest.json').read_text(encoding='utf-8'))
+            if (receipt.get('version') != '1.2.3' or receipt.get('adaptive_learning') is not True
+                    or receipt.get('source_hashes') != manifest['patched_sha256']
+                    or receipt.get('overlay_sha256') != profile['adaptive_overlay_sha256']
+                    or receipt.get('source_archive_sha256') != manifest['source_archive_sha256']):
+                raise ValueError('Require the verified adaptive 1.2.3 build receipt')
+            for binary in ['tensorfold-native','tf-dsv41-lanes']:
+                if hashlib.sha256((binary_root/binary).read_bytes()).hexdigest() != receipt['binaries'][binary]['sha256']:
+                    raise ValueError('Adaptive binary differs from its build receipt: '+binary)
         operator_values = [config['master_address'], config['nccl_interface'], config['nccl_address_range'],
                            *config['nccl_hcas'], *node['rdma_devices']]
         if any('REPLACE_' in value for value in operator_values):
@@ -114,7 +129,7 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', required=True, type=Path)
-    parser.add_argument('--variant', choices=['TF351', 'TF351-3.3M', 'TF29', '1.2.0'], required=True)
+    parser.add_argument('--variant', choices=['TF351', 'TF351-3.3M', 'TF29', '1.2.0', '1.2.3'], required=True)
     parser.add_argument('--rank', choices=range(3), type=int, required=True)
     parser.add_argument('--benchmark', action='store_true')
     parser.add_argument('--run', action='store_true')

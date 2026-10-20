@@ -1,5 +1,65 @@
 # DeepSeek V4.1 Flash EXL3 on three DGX Sparks
 
+**Current release: [1.2.3](docs/DS41F-1.2.3.md)** — the configuration tested as
+**1.2.2xTF**, now with the public adaptive source/build recipe and complete
+workflow results. DeepSeek 1017 / EXL3 ~3.51 bpw routed experts / TensorFold TP3:
+**C12, R48, 7M configured KV pool, 3 GiB prompt-state cache, MAX reasoning**.
+Vision stays **C2 / MEDIUM**, with additional accepted jobs queued.
+
+The speculative controller learns verification cost and draft acceptance
+online, then chooses a useful shared row budget. It does not train model
+weights or replace the target verifier. We were inspired by
+[**AdaSpark — Liu, Zhang and Xu**](https://arxiv.org/abs/2610.05774);
+ours is an adaptation in existing TensorFold chain/copy lanes, not a full
+AdaSpark/imparo reproduction. [Design, equations and source](docs/ADAPTIVE-SPECULATION.md).
+
+## The main measured results
+
+One matched-initial-input pass, C1–C12, 78 complete tool-using workflows per
+recipe. Output includes reasoning. The release rename did not rerun a test.
+
+| Measurement | 1.2.2TF | Bert1 | xTF / 1.2.3 |
+|---|---:|---:|---:|
+| Correctly completed tasks | 78/78 | 78/78 | 78/78 |
+| Sum of measured wave times | 22:27.872 | 23:38.938 | **20:29.795** |
+| Median / P95 task duration, s | 117.05 / 170.94 | 118.05 / 182.52 | **108.73 / 154.03** |
+| Intermediate rejected tool attempts | 30 | 31 | **16** |
+| Pooled draft acceptance | 79.13% | 77.52% | **83.32%** |
+| C6 median native decode, tok/s per request | 23.34 | 24.12 | **25.82** |
+| C12 median native decode, tok/s per request | **14.65** | 14.36 | 14.09 |
+
+xTF used **8.76% less summed wave time than TF**, with **6.69% fewer generated
+tokens**. This is an observed recipe-level gain, not an isolated learner or
+model-quality result. All final tasks passed; rejected tools were repaired
+inside their measured times. No vision throughput or full 7M capacity test is
+claimed. [All 36 cells, latencies, errors, counterexamples and limitations](docs/WORKFLOW-BENCHMARK-20261020.md).
+
+![Native decode change vs original by concurrency](results/20261020-adaptive/figures/decode-relative-gain.png)
+
+## Use or inspect 1.2.3
+
+- **[Install/build and exact settings](docs/DS41F-1.2.3.md)** · [launcher profile](tensorfold/profiles/1.2.3.json)
+- **[Complete benchmark report in Markdown](docs/WORKFLOW-BENCHMARK-20261020.md)** · [PDF](results/20261020-adaptive/workflow-report.pdf) · [all numeric data](results/20261020-adaptive/)
+- **[How the online learner works](docs/ADAPTIVE-SPECULATION.md)** · [verified native patch](tensorfold/adaptive/)
+- **[Production gateway](docs/GATEWAY.md)** · [pinned 1017 weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold)
+- [Historical engine recipes and measurements](#earlier-releases-and-measurements) · [all sources and credits](docs/SOURCES.md)
+
+Thanks to **[Ashley Hart and TensorFold contributors](https://github.com/ashhart/TensorFold)**
+for the native engine, **[Christopher Owen](https://github.com/christopherowen/spark-ds41f)**
+for recipes, networking and earlier benchmark work, and **[AdaSpark's authors](https://arxiv.org/abs/2610.05774)**
+for the online-adaptation inspiration. The model, quantization and upstream
+kernels retain their own authorship and licenses.
+
+## Earlier releases and measurements
+
+<details>
+<summary>Expand the preserved pre-1.2.3 overview, engine choices and historical benchmark tables</summary>
+
+The material below retains its original dates, checkpoints and measurement
+scopes. Statements such as “no comparative benchmark was rerun for 1017”
+describe the earlier release at that date, not the new 20 October comparison.
+
+
 **Production release 1.2.2TF:** the optional [gateway package](docs/GATEWAY.md)
 now includes the same Chat/Responses engine, policy defaults and durable vision
 jobs as our deployment, with **two image requests processed concurrently** and
@@ -361,3 +421,6 @@ These are different metric definitions, not interchangeable speeds. Hermes has o
 | `licenses/` | Third-party notices |
 
 Private captured legacy prompts and generated private text are excluded. The public legacy surrogates can be measured as a new comparison; they are not identical historical inputs. C4 has historical production qualification; a newly built portable image or native binary still needs acceptance on your cluster. This repository update did not reload the running model.
+
+
+</details>

@@ -1,0 +1,235 @@
+﻿arm,C,task,correct,elapsed_seconds,requests,tool_attempts,rejected_tool_attempts,error_messages,generated_tokens
+original,1,1,True,37.42099999997299,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2956
+original,2,1,True,32.43799999996554,4,6,0,[],1635
+original,2,2,True,36.48499999998603,4,6,0,[],1967
+original,3,1,True,48.68700000003446,4,6,0,[],1867
+original,3,2,True,51.79700000002049,4,6,0,[],2157
+original,3,3,True,41.14000000001397,4,6,0,[],1578
+original,4,1,True,70.39000000001397,5,7,0,[],2138
+original,4,2,True,65.09299999999348,4,6,0,[],1793
+original,4,3,True,66.90599999995902,4,6,0,[],2003
+original,4,4,True,84.81200000003446,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",3008
+original,5,1,True,80.18700000003446,4,6,0,[],1879
+original,5,2,True,69.46900000004098,4,6,0,[],1560
+original,5,3,True,86.28100000007544,7,9,2,"[{""error"": ""unsupported pure-function syntax: Import""}, {""error"": ""one merge_events function required""}]",2918
+original,5,4,True,70.26500000001397,5,7,0,[],1707
+original,5,5,True,64.64000000001397,5,7,0,[],1553
+original,6,1,True,78.71900000004098,4,6,0,[],1429
+original,6,2,True,96.25,4,6,0,[],2018
+original,6,3,True,100.40599999995902,4,6,0,[],2163
+original,6,4,True,96.35999999998603,6,8,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2170
+original,6,5,True,115.125,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",3190
+original,6,6,True,102.35999999998603,4,6,0,[],2231
+original,7,1,True,90.59299999999348,4,6,0,[],1948
+original,7,2,True,86.29700000002049,4,6,0,[],1563
+original,7,3,True,99.04700000002049,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2410
+original,7,4,True,77.56200000003446,4,6,0,[],1557
+original,7,5,True,81.85900000005495,4,6,0,[],1450
+original,7,6,True,68.76500000001397,4,6,0,[],1231
+original,7,7,True,85.09299999999348,4,6,0,[],1807
+original,8,1,True,123.26600000006147,4,6,0,[],2288
+original,8,2,True,96.93799999996554,4,6,0,[],1746
+original,8,3,True,115.28200000000652,4,6,0,[],2169
+original,8,4,True,110.65700000000652,4,6,0,[],1968
+original,8,5,True,123.14100000006147,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2217
+original,8,6,True,76.03200000000652,4,6,0,[],1259
+original,8,7,True,127.375,4,6,0,[],2805
+original,8,8,True,83.40700000000652,4,6,0,[],1395
+original,9,1,True,134.81299999996554,4,6,0,[],2155
+original,9,2,True,135.65599999995902,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2084
+original,9,3,True,105.92200000002049,4,6,0,[],1513
+original,9,4,True,118.56299999996554,4,6,0,[],1897
+original,9,5,True,167.21899999992456,4,6,0,[],3339
+original,9,6,True,167.5779999999795,6,8,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",3623
+original,9,7,True,152.26599999994505,6,8,2,"[{""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}]",3231
+original,9,8,True,114.04700000002049,4,6,0,[],1839
+original,9,9,True,112.53099999995902,4,6,0,[],1786
+original,10,1,True,170.93700000003446,6,9,3,"[{""error"": ""unsupported pure-function syntax: Import""}, {""error"": ""unknown tool or invalid arguments""}, {""error"": ""unknown tool or invalid arguments""}]",3308
+original,10,2,True,183.73400000005495,10,12,5,"[{""error"": ""unsupported pure-function syntax: Import""}, {""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}]",5049
+original,10,3,True,138.59299999999348,4,6,0,[],2005
+original,10,4,True,150.40600000007544,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2444
+original,10,5,True,121.45299999997951,4,6,0,[],1738
+original,10,6,True,134.875,4,6,0,[],1993
+original,10,7,True,92.65600000007544,4,6,0,[],1253
+original,10,8,True,115.53100000007544,4,6,0,[],1840
+original,10,9,True,127.10900000005495,4,6,0,[],1884
+original,10,10,True,135.48400000005495,4,6,0,[],1986
+original,11,1,True,141.9529999999795,4,6,0,[],1784
+original,11,2,True,140.15599999995902,4,6,0,[],1898
+original,11,3,True,158.60899999993853,6,8,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2577
+original,11,4,True,134.7029999999795,4,6,0,[],1835
+original,11,5,True,132.4529999999795,4,6,0,[],1809
+original,11,6,True,167.81199999991804,6,8,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",3146
+original,11,7,True,131.0,4,6,0,[],1647
+original,11,8,True,141.23399999993853,4,6,0,[],1658
+original,11,9,True,165.29699999990407,5,8,2,"[{""error"": ""unknown tool or invalid arguments""}, {""error"": ""unknown tool or invalid arguments""}]",2525
+original,11,10,True,160.28099999995902,6,8,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2427
+original,11,11,True,105.68699999991804,4,6,0,[],1388
+original,12,1,True,125.53200000000652,4,6,0,[],1565
+original,12,2,True,140.1720000000205,4,6,0,[],1802
+original,12,3,True,157.06299999996554,4,6,0,[],2291
+original,12,4,True,182.5470000000205,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",3518
+original,12,5,True,137.875,4,6,0,[],1720
+original,12,6,True,128.0,4,6,0,[],1664
+original,12,7,True,132.3279999999795,4,6,0,[],1517
+original,12,8,True,121.14100000006147,4,6,0,[],1402
+original,12,9,True,190.31299999996554,6,8,2,"[{""error"": ""unsupported pure-function syntax: ImportFrom""}, {""error"": ""unknown tool or invalid arguments""}]",3802
+original,12,10,True,147.625,5,7,1,"[{""error"": ""provide four to six explanatory sentences""}]",2235
+original,12,11,True,122.39100000006147,4,6,0,[],1602
+original,12,12,True,139.48499999998603,4,6,0,[],1727
+bert1,1,1,True,38.34400000004098,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2956
+bert1,2,1,True,33.48499999998603,4,6,0,[],1635
+bert1,2,2,True,37.65599999995902,4,6,0,[],1967
+bert1,3,1,True,39.96900000004098,4,6,0,[],1307
+bert1,3,2,True,64.65600000007544,7,9,2,"[{""error"": ""unsupported pure-function syntax: ImportFrom""}, {""error"": ""one merge_events function required""}]",3270
+bert1,3,3,True,46.0,4,6,0,[],1675
+bert1,4,1,True,62.32900000002701,5,7,0,[],1844
+bert1,4,2,True,56.82900000002701,4,6,0,[],1505
+bert1,4,3,True,76.85999999998603,5,7,1,"[{""error"": ""unsupported pure-function syntax: ImportFrom""}]",2637
+bert1,4,4,True,83.21900000004098,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2665
+bert1,5,1,True,65.35999999998603,4,6,0,[],1404
+bert1,5,2,True,81.71900000004098,4,6,0,[],2285
+bert1,5,3,True,70.20299999997951,4,6,0,[],1766
+bert1,5,4,True,75.48499999998603,4,6,0,[],1931
+bert1,5,5,True,74.40700000000652,4,6,0,[],1882
+bert1,6,1,True,66.96900000004098,4,6,0,[],1426
+bert1,6,2,True,80.125,4,6,0,[],1743
+bert1,6,3,True,96.31300000008196,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2822
+bert1,6,4,True,63.23499999998603,4,6,0,[],1334
+bert1,6,5,True,85.75,4,6,0,[],2078
+bert1,6,6,True,73.81300000008196,4,6,0,[],1668
+bert1,7,1,True,84.90600000007544,4,6,0,[],1770
+bert1,7,2,True,87.65600000007544,4,6,0,[],1597
+bert1,7,3,True,87.53100000007544,4,6,0,[],1665
+bert1,7,4,True,75.29700000002049,4,6,0,[],1363
+bert1,7,5,True,86.04700000002049,4,6,0,[],1514
+bert1,7,6,True,70.09400000004098,4,6,0,[],1259
+bert1,7,7,True,86.39000000001397,4,6,0,[],1807
+bert1,8,1,True,121.125,4,6,0,[],2192
+bert1,8,2,True,97.98499999998603,4,6,0,[],1746
+bert1,8,3,True,116.23499999998603,4,6,0,[],2188
+bert1,8,4,True,111.21900000004098,4,6,0,[],1964
+bert1,8,5,True,117.25,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2072
+bert1,8,6,True,76.53200000000652,4,6,0,[],1259
+bert1,8,7,True,132.09400000004098,4,6,0,[],3259
+bert1,8,8,True,84.06300000008196,4,6,0,[],1395
+bert1,9,1,True,135.46899999992456,4,6,0,[],2133
+bert1,9,2,True,141.90599999995902,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2344
+bert1,9,3,True,106.82799999997951,4,6,0,[],1513
+bert1,9,4,True,119.95299999997951,4,6,0,[],1897
+bert1,9,5,True,176.0,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",3363
+bert1,9,6,True,182.51599999994505,7,9,2,"[{""error"": ""unsupported pure-function syntax: Import""}, {""error"": ""provide a concise Czech explanation, 30 to180 words""}]",4114
+bert1,9,7,True,174.98399999993853,6,8,2,"[{""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}]",3856
+bert1,9,8,True,116.18699999991804,4,6,0,[],1839
+bert1,9,9,True,114.93699999991804,4,6,0,[],1786
+bert1,10,1,True,166.18700000003446,6,9,3,"[{""error"": ""unsupported pure-function syntax: Import""}, {""error"": ""unknown tool or invalid arguments""}, {""error"": ""unknown tool or invalid arguments""}]",3065
+bert1,10,2,True,239.51500000001397,10,12,5,"[{""error"": ""unsupported pure-function syntax: Import""}, {""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}]",8762
+bert1,10,3,True,141.60900000005495,4,6,0,[],2005
+bert1,10,4,True,152.96799999999348,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2444
+bert1,10,5,True,123.89000000001397,4,6,0,[],1738
+bert1,10,6,True,134.64000000001397,4,6,0,[],1993
+bert1,10,7,True,94.57799999997951,4,6,0,[],1253
+bert1,10,8,True,118.85900000005495,4,6,0,[],1840
+bert1,10,9,True,128.60900000005495,4,6,0,[],1884
+bert1,10,10,True,145.60900000005495,4,6,0,[],2175
+bert1,11,1,True,143.9529999999795,4,6,0,[],1784
+bert1,11,2,True,141.51599999994505,4,6,0,[],1883
+bert1,11,3,True,162.4529999999795,6,8,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2577
+bert1,11,4,True,137.93699999991804,4,6,0,[],1835
+bert1,11,5,True,134.39099999994505,4,6,0,[],1809
+bert1,11,6,True,173.64099999994505,6,8,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",3478
+bert1,11,7,True,135.67199999990407,4,6,0,[],1647
+bert1,11,8,True,141.84399999992456,4,6,0,[],1658
+bert1,11,9,True,165.53099999995902,5,8,2,"[{""error"": ""unknown tool or invalid arguments""}, {""error"": ""unknown tool or invalid arguments""}]",2475
+bert1,11,10,True,164.03099999995902,6,8,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2446
+bert1,11,11,True,106.64099999994505,4,6,0,[],1388
+bert1,12,1,True,134.10899999993853,4,6,0,[],1634
+bert1,12,2,True,141.01599999994505,4,6,0,[],1802
+bert1,12,3,True,161.90599999995902,4,6,0,[],2342
+bert1,12,4,True,191.0470000000205,7,9,1,"[{""error"": ""one merge_events function required""}]",3496
+bert1,12,5,True,159.23399999993853,4,6,0,[],2137
+bert1,12,6,True,128.25,4,6,0,[],1664
+bert1,12,7,True,130.76500000001397,4,6,0,[],1517
+bert1,12,8,True,123.28100000007544,4,6,0,[],1402
+bert1,12,9,True,201.56200000003446,6,8,2,"[{""error"": ""unsupported pure-function syntax: ImportFrom""}, {""error"": ""unknown tool or invalid arguments""}]",4171
+bert1,12,10,True,150.4529999999795,5,7,1,"[{""error"": ""provide four to six explanatory sentences""}]",2235
+bert1,12,11,True,125.71799999999348,4,6,0,[],1602
+bert1,12,12,True,138.39099999994505,4,6,0,[],1686
+xtf,1,1,True,37.20299999997951,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2956
+xtf,2,1,True,32.68799999996554,4,6,0,[],1635
+xtf,2,2,True,36.75,4,6,0,[],1967
+xtf,3,1,True,44.84400000004098,4,6,0,[],1564
+xtf,3,2,True,83.18800000008196,6,8,2,"[{""error"": ""incorrect accounting: requests""}, {""error"": ""incorrect accounting: requests""}]",4357
+xtf,3,3,True,60.313000000081956,4,6,0,[],2365
+xtf,4,1,True,79.59299999999348,7,9,2,"[{""error"": ""unsupported pure-function syntax: Import""}, {""error"": ""provide a concise Czech explanation, 30 to180 words""}]",2998
+xtf,4,2,True,73.34299999999348,4,6,0,[],2319
+xtf,4,3,True,54.51500000001397,4,6,0,[],1614
+xtf,4,4,True,69.31200000003446,4,6,0,[],2050
+xtf,5,1,True,76.95299999997951,4,6,0,[],1884
+xtf,5,2,True,67.01600000006147,4,6,0,[],1775
+xtf,5,3,True,72.53200000000652,4,6,0,[],1933
+xtf,5,4,True,95.75,7,9,2,"[{""error"": ""unsupported pure-function syntax: Import""}, {""error"": ""one merge_events function required""}]",3681
+xtf,5,5,True,61.82799999997951,4,6,0,[],1516
+xtf,6,1,True,120.53100000007544,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",3774
+xtf,6,2,True,72.57799999997951,4,6,0,[],1658
+xtf,6,3,True,108.34299999999348,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2856
+xtf,6,4,True,80.93700000003446,4,6,0,[],1800
+xtf,6,5,True,81.23400000005495,4,6,0,[],1866
+xtf,6,6,True,90.0,4,6,0,[],1818
+xtf,7,1,True,72.34299999999348,4,6,0,[],1416
+xtf,7,2,True,91.34299999999348,5,7,1,"[{""error"": ""unsupported pure-function syntax: ImportFrom""}]",2366
+xtf,7,3,True,80.35900000005495,4,6,0,[],1663
+xtf,7,4,True,66.76500000001397,4,6,0,[],1247
+xtf,7,5,True,78.73400000005495,4,6,0,[],1607
+xtf,7,6,True,73.64000000001397,4,6,0,[],1295
+xtf,7,7,True,83.96799999999348,4,6,0,[],1871
+xtf,8,1,True,107.875,4,6,0,[],2138
+xtf,8,2,True,105.70299999997951,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2172
+xtf,8,3,True,106.625,5,7,1,"[{""error"": ""unknown tool or invalid arguments""}]",2080
+xtf,8,4,True,96.98499999998603,4,6,0,[],1746
+xtf,8,5,True,82.98499999998603,4,6,0,[],1372
+xtf,8,6,True,81.25,4,6,0,[],1487
+xtf,8,7,True,77.20299999997951,4,6,0,[],1339
+xtf,8,8,True,88.5,4,6,0,[],1486
+xtf,9,1,True,125.82799999997951,4,6,0,[],1938
+xtf,9,2,True,89.375,4,6,0,[],1436
+xtf,9,3,True,124.40599999995902,4,6,0,[],1994
+xtf,9,4,True,138.8279999999795,4,6,0,[],2508
+xtf,9,5,True,133.10899999993853,4,6,0,[],2189
+xtf,9,6,True,128.5779999999795,5,7,0,[],2153
+xtf,9,7,True,132.68799999996554,4,6,0,[],2290
+xtf,9,8,True,128.89099999994505,4,6,0,[],2110
+xtf,9,9,True,139.125,4,6,0,[],2357
+xtf,10,1,True,101.0,4,6,0,[],1580
+xtf,10,2,True,116.51500000001397,4,6,0,[],1608
+xtf,10,3,True,118.35900000005495,4,6,0,[],1833
+xtf,10,4,True,99.28100000007544,4,6,0,[],1488
+xtf,10,5,True,124.92200000002049,4,6,0,[],1983
+xtf,10,6,True,116.14000000001397,4,6,0,[],1723
+xtf,10,7,True,109.28100000007544,4,6,0,[],1701
+xtf,10,8,True,113.54700000002049,4,6,0,[],1726
+xtf,10,9,True,124.40600000007544,4,6,0,[],2116
+xtf,10,10,True,93.54700000002049,4,6,0,[],1405
+xtf,11,1,True,138.14099999994505,4,6,0,[],1955
+xtf,11,2,True,124.46899999992456,4,6,0,[],1720
+xtf,11,3,True,134.15599999995902,4,6,0,[],1778
+xtf,11,4,True,134.68799999996554,4,6,0,[],1899
+xtf,11,5,True,109.10899999993853,4,6,0,[],1431
+xtf,11,6,True,112.78099999995902,4,6,0,[],1512
+xtf,11,7,True,134.56299999996554,4,6,0,[],1803
+xtf,11,8,True,117.45299999997951,4,6,0,[],1584
+xtf,11,9,True,121.28099999995902,4,6,0,[],1689
+xtf,11,10,True,150.18799999996554,5,7,1,"[{""error"": ""unsupported pure-function syntax: ImportFrom""}]",2753
+xtf,11,11,True,154.03099999995902,5,7,1,"[{""error"": ""unsupported pure-function syntax: ImportFrom""}]",3082
+xtf,12,1,True,133.46799999999348,4,6,0,[],1634
+xtf,12,2,True,114.35900000005495,4,6,0,[],1340
+xtf,12,3,True,134.125,4,6,0,[],1751
+xtf,12,4,True,159.4529999999795,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2445
+xtf,12,5,True,156.10900000005495,4,6,0,[],2356
+xtf,12,6,True,144.59299999999348,5,7,1,"[{""error"": ""unsupported pure-function syntax: Import""}]",2092
+xtf,12,7,True,136.18700000003446,4,6,0,[],1770
+xtf,12,8,True,120.67099999997299,4,6,0,[],1368
+xtf,12,9,True,158.34299999999348,4,6,0,[],2404
+xtf,12,10,True,119.45299999997951,4,6,0,[],1488
+xtf,12,11,True,133.295999999973,4,6,0,[],1624
+xtf,12,12,True,140.78099999995902,4,6,0,[],1972

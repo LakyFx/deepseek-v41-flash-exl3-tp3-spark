@@ -37,6 +37,10 @@ class Fake:
         self.content = 'Professor with a pointer.'
         self.finish = 'stop'
         self.reasoning = 'Private reasoning must not reach the client.'
+        self.frames = None
+        self.delivered = []
+        self.abort_status = 200
+        self.block_after_frames = False
 
     async def __call__(self, req):
         data = json.loads(req.content) if req.content else {}
@@ -46,13 +50,21 @@ class Fake:
             return httpx.Response(200,json={'status':'ok'})
         if req.url.path == '/abort_requests':
             self.aborts.append(data)
-            return httpx.Response(200,json={'success':True})
+            return httpx.Response(self.abort_status,json={'success':self.abort_status==200})
         assert req.url.path == '/v1/chat/completions', req.url.path
         self.calls.append(data)
         if data.get('stream'):
             class Stream(httpx.AsyncByteStream):
                 async def __aiter__(stream):
-                    yield event(self.content,self.finish,self.reasoning)+b'data: [DONE]\n\n'
+                    frames = self.frames if self.frames is not None else [
+                        event(self.content,self.finish,self.reasoning)+b'data: [DONE]\n\n']
+                    for frame in frames:
+                        if isinstance(frame, Exception):
+                            raise frame
+                        self.delivered.append(frame)
+                        yield frame
+                    if self.block_after_frames:
+                        await asyncio.Event().wait()
             return httpx.Response(200,headers={'content-type':'text/event-stream'},
                 stream=Stream())
         return httpx.Response(200,json={'id':'normal','model':MODEL,'choices':[{'index':0,
@@ -131,16 +143,93 @@ def test_incomplete_answers_are_not_success_or_retried(api,content,finish):
     assert len(fake.calls)==1
 
 
-def test_repetition_is_buffered_and_blocks_unknown_replay(api):
-    client,fake,_ = api
+def test_completed_repetition_fails_without_blocking_other_images(api):
+    client,fake,app = api
     fake.reasoning='Let me check this again. '*100
+    fake.abort_status=404  # The native backend has no cancellation endpoint.
+    response=client.post('/v1/chat/completions',json=body())
+    assert response.status_code==422 and 'Let me' not in response.text
+    assert response.json()['error']['code']=='vision_output_repetitive'
+    assert response.json()['error']['retryable'] is False
+    assert len(fake.calls)==1
+    assert client.post('/v1/chat/completions',json=body()).status_code==422
+    assert len(fake.calls)==1
+    assert not fake.aborts
+    assert app.state.vision_jobs.ledger.counts()=={'failed':1}
+    fake.reasoning='A different image has a valid answer.'
+    assert client.post('/v1/chat/completions',json=body(max_tokens=6143)).status_code==200
+    assert len(fake.calls)==2
+
+
+@pytest.mark.parametrize('channel',['content','reasoning'])
+@pytest.mark.parametrize('finish',['stop','length'])
+def test_repetition_discards_output_and_drains_same_generation(api,channel,finish):
+    client,fake,_=api
+    loop='Let me check this again. '*100
+    fake.frames=[event(**{channel:loop}),event('Untrusted final after repetition.'),
+                 event(finish=finish),b'data: [DONE]\n\n']
+    response=client.post('/v1/chat/completions',json=body(stream=True))
+    assert 'vision_output_repetitive' in response.text
+    assert 'Let me' not in response.text and 'Untrusted final' not in response.text
+    assert fake.delivered==fake.frames and len(fake.calls)==1 and not fake.aborts
+
+
+@pytest.mark.parametrize('ending',[
+    b'',
+    event(finish='stop'),
+    b'data: [DONE]\n\n',
+    b'data: {"error":{"message":"provider failed"}}\n\n',
+    b'data: malformed\n\n',
+    httpx.ReadError('Connection lost while draining'),
+    httpx.ReadTimeout('Backend stopped responding while draining'),
+])
+def test_unconfirmed_repetition_still_blocks_dispatch(api,ending):
+    client,fake,app=api
+    fake.abort_status=404
+    fake.frames=[event(reasoning='Let me check this again. '*100),ending]
     response=client.post('/v1/chat/completions',json=body())
     assert response.status_code==409 and 'Let me' not in response.text
-    assert len(fake.calls)==1
-    assert client.post('/v1/chat/completions',json=body()).status_code==409
+    assert app.state.vision_jobs.ledger.counts()=={'unknown':1}
+    assert client.post('/v1/chat/completions',json=body(max_tokens=6143)).status_code==409
+    assert len(fake.calls)==1 and fake.aborts
+
+
+def test_repetition_drain_still_obeys_job_deadline(api,monkeypatch):
+    client,fake,app=api
+    fake.abort_status=404
+    fake.frames=[event(reasoning='Let me check this again. '*100)]
+    fake.block_after_frames=True
+    ledger=app.state.vision_jobs.ledger
+    accept=ledger.accept
+
+    def short_deadline(*args,**kwargs):
+        identity,created=accept(*args,**kwargs)
+        if created:
+            with ledger.connect() as db:
+                # Leave dispatch margin on loaded/non-Linux CI; this test is
+                # about an in-flight deadline, not expiry while still queued.
+                db.execute('UPDATE jobs SET deadline=? WHERE id=?',(time.time()+.5,identity))
+        return identity,created
+
+    monkeypatch.setattr(ledger,'accept',short_deadline)
+    response=client.post('/v1/chat/completions',json=body())
+    assert response.status_code==409 and 'Let me' not in response.text
+    assert response.json()['error']['code']=='termination_unconfirmed'
+    assert ledger.counts()=={'unknown':1}
     assert client.post('/v1/chat/completions',json=body(max_tokens=6143)).status_code==409
     assert len(fake.calls)==1
-    assert fake.aborts and fake.aborts[0]['request_ids']==['chatcmpl-'+fake.calls[0]['request_id']]
+
+
+def test_rejected_collector_does_not_retain_more_output():
+    collector=Collector()
+    collector.feed(event(reasoning='Let me check this again. '*100))
+    assert collector.repetitive and not collector.reasoning and not collector.content
+    chunk=event('x'*16384)
+    for _ in range(512):
+        collector.feed(chunk)
+    assert collector.content==collector.reasoning==''
+    collector.feed(event(finish='length')+b'data: [DONE]\n\n')
+    assert collector.result('fixture')['data']['error']['code']=='vision_output_repetitive'
 
 
 def test_contaminated_history_stops_before_gpu_but_clean_main_remains_max(api):

@@ -73,3 +73,20 @@ The final C4 port retains the preceding credits and adds bounded decoder replay 
 **The second benchmark is taken from Christopher Owen's GitHub recipe**, specifically [`bin/spark` at `dd35633edeadd8864ec177890025b6e7c5df47ce`](https://github.com/christopherowen/spark-ds41f/blob/dd35633edeadd8864ec177890025b6e7c5df47ce/bin/spark). [OWEN-BENCHMARK.md](OWEN-BENCHMARK.md) documents exactly which functions, workload subset, repetitions and definitions were retained, and which transport/context adaptations were made. The whole upstream administration client is fetched by hash for local use rather than republished here.
 
 The frozen cold-prefill fixture includes public CPython 3.12.3 standard-library excerpts; its license is retained in `licenses/python-stdlib.txt`. The host packing module is [dgx-spark-memory-saver](https://github.com/christopherowen/dgx-spark-memory-saver/tree/6f97319e7c00e5422b0afe4cabbd348211bfcb34), pinned at `6f97319e7c00e5422b0afe4cabbd348211bfcb34`. Machine-specific signing material is not distributed.
+
+
+## 1.2.3 online speculative allocation and measurement context
+
+The online cost/acceptance feedback and average-reward pricing were inspired
+by Liquan Liu, Yifan Zhang and Bowei Xu, [AdaSpark: Adaptive DSpark with Online
+Learning for Tree Verification and N-gram Fill](https://arxiv.org/abs/2610.05774),
+and [imparo](https://github.com/zeraix/imparo). Our implementation uses the
+existing TensorFold head/copy chain lanes, pinned/extrapolated priors, a rolling
+median timing fit and bucketed acceptance calibration. It is an adaptation of
+ideas, not a full implementation of that paper or engine. The paper's speedup
+figures are not our measurement results.
+
+[Our design and exact source](ADAPTIVE-SPECULATION.md) and the
+[complete original/Bert1/xTF comparison](WORKFLOW-BENCHMARK-20261020.md)
+distinguish recipe-level observations from causal claims. Standard speculative
+inference background: [Leviathan, Kalman and Matias (2023)](https://proceedings.mlr.press/v202/leviathan23a.html).

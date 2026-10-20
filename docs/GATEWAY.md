@@ -1,4 +1,12 @@
-# Production gateway 1.2.2TF and durable vision jobs
+# Production gateway 1.2.3 and durable vision jobs
+
+The current integrated release is [1.2.3](DS41F-1.2.3.md), with the native
+adaptive configuration measured as 1.2.2xTF. Gateway policy remains C12 and
+two concurrent queued image jobs, text MAX / vision MEDIUM. This package also
+includes the already deployed repetitive-output drain fix: the owned backend
+stream is drained before validation failure, avoiding a false uncertain-dispatch
+block after a repetitive but fully received response. Unknown dispatches still
+require explicit reconciliation and are never automatically replayed.
 
 This optional gateway publishes the serving behavior used with the native
 TensorFold deployment. Install it in front of the head API. It does not manage

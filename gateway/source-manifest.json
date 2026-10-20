@@ -1,6 +1,6 @@
 {
   "schema": "ds41f.gateway-source/v1",
-  "source_revision": "cbec16961b9a23825bc186cbb6ea91b7d7c859c9",
+  "source_revision": "8b4e06481aa7e29911026670e2718a7bd91d3c38",
   "modules": {
     "__init__.py": {
       "production_sha256": "c86d50d5a8404a3be0ce18898bb095fa4924937b9c8a2a68a926a95880d4f92a",
@@ -143,10 +143,11 @@
       "adaptation": null
     },
     "vision_result.py": {
-      "production_sha256": "76897ee9f35c785160d9083b1cf60a80ec10cc551dfa4a3dc58cf7ae26b268a5",
-      "public_sha256": "76897ee9f35c785160d9083b1cf60a80ec10cc551dfa4a3dc58cf7ae26b268a5",
+      "production_sha256": "66ad9e27a959a775f6dc7f335cff933479c6369cabda38ddf09a27d27cdd4278",
+      "public_sha256": "66ad9e27a959a775f6dc7f335cff933479c6369cabda38ddf09a27d27cdd4278",
       "adaptation": null
     }
   },
-  "production_release": "1.2.2TF"
+  "production_release": "1.2.2TF",
+  "release": "1.2.3"
 }

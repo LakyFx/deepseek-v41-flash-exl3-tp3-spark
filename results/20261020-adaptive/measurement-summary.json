@@ -1,0 +1,574 @@
+{
+  "report_date": "2026-10-20",
+  "scope": "Single matched-initial-input workflow pass; no causal attribution",
+  "profiles": {
+    "original": {
+      "label": "1.2.2TF",
+      "streams": 12,
+      "verify_rows_cap": 32,
+      "kv_pool_tokens": 8000000,
+      "snapshot_cache_gib": 2,
+      "learner": false,
+      "gateway_reservation_tokens": 5336064
+    },
+    "bert1": {
+      "label": "Bert1",
+      "streams": 16,
+      "verify_rows_cap": 48,
+      "kv_pool_tokens": 7000000,
+      "snapshot_cache_gib": 2,
+      "learner": false,
+      "gateway_reservation_tokens": 6699008
+    },
+    "xtf": {
+      "label": "1.2.2xTF",
+      "streams": 12,
+      "verify_rows_cap": 48,
+      "kv_pool_tokens": 7000000,
+      "snapshot_cache_gib": 3,
+      "learner": true,
+      "gateway_reservation_tokens": 5336064
+    }
+  },
+  "aggregates": {
+    "bert1": {
+      "correct": 78,
+      "requests": 350,
+      "generated_tokens": 167522,
+      "prompt_tokens": 749708,
+      "computed_prompt_tokens": 123864,
+      "wave_seconds": 1418.9380000001984,
+      "all_task_seconds": {
+        "median": 118.05450000002747,
+        "p95": 182.51599999994505,
+        "maximum": 239.51500000001397
+      },
+      "corrected_tool_errors": 31,
+      "acceptance": 0.7752238133284166,
+      "weighted_prefill_tps": 841.0022005355265,
+      "prefix_hit_fraction": 0.8347836757777695,
+      "prefill_seconds": {
+        "median": 0.232880147,
+        "p95": 0.871525894,
+        "maximum": 0.902955491
+      },
+      "native_ttft_seconds": {
+        "median": 0.37230025099999997,
+        "p95": 6.033545104,
+        "maximum": 10.300571105
+      },
+      "post_prefill_first_token_upper_bound_seconds": {
+        "median": 0.003909701000004873,
+        "p95": 0.007325973000000152,
+        "maximum": 0.015999021000000724
+      },
+      "native_decode_tps": {
+        "median": 20.73293639149583,
+        "p95": 61.95188988813654,
+        "maximum": 98.35597205856334
+      },
+      "cancellations": 0.0,
+      "preemptions": 0.0,
+      "minimum_available_gib": 4.09112548828125,
+      "maximum_memory_full_psi_avg10": 0.05,
+      "by_C": [
+        {
+          "task_median_seconds": 38.34400000004098,
+          "native_decode_tps_median": 79.34514513705598,
+          "completion_tokens": 2956,
+          "requests": 5,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 77.09159190477887
+        },
+        {
+          "task_median_seconds": 35.570499999972526,
+          "native_decode_tps_median": 59.505955893476155,
+          "completion_tokens": 3602,
+          "requests": 8,
+          "task_errors": 0,
+          "aggregate_workflow_completion_tps": 95.65540684097938
+        },
+        {
+          "task_median_seconds": 46.0,
+          "native_decode_tps_median": 42.57763522703228,
+          "completion_tokens": 6252,
+          "requests": 15,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 96.69636228644991
+        },
+        {
+          "task_median_seconds": 69.59450000000652,
+          "native_decode_tps_median": 33.1607803893151,
+          "completion_tokens": 8651,
+          "requests": 19,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 103.95462574647304
+        },
+        {
+          "task_median_seconds": 74.40700000000652,
+          "native_decode_tps_median": 26.10939919337255,
+          "completion_tokens": 9268,
+          "requests": 20,
+          "task_errors": 0,
+          "aggregate_workflow_completion_tps": 113.41303735967587
+        },
+        {
+          "task_median_seconds": 76.96900000004098,
+          "native_decode_tps_median": 24.119701881893594,
+          "completion_tokens": 11071,
+          "requests": 25,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 114.92904525113825
+        },
+        {
+          "task_median_seconds": 86.04700000002049,
+          "native_decode_tps_median": 22.030889189953058,
+          "completion_tokens": 10975,
+          "requests": 28,
+          "task_errors": 0,
+          "aggregate_workflow_completion_tps": 125.2053481791384
+        },
+        {
+          "task_median_seconds": 113.7270000000135,
+          "native_decode_tps_median": 19.43839829588609,
+          "completion_tokens": 16075,
+          "requests": 33,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 121.6798249929476
+        },
+        {
+          "task_median_seconds": 135.46899999992456,
+          "native_decode_tps_median": 17.40612050590134,
+          "completion_tokens": 22845,
+          "requests": 43,
+          "task_errors": 6,
+          "aggregate_workflow_completion_tps": 125.16710863708867
+        },
+        {
+          "task_median_seconds": 138.12450000003446,
+          "native_decode_tps_median": 16.516224497807933,
+          "completion_tokens": 27159,
+          "requests": 49,
+          "task_errors": 9,
+          "aggregate_workflow_completion_tps": 113.39164561717811
+        },
+        {
+          "task_median_seconds": 141.84399999992456,
+          "native_decode_tps_median": 15.11402654053995,
+          "completion_tokens": 22980,
+          "requests": 51,
+          "task_errors": 5,
+          "aggregate_workflow_completion_tps": 132.34201599856758
+        },
+        {
+          "task_median_seconds": 139.70349999994505,
+          "native_decode_tps_median": 14.358051760237437,
+          "completion_tokens": 25688,
+          "requests": 54,
+          "task_errors": 4,
+          "aggregate_workflow_completion_tps": 127.43454146783186
+        }
+      ]
+    },
+    "original": {
+      "correct": 78,
+      "requests": 350,
+      "generated_tokens": 164239,
+      "prompt_tokens": 738845,
+      "computed_prompt_tokens": 124409,
+      "wave_seconds": 1347.8720000000903,
+      "all_task_seconds": {
+        "median": 117.04700000002049,
+        "p95": 170.93700000003446,
+        "maximum": 190.31299999996554
+      },
+      "corrected_tool_errors": 30,
+      "acceptance": 0.7913307995885704,
+      "weighted_prefill_tps": 847.6419166568958,
+      "prefix_hit_fraction": 0.8316169155912269,
+      "prefill_seconds": {
+        "median": 0.23548834899999999,
+        "p95": 0.864062886,
+        "maximum": 1.078162827
+      },
+      "native_ttft_seconds": {
+        "median": 0.3568004955,
+        "p95": 5.990956306,
+        "maximum": 10.220799363
+      },
+      "post_prefill_first_token_upper_bound_seconds": {
+        "median": 0.004141912499994405,
+        "p95": 0.007173363999999793,
+        "maximum": 0.008965905000001051
+      },
+      "native_decode_tps": {
+        "median": 20.77829626643203,
+        "p95": 65.01867461749251,
+        "maximum": 107.88178237537124
+      },
+      "cancellations": 0.0,
+      "preemptions": 0.0,
+      "minimum_available_gib": 7.22735595703125,
+      "maximum_memory_full_psi_avg10": 0.0,
+      "by_C": [
+        {
+          "task_median_seconds": 37.42099999997299,
+          "native_decode_tps_median": 87.27898210545592,
+          "completion_tokens": 2956,
+          "requests": 5,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 78.9930787526291
+        },
+        {
+          "task_median_seconds": 34.461499999975786,
+          "native_decode_tps_median": 61.58640156201851,
+          "completion_tokens": 3602,
+          "requests": 8,
+          "task_errors": 0,
+          "aggregate_workflow_completion_tps": 98.72550363166724
+        },
+        {
+          "task_median_seconds": 48.68700000003446,
+          "native_decode_tps_median": 43.021182994955005,
+          "completion_tokens": 5602,
+          "requests": 12,
+          "task_errors": 0,
+          "aggregate_workflow_completion_tps": 108.1216706553747
+        },
+        {
+          "task_median_seconds": 68.6479999999865,
+          "native_decode_tps_median": 32.268068607739096,
+          "completion_tokens": 8942,
+          "requests": 18,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 105.41330692698354
+        },
+        {
+          "task_median_seconds": 70.26500000001397,
+          "native_decode_tps_median": 28.631121320919906,
+          "completion_tokens": 9617,
+          "requests": 25,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 111.46138779095736
+        },
+        {
+          "task_median_seconds": 98.38299999997253,
+          "native_decode_tps_median": 23.335829796947852,
+          "completion_tokens": 13201,
+          "requests": 27,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 114.6517283307139
+        },
+        {
+          "task_median_seconds": 85.09299999999348,
+          "native_decode_tps_median": 21.376485705461814,
+          "completion_tokens": 11966,
+          "requests": 29,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 120.81133199387689
+        },
+        {
+          "task_median_seconds": 112.96950000000652,
+          "native_decode_tps_median": 18.355426043040183,
+          "completion_tokens": 15847,
+          "requests": 33,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 124.41216879293425
+        },
+        {
+          "task_median_seconds": 134.81299999996554,
+          "native_decode_tps_median": 17.24292505882927,
+          "completion_tokens": 21467,
+          "requests": 41,
+          "task_errors": 4,
+          "aggregate_workflow_completion_tps": 128.10154077505774
+        },
+        {
+          "task_median_seconds": 135.17950000002747,
+          "native_decode_tps_median": 16.65826417914285,
+          "completion_tokens": 23500,
+          "requests": 49,
+          "task_errors": 9,
+          "aggregate_workflow_completion_tps": 127.90229353300408
+        },
+        {
+          "task_median_seconds": 141.23399999993853,
+          "native_decode_tps_median": 15.200568941689365,
+          "completion_tokens": 22694,
+          "requests": 51,
+          "task_errors": 5,
+          "aggregate_workflow_completion_tps": 135.22177467408758
+        },
+        {
+          "task_median_seconds": 138.67999999999302,
+          "native_decode_tps_median": 14.64811430835546,
+          "completion_tokens": 24845,
+          "requests": 52,
+          "task_errors": 4,
+          "aggregate_workflow_completion_tps": 130.52752136932196
+        }
+      ]
+    },
+    "xtf": {
+      "correct": 78,
+      "requests": 331,
+      "generated_tokens": 153259,
+      "prompt_tokens": 661718,
+      "computed_prompt_tokens": 122660,
+      "wave_seconds": 1229.7950000001583,
+      "all_task_seconds": {
+        "median": 108.725999999966,
+        "p95": 154.03099999995902,
+        "maximum": 159.4529999999795
+      },
+      "corrected_tool_errors": 16,
+      "acceptance": 0.833198583038133,
+      "weighted_prefill_tps": 860.9863849175176,
+      "prefix_hit_fraction": 0.8146340283927594,
+      "prefill_seconds": {
+        "median": 0.235871036,
+        "p95": 0.866331883,
+        "maximum": 1.068424098
+      },
+      "native_ttft_seconds": {
+        "median": 0.382513825,
+        "p95": 5.99382215,
+        "maximum": 10.224848934
+      },
+      "post_prefill_first_token_upper_bound_seconds": {
+        "median": 0.00371960500000057,
+        "p95": 0.007117761000000167,
+        "maximum": 0.008900142999999971
+      },
+      "native_decode_tps": {
+        "median": 20.97937894543588,
+        "p95": 71.66030892424762,
+        "maximum": 108.64949629887857
+      },
+      "cancellations": 0.0,
+      "preemptions": 0.0,
+      "minimum_available_gib": 6.1895751953125,
+      "maximum_memory_full_psi_avg10": 0.0,
+      "by_C": [
+        {
+          "task_median_seconds": 37.20299999997951,
+          "native_decode_tps_median": 87.99586634624568,
+          "completion_tokens": 2956,
+          "requests": 5,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 79.45595785290509
+        },
+        {
+          "task_median_seconds": 34.71899999998277,
+          "native_decode_tps_median": 60.67789218271822,
+          "completion_tokens": 3602,
+          "requests": 8,
+          "task_errors": 0,
+          "aggregate_workflow_completion_tps": 98.01360544217687
+        },
+        {
+          "task_median_seconds": 60.313000000081956,
+          "native_decode_tps_median": 43.53228406191635,
+          "completion_tokens": 8286,
+          "requests": 14,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 99.60571236226183
+        },
+        {
+          "task_median_seconds": 71.32750000001397,
+          "native_decode_tps_median": 34.66080584651934,
+          "completion_tokens": 8981,
+          "requests": 19,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 112.83655597855007
+        },
+        {
+          "task_median_seconds": 72.53200000000652,
+          "native_decode_tps_median": 30.933452909983508,
+          "completion_tokens": 10789,
+          "requests": 23,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 112.67885117493472
+        },
+        {
+          "task_median_seconds": 85.61700000002747,
+          "native_decode_tps_median": 25.815517300446736,
+          "completion_tokens": 13772,
+          "requests": 26,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 114.2610614695919
+        },
+        {
+          "task_median_seconds": 78.73400000005495,
+          "native_decode_tps_median": 22.702708815102437,
+          "completion_tokens": 11465,
+          "requests": 29,
+          "task_errors": 1,
+          "aggregate_workflow_completion_tps": 125.51591254941066
+        },
+        {
+          "task_median_seconds": 92.74249999999302,
+          "native_decode_tps_median": 20.15486922035423,
+          "completion_tokens": 13820,
+          "requests": 34,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 128.11123986095018
+        },
+        {
+          "task_median_seconds": 128.89099999994505,
+          "native_decode_tps_median": 17.871634104155415,
+          "completion_tokens": 18975,
+          "requests": 37,
+          "task_errors": 0,
+          "aggregate_workflow_completion_tps": 136.37245671650786
+        },
+        {
+          "task_median_seconds": 114.84350000001723,
+          "native_decode_tps_median": 16.621168851703516,
+          "completion_tokens": 17163,
+          "requests": 40,
+          "task_errors": 0,
+          "aggregate_workflow_completion_tps": 137.38973119224144
+        },
+        {
+          "task_median_seconds": 134.15599999995902,
+          "native_decode_tps_median": 15.313639567008261,
+          "completion_tokens": 21206,
+          "requests": 46,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 137.67358518743396
+        },
+        {
+          "task_median_seconds": 135.15600000001723,
+          "native_decode_tps_median": 14.090227208090576,
+          "completion_tokens": 22244,
+          "requests": 50,
+          "task_errors": 2,
+          "aggregate_workflow_completion_tps": 139.4888002608731
+        }
+      ]
+    }
+  },
+  "learner": {
+    "adaptive_rounds_total": 11672.0,
+    "adaptive_cost_updates_total": 11267.0,
+    "adaptive_acceptance_updates_total": 112076.0,
+    "adaptive_probes_total": 2.0,
+    "adaptive_rejected_times_total": 0.0,
+    "adaptive_prediction_samples_total": 11267.0,
+    "adaptive_prediction_abs_error_microseconds_total": 46154568.0,
+    "adaptive_verify_microseconds_total": 969521957.0,
+    "adaptive_last_rows": 6.0,
+    "adaptive_last_streams": 1.0,
+    "adaptive_last_context_tokens": 4023.0,
+    "adaptive_last_predicted_verify_microseconds": 46659.0,
+    "adaptive_last_verify_microseconds": 47453.0,
+    "observed_rows_range_by_streams": {
+      "1": [
+        2,
+        6
+      ],
+      "2": [
+        3,
+        12
+      ],
+      "3": [
+        6,
+        18
+      ],
+      "4": [
+        7,
+        23
+      ],
+      "5": [
+        9,
+        30
+      ],
+      "6": [
+        12,
+        35
+      ],
+      "7": [
+        13,
+        42
+      ],
+      "8": [
+        13,
+        48
+      ],
+      "9": [
+        15,
+        47
+      ],
+      "10": [
+        15,
+        48
+      ],
+      "11": [
+        15,
+        48
+      ],
+      "12": [
+        23,
+        48
+      ]
+    },
+    "sampling_interval_seconds": 3,
+    "timing_normalized_absolute_error": 0.0476054901766397
+  },
+  "error_breakdown": {
+    "bert1": {
+      "errors": {
+        "unsupported pure-function syntax: Import": 8,
+        "unsupported pure-function syntax: ImportFrom": 3,
+        "one merge_events function required": 2,
+        "unknown tool or invalid arguments": 10,
+        "provide a concise Czech explanation, 30 to180 words": 1,
+        "incorrect accounting: requests": 6,
+        "provide four to six explanatory sentences": 1
+      },
+      "tasks_with_error": 20,
+      "errors_C1_C8": 7,
+      "errors_C9_C10": 15
+    },
+    "original": {
+      "errors": {
+        "unsupported pure-function syntax: Import": 10,
+        "unknown tool or invalid arguments": 11,
+        "one merge_events function required": 1,
+        "incorrect accounting: requests": 6,
+        "unsupported pure-function syntax: ImportFrom": 1,
+        "provide four to six explanatory sentences": 1
+      },
+      "tasks_with_error": 20,
+      "errors_C1_C8": 8,
+      "errors_C9_C10": 13
+    },
+    "xtf": {
+      "errors": {
+        "unsupported pure-function syntax: Import": 7,
+        "incorrect accounting: requests": 2,
+        "provide a concise Czech explanation, 30 to180 words": 1,
+        "one merge_events function required": 1,
+        "unknown tool or invalid arguments": 2,
+        "unsupported pure-function syntax: ImportFrom": 3
+      },
+      "tasks_with_error": 13,
+      "errors_C1_C8": 12,
+      "errors_C9_C10": 0
+    }
+  },
+  "caveats": [
+    "Single paired pass; no statistical confidence interval.",
+    "Same initial inputs; subsequent generated tokens and tool trajectories differ.",
+    "Bert1 was an existing production process; the other arms used restarted native processes.",
+    "Guard-aborted Bert1 C10 was retried in a shared fresh namespace; C1-C9 were hash-verified and reused.",
+    "Post-prefill first-token latency is an upper bound including received-to-submitted preparation.",
+    "Small workflow does not validate 7M/8M context capacity or production vision throughput."
+  ],
+  "tool_attempts": {
+    "original": 508,
+    "bert1": 508,
+    "xtf": 487
+  }
+}

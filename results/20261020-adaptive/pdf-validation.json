@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "pdf_pages": 32,
+  "outline_entries": 32,
+  "numeric_appendix_values_verified": 1188,
+  "comparison_cells": 36,
+  "tasks": 234,
+  "requests": 1031,
+  "csv_matches_frozen_source": true,
+  "share_bundle_privacy_scan": "PASS",
+  "pdf_sha256": "ad9bfc7cb98cd4563fc2684b0b21e311019db674655b5341b31fa865fb716ff5",
+  "pdf_bytes": 509382,
+  "zip_sha256": "a83658ea0fd1b04f7b3974529108a2581c43f179e765b3093be32c0e7ec6c98c",
+  "zip_bytes": 858689,
+  "limits": "Pattern scan is a targeted check of this numeric artifact, not an audit of the entire repository."
+}

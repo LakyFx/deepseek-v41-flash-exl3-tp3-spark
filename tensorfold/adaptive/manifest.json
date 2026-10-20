@@ -1,0 +1,39 @@
+{
+  "version": "1.2.3",
+  "measured_as": "1.2.2xTF",
+  "source_archive_sha256": "8d4b2f808827fd247048082d122b8fab31b75e798b5ed86fd370103ef178469a",
+  "original_sha256": {
+    "zig/src/core/lanes/config.zig": "315f0209aa55aa1c04835ac064fee3871bfb4d818d93e4dd3a3584c39714c05d",
+    "zig/src/core/lanes/engine.zig": "6bd6a8ea732610b9f4dc6be0b541c158ed1f644dc8e2b449222cfb2fe06d8db4",
+    "zig/src/core/lanes/windows.zig": "6b5ab1c45db219b8d9510766e658871df70a42e31ce2660cc04aacd78328bafe",
+    "zig/src/families/dsv41/lanes.zig": "77d867156da82dffd27538283f297c653860540b8eae46bc94e5cd2e48b9f60a",
+    "zig/src/families/dsv41/native.zig": "b326c7489a931cf950a20713c4110cda985e57840a91ceea831d36367aff044f",
+    "zig/src/families/dsv41/lanes_main.zig": "76e9ba27d04706330e2c3abf8644c9c701558f0b00ec44f02befcc53f68e41f5",
+    "zig/src/core/engine_api.zig": "8a0d54804de66deebff87588c0d77bc851a53ef6e417524828b50adaa9eb06dd",
+    "zig/src/core/lane_host.zig": "ac07c3ed34c74793d88568ac7d7058cde420b00f2b9fc69f1af89d3f313cd722",
+    "zig/src/server/metrics.zig": "9249e94db3f5e553d804b1d4e8ae5fbe05ce3b8597554b4cf67852ec2ee5c5e2",
+    "zig/src/core/lanes/engine_test.zig": "f76d65bc52f74a389e56f6b66a4bc96b941ebbad638386c10470017876128c73"
+  },
+  "patched_sha256": {
+    "zig/src/core/lanes/config.zig": "6ba1a6d05b5b98d3c510db1f5d3bdb85cc1adc03a2fa9130e46368c4a780edf4",
+    "zig/src/core/lanes/engine.zig": "7515ba334cf04796be95d48277ce8028da5916dede2dca4ee297e7b10822642f",
+    "zig/src/core/lanes/windows.zig": "10b129e8635c34cbc1431eb37b4d0b321f886d1ac8114cb8cd5d4f315a6652e1",
+    "zig/src/families/dsv41/lanes.zig": "6f4f4a30ad30966b4b9921e13908a1e9c455887192ab401861e2d78d9d6e4504",
+    "zig/src/families/dsv41/native.zig": "1cd93d5d40d3c6d9dab7f263c97ba640c358e87c2ebcd8d5f447b61a816d7b20",
+    "zig/src/families/dsv41/lanes_main.zig": "9f27f79e4520008471556ef9deba6db7d1bc9edc2f1ad5fd1ac48f8a1582be80",
+    "zig/src/core/engine_api.zig": "2a6fefcdb5b44f3cccacc346f45fdfb90481de0d427fdffaa2b4f865b9b2b973",
+    "zig/src/core/lane_host.zig": "5ae7f56e435d5e8ab1c7b29352d1d7921549796693abe332c6777a0adc86e849",
+    "zig/src/server/metrics.zig": "86a9770d16814b360d76d340dc7d8449092e7f9fa63c9ec3c7eaf105e31364ca",
+    "zig/src/core/lanes/engine_test.zig": "170f2c7888b30147733cf4c8b1332d0a1ee41f24a5a18d90633dff603e1b1656",
+    "zig/src/core/lanes/adaptive.zig": "b87a677df14ec297ad7adbad9a5fce9a57f8129b338d50e2183fc976b97c024a",
+    "zig/src/core/lanes/overhead_check.zig": "b59921e8bd61c4a55774abc02d75b5477c9d081f99005ecb88dc115bcc27b92f"
+  },
+  "overlay_sha256": {
+    "adaptive.zig": "b87a677df14ec297ad7adbad9a5fce9a57f8129b338d50e2183fc976b97c024a",
+    "engine_test_append.zig": "77f8599d06c1a61565bbceaa7f02ad9df6e4ee239efc27a2c8707af31e1d5b9d",
+    "overhead_check.zig": "b59921e8bd61c4a55774abc02d75b5477c9d081f99005ecb88dc115bcc27b92f"
+  },
+  "recorded_native_cpu_tests": 322,
+  "recorded_module_tests": 10,
+  "attribution": "Inspired by AdaSpark, Liu et al., arXiv:2610.05774; an adaptation in existing chain/copy lanes."
+}

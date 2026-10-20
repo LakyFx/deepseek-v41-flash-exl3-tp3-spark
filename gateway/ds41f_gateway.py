@@ -8,8 +8,8 @@ from pathlib import Path
 from laguna_gateway.app import create_app as _create_app
 from laguna_gateway.config import Settings
 
-SOURCE_REVISION = 'cbec16961b9a23825bc186cbb6ea91b7d7c859c9'
-RECIPE_VERSION = '1.2.2TF'
+SOURCE_REVISION = '8b4e06481aa7e29911026670e2718a7bd91d3c38'
+RECIPE_VERSION = '1.2.3'
 # Preserve implicit deduplication across this compatible scheduler-only upgrade.
 VISION_JOBS_REVISION = 'd021774d38c0e7c684e6da44f39f22e735deb14b'
 
