@@ -8,7 +8,7 @@ from pathlib import Path
 INTRO = '''# TensorFold workflow benchmark: 1.2.2TF vs Bert1 vs 1.2.2xTF / 1.2.3
 
 **Measured 20 October 2026.** This is the full Markdown companion to the
-[32-page English PDF](../results/20261020-adaptive/workflow-report.pdf).
+[34-page English PDF with exact model/quant/sampler addendum](../results/20261020-adaptive/workflow-report-reproducibility.pdf).
 **1.2.3 is the release name for the configuration measured as 1.2.2xTF**;
 the rename creates no new measurement. Evidence retains its original labels.
 
@@ -21,6 +21,7 @@ quality improvement or an isolated learner speedup.
 ## Navigation and evidence
 
 - [Release configuration and installation](DS41F-1.2.3.md)
+- [Exact model, quantization and sampling settings](BENCHMARK-SETTINGS-20261020.md)
 - [Online cost/acceptance learner, equations and AdaSpark attribution](ADAPTIVE-SPECULATION.md)
 - [All 36 comparison cells, full precision CSV](../results/20261020-adaptive/comparison-all-metrics.csv)
 - [Native counter deltas](../results/20261020-adaptive/native-counters.csv)
@@ -61,6 +62,29 @@ three GB10 / Spark-class systems, 2,200 MHz GPU clock, existing graph,
 prefetch, RDMA and target sampling paths. Vision remained C2/MEDIUM and
 was not exercised by this campaign. Gateway admission ceilings are shown
 for configuration transparency; the benchmark used the direct native API.
+
+## Exact model, quantization and sampling
+
+All three arms used **deepseek-ai/DeepSeek-V4.1-Flash-1017** at revision
+`1bae0e1088993b9b82de08f59de5be5a34e42170`, with the same
+**LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold** weights at
+`8621801c1fc74aece1fa83e67c6ade3fde1e7894`. Routed experts are approximately
+**3.5101 bpw EXL3**; the model is mixed precision, with a K6 head, K4 DSpark
+draft projections, FP8 Engram and BF16 vision. Runtime KV/index is FP4.
+
+Effective sampling was **temperature 0.6, top_p 1.0, top_k 0 (disabled),
+min_p 0.0, seed 42, thinking enabled / MAX**. The benchmark explicitly sent
+temperature/seed/effort; top_p/top_k/min_p came from the checked native HTTP
+defaults. No repetition/frequency/presence penalty overrides or custom stop
+were requested. Each call allowed 65,536 output tokens; server context was
+401,408 tokens. These are the measured settings, including temperature 0.6,
+rather than the upstream recommendation of 1.0.
+
+The [settings addendum](BENCHMARK-SETTINGS-20261020.md) includes pinned weight
+links, tokenizer/template hashes, the exact request-control JSON and default
+resolution evidence; [benchmark-settings.json](../results/20261020-adaptive/benchmark-settings.json)
+is the machine-readable companion. The PDF adds the same information on pages
+33–34, retaining the original 32 pages and all measurements.
 
 ## Workload and completion protocol
 

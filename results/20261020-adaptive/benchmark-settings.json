@@ -1,0 +1,110 @@
+{
+  "schema": "ds41f.workflow-benchmark-settings.v1",
+  "measured_date": "2026-10-20",
+  "report_revision": "reproducibility-addendum-1",
+  "scope": "Identical model, weights and target sampling across original / Bert1 / xTF; no new measurements.",
+  "release_name": "1.2.3",
+  "measured_as": "1.2.2xTF",
+  "model": {
+    "source_repo": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+    "source_revision": "1bae0e1088993b9b82de08f59de5be5a34e42170",
+    "hub_repo": "LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold",
+    "hub_revision": "8621801c1fc74aece1fa83e67c6ade3fde1e7894",
+    "routed_expert_bpw": 3.510072157,
+    "chat_template_sha256": "7d1356675e429ec4a55cbcc1a6fbeb40615dbeb257aca25b8c3705a42087f33e"
+  },
+  "quantization": {
+    "routed_experts": "EXL3 mixed allocation; approximately 3.5101 bits per weight",
+    "lm_head": "EXL3 K6",
+    "dspark_draft_projections": "EXL3 K4",
+    "engram_tables": "FP8",
+    "vision_tower": "BF16 (not exercised)",
+    "runtime_kv_index": "TensorFold FP4 compressed KV/index",
+    "whole_model_bpw": null,
+    "note": "3.51 bpw describes routed experts, not a whole-model average; exact other tensors are pinned by the weight release."
+  },
+  "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+  "tokenizer_config_sha256": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+  "request_fields_sent": {
+    "model": "deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "chat_template_kwargs": {
+      "thinking": true,
+      "enable_thinking": true,
+      "reasoning_effort": "max"
+    },
+    "temperature": 0.6,
+    "seed": 42,
+    "max_tokens": 65536,
+    "tool_choice": "auto",
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "effective_sampling": {
+    "temperature": 0.6,
+    "top_p": 1.0,
+    "top_k": 0,
+    "min_p": 0.0,
+    "seed": 42
+  },
+  "sampling_provenance": {
+    "explicit": [
+      "temperature",
+      "seed",
+      "reasoning_effort",
+      "chat_template_kwargs",
+      "max_tokens",
+      "tool_choice"
+    ],
+    "inherited": [
+      "top_p",
+      "top_k",
+      "min_p"
+    ],
+    "resolution": "Frozen native HTTP resolver defaults; no sampler CLI overrides in any of the three serving profiles; pinned model wrapper has no generation_config.json.",
+    "evidence_kind": "Reconstructed from retained benchmark source, serving profiles, frozen native source and pinned published model-wrapper inventory; not newly captured per-request sampler telemetry.",
+    "not_requested": [
+      "repetition_penalty",
+      "frequency_penalty",
+      "presence_penalty",
+      "stop",
+      "logit_bias",
+      "response_format",
+      "thinking_budget"
+    ],
+    "defaults_caution": "Internal Sampling struct initializers have different defaults; the HTTP resolveSampling path determines these benchmark values."
+  },
+  "runtime": {
+    "engine": "TensorFold native CUDA",
+    "hardware": "3 x NVIDIA DGX Spark / GB10",
+    "tensor_parallel": 3,
+    "expert_parallel": false,
+    "gpu_clock_mhz": 2200,
+    "context_limit_tokens": 401408,
+    "max_tokens_per_call": 65536,
+    "workflow_turn_guard": 16,
+    "reasoning": "MAX",
+    "speculation": "DSpark enabled",
+    "api": "direct native /v1/chat/completions, SSE; bypasses public gateway",
+    "task_language": "Czech"
+  },
+  "source_evidence": {
+    "sha256": {
+      "operations/x122tf_20261020/production/original-reference.json": "3d49e02aa6f7bc0f5f0b4d36f66ee8c3cb52bc382c87baf28d4b1eba10bf4ffb",
+      "operations/x122tf_cutover_20261020/bert1-profile.json": "1d8153dad6b95b80cd0ec22b027db9922459e4f023cc71734d4fad8344b4ef2e",
+      "operations/x122tf_20261020/production/profile.json": "2c044711dd9d1a02474e50d814d736265998b516e6ff1cf6b0a2335298b51d26",
+      "operations/x122tf_20261020/bench/workflow.py": "b2425864f43ed9971bc15f76cf47175ae2f164de5718b00bba9e8db63d122977",
+      "operations/x122tf_20261020/bench/client.py": "e61c1e750f217d2bcbebffb65598a6f48e84873aed6bd45fc59bc1a48095a073"
+    },
+    "native_archive_sha256": "8d4b2f808827fd247048082d122b8fab31b75e798b5ed86fd370103ef178469a",
+    "native_files_sha256": {
+      "zig/src/server/server.zig": "7939ce274370eb1428a45ed2a8352e6eaf1a34f5f667b5a7e1eeac7fa06b9cdc",
+      "zig/src/server/main.zig": "9f8ff139b5ce0166d68ebdf79cb92fe17b5616e1ce1ad8883c417b47d50ab7d3"
+    },
+    "weight_release_manifest_sha256": "8257a75694e135037b77d7c33dcaa137a6835db289410a44703a188a0b5c9201",
+    "weight_wrapper_receipt_sha256": "c254e09342dccfb23ff572b92db1ad88bea3f51b5268d6cbde3d48a029126238"
+  },
+  "comparison_limits": "Same seed and settings do not imply bit-identical output across GPU execution shapes. One pass; initial inputs match, subsequent tool trajectories diverge. Benchmark temperature 0.6 is not the upstream recommended temperature 1.0."
+}

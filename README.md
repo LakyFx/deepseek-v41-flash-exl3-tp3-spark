@@ -39,7 +39,7 @@ claimed. [All 36 cells, latencies, errors, counterexamples and limitations](docs
 ## Use or inspect 1.2.3
 
 - **[Install/build and exact settings](docs/DS41F-1.2.3.md)** · [launcher profile](tensorfold/profiles/1.2.3.json)
-- **[Complete benchmark report in Markdown](docs/WORKFLOW-BENCHMARK-20261020.md)** · [PDF](results/20261020-adaptive/workflow-report.pdf) · [all numeric data](results/20261020-adaptive/)
+- **[Complete benchmark report in Markdown](docs/WORKFLOW-BENCHMARK-20261020.md)** · [34-page PDF](results/20261020-adaptive/workflow-report-reproducibility.pdf) · [exact model/quant/sampling](docs/BENCHMARK-SETTINGS-20261020.md) · [all numeric data](results/20261020-adaptive/)
 - **[How the online learner works](docs/ADAPTIVE-SPECULATION.md)** · [verified native patch](tensorfold/adaptive/)
 - **[Production gateway](docs/GATEWAY.md)** · [pinned 1017 weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold)
 - [Historical engine recipes and measurements](#earlier-releases-and-measurements) · [all sources and credits](docs/SOURCES.md)

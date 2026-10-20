@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "pdf_pages": 34,
+  "outline_entries": 34,
+  "numeric_appendix_values_verified": 1188,
+  "comparison_cells": 36,
+  "tasks": 234,
+  "requests": 1031,
+  "csv_matches_frozen_source": true,
+  "share_bundle_privacy_scan": "PASS",
+  "pdf_sha256": "27663bc39d0b427ce895290e1e2e5fd552f583acdcf99ef4c731a5f2b4251f17",
+  "pdf_bytes": 515222,
+  "zip_sha256": "d317ee3bf06516da5d8db775c2ce20474fd26566b8dd3d7f10f3b954c7626efd",
+  "zip_bytes": 864935,
+  "limits": "Pattern scan is a targeted check of this numeric artifact, not an audit of the entire repository.",
+  "original_first_32_pages_text_identical": true,
+  "model_and_sampling_source_checked": true,
+  "settings_sha256": "82197de7d8e34a23a6de917e0e03f3392a4b28470c593ee0c81554dd1dccf704",
+  "pdf_filename": "workflow-report-reproducibility.pdf",
+  "local_share_bundle_filename": "TensorFold-Community-Report-and-Data.zip",
+  "new_model_requests_performed": 0,
+  "visual_review": "New pages 33 and 34 rendered and inspected; no overflow or overlap."
+}
