@@ -1,7 +1,8 @@
 # TensorFold workflow benchmark: 1.2.2TF vs Bert1 vs 1.2.2xTF / 1.2.3
 
-**Measured 20 October 2026.** This is the full Markdown companion to the
-[34-page English PDF with exact model/quant/sampler addendum](../results/20261020-adaptive/workflow-report-reproducibility.pdf).
+**Measured 20 October 2026.** This is the complete English report in Markdown,
+including all comparison tables, the learner design and the exact
+model/quantization/sampling addendum in one document.
 **1.2.3 is the release name for the configuration measured as 1.2.2xTF**;
 the rename creates no new measurement. Evidence retains its original labels.
 
@@ -16,6 +17,9 @@ quality improvement or an isolated learner speedup.
 - [Release configuration and installation](DS41F-1.2.3.md)
 - [Exact model, quantization and sampling settings](BENCHMARK-SETTINGS-20261020.md)
 - [Online cost/acceptance learner, equations and AdaSpark attribution](ADAPTIVE-SPECULATION.md)
+- [Appendix B: complete online learner design](#appendix-b--online-learning-design)
+- [Appendix C: complete model, quantization and sampling settings](#appendix-c--exact-model-quantization-and-sampling)
+- [Appendix D: metric glossary and references](#appendix-d--metric-glossary-and-references)
 - [All 36 comparison cells, full precision CSV](../results/20261020-adaptive/comparison-all-metrics.csv)
 - [Native counter deltas](../results/20261020-adaptive/native-counters.csv)
 - [234 per-task outcomes](../results/20261020-adaptive/task-results.csv)
@@ -76,8 +80,8 @@ rather than the upstream recommendation of 1.0.
 The [settings addendum](BENCHMARK-SETTINGS-20261020.md) includes pinned weight
 links, tokenizer/template hashes, the exact request-control JSON and default
 resolution evidence; [benchmark-settings.json](../results/20261020-adaptive/benchmark-settings.json)
-is the machine-readable companion. The PDF adds the same information on pages
-33–34, retaining the original 32 pages and all measurements.
+is the machine-readable companion. The entire addendum is also included in
+[Appendix C](#appendix-c--exact-model-quantization-and-sampling) below.
 
 ## Workload and completion protocol
 
@@ -583,9 +587,10 @@ All 36 cells had `correct = total = C`; `runtime_coverage_requests = requests`,
 `coverage=True` and `failures_retained=True`. The full-precision CSV retains
 these fields and `rate_scope`. Native generated/computed-token and request
 counts agree with the matching comparison cells. There were no native
-cancellations or preemptions. Printed numeric tables in the PDF were checked
-independently against 1,188 source values; the Markdown tables are generated
-from those same numeric exports. A release test verifies them against CSV.
+cancellations or preemptions. The Markdown comparison tables are generated
+from the retained numeric exports. `python3 tools/audit_adaptive_results.py`
+checks all 1,188 per-concurrency numeric values against the source CSVs;
+the release test also verifies coverage and aggregate totals.
 
 The reusable lesson is to compare task duration, output volume, repair
 categories and latency definitions beside TPS. xTF was the strongest overall
@@ -593,3 +598,341 @@ recipe in this pass, but it did not win every cell and this single pass does
 not establish a general model-quality gain. Historical benchmark campaigns
 elsewhere in the repository retain their own models, scopes and metric
 definitions; do not blend them into this matched-input comparison.
+
+## Appendix B / Online learning design
+
+Version **1.2.3 is the release name of the configuration measured as 1.2.2xTF**.
+It retains the same target model, draft weights, target verifier and sampling
+path. It learns the runtime economics of candidate verification: which extra
+rows are likely to emit tokens, and how much those rows cost at the current
+load and context length. This is not model-weight training or learning from
+whether an agent's tool command was correct.
+
+### Inspiration and attribution
+
+We were inspired by **Liquan Liu, Yifan Zhang and Bowei Xu's
+[AdaSpark: Adaptive DSpark with Online Learning for Tree Verification and N-gram Fill](https://arxiv.org/abs/2610.05774)**
+and its [imparo implementation](https://github.com/zeraix/imparo).
+In particular, we adapted the ideas of online verification-cost feedback,
+acceptance calibration and pricing verification time at the observed decode
+rate. Our implementation remains in TensorFold's existing head/copy chain
+lanes: it is **not a full reproduction of AdaSpark's tree construction,
+learning models or imparo engine**. We retain pinned cost priors and use a
+small rolling-median/bucket model. The paper's speedups are not our results.
+
+The native engine and existing speculative machinery are
+[TensorFold, by Ashley Hart and its contributors](https://github.com/ashhart/TensorFold).
+Our addition is the integration and bounded online controller shown in
+[`adaptive.zig`](../tensorfold/adaptive/adaptive.zig) and the
+[exact integration patch generator](../tensorfold/adaptive/patch.py).
+The [complete workflow measurements](WORKFLOW-BENCHMARK-20261020.md) evaluate
+the combined serving recipe, not the learner in isolation.
+
+### What C12 and R48 mean
+
+- **C12** is the serving slot cap. In the benchmark, C is the number of parallel
+  agent workflows, each making multiple sequential model requests with tool
+  gaps. Actual active native streams vary during a wave.
+- **R48** is the maximum number of verification rows in a shared round,
+  including mandatory anchor rows. It is not 48 draft tokens per request.
+- The controller does not divide R equally by C. It compares legal candidate
+  prefixes, preserving parent-before-child dependencies.
+- A larger cap permits a larger round when useful; it does not force that
+  size. The sampled C1 native-stream range was only 2–6 rows in this run.
+
+Original 1.2.2TF and Bert1 already used cost-based dynamic allocation. The new
+part is learning corrections to cost and acceptance, with average-reward
+pricing, rather than introducing dynamic speculation for the first time.
+
+### One round, from candidates to feedback
+
+```text
+existing head/copy candidates
+       |
+       v
+estimate conditional acceptance and legal-prefix survival
+       |
+       v
+price verification widths for load + context + sampling mode
+       |
+       v
+choose a useful prefix allocation, up to R48
+       |
+       v
+existing target verifier accepts/rejects token candidates
+       |
+       +--> measured verification time --> cost fit
+       +--> reached-prefix labels       --> acceptance fit
+       +--> emitted tokens / elapsed time --> average-reward price
+```
+
+Integration hooks are `verified()` after verification, `accepted()` for
+reached chain-prefix outcomes before output/EOS truncation, and `finished()`
+for overhead/reward-rate accounting. The module changes selected rows; it
+does not replace the target sampling/verification decision.
+
+### Verification-cost model
+
+The starting table is the original R1–R32 table. Its R25–R32 entries were
+already extrapolated; R33–R48 extend the prior by **3.1 ms per row**. These
+extensions are priors, not independently measured width sweeps.
+
+Each cost bucket distinguishes:
+
+| Feature | Buckets |
+|---|---|
+| Sampling | Greedy / sampled |
+| Active native streams | 1, 2, 3–4, 5–6, 7–8, 9–16 |
+| Context | ≤8K, ≤16K, ≤32K, ≤64K, ≤128K, ≤256K, larger |
+| Verification width | Exact row count, up to 48 |
+
+Context is the mandatory-row-weighted mean. Choosing more speculative rows
+does not redefine that feature and accidentally make a width look cheaper.
+For a bucket/width, we collect actual verification time divided by prior
+time, skip the first two sightings to reduce cold shape/graph effects, and
+retain the **latest 16 ratios**. Their median supplies a robust correction.
+
+Sparse exact-width cells borrow a correction within the same load/context/mode
+bucket, then refine it with trust `n / (n + 8)`. They do not borrow across
+different context or load bands. The final multiplier is clipped to **0.5–3×**.
+Invalid/nonfinite timing and measurements outside **0.25–8×** baseline are
+rejected. Process and memory guards are separate operational mechanisms.
+
+Overhead has EWMA smoothing **α=0.1**. Emitted-token and elapsed-time averages
+use **α=0.025**. The reward price becomes available after 16 observations in
+the bucket:
+
+```text
+rho = smoothed emitted tokens / smoothed elapsed time
+
+cold objective = expected emitted tokens / predicted total round time
+warm objective = expected emitted tokens - rho * predicted total round time
+```
+
+This is a ratio of smoothed totals, not a mean of per-round rates. It avoids
+overweighting very short rounds. The output proxy includes mandatory rows
+plus the expected survival of selected drafts.
+
+The controller scans legal prefix widths up to R48. A 2% score margin keeps
+the incumbent when changes are marginal. Undermeasured neighbouring widths
+may receive a useful probe at most every 64 rounds, within a 4% utility
+margin. A probe is an ordinary useful verification round, not an extra GPU
+benchmark call.
+
+### Acceptance calibration
+
+Raw cumulative survival estimates are converted to conditional probabilities.
+Calibration buckets separate sampling mode, head/copy source, 16 depth bins
+(depths ≥15 share the final bin), and eight raw-confidence bins.
+
+For a reached position, the target outcome gives a success/failure label.
+After the first mismatch, later positions were not reached: they are
+**censored**, not recorded as failures. The prediction blends the prior with
+decaying observations:
+
+```text
+retain = 1 / (1 + age_in_rounds / 512)
+q = (32 * prior + successes * retain) / (32 + trials * retain)
+```
+
+Counts halve at 128 trials to allow adaptation. Unobserved buckets gradually
+return toward the current prior. A per-mode/source guard enables the learned
+prediction only after at least 32 observations and while its EWMA log loss
+is no worse than **1.01×** the raw prior. Otherwise it falls back to the
+original confidence. Path survival is the product of the conditional
+probabilities; parent prefixes remain intact.
+
+### Lifetime, shape limits and fallback
+
+The learner is process-local and shared across requests. Opening a new chat
+does not reset it. Restarting the native process discards it and returns to
+the pinned priors; **there is no disk persistence**. Learning can track a
+changing workload, but longer runtime does not guarantee monotonic improvement.
+
+The opt-in is `TF_DS_ADAPTIVE_LEARNING=1`, on all three ranks in the released
+profile. The implementation rejects unsupported adaptive shapes: more than
+48 rows, more than 16 streams, or the separate head-tree mode. Invalid
+configuration is an error rather than an implicit promise of support.
+
+### What was measured
+
+| xTF telemetry in the retained workflow run | Value |
+|---|---:|
+| Controller rounds | 11,672 |
+| Cost updates / timing prediction samples | 11,267 |
+| Acceptance labels | 112,076 |
+| Nearby-width probes | 2 |
+| Rejected timing samples | 0 |
+| Sum absolute prediction error / sum verification time | 4.7605% |
+| Mean absolute prediction error | 4.10 ms |
+| Summed measured verification time for those samples | 969.52 s |
+
+The 4.76% statistic is `sum(abs(predicted - actual)) / sum(actual)`.
+It is not MAPE, a convergence guarantee or “95.24% prediction accuracy”.
+The [full table of sampled row ranges](WORKFLOW-BENCHMARK-20261020.md#learner-telemetry)
+uses 3-second telemetry samples, not a complete per-round history.
+
+### Acceptance is not semantic task accuracy
+
+Standard speculative inference can preserve the target distribution under
+its algorithmic assumptions; see
+[Leviathan, Kalman and Matias (2023)](https://proceedings.mlr.press/v202/leviathan23a.html).
+The verifier nevertheless does not know whether a tool command or accounting
+answer is correct. A higher acceptance fraction is an efficiency statistic.
+
+The measured xTF recipe had fewer rejected intermediate tool attempts, but
+the experiment simultaneously changed row cap, KV budget, snapshot-cache
+size and allocation policy. Tool trajectories and output lengths diverged.
+It does not prove that this learner improves the target model's reasoning,
+or that a larger prompt cache prevents long-session repetition loops.
+
+### Inspect or rebuild it
+
+[`manifest.json`](../tensorfold/adaptive/manifest.json) pins the pristine base,
+the exact integrated source hashes from the measured build, and the overlay
+hashes. The portable patcher verifies all proposed output bytes before writing
+the extracted source. [`build.py`](../tensorfold/adaptive/build.py) then runs
+CPU tests and the ARM64 build, recording the resulting binary hashes. The
+[1.2.3 recipe](DS41F-1.2.3.md) uses a separate binary directory and requires
+that receipt before `--run`.
+
+## Appendix C / Exact model, quantization and sampling
+
+### Model and weight identity
+
+| Item | Exact benchmark configuration |
+|---|---|
+| Base checkpoint | [`deepseek-ai/DeepSeek-V4.1-Flash-1017`](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/tree/1bae0e1088993b9b82de08f59de5be5a34e42170) |
+| Base revision | `1bae0e1088993b9b82de08f59de5be5a34e42170` |
+| Quantized checkpoint | [`LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold`](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold/tree/8621801c1fc74aece1fa83e67c6ade3fde1e7894) |
+| Weight revision | `8621801c1fc74aece1fa83e67c6ade3fde1e7894` |
+| Main routed experts | EXL3 mixed allocation, approximately **3.5101 bpw** |
+| Language-model head | EXL3 K6 |
+| DSpark draft projections | EXL3 K4 |
+| Engram tables | FP8 |
+| Vision tower | BF16; no images were used in this benchmark |
+| Runtime KV/index cache | TensorFold FP4 compressed KV/index |
+| API model alias | `deepseek-v4.1-flash` |
+
+**3.51 bpw describes the routed experts, not a whole-model average.** This
+is a mixed-precision model. The pinned weight release and its
+[SHA-256 manifest](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold/blob/8621801c1fc74aece1fa83e67c6ade3fde1e7894/RELEASE-MANIFEST.json)
+identify the exact other tensors as well; matching only the nominal bpw
+of a different quantization is insufficient for a like-for-like comparison.
+
+Tokenizer/template SHA-256 values:
+
+```text
+tokenizer.json        c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b
+tokenizer_config.json 6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547
+chat_template.jinja   7d1356675e429ec4a55cbcc1a6fbeb40615dbeb257aca25b8c3705a42087f33e
+```
+
+### Sampling and request settings
+
+| Parameter | Effective benchmark value | Where it came from |
+|---|---|---|
+| `temperature` | **0.6** | Explicit on every model call |
+| `top_p` | **1.0** | Native HTTP default |
+| `top_k` | **0**, disabled | Native HTTP default |
+| `min_p` | **0.0**, disabled | Native HTTP default |
+| `seed` | **42**, reused on every call | Explicit request value |
+| Thinking / reasoning | Enabled, **MAX** | Request effort and template flags |
+| `max_tokens` | **65,536 per call**, including reasoning | Request cap, not a fixed generation length |
+| Request context limit | **401,408 tokens** | Native server configuration |
+| `tool_choice` | `auto` | Explicit request value |
+| Transport | Streaming SSE, `include_usage=true` | Benchmark client |
+| Repetition/frequency/presence penalties | No overrides requested | Fields omitted |
+| Custom stop / logit bias / response format / thinking budget | No overrides requested | Fields omitted |
+| Workflow guard | 16 model turns; natural completion required | Benchmark protocol |
+
+The following is the **sampling/control subset actually sent**, with the
+task-specific messages, tool schemas and request ID omitted:
+
+```json
+{
+  "model": "deepseek-v4.1-flash",
+  "reasoning_effort": "max",
+  "chat_template_kwargs": {
+    "thinking": true,
+    "enable_thinking": true,
+    "reasoning_effort": "max"
+  },
+  "temperature": 0.6,
+  "seed": 42,
+  "max_tokens": 65536,
+  "tool_choice": "auto",
+  "stream": true,
+  "stream_options": {"include_usage": true}
+}
+```
+
+`top_p`, `top_k` and `min_p` were omitted by the benchmark client. We
+reconstructed their effective values from the frozen native HTTP
+`resolveSampling` path, the three retained serving profiles (no sampler CLI
+overrides), and the pinned wrapper inventory (no `generation_config.json`).
+The HTTP resolver supplies **1.0 / 0 / 0.0**. Some internal sampling structs
+have other initializer defaults; those do not determine these HTTP requests.
+This is source/configuration evidence, not newly captured per-request sampler
+telemetry. The [machine-readable settings](../results/20261020-adaptive/benchmark-settings.json)
+include the relevant source hashes and distinguish sent fields from inherited
+defaults.
+
+For a comparison client, explicitly specify the inherited values as well:
+
+```json
+{"temperature": 0.6, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "seed": 42}
+```
+
+The upstream 1017 model card recommends temperature **1.0** and `top_p=1.0`.
+**Our measurements used 0.6**; changing to 1.0 would be a different sampling
+condition. [DeepSeek model card](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017#minimal-inference).
+
+### Runtime and comparison boundaries
+
+All arms used TensorFold native CUDA on **three NVIDIA DGX Sparks / GB10,
+TP3, no expert parallelism**, GPU clock **2,200 MHz**, and DSpark speculation.
+The benchmark called the native Chat Completions API directly, bypassing
+the public gateway. Tasks and requested explanations were Czech. All settings
+above stayed constant; [the per-arm table](WORKFLOW-BENCHMARK-20261020.md#configurations-and-what-changed)
+lists the differing C/R limits, KV pool, snapshot cache and learner.
+
+Compare the same concurrency, output-token scope and cache warmness as well
+as model/sampler settings. C1–C12 counts simultaneous tool workflows; active
+native requests vary while those workflows execute tools. The same seed does
+not guarantee identical GPU outputs or later tool trajectories. This was one
+matched-initial-input pass, not repeated trials or a single-knob causal test.
+
+## Appendix D / Metric glossary and references
+
+| Term | Meaning in this report |
+|---|---|
+| C / active streams | C counts concurrent workflows; native streams vary as tools and requests interleave. |
+| R / verification rows | Total shared-round rows, including mandatory rows; no fixed draft length per stream. |
+| KV pool / snapshot cache | Runtime context capacity / reusable prompt-state budget; separate mechanisms. |
+| Native decode / workflow TPS | Generation-stage per-request speed / tokens over full request or wave wall time. |
+| P95 / pooled median | Descriptive observed quantile / all requests or tasks combined; no confidence interval is implied. |
+| Acceptance / task pass rate | Draft agreement with the target / final workflow correctness; different measurements. |
+
+Research and documentation provide background, separate from our measurements:
+
+1. [Leviathan, Kalman and Matias (2023), Fast Inference from Transformers via Speculative Decoding](https://proceedings.mlr.press/v202/leviathan23a.html).
+   Target-distribution-preserving speculative inference; this workflow study
+   does not independently prove every numerical implementation property.
+2. [Liu, Zhang and Xu (2026), AdaSpark: Adaptive DSpark with Online Learning for Tree Verification and N-gram Fill](https://arxiv.org/abs/2610.05774),
+   and its [imparo implementation](https://github.com/zeraix/imparo).
+   Inspiration for online cost/acceptance feedback and average-reward pricing;
+   xTF is an adaptation in existing chain/copy lanes, not a full reproduction.
+3. [PyTorch documentation, Numerical accuracy](https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html).
+   Background on floating-point differences across execution shapes;
+   not a diagnosis of this TensorFold runtime.
+4. [vLLM documentation, Automatic Prefix Caching](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html).
+   Background on reusing prefill work; the engine tested here is TensorFold.
+
+The engine is [TensorFold, by Ashley Hart and its contributors](https://github.com/ashhart/TensorFold).
+Our own evidence consists of the 36 comparison cells, native counters,
+learner counters, exact tool-error breakdown, source audit and the linked
+numeric exports and frozen-evidence SHA-256 manifest. Research speedups are
+not presented as our benchmark results. Historical validation receipts in the
+data directory describe earlier report artifacts; this publication supplies
+the complete report as Markdown and retains the original numeric evidence.

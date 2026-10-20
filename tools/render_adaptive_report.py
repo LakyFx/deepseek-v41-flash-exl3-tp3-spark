@@ -7,8 +7,9 @@ from pathlib import Path
 
 INTRO = '''# TensorFold workflow benchmark: 1.2.2TF vs Bert1 vs 1.2.2xTF / 1.2.3
 
-**Measured 20 October 2026.** This is the full Markdown companion to the
-[34-page English PDF with exact model/quant/sampler addendum](../results/20261020-adaptive/workflow-report-reproducibility.pdf).
+**Measured 20 October 2026.** This is the complete English report in Markdown,
+including all comparison tables, the learner design and the exact
+model/quantization/sampling addendum in one document.
 **1.2.3 is the release name for the configuration measured as 1.2.2xTF**;
 the rename creates no new measurement. Evidence retains its original labels.
 
@@ -23,6 +24,9 @@ quality improvement or an isolated learner speedup.
 - [Release configuration and installation](DS41F-1.2.3.md)
 - [Exact model, quantization and sampling settings](BENCHMARK-SETTINGS-20261020.md)
 - [Online cost/acceptance learner, equations and AdaSpark attribution](ADAPTIVE-SPECULATION.md)
+- [Appendix B: complete online learner design](#appendix-b--online-learning-design)
+- [Appendix C: complete model, quantization and sampling settings](#appendix-c--exact-model-quantization-and-sampling)
+- [Appendix D: metric glossary and references](#appendix-d--metric-glossary-and-references)
 - [All 36 comparison cells, full precision CSV](../results/20261020-adaptive/comparison-all-metrics.csv)
 - [Native counter deltas](../results/20261020-adaptive/native-counters.csv)
 - [234 per-task outcomes](../results/20261020-adaptive/task-results.csv)
@@ -83,8 +87,8 @@ rather than the upstream recommendation of 1.0.
 The [settings addendum](BENCHMARK-SETTINGS-20261020.md) includes pinned weight
 links, tokenizer/template hashes, the exact request-control JSON and default
 resolution evidence; [benchmark-settings.json](../results/20261020-adaptive/benchmark-settings.json)
-is the machine-readable companion. The PDF adds the same information on pages
-33–34, retaining the original 32 pages and all measurements.
+is the machine-readable companion. The entire addendum is also included in
+[Appendix C](#appendix-c--exact-model-quantization-and-sampling) below.
 
 ## Workload and completion protocol
 
@@ -315,6 +319,15 @@ def table(headers, data):
         ['| '+' | '.join(str(v).replace('|','\\|') for v in row)+' |' for row in data])+'\n\n'
 
 
+def appendix(path, title, first_section=None):
+    """Keep the complete companion text inline without duplicating its heading."""
+    source=path.read_text(encoding='utf-8')
+    body=source[source.index(first_section):] if first_section else source.split('\n',1)[1]
+    body='\n'.join('#'+line if line.startswith('## ') or line.startswith('### ') else line
+                   for line in body.strip().splitlines())
+    return '\n## '+title+'\n\n'+body+'\n'
+
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--public',type=Path,required=True);a=p.parse_args()
     result=a.public/'results/20261020-adaptive'
@@ -405,9 +418,10 @@ All 36 cells had `correct = total = C`; `runtime_coverage_requests = requests`,
 `coverage=True` and `failures_retained=True`. The full-precision CSV retains
 these fields and `rate_scope`. Native generated/computed-token and request
 counts agree with the matching comparison cells. There were no native
-cancellations or preemptions. Printed numeric tables in the PDF were checked
-independently against 1,188 source values; the Markdown tables are generated
-from those same numeric exports. A release test verifies them against CSV.
+cancellations or preemptions. The Markdown comparison tables are generated
+from the retained numeric exports. `python3 tools/audit_adaptive_results.py`
+checks all 1,188 per-concurrency numeric values against the source CSVs;
+the release test also verifies coverage and aggregate totals.
 
 The reusable lesson is to compare task duration, output volume, repair
 categories and latency definitions beside TPS. xTF was the strongest overall
@@ -415,6 +429,46 @@ recipe in this pass, but it did not win every cell and this single pass does
 not establish a general model-quality gain. Historical benchmark campaigns
 elsewhere in the repository retain their own models, scopes and metric
 definitions; do not blend them into this matched-input comparison.
+'''
+    text+=appendix(a.public/'docs/ADAPTIVE-SPECULATION.md',
+                  'Appendix B / Online learning design')
+    text+=appendix(a.public/'docs/BENCHMARK-SETTINGS-20261020.md',
+                  'Appendix C / Exact model, quantization and sampling',
+                  first_section='## Model and weight identity')
+    text+='''
+## Appendix D / Metric glossary and references
+
+| Term | Meaning in this report |
+|---|---|
+| C / active streams | C counts concurrent workflows; native streams vary as tools and requests interleave. |
+| R / verification rows | Total shared-round rows, including mandatory rows; no fixed draft length per stream. |
+| KV pool / snapshot cache | Runtime context capacity / reusable prompt-state budget; separate mechanisms. |
+| Native decode / workflow TPS | Generation-stage per-request speed / tokens over full request or wave wall time. |
+| P95 / pooled median | Descriptive observed quantile / all requests or tasks combined; no confidence interval is implied. |
+| Acceptance / task pass rate | Draft agreement with the target / final workflow correctness; different measurements. |
+
+Research and documentation provide background, separate from our measurements:
+
+1. [Leviathan, Kalman and Matias (2023), Fast Inference from Transformers via Speculative Decoding](https://proceedings.mlr.press/v202/leviathan23a.html).
+   Target-distribution-preserving speculative inference; this workflow study
+   does not independently prove every numerical implementation property.
+2. [Liu, Zhang and Xu (2026), AdaSpark: Adaptive DSpark with Online Learning for Tree Verification and N-gram Fill](https://arxiv.org/abs/2610.05774),
+   and its [imparo implementation](https://github.com/zeraix/imparo).
+   Inspiration for online cost/acceptance feedback and average-reward pricing;
+   xTF is an adaptation in existing chain/copy lanes, not a full reproduction.
+3. [PyTorch documentation, Numerical accuracy](https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html).
+   Background on floating-point differences across execution shapes;
+   not a diagnosis of this TensorFold runtime.
+4. [vLLM documentation, Automatic Prefix Caching](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html).
+   Background on reusing prefill work; the engine tested here is TensorFold.
+
+The engine is [TensorFold, by Ashley Hart and its contributors](https://github.com/ashhart/TensorFold).
+Our own evidence consists of the 36 comparison cells, native counters,
+learner counters, exact tool-error breakdown, source audit and the linked
+numeric exports and frozen-evidence SHA-256 manifest. Research speedups are
+not presented as our benchmark results. Historical validation receipts in the
+data directory describe earlier report artifacts; this publication supplies
+the complete report as Markdown and retains the original numeric evidence.
 '''
     path=a.public/'docs/WORKFLOW-BENCHMARK-20261020.md'
     path.write_text(text,encoding='utf-8',newline='\n')

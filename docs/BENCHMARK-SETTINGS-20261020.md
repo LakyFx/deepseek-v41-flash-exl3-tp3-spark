@@ -4,11 +4,11 @@ These settings apply to **all three measured arms: original 1.2.2TF, Bert1
 and 1.2.2xTF (now released as 1.2.3)**. This is a documentation addendum;
 the benchmark was not rerun and no results were changed.
 
-The [34-page PDF](../results/20261020-adaptive/workflow-report-reproducibility.pdf)
-adds model/quantization and sampler tables on pages **33–34**, following the
-unchanged original 32 pages. The [full Markdown report](WORKFLOW-BENCHMARK-20261020.md)
-contains the measurements and their limitations. The original
-[32-page PDF](../results/20261020-adaptive/workflow-report.pdf) remains archived.
+The [full Markdown report](WORKFLOW-BENCHMARK-20261020.md) contains all
+measurements, limitations, the learner design and these exact settings
+in one document. This page is the standalone settings reference;
+the complete addendum is also included in the report's
+[Appendix C](WORKFLOW-BENCHMARK-20261020.md#appendix-c--exact-model-quantization-and-sampling).
 
 ## Model and weight identity
 
