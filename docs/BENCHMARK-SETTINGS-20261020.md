@@ -1,5 +1,10 @@
 # Exact model, quantization and sampling: 20 October 2026 workflow benchmark
 
+**21 October extension:** the same model, quantization, template and sampler
+were retained for the new reference, A–G, CF, DEF and 1.2.4/CDEF. Their capacity,
+cache and results appear in the [new report](WORKFLOW-BENCHMARK-20261021.md).
+The original three-arm settings below retain their historical scope.
+
 These settings apply to **all three measured arms: original 1.2.2TF, Bert1
 and 1.2.2xTF (now released as 1.2.3)**. This is a documentation addendum;
 the benchmark was not rerun and no results were changed.

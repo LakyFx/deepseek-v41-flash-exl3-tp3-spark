@@ -90,3 +90,20 @@ figures are not our measurement results.
 [complete original/Bert1/xTF comparison](WORKFLOW-BENCHMARK-20261020.md)
 distinguish recipe-level observations from causal claims. Standard speculative
 inference background: [Leviathan, Kalman and Matias (2023)](https://proceedings.mlr.press/v202/leviathan23a.html).
+
+## 1.2.4 / CDEF: DeepInfer and NVIDIA FLARE inspiration
+
+A–C were informed by the studied [DeepSeek DeepInfer revision
+774ce244](https://github.com/deepseek-ai/DeepInfer/tree/774ce244b87cc0eb8d4b94ab9f5de2ab22049f01):
+price actual verification shape, avoid unused sampling work and overlap host work.
+D–G were informed by [NVIDIA FLARE revision
+47581cca](https://github.com/NVIDIA/flare-local-inference/tree/47581ccac82660953a5b59cb04b2750d64edc97d):
+bounded timing exploration, stale cost refresh, admission ordering and identical
+Engram-read sharing. Our implementations adapt these ideas to the existing
+TensorFold Zig host/lanes, retaining verifier/sampling contracts. They are not full
+engine ports or reproductions of upstream performance claims.
+
+CDEF contains A–F, while G is separate. [Exact boundaries](RECIPES.md) and
+[our measurements](WORKFLOW-BENCHMARK-20261021.md) separate inspiration from
+tested behavior. Existing source notices remain. The [comparison artwork](../assets/tensorfold-1.2.4-comparison.png)
+is a community illustration; its values and scopes also appear in text.

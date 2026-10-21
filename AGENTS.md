@@ -1,12 +1,15 @@
 # Agent installation guide
 
-The integrated production release is **1.2.3**, the same configuration measured
-as **1.2.2xTF**: DeepSeek 1017, C12/R48, 7M KV, 3 GiB prompt-state cache and
-online cost/acceptance learning. Read `docs/DS41F-1.2.3.md`,
-`docs/ADAPTIVE-SPECULATION.md` and `docs/WORKFLOW-BENCHMARK-20261020.md`.
-Use `--variant 1.2.3` and its separately built `bin-1.2.3/` binaries/receipt;
-the old engine plus a new environment flag is not the released adaptive build.
-The gateway keeps two queued vision slots. Preserve older profiles and evidence.
+The current main native recipe is **1.2.4 / CDEF = A+B+C+D+E+F**, DeepSeek 1017,
+C12/R48, 7M configured KV and 3 GiB snapshots. Read `docs/DS41F-1.2.4.md`,
+`docs/RECIPES.md` and `docs/WORKFLOW-BENCHMARK-20261021.md`. Use `--variant 1.2.4`
+with the exact `cdef` source recipe and its independent `bin-1.2.4/BUILD.json`.
+All three ranks must match; the launcher verifies source/receipt/binary identity.
+Historical `1.2.3`, originally xTF, keeps its original separate adaptive builder.
+Preserve older profiles, A–G/CF/DEF recipes and evidence. Native request decode,
+wave aggregate and host-event latency have different scopes. The new public
+`benchmarks/workflow` retains all 78 frozen initial body hashes; the older legacy
+surrogate benchmark remains a separate measurement corpus.
 
 For the optional production serving layer read `docs/GATEWAY.md`, install
 `./gateway` in its own virtual environment and use `ds41f-gateway`. The package

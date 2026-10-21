@@ -1,5 +1,9 @@
 # Install DS41F 1.0.0 (C4)
 
+**Current recommended TensorFold recipe: [1.2.4 / CDEF](DS41F-1.2.4.md).**
+Use its source/build receipt and [recipe chooser](RECIPES.md). Older procedures
+below remain available; preparation does not change services.
+
 This is a three-node, ARM64, one-GB10-GPU-per-node installation. It uses TP3 and disk-backed Engram. The build and model preparation can take much longer than the benchmark. Prepare them before replacing an existing service. The launcher never stops an existing model or changes a system service.
 
 ## 1. Host requirements

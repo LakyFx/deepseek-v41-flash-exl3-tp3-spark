@@ -1,5 +1,12 @@
 # Tuning history
 
+## 20–21 October: matched 1017 workflows
+
+1.2.2TF → Bert1 → xTF/1.2.3, then new 1.2.3 reference, A–G, CF, DEF and
+**1.2.4 / CDEF**. Every recipe completed 78/78 tasks. CDEF used 14.35% less summed
+wave time than 1.2.2TF; C6 native decode rose 21.66%. [Complete comparison](WORKFLOW-BENCHMARK-20261021.md)
+· [recipes/mechanisms](RECIPES.md). Older measurements below retain their scopes.
+
 Each series is a separate measurement campaign. Values below retain their original metric scope. C1/C3 are request decode; C8 is aggregate output per wall second. A historical label is not an independently rerun baseline.
 
 | Campaign | Version | C1 decode | C3 decode | C8 aggregate | 64K computed prefill |

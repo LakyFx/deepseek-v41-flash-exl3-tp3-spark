@@ -1,5 +1,13 @@
 # Benchmark methodology and interpretation
 
+## Current matched comparison (1.2.4)
+
+Start with [the simple 14-recipe report](WORKFLOW-BENCHMARK-20261021.md),
+[all C1–C12 cells](WORKFLOW-CELLS-20261021.md) and [recipe chooser](RECIPES.md).
+They include aggregate wave means/medians/peaks, native request decode,
+queue/prefill-excluded latency bounds, computed prefill and repaired tool errors.
+[Public exact initial-input fixture](../benchmarks/workflow/) · [numeric evidence](../results/20261021-workflow/).
+
 The published results preserve separate measurement campaigns. Do not combine their numbers into one paired experiment. Tests keep the EXL3 checkpoint and TP3 architecture, but output length, accepted draft tokens and cache state affect observed throughput.
 
 ## Real Hermes Agent production observations

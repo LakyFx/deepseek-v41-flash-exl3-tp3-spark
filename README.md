@@ -1,54 +1,90 @@
-# DeepSeek V4.1 Flash EXL3 on three DGX Sparks
+# DeepSeek V4.1 Flash on three DGX Sparks
 
-**Current release: [1.2.3](docs/DS41F-1.2.3.md)** — the configuration tested as
-**1.2.2xTF**, now with the public adaptive source/build recipe and complete
-workflow results. DeepSeek 1017 / EXL3 ~3.51 bpw routed experts / TensorFold TP3:
-**C12, R48, 7M configured KV pool, 3 GiB prompt-state cache, MAX reasoning**.
-Vision stays **C2 / MEDIUM**, with additional accepted jobs queued.
+**Current recipe: [1.2.4 / CDEF](docs/DS41F-1.2.4.md)** — TensorFold TP3,
+DeepSeek 1017, EXL3 **~3.51 bpw routed experts**, **MAX reasoning**.
+C12 streams · R48 shared verification rows · 7M configured KV · 3 GiB prompt-state cache.
 
-The speculative controller learns verification cost and draft acceptance
-online, then chooses a useful shared row budget. It does not train model
-weights or replace the target verifier. We were inspired by
-[**AdaSpark — Liu, Zhang and Xu**](https://arxiv.org/abs/2610.05774);
-ours is an adaptation in existing TensorFold chain/copy lanes, not a full
-AdaSpark/imparo reproduction. [Design, equations and source](docs/ADAPTIVE-SPECULATION.md).
+**More completed work from the same three Sparks.** Against our oldest matched
+1.2.2TF benchmark, 1.2.4 delivered **21.7% higher C6 request decode** and
+**16.8% more correct tasks/minute**, using **14.3% less workflow time**.
+Same pinned model and sampler; all **78/78 tasks passed in every recipe**.
+One observed pass per recipe, with output lengths and repair paths included.
 
-## The main measured results
+[![1.2.2TF versus 1.2.4: selected request decode and completed-work results](assets/tensorfold-1.2.4-comparison.png)](docs/WORKFLOW-BENCHMARK-20261021.md)
 
-One matched-initial-input pass, C1–C12, 78 complete tool-using workflows per
-recipe. Output includes reasoning. The release rename did not rerun a test.
+## The comparison at a glance
 
-| Measurement | 1.2.2TF | Bert1 | xTF / 1.2.3 |
-|---|---:|---:|---:|
-| Correctly completed tasks | 78/78 | 78/78 | 78/78 |
-| Sum of measured wave times | 22:27.872 | 23:38.938 | **20:29.795** |
-| Median / P95 task duration, s | 117.05 / 170.94 | 118.05 / 182.52 | **108.73 / 154.03** |
-| Intermediate rejected tool attempts | 30 | 31 | **16** |
-| Pooled draft acceptance | 79.13% | 77.52% | **83.32%** |
-| C6 median native decode, tok/s per request | 23.34 | 24.12 | **25.82** |
-| C12 median native decode, tok/s per request | **14.65** | 14.36 | 14.09 |
+Decode columns are **native tok/s per request**, weighted by native decode time.
+Peak wave is **total generated tokens / complete wave wall time**, including
+prefill, tools and repairs — not an instantaneous GPU peak. C means concurrent
+workflows; active model request counts change during tool execution.
 
-xTF used **8.76% less summed wave time than TF**, with **6.69% fewer generated
-tokens**. This is an observed recipe-level gain, not an isolated learner or
-model-quality result. All final tasks passed; rejected tools were repaired
-inside their measured times. No vision throughput or full 7M capacity test is
-claimed. [All 36 cells, latencies, errors, counterexamples and limitations](docs/WORKFLOW-BENCHMARK-20261020.md).
+| Recipe | Decode C1 | Decode C6 | Decode C12 | Peak wave aggregate (C) | 78 tasks, min:s | Correct |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.2.2TF | 84.37 | 23.61 | 15.26 | 135.22 (C11) | 22:27.87 | 78/78 |
+| Bert1 | 82.36 | 25.37 | 15.21 | 132.34 (C11) | 23:38.94 | 78/78 |
+| xTF / 1.2.3 historical | 84.95 | 26.23 | 14.31 | 139.49 (C12) | 20:29.80 | 78/78 |
+| 1.2.3 new reference | 84.96 | 24.31 | 15.50 | 135.08 (C11) | 21:31.15 | 78/78 |
+| CF | 92.03 | 28.01 | 18.37 | 159.04 (C11) | 19:50.39 | 78/78 |
+| **1.2.4 / CDEF** | 91.01 | 28.72 | 17.62 | 157.18 (C11) | 19:14.48 | 78/78 |
 
-![Native decode change vs original by concurrency](results/20261020-adaptive/figures/decode-relative-gain.png)
+**Median request decode:** 20.78 → **23.30 tok/s** (1.2.2TF → 1.2.4).
+**Median post-prefill latency bound:** 4.14 → **4.06 ms**, excluding queue and
+prefill. This is a comparable server-timing upper bound, not exact GPU first-token
+computation time. [Definitions, request peaks, prefill and all C1–C12 cells](docs/WORKFLOW-BENCHMARK-20261021.md).
 
-## Use or inspect 1.2.3
+We publish **all 14 recipes**: **168 cells · 1,092 correct tasks · 4,846 requests**.
+CDEF had the shortest total completed-work time; CF had the best wave aggregate,
+and C the best pooled native request decode. The [full matrix](docs/WORKFLOW-BENCHMARK-20261021.md)
+shows those tradeoffs. Rejected tool attempts remain counted; this single pass
+does not establish a quality improvement.
 
-- **[Install/build and exact settings](docs/DS41F-1.2.3.md)** · [launcher profile](tensorfold/profiles/1.2.3.json)
-- **[Complete benchmark report in Markdown](docs/WORKFLOW-BENCHMARK-20261020.md)** · [exact model/quant/sampling](docs/BENCHMARK-SETTINGS-20261020.md) · [all numeric data](results/20261020-adaptive/)
-- **[How the online learner works](docs/ADAPTIVE-SPECULATION.md)** · [verified native patch](tensorfold/adaptive/)
-- **[Production gateway](docs/GATEWAY.md)** · [pinned 1017 weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold)
-- [Historical engine recipes and measurements](#earlier-releases-and-measurements) · [all sources and credits](docs/SOURCES.md)
+## What makes 1.2.4 different
+
+The online controller learns **verification cost and draft acceptance** from
+actual rounds, then allocates the shared speculative budget to useful work.
+1.2.4 prices the **actual verification graph**, skips unreachable sampling rows,
+overlaps CPU penalty preparation with GPU work, bounds exploration by host cost,
+refreshes stale timing banks and lets existing streams decode between admissions.
+**CDEF = A+B+C+D+E+F; G is a separate option.**
+
+The target verifier and model weights retain their roles. This is runtime feedback,
+not weight training; learned state is per process. [Mechanisms and boundaries](docs/RECIPES.md)
+· [learner design and equations](docs/ADAPTIVE-SPECULATION.md).
+
+## Start here — people and agents
+
+- **[Build/use 1.2.4](docs/DS41F-1.2.4.md)** · [exact rank profile](tensorfold/profiles/1.2.4.json)
+- **[Choose any recipe](docs/RECIPES.md)** · [all exact native sources/manifests](tensorfold/variants/)
+- **[Readable benchmark report](docs/WORKFLOW-BENCHMARK-20261021.md)** · [every C1–C12 metric](docs/WORKFLOW-CELLS-20261021.md)
+- **[Model, quantization and sampler](docs/BENCHMARK-SETTINGS-20261020.md)** · [public task/runner](benchmarks/workflow/)
+- **[CSV evidence and provenance](results/20261021-workflow/)** · offline tables: `python3 tools/render_workflow_report.py`
+- [Pinned 1017 weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold) · [optional gateway/vision](docs/GATEWAY.md) · [agent guide](AGENTS.md)
+
+## How we got here
+
+| Version / campaign | Main step | Preserved recipe and evidence |
+| --- | --- | --- |
+| X11c → C4 / 1.0.0 | vLLM tuning and bounded replay | [variants](docs/VARIANTS.md), [C4](docs/DS41F-1.0.0.md) |
+| TF351 / TF29 | Native TensorFold TP3 on earlier checkpoints | [TF351](docs/TF351.md), [TF29](docs/TF29.md), [results](docs/TENSORFOLD-RESULTS.md) |
+| 1.2.0 → 1.2.2TF | Pinned DeepSeek 1017, API and queued vision | [1017 setup](docs/DS41F-1.2.0.md), [gateway](docs/DS41F-1.2.2TF.md) |
+| Bert1 | C16/R48, 7M pool; retained experimental configuration | [chooser](docs/RECIPES.md), [three-way comparison](docs/WORKFLOW-BENCHMARK-20261020.md) |
+| xTF → 1.2.3 | Online cost/acceptance learning; 3 GiB snapshots | [build](docs/DS41F-1.2.3.md), [learner](docs/ADAPTIVE-SPECULATION.md) |
+| A–G, CF, DEF | Measured scheduling/host-work alternatives | [recipes](docs/RECIPES.md), [all results](docs/WORKFLOW-BENCHMARK-20261021.md) |
+| **1.2.4 / CDEF** | **Combined A–F; shortest observed completed-work time** | **[main recipe](docs/DS41F-1.2.4.md), [report](docs/WORKFLOW-BENCHMARK-20261021.md)** |
+
+Only the matched 1017 workflow passes share the new comparison table. Earlier
+checkpoints, cold-prefill probes and production observations keep their own scopes.
+No vision-speed or full 7M capacity result is implied.
 
 Thanks to **[Ashley Hart and TensorFold contributors](https://github.com/ashhart/TensorFold)**
-for the native engine, **[Christopher Owen](https://github.com/christopherowen/spark-ds41f)**
-for recipes, networking and earlier benchmark work, and **[AdaSpark's authors](https://arxiv.org/abs/2610.05774)**
-for the online-adaptation inspiration. The model, quantization and upstream
-kernels retain their own authorship and licenses.
+for the engine and **[Christopher Owen](https://github.com/christopherowen/spark-ds41f)**
+for earlier recipes, networking and benchmark work. Online adaptation was inspired
+by **[AdaSpark](https://arxiv.org/abs/2610.05774)**; new experiments adapt ideas
+studied in **[DeepInfer](https://github.com/deepseek-ai/DeepInfer)** and
+**[NVIDIA FLARE](https://github.com/NVIDIA/flare-local-inference)**.
+[Attribution and licenses](docs/SOURCES.md). These are community integrations,
+not full reproductions of those engines or their published speedup claims.
 
 ## Earlier releases and measurements
 
