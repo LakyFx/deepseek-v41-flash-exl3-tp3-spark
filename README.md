@@ -5,12 +5,29 @@ DeepSeek 1017, EXL3 **~3.51 bpw routed experts**, **MAX reasoning**.
 C12 streams · R48 shared verification rows · 7M configured KV · 3 GiB prompt-state cache.
 
 **More completed work from the same three Sparks.** Against our oldest matched
-1.2.2TF benchmark, 1.2.4 delivered **21.7% higher C6 request decode** and
-**16.8% more correct tasks/minute**, using **14.3% less workflow time**.
-Same pinned model and sampler; all **78/78 tasks passed in every recipe**.
-One observed pass per recipe, with output lengths and repair paths included.
+1.2.2TF benchmark, 1.2.4 delivered **16.8% more correct tasks/minute**, using
+**14.3% less workflow time**, with a **282 tok/s sampled aggregate decode peak
+at C11**. Same pinned model and sampler; all **78/78 tasks passed in every recipe**.
 
-[![1.2.2TF versus 1.2.4: selected request decode and completed-work results](assets/tensorfold-1.2.4-comparison.png)](docs/WORKFLOW-BENCHMARK-20261021.md)
+**Heavy agent workflow:** authored tasks with real tools, code execution, tests
+and repair rounds. One observed pass per recipe; output lengths and repair
+paths differ. The live peak is a roughly two-second rolling observation,
+not sustained completed-work throughput.
+
+[![1.2.2TF versus 1.2.4: live aggregate decode medians, sampled peaks and completed work](assets/tensorfold-1.2.4-comparison.png)](docs/LIVE-DECODE-20261021.md)
+
+| Active requests | 1.2.2TF live median | 1.2.4 live median | Median gain | 1.2.4 sampled peak |
+| --- | ---: | ---: | ---: | ---: |
+| C1 | 75.5 | 87.0 | +15.2% | 108.5 |
+| C6 | 123.5 | 147.5 | +19.4% | 233.0 |
+| C11 | 153.0 | 181.0 | +18.3% | 282.0 |
+| C12 | 152.5 | 182.0 | +19.3% | 264.0 |
+
+All rates above are **aggregate tok/s**. Medians are duration-weighted positive
+decode gauges at exactly C active requests inside that C-workflow wave; tools,
+prefill-only periods and lower-C tails are outside this decode-only view.
+[All C1–C12 live medians, peaks, coverage and reproducible evidence](docs/LIVE-DECODE-20261021.md)
+· [short community announcement](docs/ANNOUNCEMENT-1.2.4.md).
 
 ## The comparison at a glance
 
@@ -46,12 +63,17 @@ does not establish a quality improvement.
 
 ## What makes 1.2.4 different
 
-The online controller learns **verification cost and draft acceptance** from
-actual rounds, then allocates the shared speculative budget to useful work.
-1.2.4 prices the **actual verification graph**, skips unreachable sampling rows,
-overlaps CPU penalty preparation with GPU work, bounds exploration by host cost,
-refreshes stale timing banks and lets existing streams decode between admissions.
-**CDEF = A+B+C+D+E+F; G is a separate option.**
+**Smart adaptive speculation** learns **verification cost and draft acceptance**
+from actual rounds, then adjusts how it spends the shared speculative budget as
+load changes. The learner introduced in 1.2.3 is the base; 1.2.4 adds:
+
+- **Price the work actually executed (A+B):** use the real verification graph shape and skip sampling rows the current path cannot use.
+- **Overlap host and GPU work (C):** prepare CPU penalty scores while the GPU works.
+- **Keep adaptation useful (D+E):** bound timing-probe overhead and refresh stale cost estimates as workloads change.
+- **Give running requests a turn (F):** decode existing streams between new admissions.
+
+**CDEF = A+B+C+D+E+F; G is a separate option.** R48 is a shared row limit,
+not 48 drafts per stream; allocation adapts within that limit.
 
 The target verifier and model weights retain their roles. This is runtime feedback,
 not weight training; learned state is per process. [Mechanisms and boundaries](docs/RECIPES.md)
