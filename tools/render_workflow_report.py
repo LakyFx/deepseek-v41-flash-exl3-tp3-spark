@@ -1,6 +1,7 @@
 """Regenerate the 1.2.4 Markdown tables offline from public numeric evidence."""
 import csv
 from pathlib import Path
+import statistics
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'results/20261021-workflow'
@@ -79,12 +80,40 @@ first-token selection: neither the microsecond host event nor U measures exact
 GPU prefill-finish → first-token computation time. That duration was not recorded.
 
 '''
-    text+=table(['Recipe','Weighted decode, tok/s','Median request, tok/s','Peak request, tok/s','Post-prefill bound, ms','Prefill¹, tok/s'],[
+    text+=table(['Recipe','Weighted decode, tok/s','Median request, tok/s','Peak request, tok/s','Post-prefill bound, ms','Workflow prefill¹, tok/s'],[
         [LABELS[a['arm']],number(a['native_weighted_decode_tps']),number(a['native_decode_tps_median']),number(a['max_request_native_decode_tps']),number(float(a['post_prefill_first_token_upper_bound_seconds_median'])*1000),number(a['native_prefill_tps'])] for a in aggregates])
     text+='''
-¹ Computed prompt tokens / native cumulative prefill time. This workload includes
-short cached continuations; these are **not cold long-context prefill** rates.
-Its request-level prefill medians answer a different question and remain in CSV.
+¹ Newly computed prompt tokens / **complete prompt-pass wall time, including
+cache restoration and per-pass overhead**. This is effective prefill in the
+short tool workflow, **not sustained cold long-context prefill speed**.
+Request-level medians answer a different question and remain in CSV.
+
+### Why this is about 856 tok/s while long prefills can show about 2,000
+
+The CDEF task starts with roughly 1K newly computed tokens, less than one 2,048-token
+chunk. Most later calls restore a prefix and compute a tiny continuation. The
+fixed restore/setup cost is large relative to those few new tokens. The denominator
+is the whole pass, not an isolated GPU-compute timer. From requests.csv:
+
+'''
+    rs=[r for r in read('requests.csv') if r['arm']=='cdef']
+    groups=[('Initial requests',[r for r in rs if r['request']=='0']),
+            ('Tool continuations',[r for r in rs if r['request']!='0']),('All CDEF requests',rs)]
+    text+=table(['CDEF prompt passes','Count','New tokens','Whole prefill seconds','Workflow prefill, tok/s'],[
+        [label,len(rr),sum(int(r['computed_prompt_tokens']) for r in rr),number(sum(float(r['prefill_seconds']) for r in rr),3),
+         number(sum(int(r['computed_prompt_tokens']) for r in rr)/sum(float(r['prefill_seconds']) for r in rr))] for label,rr in groups])
+    continuation=groups[1][1]
+    text+=f'\nMedian newly computed continuation: **{statistics.median(int(r["computed_prompt_tokens"]) for r in continuation):.0f} tokens**. '
+    text+='''The older three-way
+workflow report already used this same formula (847.64 / 841.00 / 860.99 tok/s
+for original / Bert1 / xTF); the archived values were not recalculated differently.
+
+The separate historical TF351 **long cold-input** tests measured **2,111.26 tok/s
+at 64K C1** and **2,040.97 tok/s at 128K C3**. Those used an earlier checkpoint
+and campaign; [their evidence and scope](TENSORFOLD-RESULTS.md#relevant-hermes-c1c3-and-cold-prefill-comparison)
+remain separate. The 1.2.4 workflow campaign did not rerun long cold-input probes.
+Do not interpret its ~856 figure as a drop from ~2,000 in long-prompt throughput,
+or substitute a live/older number into this matched table.
 
 ## C1–C12: the direct decode comparison
 
@@ -94,7 +123,7 @@ of rates. Compare rows at the same C. [All cell medians, request peaks, aggregat
 rates, elapsed times and post-prefill latencies](WORKFLOW-CELLS-20261021.md).
 
 '''
-    text+=table(['Recipe']+[f'C{c}' for c in range(1,13)]+['Prefill¹'],[
+    text+=table(['Recipe']+[f'C{c}' for c in range(1,13)]+['Workflow prefill¹'],[
         [LABELS[a['arm']]]+[number(by[a['arm'],c]['native_weighted_decode_tps']) for c in range(1,13)]+[number(a['native_prefill_tps'])] for a in aggregates])
     text+='''
 ## Comparison contract and limits
@@ -143,13 +172,15 @@ The preserved [earlier three-way report](WORKFLOW-BENCHMARK-20261020.md) and
 
 [Summary and definitions](WORKFLOW-BENCHMARK-20261021.md) · [machine-readable evidence](../results/20261021-workflow/).
 Native weighted, median and peak are per request. Aggregate is completion tokens
-/ whole wave wall time. Prefill uses computed tokens. Latency is the queue/prefill
+/ whole wave wall time. Workflow prefill uses newly computed tokens / complete
+prompt-pass wall time including prefix restoration; it is not long cold-input speed.
+Latency is the queue/prefill
 excluded upper-bound median, **not exact GPU first-token computation**.
 
 '''
     for c in range(1,13):
         detail+=f'## C{c}\n\n'
-        detail+=table(['Recipe','Decode weighted','Decode median','Request peak','Wave aggregate','Prefill','Post-prefill ms','Wave s','Rejected tools'],[
+        detail+=table(['Recipe','Decode weighted','Decode median','Request peak','Wave aggregate','Workflow prefill','Post-prefill ms','Wave s','Rejected tools'],[
             [LABELS[a['arm']]]+[number(by[a['arm'],c][k]) for k in ['native_weighted_decode_tps','native_decode_tps_median','max_request_native_decode_tps','workflow_completion_tps','native_prefill_tps']]+[number(float(by[a['arm'],c]['post_prefill_first_token_upper_bound_seconds_median'])*1000),number(by[a['arm'],c]['wave_seconds']),by[a['arm'],c]['tool_errors']] for a in aggregates])+'\n'
     return {'docs/WORKFLOW-BENCHMARK-20261021.md':text,'docs/WORKFLOW-CELLS-20261021.md':detail.rstrip()+'\n'}
 

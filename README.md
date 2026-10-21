@@ -33,6 +33,11 @@ workflows; active model request counts change during tool execution.
 prefill. This is a comparable server-timing upper bound, not exact GPU first-token
 computation time. [Definitions, request peaks, prefill and all C1–C12 cells](docs/WORKFLOW-BENCHMARK-20261021.md).
 
+The report's **workflow prefill** includes prefix restoration and short tool
+continuations. It is a different workload from the earlier ~2,000 tok/s long
+cold-input probes; [the measured breakdown](docs/WORKFLOW-BENCHMARK-20261021.md#why-this-is-about-856-toks-while-long-prefills-can-show-about-2000)
+explains the distinction.
+
 We publish **all 14 recipes**: **168 cells · 1,092 correct tasks · 4,846 requests**.
 CDEF had the shortest total completed-work time; CF had the best wave aggregate,
 and C the best pooled native request decode. The [full matrix](docs/WORKFLOW-BENCHMARK-20261021.md)

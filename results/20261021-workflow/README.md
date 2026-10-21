@@ -26,7 +26,10 @@ Native request decode and whole-wave aggregate use different denominators.
 “Peak wave” is the maximum completed-wave mean; “peak request” is the largest
 completed-request native rate, with its C and output length recorded. Neither is
 an instantaneous GPU sample. `native_prefill_tps` uses computed tokens divided
-by cumulative prefill time, including this task's short cached continuations.
+by complete prompt-pass wall time, including prefix restoration and setup for
+this task's short cached continuations. It is effective workflow prefill, not
+sustained long cold-input throughput. The report includes the initial/continuation
+breakdown explaining the approximately 856 tok/s CDEF value.
 
 `post_prefill_first_token_upper_bound_seconds` excludes queue/prefill but includes
 server preparation. Source “exact” host events are renamed to

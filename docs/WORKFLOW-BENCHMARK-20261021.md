@@ -59,7 +59,7 @@ before submission. It is not end-to-end TTFT. Native “prefilled” occurs afte
 first-token selection: neither the microsecond host event nor U measures exact
 GPU prefill-finish → first-token computation time. That duration was not recorded.
 
-| Recipe | Weighted decode, tok/s | Median request, tok/s | Peak request, tok/s | Post-prefill bound, ms | Prefill¹, tok/s |
+| Recipe | Weighted decode, tok/s | Median request, tok/s | Peak request, tok/s | Post-prefill bound, ms | Workflow prefill¹, tok/s |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 19.68 | 20.78 | 107.88 | 4.14 | 847.64 |
 | Bert1 | 19.91 | 20.73 | 98.36 | 3.91 | 841.00 |
@@ -76,9 +76,34 @@ GPU prefill-finish → first-token computation time. That duration was not recor
 | DEF | 20.10 | 20.66 | 111.06 | 3.91 | 855.62 |
 | **1.2.4 / CDEF** | 22.58 | 23.30 | 117.63 | 4.06 | 855.82 |
 
-¹ Computed prompt tokens / native cumulative prefill time. This workload includes
-short cached continuations; these are **not cold long-context prefill** rates.
-Its request-level prefill medians answer a different question and remain in CSV.
+¹ Newly computed prompt tokens / **complete prompt-pass wall time, including
+cache restoration and per-pass overhead**. This is effective prefill in the
+short tool workflow, **not sustained cold long-context prefill speed**.
+Request-level medians answer a different question and remain in CSV.
+
+### Why this is about 856 tok/s while long prefills can show about 2,000
+
+The CDEF task starts with roughly 1K newly computed tokens, less than one 2,048-token
+chunk. Most later calls restore a prefix and compute a tiny continuation. The
+fixed restore/setup cost is large relative to those few new tokens. The denominator
+is the whole pass, not an isolated GPU-compute timer. From requests.csv:
+
+| CDEF prompt passes | Count | New tokens | Whole prefill seconds | Workflow prefill, tok/s |
+| --- | ---: | ---: | ---: | ---: |
+| Initial requests | 78 | 79989 | 66.615 | 1200.77 |
+| Tool continuations | 267 | 43840 | 78.076 | 561.50 |
+| All CDEF requests | 345 | 123829 | 144.691 | 855.82 |
+
+Median newly computed continuation: **71 tokens**. The older three-way
+workflow report already used this same formula (847.64 / 841.00 / 860.99 tok/s
+for original / Bert1 / xTF); the archived values were not recalculated differently.
+
+The separate historical TF351 **long cold-input** tests measured **2,111.26 tok/s
+at 64K C1** and **2,040.97 tok/s at 128K C3**. Those used an earlier checkpoint
+and campaign; [their evidence and scope](TENSORFOLD-RESULTS.md#relevant-hermes-c1c3-and-cold-prefill-comparison)
+remain separate. The 1.2.4 workflow campaign did not rerun long cold-input probes.
+Do not interpret its ~856 figure as a drop from ~2,000 in long-prompt throughput,
+or substitute a live/older number into this matched table.
 
 ## C1–C12: the direct decode comparison
 
@@ -87,7 +112,7 @@ computed-prefill throughput pooled across all 12 cells, not an arithmetic mean
 of rates. Compare rows at the same C. [All cell medians, request peaks, aggregate
 rates, elapsed times and post-prefill latencies](WORKFLOW-CELLS-20261021.md).
 
-| Recipe | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10 | C11 | C12 | Prefill¹ |
+| Recipe | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10 | C11 | C12 | Workflow prefill¹ |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 84.37 | 56.66 | 42.63 | 32.93 | 27.67 | 23.61 | 21.66 | 19.53 | 18.63 | 18.14 | 15.15 | 15.26 | 847.64 |
 | Bert1 | 82.36 | 55.13 | 44.91 | 32.92 | 26.82 | 25.37 | 20.65 | 19.93 | 18.91 | 19.79 | 15.10 | 15.21 | 841.00 |

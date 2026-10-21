@@ -2,12 +2,14 @@
 
 [Summary and definitions](WORKFLOW-BENCHMARK-20261021.md) · [machine-readable evidence](../results/20261021-workflow/).
 Native weighted, median and peak are per request. Aggregate is completion tokens
-/ whole wave wall time. Prefill uses computed tokens. Latency is the queue/prefill
+/ whole wave wall time. Workflow prefill uses newly computed tokens / complete
+prompt-pass wall time including prefix restoration; it is not long cold-input speed.
+Latency is the queue/prefill
 excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C1
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 84.37 | 87.28 | 107.88 | 78.99 | 748.38 | 3.51 | 37.42 | 1 |
 | Bert1 | 82.36 | 79.35 | 98.36 | 77.09 | 728.79 | 3.87 | 38.34 | 1 |
@@ -26,7 +28,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C2
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 56.66 | 61.59 | 80.34 | 98.73 | 885.56 | 4.77 | 36.48 | 0 |
 | Bert1 | 55.13 | 59.51 | 67.92 | 95.66 | 840.25 | 4.98 | 37.66 | 0 |
@@ -45,7 +47,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C3
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 42.63 | 43.02 | 67.75 | 108.12 | 886.54 | 3.75 | 51.81 | 0 |
 | Bert1 | 44.91 | 42.58 | 89.28 | 96.70 | 799.14 | 3.95 | 64.66 | 2 |
@@ -64,7 +66,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C4
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 32.93 | 32.27 | 79.80 | 105.41 | 844.66 | 4.05 | 84.83 | 1 |
 | Bert1 | 32.92 | 33.16 | 57.85 | 103.95 | 820.54 | 4.30 | 83.22 | 2 |
@@ -83,7 +85,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C5
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 27.67 | 28.63 | 76.43 | 111.46 | 816.72 | 5.31 | 86.28 | 2 |
 | Bert1 | 26.82 | 26.11 | 34.28 | 113.41 | 867.91 | 3.81 | 81.72 | 0 |
@@ -102,7 +104,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C6
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 23.61 | 23.34 | 49.06 | 114.65 | 837.44 | 5.18 | 115.14 | 2 |
 | Bert1 | 25.37 | 24.12 | 67.20 | 114.93 | 867.14 | 3.75 | 96.33 | 1 |
@@ -121,7 +123,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C7
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 21.66 | 21.38 | 42.91 | 120.81 | 870.41 | 3.63 | 99.05 | 1 |
 | Bert1 | 20.65 | 22.03 | 32.72 | 125.21 | 869.22 | 3.96 | 87.66 | 0 |
@@ -140,7 +142,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C8
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 19.53 | 18.36 | 40.78 | 124.41 | 863.01 | 4.01 | 127.38 | 1 |
 | Bert1 | 19.93 | 19.44 | 49.13 | 121.68 | 864.70 | 3.64 | 132.11 | 1 |
@@ -159,7 +161,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C9
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 18.63 | 17.24 | 50.41 | 128.10 | 851.59 | 3.84 | 167.58 | 4 |
 | Bert1 | 18.91 | 17.41 | 85.49 | 125.17 | 836.00 | 4.07 | 182.52 | 6 |
@@ -178,7 +180,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C10
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 18.14 | 16.66 | 97.76 | 127.90 | 832.67 | 4.76 | 183.73 | 9 |
 | Bert1 | 19.79 | 16.52 | 92.93 | 113.39 | 817.98 | 3.89 | 239.52 | 9 |
@@ -197,7 +199,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C11
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 15.15 | 15.20 | 68.13 | 135.22 | 837.34 | 3.86 | 167.83 | 5 |
 | Bert1 | 15.10 | 15.11 | 47.12 | 132.34 | 836.53 | 4.40 | 173.64 | 5 |
@@ -216,7 +218,7 @@ excluded upper-bound median, **not exact GPU first-token computation**.
 
 ## C12
 
-| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Prefill | Post-prefill ms | Wave s | Rejected tools |
+| Recipe | Decode weighted | Decode median | Request peak | Wave aggregate | Workflow prefill | Post-prefill ms | Wave s | Rejected tools |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1.2.2TF | 15.26 | 14.65 | 54.24 | 130.53 | 859.95 | 4.15 | 190.34 | 4 |
 | Bert1 | 15.21 | 14.36 | 69.14 | 127.43 | 844.68 | 3.83 | 201.58 | 4 |
