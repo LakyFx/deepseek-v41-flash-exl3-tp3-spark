@@ -10,6 +10,8 @@ HERE = Path(__file__).resolve().parent
 
 
 def command(config, variant, rank, *, benchmark=False, validate_files=False):
+    if variant not in {p.stem for p in (HERE/'profiles').glob('*.json')}:
+        raise ValueError('Unknown launcher profile')
     if len(config['ranks']) != 3 or config['ranks'][rank].get('rank') != rank:
         raise ValueError('Exactly three explicitly ordered TP3 ranks required')
     profile = json.loads((HERE / 'profiles' / (variant + '.json')).read_text())
@@ -66,7 +68,22 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
                 '--side', '1', '--prefetch', '1', '--aio', '1', '--engram', str(engram),
                 '--token-map', str(kit / 'engram-token-map.json'), '--rdma', devices]
     if validate_files:
-        if profile.get('adaptive_learning'):
+        if profile.get('build_variant'):
+            import hashlib
+            from tensorfold.variants import patch
+            receipt = json.loads((binary_root/'BUILD.json').read_bytes())
+            manifest, identity = patch.recipe(profile['build_variant'])
+            if (receipt.get('schema') != 'ds41f.native-build.v1'
+                    or receipt.get('recipe') != manifest['recipe']
+                    or receipt.get('recipe_manifest_sha256') != identity
+                    or receipt.get('source_tree_sha256') != manifest['source_tree_sha256']
+                    or receipt.get('source_archive_sha256') != manifest['base_archive_sha256']
+                    or receipt.get('adaptive_learning') != profile['adaptive_learning']):
+                raise ValueError('Require the verified build receipt for this exact recipe')
+            for binary in ['tensorfold-native','tf-dsv41-lanes']:
+                if hashlib.sha256((binary_root/binary).read_bytes()).hexdigest() != receipt['binaries'][binary]['sha256']:
+                    raise ValueError('Recipe binary differs from its build receipt: '+binary)
+        elif profile.get('adaptive_learning'):
             import hashlib
             receipt = json.loads((binary_root / 'BUILD.json').read_text(encoding='utf-8'))
             manifest = json.loads((HERE/'adaptive/manifest.json').read_text(encoding='utf-8'))
@@ -129,7 +146,7 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', required=True, type=Path)
-    parser.add_argument('--variant', choices=['TF351', 'TF351-3.3M', 'TF29', '1.2.0', '1.2.3'], required=True)
+    parser.add_argument('--variant', choices=sorted(p.stem for p in (HERE/'profiles').glob('*.json')), required=True)
     parser.add_argument('--rank', choices=range(3), type=int, required=True)
     parser.add_argument('--benchmark', action='store_true')
     parser.add_argument('--run', action='store_true')
