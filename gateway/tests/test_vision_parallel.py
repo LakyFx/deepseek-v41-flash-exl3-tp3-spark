@@ -152,7 +152,7 @@ def test_shutdown_and_recovery_never_replay_either_active_job(tmp_path, monkeypa
     asyncio.run(scenario())
 
 
-def test_deadline_includes_queue_and_unknown_never_replays(tmp_path, monkeypatch):
+def test_analysis_gets_its_own_budget_and_unknown_never_replays(tmp_path, monkeypatch):
     monkeypatch.setenv('DGX_MEDIA_MAX_CONCURRENCY', '2')
     async def scenario():
         calls = []
@@ -164,14 +164,15 @@ def test_deadline_includes_queue_and_unknown_never_replays(tmp_path, monkeypatch
         jobs.ledger.clock = lambda: now[0]
         await jobs.start()
         ids = [jobs.accept('owner', image(str(i)))[0] for i in range(3)]
-        assert all(jobs.ledger.read(i)['deadline']-jobs.ledger.read(i)['created'] == 900 for i in ids)
-        # Advance only this test clock; production deadline remains 900 seconds.
-        now[0] = 1899.98
+        assert all(jobs.ledger.read(i)['deadline']-jobs.ledger.read(i)['created'] == 1800 for i in ids)
+        # Shorten the analysis budget only in this offline failure simulation.
+        jobs.ledger.job_timeout = .02
+        now[0] = 2799
         try:
             await reached(lambda: jobs.ledger.counts().get('unknown') == 2)
             assert calls == ids[:2]
             assert jobs.ledger.read(ids[2])['state'] == 'queued'
-            now[0] = 1901
+            now[0] = 2801
             assert jobs.ledger.claim() is None
             assert jobs.ledger.read(ids[2])['state'] == 'failed'
         finally:

@@ -1,5 +1,33 @@
 # Production gateway 1.2.3 and durable vision jobs
 
+## 1.2.5 production parity
+
+The package now includes the exact current production modules, including native
+vision cancellation/control, finite dispatch deadlines and reconciliation.
+The two bridge defaults use loopback instead of private addresses; operator
+secrets, topology and runtime SQLite state are never included. Production
+module hashes were freshly matched before publication.
+
+`ds41f-gateway` enables `DGX_VISION_CONTROL_ENABLED=1` and requires the configured
+native `/internal/vision/control` endpoint. It defaults to two image requests,
+queue timeout 1,800 s, job timeout 3,590 s and cancellation grace 60 s. Accepted work
+outlives client disconnect; uncertain dispatch is never automatically regenerated.
+Only a native termination/instance-replacement receipt releases an uncertain slot.
+
+Standalone canonical MEDIUM image requests receive 3,072 reasoning tokens plus
+32,768 final-answer tokens (35,840 total), without increasing reasoning effort.
+`DGX_VISION_FINAL_ANSWER_TOKENS=32768` controls that final budget. Main agent
+requests with tools/history keep their own requested budgets. The legacy vision
+alias keeps its separate cap. Read the older 3072/6144 instructions below as
+historical behavior, not the new portable entrypoint defaults.
+
+The `laguna_gateway.app` module remains a compatibility/legacy entrypoint;
+use **`ds41f-gateway`** for the current production defaults. [Exact recipe](DS41F-1.2.5.md).
+
+## Preserved earlier gateway documentation
+
+
+
 The current integrated release is [1.2.3](DS41F-1.2.3.md), with the native
 adaptive configuration measured as 1.2.2xTF. Gateway policy remains C12 and
 two concurrent queued image jobs, text MAX / vision MEDIUM. This package also

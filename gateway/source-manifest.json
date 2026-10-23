@@ -1,6 +1,6 @@
 {
   "schema": "ds41f.gateway-source/v1",
-  "source_revision": "8b4e06481aa7e29911026670e2718a7bd91d3c38",
+  "source_revision": "04055fb74367c7d255e1d016366e09c5160409b9",
   "modules": {
     "__init__.py": {
       "production_sha256": "c86d50d5a8404a3be0ce18898bb095fa4924937b9c8a2a68a926a95880d4f92a",
@@ -8,8 +8,8 @@
       "adaptation": null
     },
     "app.py": {
-      "production_sha256": "1b8d0bc6dfb9831174f4bc6beddc7e93dede50615a4baca7abf12f3998f56d7b",
-      "public_sha256": "1b8d0bc6dfb9831174f4bc6beddc7e93dede50615a4baca7abf12f3998f56d7b",
+      "production_sha256": "9b73d6c31740d10bfce48dd292123dc1edd56c96cb3c08a93a39021eefd7a3f6",
+      "public_sha256": "9b73d6c31740d10bfce48dd292123dc1edd56c96cb3c08a93a39021eefd7a3f6",
       "adaptation": null
     },
     "auxiliary_vision.py": {
@@ -58,8 +58,8 @@
       "adaptation": null
     },
     "engine.py": {
-      "production_sha256": "ec72607cdbfcedd4c5e0882cbb6cfaf18f00b70b0bbe401f1a7d88befc6040b9",
-      "public_sha256": "ec72607cdbfcedd4c5e0882cbb6cfaf18f00b70b0bbe401f1a7d88befc6040b9",
+      "production_sha256": "b5c320e8043ae21764e6e9d1fbb7859cec0a5e8e3774a999cc719707a6decb80",
+      "public_sha256": "b5c320e8043ae21764e6e9d1fbb7859cec0a5e8e3774a999cc719707a6decb80",
       "adaptation": null
     },
     "lan_bridge.py": {
@@ -133,8 +133,8 @@
       "adaptation": null
     },
     "vision_jobs.py": {
-      "production_sha256": "1c39bd3a6d63610378afd8440997927e94201853035cf57ec6e71975b122e1f5",
-      "public_sha256": "1c39bd3a6d63610378afd8440997927e94201853035cf57ec6e71975b122e1f5",
+      "production_sha256": "f62def37ffc3f8a661e900fec4b33a95a26d81eebc6baf0aed96ff35457ec18d",
+      "public_sha256": "f62def37ffc3f8a661e900fec4b33a95a26d81eebc6baf0aed96ff35457ec18d",
       "adaptation": null
     },
     "vision_jobs_operator.py": {
@@ -143,11 +143,16 @@
       "adaptation": null
     },
     "vision_result.py": {
-      "production_sha256": "66ad9e27a959a775f6dc7f335cff933479c6369cabda38ddf09a27d27cdd4278",
-      "public_sha256": "66ad9e27a959a775f6dc7f335cff933479c6369cabda38ddf09a27d27cdd4278",
+      "production_sha256": "ce6af70b71a836a20d9290834c65e697fb81ddfab7ba371e2d84e17a2d6f74a5",
+      "public_sha256": "ce6af70b71a836a20d9290834c65e697fb81ddfab7ba371e2d84e17a2d6f74a5",
+      "adaptation": null
+    },
+    "vision_control.py": {
+      "production_sha256": "daab6554485cc7aa0dcc7c668c4c170783983713c132723f10747e46788082e3",
+      "public_sha256": "daab6554485cc7aa0dcc7c668c4c170783983713c132723f10747e46788082e3",
       "adaptation": null
     }
   },
-  "production_release": "1.2.2TF",
-  "release": "1.2.3"
+  "production_release": "1.2.4k2a",
+  "release": "1.2.5"
 }

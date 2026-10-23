@@ -77,7 +77,7 @@ class Collector:
         return {'status_code':200,'data':data,'headers':{}}
 
 
-async def collect(engine, row, on_backend):
+async def collect(engine, row, on_backend, dispatch=None):
     from .engine import GatewayError
     handle = None
     iterator = None
@@ -86,7 +86,8 @@ async def collect(engine, row, on_backend):
         body = json.loads(row['body'])
         body['stream'] = True
         body['stream_options'] = {'include_usage':True}
-        handle = await engine.begin_stream(body)
+        handle = (await engine.begin_stream(body, vision_dispatch=dispatch)
+                  if dispatch is not None else await engine.begin_stream(body))
         on_backend(handle.upstream_request_id)
         if handle.response.status_code >= 400:
             await handle.response.aread()

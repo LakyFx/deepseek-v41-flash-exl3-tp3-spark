@@ -200,18 +200,17 @@ def test_repetition_drain_still_obeys_job_deadline(api,monkeypatch):
     fake.frames=[event(reasoning='Let me check this again. '*100)]
     fake.block_after_frames=True
     ledger=app.state.vision_jobs.ledger
-    accept=ledger.accept
+    claim=ledger.claim
 
     def short_deadline(*args,**kwargs):
-        identity,created=accept(*args,**kwargs)
-        if created:
+        row=claim(*args,**kwargs)
+        if row:
+            row['deadline']=time.time()+.05
             with ledger.connect() as db:
-                # Leave dispatch margin on loaded/non-Linux CI; this test is
-                # about an in-flight deadline, not expiry while still queued.
-                db.execute('UPDATE jobs SET deadline=? WHERE id=?',(time.time()+.5,identity))
-        return identity,created
+                db.execute('UPDATE jobs SET deadline=? WHERE id=?',(row['deadline'],row['id']))
+        return row
 
-    monkeypatch.setattr(ledger,'accept',short_deadline)
+    monkeypatch.setattr(ledger,'claim',short_deadline)
     response=client.post('/v1/chat/completions',json=body())
     assert response.status_code==409 and 'Let me' not in response.text
     assert response.json()['error']['code']=='termination_unconfirmed'
@@ -310,7 +309,7 @@ def test_queue_expiry_and_input_dedup_are_transactional(tmp_path):
     with ThreadPoolExecutor(max_workers=8) as pool:
         accepted=list(pool.map(lambda _:store.accept('owner',body()),range(8)))
     assert len({r[0] for r in accepted})==1 and sum(r[1] for r in accepted)==1
-    clock[0]=1901
+    clock[0]+=store.queue_timeout+1
     assert store.claim() is None and store.read(accepted[0][0])['state']=='failed'
 
 

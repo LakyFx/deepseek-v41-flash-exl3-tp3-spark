@@ -8,9 +8,9 @@ from pathlib import Path
 from laguna_gateway.app import create_app as _create_app
 from laguna_gateway.config import Settings
 
-SOURCE_REVISION = '8b4e06481aa7e29911026670e2718a7bd91d3c38'
-RECIPE_VERSION = '1.2.3'
-# Preserve implicit deduplication across this compatible scheduler-only upgrade.
+SOURCE_REVISION = '04055fb74367c7d255e1d016366e09c5160409b9'
+RECIPE_VERSION = '1.2.5'
+# Preserve the production job namespace and implicit deduplication identities.
 VISION_JOBS_REVISION = 'd021774d38c0e7c684e6da44f39f22e735deb14b'
 
 
@@ -48,6 +48,11 @@ def create_app(*, upstream_transport=None, vision_transport=None):
     os.environ.setdefault('DGX_VISION_JOBS_REVISION', VISION_JOBS_REVISION)
     os.environ.setdefault('DGX_MEDIA_SERIAL_REQUESTS', '1')
     os.environ.setdefault('DGX_MEDIA_MAX_CONCURRENCY', '2')
+    os.environ.setdefault('DGX_VISION_CONTROL_ENABLED', '1')
+    os.environ.setdefault('DGX_VISION_FINAL_ANSWER_TOKENS', '32768')
+    os.environ.setdefault('DGX_VISION_JOB_TIMEOUT_SECONDS', '3590')
+    os.environ.setdefault('DGX_VISION_QUEUE_TIMEOUT_SECONDS', '1800')
+    os.environ.setdefault('DGX_VISION_CANCEL_GRACE_SECONDS', '60')
     os.environ.setdefault('DS41F_RECIPE_VERSION', RECIPE_VERSION)
     return _create_app(settings, upstream_transport=upstream_transport, vision_transport=vision_transport)
 

@@ -1,6 +1,50 @@
 # DeepSeek V4.1 Flash on three DGX Sparks
 
-**Current recipe: [1.2.4 / CDEF](docs/DS41F-1.2.4.md)** — TensorFold TP3,
+**Current production recipe: [1.2.5 / K2a](docs/DS41F-1.2.5.md)** — TensorFold TP3,
+DeepSeek 1017, EXL3 **~3.51 bpw routed experts**. C12 streams · R48 shared
+verification rows · 7M configured KV · 3 GiB prompt-state cache.
+
+**The exact K2a native source, production-matched gateway, memory-efficient chat
+template, tests and measured results are published.** MAX reasoning remains the
+serving default. The new stock **SparkDash** throughput test deliberately uses
+**thinking OFF, temperature 0 and 400 tokens per stream**.
+
+| Stock SparkDash | C1 aggregate | C6 aggregate | C12 aggregate |
+| --- | ---: | ---: | ---: |
+| Prose | 87.7 tok/s | 154.1 tok/s | **183.6 tok/s** |
+| Code | **126.1 tok/s** | 218.1 tok/s | **246.2 tok/s** |
+
+Measured prefill: **1,922–2,229 tok/s** at 1K–8K, with cache hits excluded.
+These are original SparkDash formulas, not conversions of workflow or RigMark
+results. One wave per concurrency; no instantaneous-peak claim.
+
+[Prose card](assets/1.2.5/sparkdash-original-prose.png) ·
+[Code card](assets/1.2.5/sparkdash-original-code.png) ·
+[Prefill card](assets/1.2.5/sparkdash-original-prefill.png) ·
+[All C1–C12 stock measurements and methodology](docs/SPARKDASH-20261023.md)
+
+**What 1.2.5 adds:** selective prefix snapshot placement, per-depth speculative
+acceptance diagnostics, a repetition-novelty signal, native vision cancellation
+receipts, physical-dead-first cache cleanup under pressure, reuse/shadow
+diagnostics and corrected KV occupancy reporting. The existing adaptive
+speculation learner stays in place. A direct-output chat template avoids repeated
+copies of growing history while preserving tested rendered text and token IDs.
+No XGrammar integration, larger cache or model-weight training is included.
+
+The unchanged agent workflow also completed **78/78 tasks** on this build.
+Separate RigMark measurements include **42–46 ms median warm-prefix TTFT** at
+8K/32K/64K. [Workflow, RigMark, scopes and raw evidence](docs/BENCHMARK-1.2.5.md).
+
+- **[Build and launch 1.2.5](docs/DS41F-1.2.5.md)** · [exact profile](tensorfold/profiles/1.2.5.json) · [full native source recipe](tensorfold/variants/recipes/k2a.json)
+- **[Weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold)** · [gateway and vision](docs/GATEWAY.md) · [all historical recipes](docs/RECIPES.md)
+- **[1.2.5 production parity receipt](results/20261023-1.2.5/PRODUCTION-PARITY.json)** · [qualification](results/20261023-1.2.5/QUALIFICATION.json)
+
+## Preserved 1.2.4 comparison and earlier history
+
+The results below retain their original 1.2.4 labels and measurement scopes.
+They are not relabeled as 1.2.5 speedups.
+
+**Previous comparison recipe: [1.2.4 / CDEF](docs/DS41F-1.2.4.md)** — TensorFold TP3,
 DeepSeek 1017, EXL3 **~3.51 bpw routed experts**, **MAX reasoning**.
 C12 streams · R48 shared verification rows · 7M configured KV · 3 GiB prompt-state cache.
 
@@ -99,6 +143,7 @@ not weight training; learned state is per process. [Mechanisms and boundaries](d
 | xTF → 1.2.3 | Online cost/acceptance learning; 3 GiB snapshots | [build](docs/DS41F-1.2.3.md), [learner](docs/ADAPTIVE-SPECULATION.md) |
 | A–G, CF, DEF | Measured scheduling/host-work alternatives | [recipes](docs/RECIPES.md), [all results](docs/WORKFLOW-BENCHMARK-20261021.md) |
 | **1.2.4 / CDEF** | **Combined A–F; shortest observed completed-work time** | **[main recipe](docs/DS41F-1.2.4.md), [report](docs/WORKFLOW-BENCHMARK-20261021.md)** |
+| **1.2.5 / K2a** | **Current production: cache-state cleanup, diagnostics, vision control and direct-output template** | **[exact recipe](docs/DS41F-1.2.5.md), [SparkDash](docs/SPARKDASH-20261023.md), [workflow / RigMark](docs/BENCHMARK-1.2.5.md)** |
 
 Only the matched 1017 workflow passes share the new comparison table. Earlier
 checkpoints, cold-prefill probes and production observations keep their own scopes.

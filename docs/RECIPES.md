@@ -1,6 +1,8 @@
 # Choose a recipe
 
-**Default recommendation: [1.2.4 / CDEF](DS41F-1.2.4.md)** for the shortest
+**Current production: [1.2.5 / K2a](DS41F-1.2.5.md)**, selector `1.2.5`, source recipe `k2a`, C12/R48, 7M KV, 3 GiB snapshots. Adds K2 cache/diagnostics, K2a dead-state cleanup/gauge fixes, qualified direct-output template and native vision control. [New measurements](BENCHMARK-1.2.5.md) remain separate from the original 14-arm campaign below.
+
+**Previous matched-campaign choice: [1.2.4 / CDEF](DS41F-1.2.4.md)** for the shortest
 observed completed-work time in this campaign. **CF** is the simpler alternative
 with the highest completed-wave aggregate peak. **C** has the highest pooled
 native request decode rate. Choose by your workload; the archive supports all

@@ -1,6 +1,15 @@
 # Agent installation guide
 
-The current main native recipe is **1.2.4 / CDEF = A+B+C+D+E+F**, DeepSeek 1017,
+The current production recipe is **1.2.5 / K2a**. Read `docs/DS41F-1.2.5.md`,
+build with `--recipe k2a` and launch with `--variant 1.2.5`. Prepare the exact
+direct-output template overlay on the head only; followers retain the original
+1017 template. All three native ranks require matching source/build receipts.
+The optional updated gateway requires native vision-control receipts and keeps
+two image requests in flight, finite deadlines and 32K final-answer headroom.
+SparkDash thinking-OFF tests, MAX workflow and MAX RigMark are separate protocols.
+Never relabel historical 1.2.4 gains as measurements of 1.2.5.
+
+The previous main native recipe is **1.2.4 / CDEF = A+B+C+D+E+F**, DeepSeek 1017,
 C12/R48, 7M configured KV and 3 GiB snapshots. Read `docs/DS41F-1.2.4.md`,
 `docs/RECIPES.md` and `docs/WORKFLOW-BENCHMARK-20261021.md`. Use `--variant 1.2.4`
 with the exact `cdef` source recipe and its independent `bin-1.2.4/BUILD.json`.

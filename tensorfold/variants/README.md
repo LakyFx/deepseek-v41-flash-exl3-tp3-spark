@@ -1,5 +1,7 @@
 # Exact measured native recipes
 
+**Current: [1.2.5 / K2a](../../docs/DS41F-1.2.5.md)**, recipe `k2a`, selector `1.2.5`. Its exact 1,137-file source map includes the native vision-control repair. Also prepare the separate head-only direct-output template. CDEF remains preserved as 1.2.4.
+
 [Human/agent recipe chooser](../../docs/RECIPES.md) · [build/install 1.2.4](../../docs/DS41F-1.2.4.md).
 
 `base.json` binds the full frozen source archive. Each `recipes/*.json` defines

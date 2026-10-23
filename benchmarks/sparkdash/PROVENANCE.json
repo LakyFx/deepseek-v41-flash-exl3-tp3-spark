@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/MiaAI-Lab/sparkDash",
+  "commit": "9e3f01729a4e63dccc2b6b608e9e67d3168891b6",
+  "files": {
+    "server/collectors/DecodeBench.js": "90ba1381906c53d51e504931fb179f39d406fc9cfa754eab6e14df05380931c6",
+    "server/collectors/PrefillBench.js": "059104c2bf709efd0a573280361ec7e9ad5e4443e51d20204238c49dd18ca78d",
+    "server/collectors/LlmStreaming.js": "7bdccf13247cbed58e8e457842c2211a3ad0a675c76b5ecb60fe0b4b197a33d1",
+    "server/util/atomicWrite.js": "d6bd946e48e48b1119f937d917ee749607c9b3e096a28716bc6c8f81ebb90329",
+    "src/shared/llmPrompts.js": "f930fcfa13a041fcfe1ff6cfbf882f2c946293dc1ac29aba9f3768fd1ad327aa",
+    "src/shared/prefillBench.js": "2b1c076c92ff491892f414fa733eb9c180914bee75b9ce6df2203a698654207f",
+    "src/shared/llmTarget.js": "74913ffd206454f31743d8bba76892f12d1204eae21055173bdde3796c793443",
+    "src/shared/contextFit.js": "e62f92a55abfb8595f4da0fd894c3f824d9ba8765dffc1b8f3597b829e56d652",
+    "package.json": "ccdf8de44295f59be00f6b8cf1359959938a16a4ccf8c55940d8af1894748c5f"
+  },
+  "upstream_source_changes": false
+}

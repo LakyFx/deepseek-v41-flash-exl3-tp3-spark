@@ -1,0 +1,6 @@
+{
+  "name": "lakyfx-sparkdash-125-receipt",
+  "private": true,
+  "type": "module",
+  "dependencies": {"undici": "8.9.0"}
+}

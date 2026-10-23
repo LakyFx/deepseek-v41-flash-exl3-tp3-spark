@@ -4243,9 +4243,9 @@ class GatewayEngine:
             self._update_queue_metrics()
 
     @media_request(stream=True, close_method='close_stream')
-    async def begin_stream(self, request_body: dict[str, Any]) -> StreamHandle:
-        handle = await self._begin_chat_stream_once(request_body)
-        if self.settings.chat_context_retry and handle.response.status_code == 400:
+    async def begin_stream(self, request_body: dict[str, Any], *, vision_dispatch=None) -> StreamHandle:
+        handle = await self._begin_chat_stream_once(request_body, vision_dispatch=vision_dispatch)
+        if vision_dispatch is None and self.settings.chat_context_retry and handle.response.status_code == 400:
             try:
                 await handle.response.aread()
                 try:
@@ -4263,7 +4263,7 @@ class GatewayEngine:
         return handle
 
     async def _begin_chat_stream_once(
-        self, request_body: dict[str, Any], *, force_compaction: bool = False
+        self, request_body: dict[str, Any], *, force_compaction: bool = False, vision_dispatch=None
     ) -> StreamHandle:
         prepared = await self.prepare(request_body, force_compaction=force_compaction)
         try:
@@ -4294,6 +4294,12 @@ class GatewayEngine:
             upstream_body["request_id" if self.settings.qwen_native_vllm else "rid"] = (
                 upstream_request_id
             )
+        if vision_dispatch is not None:
+            upstream_request_id = vision_dispatch['request_id']
+            upstream_body['request_id'] = upstream_request_id
+            upstream_body['dgx_vision_control'] = vision_dispatch
+        else:
+            upstream_body.pop('dgx_vision_control', None)
         request = client.build_request(
             "POST",
             "/v1/chat/completions",

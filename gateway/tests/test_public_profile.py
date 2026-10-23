@@ -56,6 +56,9 @@ def test_original_source_and_explicit_address_only_adaptations():
 
 
 def test_installed_profile_runs_authenticated_durable_vision(monkeypatch, tmp_path):
+    # This fake tests the portable entrypoint and legacy job transport only.
+    # Native receipt handling is exercised by test_vision_control.py.
+    monkeypatch.setenv('DGX_VISION_CONTROL_ENABLED', '0')
     monkeypatch.delenv('DGX_MEDIA_MAX_CONCURRENCY', raising=False)
     monkeypatch.delenv('DGX_VISION_JOBS_REVISION', raising=False)
     monkeypatch.delenv('DS41F_RECIPE_VERSION', raising=False)
@@ -75,7 +78,7 @@ def test_installed_profile_runs_authenticated_durable_vision(monkeypatch, tmp_pa
         assert result.headers['X-DGX-Vision-Job-ID'] == job
         assert len(fake.calls) == 1
         assert fake.calls[0]['reasoning_effort'] == 'high'
-        assert fake.calls[0]['max_tokens'] == 6144
+        assert fake.calls[0]['max_tokens'] == 35840
         assert client.get('/health').json()['vision_jobs']['states'] == {'succeeded':1}
         normalized, cap, *_ = app.state.engine.normalise_request({'model':'deepseek-v4.1-flash',
             'messages':[{'role':'user','content':'A text task'}]})
@@ -83,6 +86,6 @@ def test_installed_profile_runs_authenticated_durable_vision(monkeypatch, tmp_pa
         assert app.state.settings.max_concurrency == 12
         assert app.state.vision_jobs.ledger.max_running == 2
         import os
-        assert os.environ['DS41F_RECIPE_VERSION'] == '1.2.3'
+        assert os.environ['DS41F_RECIPE_VERSION'] == '1.2.5'
         # This release changes scheduling without expiring existing job identities.
         assert os.environ['DGX_VISION_JOBS_REVISION'] == 'd021774d38c0e7c684e6da44f39f22e735deb14b'

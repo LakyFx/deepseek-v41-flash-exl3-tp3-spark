@@ -1,0 +1,96 @@
+{
+  "release": "1.2.5",
+  "measured_alias": "1.2.4k2a",
+  "checked_epoch": 1792767598.2484565,
+  "ranks": [
+    {
+      "rank": 0,
+      "binary_sha256": "a79dd73d621397c5fd159b797850ef5d4ec8246b10bc89b96e26ffe2ee38dc2c",
+      "template_sha256": "4669c39b5ca71ca4722c52c750883bacfc8f1e2542ef40bddccd8684158e28c8"
+    },
+    {
+      "rank": 1,
+      "binary_sha256": "ad9d00ca2acf77589a38c1ac1d87808fe130afe8ec7001dec8a3fa097d773335",
+      "template_sha256": "7d1356675e429ec4a55cbcc1a6fbeb40615dbeb257aca25b8c3705a42087f33e"
+    },
+    {
+      "rank": 2,
+      "binary_sha256": "ad9d00ca2acf77589a38c1ac1d87808fe130afe8ec7001dec8a3fa097d773335",
+      "template_sha256": "7d1356675e429ec4a55cbcc1a6fbeb40615dbeb257aca25b8c3705a42087f33e"
+    }
+  ],
+  "gateway_production_module_hashes": {
+    "lan_bridge.py": "adb88ce049635c97133c0f9c747345e514b6e9b65f56ec5e55a68afe771a91f5",
+    "responses_chat.py": "62db17e2e971a195a72d3067d225d8e5dca51f7e0af5d4935b46e19af61b8b18",
+    "responses_checkpoint.py": "27af0fdba0073abf1343e0c747a581449c5e6ed4d799414301072d4688285494",
+    "app.py": "9b73d6c31740d10bfce48dd292123dc1edd56c96cb3c08a93a39021eefd7a3f6",
+    "chat_checkpoint.py": "4af696ab2439674c1595c7deb059c68b59b261970ded1dc625474d2ad2799a17",
+    "__init__.py": "c86d50d5a8404a3be0ce18898bb095fa4924937b9c8a2a68a926a95880d4f92a",
+    "queue.py": "2b301959def764fc8a7eafc3fb6f6e7df1cb6361ff44f7b6edee75b5fb9e26c4",
+    "cache.py": "bfc17dccd136762e36ce5700a20651268d056f427f52e846982cb15d0b5f3c51",
+    "compaction.py": "0443c2599b743cdfe11bf4a52983de81676868b2f6935dd18775904187ac56ae",
+    "config.py": "3414514e7d52610974ade00bbc07fd991704bf05cea9aa4e8dbe7adf9ebc713c",
+    "custom_tools_grammar.py": "14e12307dc37ae57be72daa763fbb95d8e2af5c9380d2943f6564a02190d6e96",
+    "stream_validation.py": "4e76d146ba651a56124dc271d68dbc06ed999d5b75eef55346bc943d01967a43",
+    "vision_jobs_operator.py": "0903e3089394d9f00c53199afaa52e30542e56c810f706b7f77295066ebbcb32",
+    "media_types.py": "5fbde0ce7716bc9dd463a0f1d458d2b15ce3ee6fd9ab563a09ad05627bebc3ec",
+    "vision_result.py": "ce6af70b71a836a20d9290834c65e697fb81ddfab7ba371e2d84e17a2d6f74a5",
+    "reasoning.py": "86676bda956ba9c74e0d646621d638fbf3a49298ad45cfe0ad02498f970df7f0",
+    "auxiliary_vision.py": "98e5e1a36dd319b792baee2944a1bbd1fa46670d1c6fad662f9fdd2174152ae6",
+    "version.py": "829ea1a2be157be2c3aa8ccc62cbfc060a2346dea585dba0663c4782b186cab5",
+    "transport.py": "ebac57d19cfab086892c0a1ac1a5f7046a7cd13c4639dee7263bc3b997218b1f",
+    "chat_images.py": "cd1d68b7dd2ae95af6e4e9ab689150b9ee52318c17acf57d2f8a97bb948d6dc0",
+    "custom_tools.py": "a0d637c9f8e25f4536608894b33977b82dbe75cdab79482d7a5295375ef0ce41",
+    "body_limit.py": "205138734116420cc0b397f0e93e71de71c0e7a0e29d09a569e042dbfb80f061",
+    "policy.py": "a216a58c5cfbe0d01c5f4283162905e30dfe006c6f8ffad5b774bfa5152fba6a",
+    "media_history.py": "ab1618c9a6ecc8dd980aa0699c292a0815a0ad894e0c54f424bbda50239debb8",
+    "media_admission.py": "8ed780b895b4f95c251b3006e0c0c36f2a96df8fd12226bc59b3e5b1a395fee5",
+    "vision_control.py": "daab6554485cc7aa0dcc7c668c4c170783983713c132723f10747e46788082e3",
+    "metrics.py": "559cf4619b53ab9c50c24f0820e252cec509a54ee7f955c673edb338a00d2038",
+    "tailscale_bridge.py": "21d1f4bb78f58aa19d649dab8566bb512b9aba2ae5ec24c02973e41d92ce7bb1",
+    "vision_jobs.py": "f62def37ffc3f8a661e900fec4b33a95a26d81eebc6baf0aed96ff35457ec18d",
+    "engine.py": "b5c320e8043ae21764e6e9d1fbb7859cec0a5e8e3774a999cc719707a6decb80"
+  },
+  "public_bridge_adaptations": [
+    "lan_bridge.py default upstream -> loopback",
+    "tailscale_bridge.py default upstream -> loopback"
+  ],
+  "static_configuration": {
+    "streams": 12,
+    "round_rows": 48,
+    "pool_tokens": 7000000,
+    "snapshots_gib": 3,
+    "context_tokens": 401408,
+    "prefill_chunk": 2048,
+    "adaptive_learning": true,
+    "reasoning_default": "max",
+    "head_diagnostics": 1,
+    "dead_pressure_pruning": 1,
+    "TF_LOOP_DRY_WINDOWS": 10
+  },
+  "vision": {
+    "concurrency": 2,
+    "queue_timeout_seconds": 1800,
+    "job_timeout_seconds": 3590,
+    "cancel_grace_seconds": 60,
+    "final_answer_tokens": 32768,
+    "reasoning_tokens": 3072,
+    "control_enabled": true
+  },
+  "production_changed": false,
+  "new_inference_requests": 0,
+  "static_environment_check": [
+    {
+      "rank": 0,
+      "static_inference_environment_matches": true
+    },
+    {
+      "rank": 1,
+      "static_inference_environment_matches": true
+    },
+    {
+      "rank": 2,
+      "static_inference_environment_matches": true
+    }
+  ]
+}

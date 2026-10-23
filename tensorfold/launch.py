@@ -20,6 +20,8 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
     binary_root = root / profile.get('binary_subdir', 'bin')
     kit = root / 'kit'
     model = root / 'weights/models' / profile['arm']
+    if rank == 0 and profile.get('head_model_subdir'):
+        model = root / profile['head_model_subdir']
     cache = root / profile.get('rank_cache_subdir', 'weights/' + profile['arm'])
     engram = root / profile.get('engram_subdir', 'engram')
     pool = profile['pool_tokens']
@@ -52,6 +54,8 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
         env['TF_DS_ROUND_MS'] = profile['round_ms']
     if profile.get('adaptive_learning'):
         env['TF_DS_ADAPTIVE_LEARNING'] = '1'
+    if rank == 0:
+        env.update(profile.get('head_environment', {}))
     if config.get('library_path'):
         env['LD_LIBRARY_PATH'] = config['library_path']
     if rank == 0:
@@ -123,7 +127,8 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
                 raise ValueError('Wrong source model revision')
             template = model / 'chat_template.jinja'
             import hashlib
-            if hashlib.sha256(template.read_bytes()).hexdigest() != profile['chat_template_sha256']:
+            template_sha = profile.get('head_chat_template_sha256', profile['chat_template_sha256']) if rank == 0 else profile['chat_template_sha256']
+            if hashlib.sha256(template.read_bytes()).hexdigest() != template_sha:
                 raise ValueError('Runtime chat template differs from the qualified 1017 template')
             source = json.loads((engram / 'SOURCE.json').read_text())
             if (source['rank'] != rank or source['world'] != 3

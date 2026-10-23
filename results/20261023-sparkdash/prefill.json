@@ -1,0 +1,104 @@
+{
+  "benchId": "9efbcf6a-6c65-4822-bd5c-1d58e1f26c27",
+  "sparkId": "tensorfold-125",
+  "status": "completed",
+  "startedAt": 1792765554299,
+  "completedAt": 1792765586054,
+  "config": {
+    "port": 8003,
+    "modelId": "deepseek-v4.1-flash",
+    "contextSizes": [
+      1024,
+      2048,
+      4096,
+      8192
+    ],
+    "contextLength": 401408
+  },
+  "progress": {
+    "currentContext": null,
+    "completedLevels": 4,
+    "totalLevels": 4,
+    "message": "Done"
+  },
+  "results": [
+    {
+      "targetTokens": 1024,
+      "promptTokens": 1042,
+      "promptChars": 4341,
+      "prefillTps": 1922.05,
+      "method": "ttft",
+      "cachedTokens": 0,
+      "samples": 3,
+      "samplesRequested": 3,
+      "lowConfidence": true,
+      "overheadMs": 267.57,
+      "ttftMs": 809.7,
+      "ttftContentMs": 809.7,
+      "completionTokens": 2,
+      "durationMs": 3065.36,
+      "model": "deepseek-v4.1-flash",
+      "error": null
+    },
+    {
+      "targetTokens": 2048,
+      "promptTokens": 2065,
+      "promptChars": 8724,
+      "prefillTps": 2224.18,
+      "method": "ttft",
+      "cachedTokens": 0,
+      "samples": 3,
+      "samplesRequested": 3,
+      "lowConfidence": false,
+      "overheadMs": 267.57,
+      "ttftMs": 1196,
+      "ttftContentMs": 1196,
+      "completionTokens": 2,
+      "durationMs": 4160.67,
+      "model": "deepseek-v4.1-flash",
+      "error": null
+    },
+    {
+      "targetTokens": 4096,
+      "promptTokens": 4117,
+      "promptChars": 17549,
+      "prefillTps": 2097.48,
+      "method": "ttft",
+      "cachedTokens": 0,
+      "samples": 3,
+      "samplesRequested": 3,
+      "lowConfidence": false,
+      "overheadMs": 267.57,
+      "ttftMs": 2230.4,
+      "ttftContentMs": 2230.4,
+      "completionTokens": 2,
+      "durationMs": 7221.17,
+      "model": "deepseek-v4.1-flash",
+      "error": null
+    },
+    {
+      "targetTokens": 8192,
+      "promptTokens": 8212,
+      "promptChars": 34977,
+      "prefillTps": 2228.93,
+      "method": "ttft",
+      "cachedTokens": 0,
+      "samples": 3,
+      "samplesRequested": 3,
+      "lowConfidence": false,
+      "overheadMs": 267.57,
+      "ttftMs": 3951.85,
+      "ttftContentMs": 3951.85,
+      "completionTokens": 2,
+      "durationMs": 12413.48,
+      "model": "deepseek-v4.1-flash",
+      "error": null
+    }
+  ],
+  "error": null,
+  "durationMs": 31755,
+  "owner": {
+    "id": "owner-GO-20261023-sparkdash",
+    "via": "Codex"
+  }
+}

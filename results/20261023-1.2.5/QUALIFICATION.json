@@ -1,0 +1,60 @@
+{
+  "version": "1.2.5",
+  "measured_alias": "1.2.4k2a",
+  "native_manifest_sha256": "ed9c269ab2e5774cdb1869d63471feed84b4a5955b05dbbc9e150d53c970f1c6",
+  "native_source_tree_sha256": "8359db1a55efa9675af26aa8465974ca511ca3e79971380454d4285d89c7aade",
+  "reference_binaries": {
+    "bin/tensorfold-native": {
+      "sha256": "a79dd73d621397c5fd159b797850ef5d4ec8246b10bc89b96e26ffe2ee38dc2c",
+      "bytes": 23164184,
+      "target": "aarch64-linux-gnu"
+    },
+    "bin/tf-dsv41-lanes": {
+      "sha256": "ad9d00ca2acf77589a38c1ac1d87808fe130afe8ec7001dec8a3fa097d773335",
+      "bytes": 10607168,
+      "target": "aarch64-linux-gnu"
+    }
+  },
+  "preparation_checks": {
+    "native_cpu_tests": [
+      361,
+      361
+    ],
+    "native_vision_registry": [
+      3,
+      3
+    ],
+    "cpu_http_lifecycle": [
+      7,
+      7
+    ],
+    "arm64_build_steps": [
+      11,
+      11
+    ],
+    "kv_union_oracle_cases": 10000,
+    "valid_victim_parity_cases": 200
+  },
+  "template": {
+    "original_sha256": "7d1356675e429ec4a55cbcc1a6fbeb40615dbeb257aca25b8c3705a42087f33e",
+    "direct_output_sha256": "4669c39b5ca71ca4722c52c750883bacfc8f1e2542ef40bddccd8684158e28c8",
+    "python_output_equivalence_cases": 192,
+    "native_render_token_equivalence_cases": 192
+  },
+  "measured_workflow": {
+    "tasks": 78,
+    "correct": 78,
+    "tool_repairs": 37,
+    "final_failures": 0,
+    "http_requests": 355,
+    "wave_seconds": 1258.809
+  },
+  "sparkdash": {
+    "duration_seconds": 263.186,
+    "decode_streams_ok": 102,
+    "prefill_samples_ok": 12,
+    "thinking_false": 121,
+    "thinking_true": 0
+  },
+  "limits": "Historical receipts reused after exact source/identity checks. New host builds require startup/GPU qualification. No full 7M stress or identical TP4 environment claim."
+}

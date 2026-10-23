@@ -2,7 +2,8 @@
 
 Enabled only by DGX_VISION_JOBS_DB. No agent/tool/image-history requests are
 rerouted. Accepted work outlives an HTTP client; interrupted dispatch never
-replays. Unknown dispatch blocks this worker until an operator reconciles it.
+replays. An owned UNKNOWN reserves its slot until a native termination receipt;
+legacy dispatches without that contract retain operator reconciliation.
 """
 import asyncio
 from contextlib import contextmanager
@@ -17,6 +18,7 @@ import uuid
 from pathlib import Path
 
 from .media_admission import has_images, media_concurrency
+from .vision_control import seconds, confirms_termination
 
 log = logging.getLogger(__name__)
 TERMINAL = {'succeeded', 'failed', 'unknown'}
@@ -59,9 +61,12 @@ class AdmissionError(ValueError):
 
 
 class Ledger:
-    def __init__(self, path, clock=time.time):
+    def __init__(self, path, clock=time.time, controlled=False):
         self.path, self.clock = Path(path), clock
+        self.controlled = controlled
         self.max_running = media_concurrency()
+        self.queue_timeout = seconds('DGX_VISION_QUEUE_TIMEOUT_SECONDS', 1800)
+        self.job_timeout = seconds('DGX_VISION_JOB_TIMEOUT_SECONDS', 1800)
         self.path.parent.mkdir(parents=True, mode=0o700, exist_ok=True)
         with self.connect() as db:
             db.execute('PRAGMA journal_mode=WAL')
@@ -71,6 +76,8 @@ class Ledger:
                 deadline REAL NOT NULL, body TEXT NOT NULL, result TEXT,
                 backend_id TEXT)''')
             db.execute('CREATE INDEX IF NOT EXISTS jobs_lookup ON jobs(owner,fingerprint,created)')
+            db.execute('''CREATE TABLE IF NOT EXISTS vision_dispatch (
+                job_id TEXT PRIMARY KEY, body TEXT NOT NULL, receipt TEXT)''')
 
     @contextmanager
     def connect(self):
@@ -82,10 +89,15 @@ class Ledger:
         finally:
             db.close()
 
-    def accept(self, owner, body, key=None):
+    def accept(self, owner, body, key=None, *, generation_body=None):
         canonical = {k:v for k,v in body.items() if k not in {'stream','stream_options'}}
         raw = json.dumps(canonical, sort_keys=True, separators=(',',':'), ensure_ascii=False)
         fingerprint = hashlib.sha256((os.getenv('DGX_VISION_JOBS_REVISION','v1')+'\0'+raw).encode()).hexdigest()
+        # Deduplication describes the caller's input, not a later operator policy.
+        # Keep accepted jobs stable across policy changes; never replay them.
+        if generation_body is not None:
+            canonical = {k:v for k,v in generation_body.items() if k not in {'stream','stream_options'}}
+            raw = json.dumps(canonical, sort_keys=True, separators=(',',':'), ensure_ascii=False)
         now = self.clock()
         identity = 'vision_' + (hashlib.sha256((owner+'\0'+key).encode()).hexdigest() if key else uuid.uuid4().hex)
         with self.connect() as db:
@@ -97,15 +109,15 @@ class Ledger:
                 if old['fingerprint'] != fingerprint:
                     raise AdmissionError('Idempotency key belongs to different input')
                 return old['id'], False
-            if db.execute("SELECT count(*) FROM jobs WHERE state='unknown'").fetchone()[0]:
-                raise AdmissionError('Unconfirmed backend dispatch requires operator reconciliation; do not resubmit')
+            if self.legacy_unknown(db):
+                raise AdmissionError('Backend termination awaits confirmation; do not resubmit accepted jobs')
             if db.execute("SELECT count(*) FROM jobs WHERE state IN ('queued','running')").fetchone()[0] >= 64:
                 raise AdmissionError('Vision queue is full; no new job accepted')
             count, size = db.execute('SELECT count(*), coalesce(sum(length(body)+coalesce(length(result),0)),0) FROM jobs').fetchone()
             if count >= 4096 or size + len(raw.encode()) > 512*1024*1024:
                 raise AdmissionError('Retained vision ledger reached its storage limit; operator review required')
             db.execute('INSERT INTO jobs VALUES (?,?,?,?,?,?,?,?,NULL,NULL)',
-                       (identity,owner,fingerprint,'queued',now,now,now+900,raw))
+                       (identity,owner,fingerprint,'queued',now,now,now+self.queue_timeout,raw))
         return identity, True
 
     def read(self, identity, owner=None):
@@ -126,14 +138,23 @@ class Ledger:
             db.execute('BEGIN IMMEDIATE')
             db.execute("UPDATE jobs SET state='failed',updated=?,result=? WHERE state='queued' AND deadline<=?",
                        (now,json.dumps(error('queue_deadline','Job expired before dispatch')),now))
-            if db.execute("SELECT count(*) FROM jobs WHERE state='unknown'").fetchone()[0]:
+            if self.legacy_unknown(db):
                 return None
-            if db.execute("SELECT count(*) FROM jobs WHERE state='running'").fetchone()[0] >= self.max_running:
+            # Each unconfirmed owned dispatch retains ONE physical image slot,
+            # so an ambiguous job cannot freeze another healthy vision lane.
+            if db.execute("SELECT count(*) FROM jobs WHERE state IN ('running','unknown')").fetchone()[0] >= self.max_running:
                 return None
             row = db.execute("SELECT * FROM jobs WHERE state='queued' ORDER BY created,rowid LIMIT 1").fetchone()
             if row:
-                db.execute("UPDATE jobs SET state='running',updated=? WHERE id=?",(now,row['id']))
-                return dict(row)
+                deadline = now+self.job_timeout
+                if self.controlled:
+                    # Distinguish a crash BEFORE dispatch from legacy jobs.
+                    # A complete dispatch record must replace this marker
+                    # atomically before the engine can receive a POST.
+                    db.execute('INSERT INTO vision_dispatch(job_id,body) VALUES (?,?)',
+                               (row['id'],json.dumps({'pending':True})))
+                db.execute("UPDATE jobs SET state='running',updated=?,deadline=? WHERE id=?",(now,deadline,row['id']))
+                return {**dict(row), 'state':'running', 'deadline':deadline}
 
     def finish(self, identity, state, result):
         if state not in TERMINAL:
@@ -146,10 +167,87 @@ class Ledger:
         with self.connect() as db:
             db.execute('UPDATE jobs SET backend_id=?,updated=? WHERE id=?',(backend_id,self.clock(),identity))
 
+    def dispatch(self, identity, dispatch):
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row=db.execute('SELECT state FROM jobs WHERE id=?',(identity,)).fetchone()
+            previous=db.execute('SELECT body FROM vision_dispatch WHERE job_id=?',(identity,)).fetchone()
+            if (not row or row['state']!='running'
+                    or (previous and not json.loads(previous['body']).get('pending'))):
+                raise ValueError('Vision dispatch is no longer owned and running')
+            db.execute('''INSERT INTO vision_dispatch(job_id,body) VALUES (?,?)
+                ON CONFLICT(job_id) DO UPDATE SET body=excluded.body''',(identity,json.dumps(dispatch)))
+            db.execute('UPDATE jobs SET backend_id=?,updated=? WHERE id=?',
+                       (dispatch['request_id'],self.clock(),identity))
+
+    def dispatch_for(self, identity):
+        with self.connect() as db:
+            row = db.execute('SELECT body FROM vision_dispatch WHERE job_id=?',(identity,)).fetchone()
+        return json.loads(row[0]) if row else None
+
+    def unknown(self):
+        with self.connect() as db:
+            return [dict(row) for row in db.execute("SELECT * FROM jobs WHERE state='unknown'")]
+
+    def legacy_unknown(self, db):
+        if not self.controlled:
+            return db.execute("SELECT count(*) FROM jobs WHERE state='unknown'").fetchone()[0]
+        return db.execute("""SELECT count(*) FROM jobs j LEFT JOIN vision_dispatch d ON d.job_id=j.id
+            WHERE j.state='unknown' AND d.job_id IS NULL""").fetchone()[0]
+
+    def blocked(self):
+        with self.connect() as db:
+            return bool(self.legacy_unknown(db) or db.execute(
+                "SELECT count(*) FROM jobs WHERE state='unknown'").fetchone()[0] >= self.max_running)
+
+    def not_dispatched(self, identity, code):
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row=db.execute('''SELECT j.state,j.backend_id,d.body,d.receipt FROM jobs j
+                JOIN vision_dispatch d ON d.job_id=j.id WHERE j.id=?''',(identity,)).fetchone()
+            if row and row['state']=='failed' and row['receipt']:
+                previous=json.loads(row['receipt'])
+                if previous.get('schema')=='dgx.vision-not-dispatched.v1' and previous.get('job_id')==identity:
+                    return  # Worker and background reconciliation can race.
+            if (not row or row['state']!='unknown' or row['backend_id'] is not None
+                    or json.loads(row['body'])!={'pending':True}):
+                raise ValueError('A persisted pre-dispatch marker is required')
+            receipt={'schema':'dgx.vision-not-dispatched.v1','termination_confirmed':True,
+                     'state':'not_dispatched','job_id':identity}
+            result={'status_code':504 if code=='vision_deadline' else 422,'headers':{},
+                    'data':error(code,'Vision stopped before backend dispatch. No automatic replay.',identity)}
+            db.execute('UPDATE vision_dispatch SET receipt=? WHERE job_id=?',(json.dumps(receipt),identity))
+            db.execute("UPDATE jobs SET state='failed',updated=?,result=? WHERE id=?",
+                       (self.clock(),json.dumps(result),identity))
+
+    def confirmed(self, identity, receipt, code='vision_interrupted'):
+        result = {'status_code':504 if code=='vision_deadline' else 422,
+                  'data':error(code,'Vision stopped; backend termination confirmed. No automatic replay.',identity),
+                  'headers':{}}
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            dispatch = db.execute('SELECT body FROM vision_dispatch WHERE job_id=?',(identity,)).fetchone()
+            if not dispatch:
+                raise ValueError('No owned dispatch for termination receipt')
+            owned = json.loads(dispatch[0])
+            if not confirms_termination(receipt,owned):
+                raise ValueError('Termination receipt does not match owned dispatch')
+            db.execute('UPDATE vision_dispatch SET receipt=? WHERE job_id=?',(json.dumps(receipt),identity))
+            db.execute("UPDATE jobs SET state='failed',updated=?,result=? WHERE id=? AND state='unknown'",
+                       (self.clock(),json.dumps(result),identity))
+
     def status(self, identity, owner):
         row = self.read(identity,owner)
         if row is None:
             return None
+        if row['state']=='queued' and row['deadline']<=self.clock():
+            # A stopped dispatcher must not leave a caller polling forever.
+            # The conditional update cannot overwrite a concurrent claim.
+            with self.connect() as db:
+                db.execute("UPDATE jobs SET state='failed',updated=?,result=? WHERE id=? AND state='queued' AND deadline<=?",
+                           (self.clock(),json.dumps(error('queue_deadline','Job expired before dispatch')),
+                            identity,self.clock()))
+            row=self.read(identity,owner)
         return {'job_id':identity,'status':row['state'],'accepted':True,'retryable':False,
                 'elapsed_seconds':round(max(0,self.clock()-row['created']),3),
                 'deadline':row['deadline'],'backend_request_id':row['backend_id'],
@@ -162,8 +260,12 @@ class Ledger:
 
 
 class Jobs:
-    def __init__(self, path, engine, sender=None):
-        self.ledger, self.engine = Ledger(path), engine
+    def __init__(self, path, engine, sender=None, control=None):
+        self.ledger, self.engine = Ledger(path,controlled=control is not None), engine
+        self.control = control
+        self.final_answer_tokens = int(os.getenv('DGX_VISION_FINAL_ANSWER_TOKENS', '0'))
+        if not 0 <= self.final_answer_tokens <= 65536:
+            raise ValueError('DGX_VISION_FINAL_ANSWER_TOKENS must be between 0 and 65536')
         self.sender = sender or self.collect
         self.wake = asyncio.Event()
         self.runner = None
@@ -182,16 +284,36 @@ class Jobs:
         await asyncio.gather(self.runner, return_exceptions=True)
         self.lease.close()
 
+    def output_budget(self):
+        if not self.final_answer_tokens:
+            return None
+        return {'reasoning_effort':'medium', 'thinking_budget':3072,
+                'final_answer_tokens':self.final_answer_tokens,
+                'max_tokens':3072+self.final_answer_tokens}
+
+    def generation_body(self, body):
+        # Only standalone medium image jobs reach this policy. Main agent
+        # requests (including MAX image history/tools) retain their budgets.
+        if not self.final_answer_tokens or body.get('reasoning_effort') != 'medium':
+            return body
+        result = dict(body)
+        result.pop('max_completion_tokens', None)
+        result['max_tokens'] = 3072 + self.final_answer_tokens
+        result['thinking_budget'] = 3072
+        return result
+
     def accept(self, owner, body, key=None):
         if self.runner.done():
             raise AdmissionError('Vision worker stopped; no job accepted')
-        identity, created = self.ledger.accept(owner,body,key)
+        identity, created = self.ledger.accept(owner,body,key, generation_body=self.generation_body(body))
         self.wake.set()
         log.info('Vision job %s %s',identity,'accepted; waiting' if created else 'existing; no resubmission')
         return identity, created
 
     async def run(self):
         workers = [asyncio.create_task(self.work()) for _ in range(self.ledger.max_running)]
+        if self.control is not None:
+            workers.append(asyncio.create_task(self.reconcile_unknown()))
         try:
             await asyncio.gather(*workers)
         finally:
@@ -220,7 +342,7 @@ class Jobs:
                     raise TimeoutError()
                 result = task.result()
                 self.ledger.finish(identity,'succeeded' if result['status_code']==200 else 'failed',result)
-            except (asyncio.CancelledError,TimeoutError):
+            except (asyncio.CancelledError,TimeoutError) as exc:
                 self.ledger.finish(identity,'unknown',{'status_code':409,'data':error('termination_unconfirmed',
                     'Vision dispatch interrupted; backend termination is unconfirmed. Keep this job ID; do not resubmit.',identity),'headers':{}})
                 task.cancel()
@@ -229,13 +351,46 @@ class Jobs:
                 task.add_done_callback(lambda t: None if t.cancelled() else t.exception())
                 if asyncio.current_task().cancelling():
                     raise
+                await self.terminate(row, 'vision_deadline' if isinstance(exc,TimeoutError) else 'vision_interrupted')
             except Exception:
                 log.exception('Vision job %s has an unconfirmed outcome',identity)
                 self.ledger.finish(identity,'unknown',{'status_code':409,'data':error('backend_outcome_unknown',
                     'Backend outcome unknown. Keep the job ID; do not resubmit.',identity),'headers':{}})
+                await self.terminate(row, 'vision_transport_failed')
             finally:
                 self.active.pop(identity, None)
                 self.wake.set()
+
+    async def terminate(self, row, code):
+        dispatch = self.ledger.dispatch_for(row['id'])
+        if self.control is not None and dispatch:
+            if dispatch.get('pending'):
+                self.ledger.not_dispatched(row['id'],code)
+                self.wake.set()
+                return
+            receipt = await self.control.terminate(dispatch)
+            if receipt:
+                self.ledger.confirmed(row['id'],receipt,code)
+                self.wake.set()
+
+    async def reconcile_unknown(self):
+        while True:
+            for row in self.ledger.unknown():
+                dispatch = self.ledger.dispatch_for(row['id'])
+                if not dispatch:
+                    continue  # Legacy UNKNOWN needs its existing operator receipt.
+                try:
+                    if dispatch.get('pending'):
+                        self.ledger.not_dispatched(row['id'],'vision_interrupted')
+                        self.wake.set()
+                        continue
+                    receipt = await self.control.cancel(dispatch)
+                    if receipt:
+                        self.ledger.confirmed(row['id'],receipt)
+                        self.wake.set()
+                except Exception:
+                    log.warning('Vision cancellation receipt unavailable for %s',row['id'])
+            await asyncio.sleep(5)
 
     async def wait(self, identity, owner):
         while True:
@@ -250,7 +405,16 @@ class Jobs:
 
     async def collect(self, row):
         from .vision_result import collect
-        return await collect(self.engine,row,lambda backend:self.ledger.backend(row['id'],backend))
+        dispatch = None
+        if self.control is not None:
+            try:
+                dispatch = await self.control.dispatch(row,self.ledger)
+            except Exception:
+                # Capability check failed before any POST. Never fall back to an
+                # untracked generation on a backend lacking cancellation proof.
+                return {'status_code':503,'data':error('vision_control_unavailable',
+                    'Vision cancellation control unavailable; image was not dispatched.',row['id']),'headers':{}}
+        return await collect(self.engine,row,lambda backend:self.ledger.backend(row['id'],backend),dispatch)
 
 
 def owner(request):
