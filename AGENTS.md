@@ -1,6 +1,15 @@
 # Agent installation guide
 
-The current production recipe is **1.2.5 / K2a**. Read `docs/DS41F-1.2.5.md`,
+Current production is **1.2.6**, measured as 5c. Read `docs/DS41F-1.2.6.md` and
+`docs/SPARKDASH-20261024-1.2.6.md`. Build `--recipe v126`; launch `--variant 1.2.6`
+on all three ranks. Prepare the head overlay with `--variant 1.2.6`. Preserve
+7M KV/3 GiB snapshots/C12/R48/chunk2048 and the existing adaptive learner.
+The native planner/copy credit is 320 MiB per rank. Standalone vision uses MAX,
+8192 thinking and 32768 final tokens; other agent image histories keep their own
+budgets. Private diagnostic state never belongs in commits. Both new posters
+use only SparkDash run 2 (thinking OFF), not historical heavy workflow/RigMark.
+
+The previous production recipe is **1.2.5 / K2a**. Read `docs/DS41F-1.2.5.md`,
 build with `--recipe k2a` and launch with `--variant 1.2.5`. Prepare the exact
 direct-output template overlay on the head only; followers retain the original
 1017 template. All three native ranks require matching source/build receipts.

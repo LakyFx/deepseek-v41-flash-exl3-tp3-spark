@@ -623,6 +623,8 @@ def create_app(
                 'automatic_reconciliation':jobs.control is not None,
                 'queue_timeout_seconds':jobs.ledger.queue_timeout,
                 'analysis_timeout_seconds':jobs.ledger.job_timeout,
+                'output_budget':jobs.output_budget(),
+                # Compatibility alias for existing monitor clients.
                 'medium_output_budget':jobs.output_budget()}
             ok = ok and not jobs.runner.done()
         return JSONResponse(status_code=200 if ok else 503, content=payload)

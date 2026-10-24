@@ -7,8 +7,10 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 
 
-def prepare(runtime):
-    profile = json.loads((HERE / 'profiles/1.2.5.json').read_bytes())
+def prepare(runtime, variant='1.2.5'):
+    if variant not in ('1.2.5', '1.2.6'):
+        raise ValueError('Select a published direct-output template profile')
+    profile = json.loads((HERE / 'profiles' / (variant+'.json')).read_bytes())
     original = runtime / 'weights/models' / profile['arm']
     destination = runtime / profile['head_model_subdir']
     candidate = HERE / 'templates/1017-direct-output.jinja'
@@ -31,4 +33,6 @@ def prepare(runtime):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime', required=True, type=Path)
-    print(json.dumps(prepare(parser.parse_args().runtime.resolve()), indent=2))
+    parser.add_argument('--variant', default='1.2.5', choices=['1.2.5','1.2.6'])
+    args=parser.parse_args()
+    print(json.dumps(prepare(args.runtime.resolve(),args.variant), indent=2))

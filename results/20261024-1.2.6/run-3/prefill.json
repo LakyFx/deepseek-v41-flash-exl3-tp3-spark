@@ -1,0 +1,101 @@
+{
+  "benchId": "c69ba68e-f780-45ae-8121-51d523dd7cf3",
+  "sparkId": "three-dgx-sparks-tp3",
+  "status": "completed",
+  "startedAt": 1792870594249,
+  "completedAt": 1792870621120,
+  "config": {
+    "port": 8003,
+    "modelId": "deepseek-v4.1-flash",
+    "contextSizes": [
+      1024,
+      2048,
+      4096,
+      8192
+    ],
+    "contextLength": 401408
+  },
+  "progress": {
+    "currentContext": null,
+    "completedLevels": 4,
+    "totalLevels": 4,
+    "message": "Done"
+  },
+  "results": [
+    {
+      "targetTokens": 1024,
+      "promptTokens": 1045,
+      "promptChars": 4341,
+      "prefillTps": 1867.94,
+      "method": "ttft",
+      "cachedTokens": 0,
+      "samples": 3,
+      "samplesRequested": 3,
+      "lowConfidence": false,
+      "overheadMs": 158.96,
+      "ttftMs": 718.4,
+      "ttftContentMs": 718.4,
+      "completionTokens": 2,
+      "durationMs": 2272.24,
+      "model": "deepseek-v4.1-flash",
+      "error": null
+    },
+    {
+      "targetTokens": 2048,
+      "promptTokens": 2068,
+      "promptChars": 8724,
+      "prefillTps": 2057.73,
+      "method": "ttft",
+      "cachedTokens": 0,
+      "samples": 3,
+      "samplesRequested": 3,
+      "lowConfidence": false,
+      "overheadMs": 158.96,
+      "ttftMs": 1163.95,
+      "ttftContentMs": 1163.95,
+      "completionTokens": 2,
+      "durationMs": 3624.96,
+      "model": "deepseek-v4.1-flash",
+      "error": null
+    },
+    {
+      "targetTokens": 4096,
+      "promptTokens": 4117,
+      "promptChars": 17549,
+      "prefillTps": 2167.3,
+      "method": "ttft",
+      "cachedTokens": 0,
+      "samples": 3,
+      "samplesRequested": 3,
+      "lowConfidence": false,
+      "overheadMs": 158.96,
+      "ttftMs": 2058.56,
+      "ttftContentMs": 2058.56,
+      "completionTokens": 2,
+      "durationMs": 6291.1,
+      "model": "deepseek-v4.1-flash",
+      "error": null
+    },
+    {
+      "targetTokens": 8192,
+      "promptTokens": 8208,
+      "promptChars": 34977,
+      "prefillTps": 2277.12,
+      "method": "ttft",
+      "cachedTokens": 0,
+      "samples": 3,
+      "samplesRequested": 3,
+      "lowConfidence": false,
+      "overheadMs": 158.96,
+      "ttftMs": 3763.52,
+      "ttftContentMs": 3763.52,
+      "completionTokens": 2,
+      "durationMs": 11438.52,
+      "model": "deepseek-v4.1-flash",
+      "error": null
+    }
+  ],
+  "error": null,
+  "durationMs": 26871,
+  "owner": "published-stock-benchmark"
+}

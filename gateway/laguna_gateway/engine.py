@@ -617,6 +617,17 @@ class GatewayEngine:
 
         if not request_id or self.settings.backend_family != "qwen38_vllm":
             return
+        if self.settings.upstream_abort_mode == "tensorfold_disconnect":
+            # Callers close an interrupted response first; httpx also closes
+            # an in-flight connection when send/post is cancelled or fails.
+            # TensorFold Gone.check -> Generation.cancel -> drain owns the
+            # actual engine cancellation. Do not issue vLLM-only HTTP calls,
+            # and do not misreport socket closure as a termination receipt.
+            # Durable vision jobs independently retain NativeControl receipts.
+            self.metrics.upstream_aborts.labels(
+                api=api, outcome="disconnect_delegated"
+            ).inc()
+            return
         path = "/abort_request"
         payload: dict[str, Any] = {"rid": request_id}
         if self.settings.qwen_native_vllm:
@@ -4495,6 +4506,7 @@ class GatewayEngine:
             "model": self.settings.served_model,
             "model_aliases": list(self.settings.served_model_aliases),
             "backend_family": self.settings.backend_family,
+            "upstream_abort_mode": self.settings.upstream_abort_mode,
             "active": self.gate.active,
             "waiting": self.gate.waiting,
             "admitted_tokens": self.gate.active_weight,

@@ -54,6 +54,7 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
         env['TF_DS_ROUND_MS'] = profile['round_ms']
     if profile.get('adaptive_learning'):
         env['TF_DS_ADAPTIVE_LEARNING'] = '1'
+    env.update(profile.get('runtime_environment', {}))
     if rank == 0:
         env.update(profile.get('head_environment', {}))
     if config.get('library_path'):
@@ -65,6 +66,7 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
                 '--reasoning-effort', profile['reasoning'], '--prompt-cache-gib', str(profile['prompt_snapshot_gib_head']), '--no-update-check']
         if benchmark:
             argv.append('--benchmark-control')
+        argv.extend(profile.get('extra_head_arguments', []))
     else:
         argv = [str(binary_root / 'tf-dsv41-lanes'), str(model), str(cache), str(rank), '3',
                 config['master_address'], str(config['master_port']), str(kit), '--pool', str(pool),

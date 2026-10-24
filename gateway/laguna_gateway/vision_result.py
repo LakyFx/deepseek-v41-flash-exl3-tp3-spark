@@ -4,6 +4,7 @@ import re
 import time
 
 from .vision_jobs import error, repeated
+from .vision_diagnostics import Diagnostics, observe
 
 
 def final_text(text):
@@ -12,7 +13,8 @@ def final_text(text):
 
 
 class Collector:
-    def __init__(self):
+    def __init__(self, diagnostics=None):
+        self.diagnostics = diagnostics
         self.pending = b''
         self.content = self.reasoning = ''
         self.finish = None
@@ -42,6 +44,8 @@ class Collector:
             self.usage = payload.get('usage') or self.usage
             for choice in payload.get('choices') or []:
                 delta = choice.get('delta') or {}
+                if self.diagnostics is not None:
+                    observe(self.diagnostics, 'observe', delta)
                 if not self.repetitive:
                     self.content += delta.get('content') or ''
                     self.reasoning += delta.get('reasoning_content') or delta.get('reasoning') or ''
@@ -49,6 +53,8 @@ class Collector:
                 if delta.get('tool_calls'):
                     raise ValueError('Standalone vision returned unexpected tool calls')
             if not self.repetitive and (repeated(self.content) or repeated(self.reasoning)):
+                if self.diagnostics is not None:
+                    observe(self.diagnostics, 'trigger', self.content, self.reasoning)
                 # Reject the answer, but drain this SAME bounded generation.
                 # Raising here closes its stream before a terminal receipt;
                 # a backend without abort support then leaves every image job
@@ -82,6 +88,9 @@ async def collect(engine, row, on_backend, dispatch=None):
     handle = None
     iterator = None
     outcome = 'vision_job_failed'
+    diagnostics = None
+    result = None
+    result_status = None
     try:
         body = json.loads(row['body'])
         body['stream'] = True
@@ -94,11 +103,13 @@ async def collect(engine, row, on_backend, dispatch=None):
             # A rejected request is never an excuse for a second inference.
             return {'status_code':422,'data':error('vision_provider_rejected',
                 'Provider rejected this vision job. Do not submit another generation automatically.',row['id']),'headers':{}}
-        result = Collector()
+        diagnostics = Diagnostics.open(row['id'], handle.upstream_request_id, dispatch)
+        result = Collector(diagnostics=diagnostics)
         iterator = engine.iter_stream(handle)
         async for chunk in iterator:
             result.feed(chunk)
         response = result.result(row['id'])
+        result_status = response['status_code']
         outcome = 'success'
         response['headers'] = engine._response_headers(handle.prepared,queue_wait_seconds=handle.queue_wait_seconds)
         return response
@@ -107,6 +118,10 @@ async def collect(engine, row, on_backend, dispatch=None):
             return {'status_code':422,'data':error('vision_input_rejected',str(exc),row['id']),'headers':{}}
         raise
     finally:
+        if diagnostics is not None and result is not None:
+            observe(diagnostics, 'finish', done=result.done, finish_reason=result.finish,
+                repetitive=result.repetitive, usage=result.usage,
+                result_status=result_status, outcome=outcome)
         if iterator is not None:
             await iterator.aclose()
         if handle is not None:

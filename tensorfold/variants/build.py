@@ -17,7 +17,10 @@ def build(build_root,out,name,zig='zig',prepare_only=False):
     if prepare_only:return dict(status='EXACT_SOURCE_VERIFIED',recipe=name,source_tree_sha256=spec['source_tree_sha256'],model_requests=0)
     out.mkdir(parents=True,exist_ok=False)
     commands=[[zig,'build','test','-j2','--summary','all']]
-    for module,libc in [('core/lanes/adaptive.zig',False),('core/lanes/refresh_budget.zig',False),('families/dsv41/sampling.zig',True),('families/dsv41/penalty_pool.zig',True)]:
+    modules=[('core/lanes/adaptive.zig',False),('core/lanes/refresh_budget.zig',False),('families/dsv41/sampling.zig',True),('families/dsv41/penalty_pool.zig',True)]
+    if name=='v126':
+        modules += [('families/dsv41/kv_pressure.zig',False),('families/dsv41/kv_move_budget.zig',False)]
+    for module,libc in modules:
         path='zig/src/'+module
         if (source/path).exists():commands.append([zig,'test',path,'-O','ReleaseSafe']+(['-lc'] if libc else []))
     commands.append([zig,'build','native','dsv41-tools','-j2','-Dtarget=aarch64-linux-gnu','-Dfatbins='+str((build_root/'kit/build-fatbins').resolve()),'--prefix',str(out.resolve()),'--summary','all'])

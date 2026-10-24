@@ -1,0 +1,28 @@
+{
+  "version": "1.2.6",
+  "measured_as": "1.2.5c",
+  "native_source_tree_sha256": "101c2b88aafcdd1751e3ef6e09ffec319c9f3f3e2f60bc8bec8787ed9dd47e96",
+  "native_source_files": 1139,
+  "sealed_payload_manifest_sha256": "2267bf20c4a79f62c59497e616e67fe9a4a2c50bdc11cea550aca75c47755af7",
+  "reference_binaries": {
+    "tensorfold-native": "fdca64590679fc2cee926f301896b6915188fb74abb5c39c6b4deae446748c81",
+    "tf-dsv41-lanes": "f773ef2a119f77d6d85b4e041fc32d0cb6888557b4b6ca041391cabeba80a69f"
+  },
+  "native_cpu_tests": 379,
+  "planner_cpu_tests": 7,
+  "credit_cpu_tests": 5,
+  "stock_campaigns": 3,
+  "decode_streams_passed": 306,
+  "prefill_samples_passed": 36,
+  "image_generations_passed": 9,
+  "native_termination_receipts": 9,
+  "images": {
+    "standalone_max_budget": 8192,
+    "final_answer_headroom": 32768,
+    "parallel_images": 2,
+    "original_four_image_batch_plus_text": "passed",
+    "historical_rare_repetition": "not reproduced; exact old trigger unavailable; no definitive fix claimed"
+  },
+  "production_boot": "Persistent settings installed on all three original hosts without restarting the loaded generation; no power-cycle qualification",
+  "limits": "No new heavy workflow or full-pool/320MiB live-copy stress. Three warm runs do not isolate adaptive learning from cache/warmup effects. Rebuilds require local qualification."
+}

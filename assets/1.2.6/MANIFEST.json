@@ -1,0 +1,28 @@
+{
+  "version": "1.2.6",
+  "measured_as": "1.2.5c",
+  "selected_run": 2,
+  "dimensions_png": [
+    2160,
+    3840
+  ],
+  "metric_scope": "Original stock aggregate, median per-stream decode and median request TTFT (includes prefill)",
+  "source_files_sha256": {
+    "prose.json": "62b6698b9e7e2a8907a0766e57d9137ecca8512864434ff4b6c447d183db7fa2",
+    "code.json": "7a8e20ed1209683312808cc017d1b5cf27ee4a9668cc42260dbe1cca4210feb3"
+  },
+  "validation": {
+    "01-prose": {
+      "text_overflow": []
+    },
+    "02-code": {
+      "text_overflow": []
+    }
+  },
+  "files": {
+    "01-prose.png": "05bf721a58cf55f985e11f67840902308c7d075afa14973e575dc2b84e344e45",
+    "01-prose.svg": "5a4a5fee8383f5bf1c9713a646c5431ab8b8c6ef123d08dbe6a2872747631ca2",
+    "02-code.png": "3f24674a165daa05bd77dd44c4b70b7e69a13aeb6eb54fac15759acac79a9398",
+    "02-code.svg": "1527977502137e5f6afb8af6fb7d90e4fd1f97220824632358d2aae6b3353833"
+  }
+}

@@ -1,6 +1,44 @@
 # DeepSeek V4.1 Flash on three DGX Sparks
 
-**Current production recipe: [1.2.5 / K2a](docs/DS41F-1.2.5.md)** — TensorFold TP3,
+**Current production recipe: [1.2.6](docs/DS41F-1.2.6.md)** — TensorFold TP3,
+DeepSeek 1017, EXL3 **~3.51 bpw routed experts**.
+C12 streams · R48 shared verification rows · 7M configured KV · 3 GiB snapshots.
+
+**Bounded, pressure-aware KV relocation · smart adaptive speculation · MAX/8K
+standalone vision.** Exact native source, production-matched gateway and results
+are published. 1.2.6 is the release name for the tested 5c payload.
+
+| Stock SparkDash, run 2 of 3 | C1 aggregate | C6 aggregate | C12 aggregate |
+| --- | ---: | ---: | ---: |
+| Prose | **95.5 tok/s** | **190.9 tok/s** | **235.6 tok/s** |
+| Code | **128.9 tok/s** | **228.8 tok/s** | **266.6 tok/s** |
+
+Original SparkDash prompts and formulas: thinking **OFF**, temperature **0**,
+400 tokens/stream. The table and both posters use only the **second consecutive
+run**, without resetting the model, cache or controller. Rates are complete-cell
+post-first-token aggregates, not instantaneous monitor peaks.
+
+<p>
+  <a href="assets/1.2.6/01-prose.png"><img src="assets/1.2.6/01-prose.png" width="48%" alt="1.2.6 prose benchmark, SparkDash run 2"></a>
+  <a href="assets/1.2.6/02-code.png"><img src="assets/1.2.6/02-code.png" width="48%" alt="1.2.6 code benchmark, SparkDash run 2"></a>
+</p>
+[Prose PNG](assets/1.2.6/01-prose.png) · [Code PNG](assets/1.2.6/02-code.png)
+· **[All measured concurrencies, medians, TTFT, prefill and acceptance](docs/SPARKDASH-20261024-1.2.6.md)**
+
+**What changed:** a bounded CPU planner preserves useful idle KV prefixes under
+fragmentation/pressure, with at most one eligible donor move and a **320 MiB
+per-rank cap/credit**, refilling at **8 MiB/s**. No background compactor, larger
+KV pool, new weight training or prefill/decode interleaving. Existing adaptive
+cost/acceptance feedback remains unchanged. The gateway adds TensorFold-specific
+disconnect handling, MAX/8K standalone image analysis and opt-in private diagnostics.
+
+- **[Build and launch 1.2.6](docs/DS41F-1.2.6.md)** · [profile](tensorfold/profiles/1.2.6.json) · [exact native source](tensorfold/variants/recipes/v126.json)
+- **[Weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold)** · [gateway](docs/GATEWAY.md) · [all historical recipes](docs/RECIPES.md)
+- **[Qualification and limits](results/20261024-1.2.6/QUALIFICATION.json)**: 306/306 decode streams, 36 prefill samples, 9/9 images. No new heavy-workflow or full-pool/maximum-copy stress test.
+
+## Preserved 1.2.5 measurements
+
+**Previous production recipe: [1.2.5 / K2a](docs/DS41F-1.2.5.md)** — TensorFold TP3,
 DeepSeek 1017, EXL3 **~3.51 bpw routed experts**. C12 streams · R48 shared
 verification rows · 7M configured KV · 3 GiB prompt-state cache.
 

@@ -24,3 +24,4 @@ gateway/laguna_gateway/*.py -text whitespace=trailing-space,space-before-tab,cr-
 benchmarks/sparkdash/vendor/** -text -whitespace
 results/20261023-sparkdash/** -text -whitespace
 results/20261023-1.2.5/** -text -whitespace
+results/20261024-1.2.6/** -text -whitespace

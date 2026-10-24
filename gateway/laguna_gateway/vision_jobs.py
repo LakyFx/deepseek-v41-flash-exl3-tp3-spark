@@ -25,7 +25,9 @@ TERMINAL = {'succeeded', 'failed', 'unknown'}
 
 
 def repeated(text):
-    words = re.findall(r'[^\W\d_]+', text[-16000:].lower())[-384:]
+    # Numeric values/row identifiers carry evidence in tables and charts.
+    # Removing them turns distinct measurements into identical word cycles.
+    words = re.findall(r'[^\W_]+(?:[.,]\d+)?', text[-16000:].lower())[-384:]
     for period in range(1, min(97, len(words)//5 + 1)):
         copies = min(12, len(words)//period)
         if period*copies >= 60 and words[-period*copies:] == words[-period:]*copies:
@@ -266,6 +268,16 @@ class Jobs:
         self.final_answer_tokens = int(os.getenv('DGX_VISION_FINAL_ANSWER_TOKENS', '0'))
         if not 0 <= self.final_answer_tokens <= 65536:
             raise ValueError('DGX_VISION_FINAL_ANSWER_TOKENS must be between 0 and 65536')
+        # An operator-selected standalone-image profile. Without this opt-in,
+        # retain the previous medium-only headroom policy for existing installs.
+        effort = os.getenv('DGX_VISION_REASONING_EFFORT', '')
+        if effort not in {'', 'medium', 'max'}:
+            raise ValueError('DGX_VISION_REASONING_EFFORT must be medium or max')
+        self.force_reasoning = bool(effort)
+        self.reasoning_effort = effort or 'medium'
+        self.thinking_budget = int(os.getenv('DGX_VISION_THINKING_BUDGET', '3072'))
+        if not 1 <= self.thinking_budget <= 65536:
+            raise ValueError('DGX_VISION_THINKING_BUDGET must be between 1 and 65536')
         self.sender = sender or self.collect
         self.wake = asyncio.Event()
         self.runner = None
@@ -287,19 +299,21 @@ class Jobs:
     def output_budget(self):
         if not self.final_answer_tokens:
             return None
-        return {'reasoning_effort':'medium', 'thinking_budget':3072,
+        return {'reasoning_effort':self.reasoning_effort, 'thinking_budget':self.thinking_budget,
                 'final_answer_tokens':self.final_answer_tokens,
-                'max_tokens':3072+self.final_answer_tokens}
+                'max_tokens':self.thinking_budget+self.final_answer_tokens}
 
     def generation_body(self, body):
-        # Only standalone medium image jobs reach this policy. Main agent
-        # requests (including MAX image history/tools) retain their budgets.
-        if not self.final_answer_tokens or body.get('reasoning_effort') != 'medium':
+        # Jobs admits standalone image questions only. Main-agent tool/history
+        # requests never reach this method; their text reasoning is independent.
+        if not self.final_answer_tokens or (not self.force_reasoning and body.get('reasoning_effort') != 'medium'):
             return body
         result = dict(body)
         result.pop('max_completion_tokens', None)
-        result['max_tokens'] = 3072 + self.final_answer_tokens
-        result['thinking_budget'] = 3072
+        result['max_tokens'] = self.thinking_budget + self.final_answer_tokens
+        result['thinking_budget'] = self.thinking_budget
+        if self.force_reasoning:
+            result['reasoning_effort'] = self.reasoning_effort
         return result
 
     def accept(self, owner, body, key=None):

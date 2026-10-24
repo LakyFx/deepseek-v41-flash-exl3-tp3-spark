@@ -1,0 +1,19 @@
+{
+  "version": "1.2.6",
+  "measured_as": "1.2.5c",
+  "original_private_job_sha256": {
+    "run-1/prose.json": "69cec8e009abf5b387f35a65e7e41a949a44bb6d3ce56ab27a1590c62b5efb79",
+    "run-1/code.json": "12ccc8bdde52a219a1eb4b9f2af51b66868a6b067ce1a549b4e0303f4d39d3d9",
+    "run-1/prefill.json": "0e438b33e867aa1ed5c3632666fde758946403f4c2536f954b8c10d3f442ada2",
+    "run-2/prose.json": "62b6698b9e7e2a8907a0766e57d9137ecca8512864434ff4b6c447d183db7fa2",
+    "run-2/code.json": "7a8e20ed1209683312808cc017d1b5cf27ee4a9668cc42260dbe1cca4210feb3",
+    "run-2/prefill.json": "ecda824f24bae2f882ab63af5c8a2958794eeb8aeb2b80f97e01d5518d9ca756",
+    "run-3/prose.json": "7e0ed4e0253bf618ab2634083fac4b98ed6104b7d2d59031227831f500543037",
+    "run-3/code.json": "3a8336454fd0610f4b6e658e7205aa872bbe4c6a457d394a3d7646aeaffeeb72",
+    "run-3/prefill.json": "2d537b1aa4ecd5650c15600f30383aa5ddec2f8ea8ec2b465bf0dafaa8503823"
+  },
+  "adaptations": "Only operator job owner and synthetic appliance ID. Config, prompts, outputs, stream timings and all measured values preserved.",
+  "poster_run": 2,
+  "upstream": "https://github.com/MiaAI-Lab/sparkDash",
+  "upstream_revision": "9e3f01729a4e63dccc2b6b608e9e67d3168891b6"
+}

@@ -105,6 +105,9 @@ class Settings:
     qwen_thinking_budget: bool = False
     qwen_responses_thinking_budget: bool = False
     qwen_native_vllm: bool = False
+    # TensorFold detects disconnects on the generation's own socket. Its
+    # vLLM-compatible generation API does not implement vLLM abort endpoints.
+    upstream_abort_mode: str = "legacy"
     deepseek_v41_vllm: bool = False
     responses_checkpoint_mode: str = "off"
     responses_checkpoint_shadow_sample_rate: float = 1.0
@@ -267,6 +270,9 @@ class Settings:
             ),
             deepseek_v41_vllm=_env_bool("LAGUNA_GATEWAY_DEEPSEEK_V41_VLLM", False),
             qwen_native_vllm=_env_bool("LAGUNA_GATEWAY_QWEN_NATIVE_VLLM", False),
+            upstream_abort_mode=os.getenv(
+                "LAGUNA_GATEWAY_UPSTREAM_ABORT_MODE", "legacy"
+            ).strip().lower(),
             responses_checkpoint_mode=os.getenv(
                 "LAGUNA_GATEWAY_RESPONSES_CHECKPOINT_MODE", "off"
             )
@@ -521,6 +527,12 @@ class Settings:
             raise ValueError(
                 "Native vLLM request ownership requires the Qwen vLLM backend"
             )
+        if self.upstream_abort_mode not in {"legacy", "tensorfold_disconnect"}:
+            raise ValueError("Unsupported upstream_abort_mode")
+        if self.upstream_abort_mode == "tensorfold_disconnect" and not (
+            self.backend_family == "qwen38_vllm" and self.qwen_native_vllm
+        ):
+            raise ValueError("TensorFold disconnect mode requires native compatibility transport")
         if not 0 <= self.responses_checkpoint_shadow_sample_rate <= 1:
             raise ValueError(
                 "LAGUNA_GATEWAY_RESPONSES_CHECKPOINT_SHADOW_SAMPLE_RATE "

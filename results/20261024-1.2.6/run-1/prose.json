@@ -1,0 +1,2548 @@
+{
+  "benchId": "38927a17-e75d-4726-8e49-91741b73d5d9",
+  "sparkId": "three-dgx-sparks-tp3",
+  "status": "completed",
+  "startedAt": 1792869947884,
+  "completedAt": 1792870060701,
+  "config": {
+    "port": 8003,
+    "modelId": "deepseek-v4.1-flash",
+    "concurrencies": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      10,
+      12
+    ],
+    "maxTokens": 400,
+    "promptType": "prose",
+    "debug": true
+  },
+  "progress": {
+    "currentConcurrency": null,
+    "completedLevels": 9,
+    "totalLevels": 9,
+    "message": "Done",
+    "liveTps": null
+  },
+  "results": [
+    {
+      "concurrency": 1,
+      "streamsOk": 1,
+      "streamsFailed": 0,
+      "meanDecodeTps": 92.98,
+      "medianDecodeTps": 92.98,
+      "minDecodeTps": 92.98,
+      "maxDecodeTps": 92.98,
+      "meanTtftMs": 6.35,
+      "medianTtftMs": 6.35,
+      "aggregateDecodeTps": 92.98,
+      "meanPrefillTps": 5039.54,
+      "medianPrefillTps": 5039.54,
+      "aggregatePrefillTps": 5039.54,
+      "totalPrefillTokens": 32,
+      "totalDecodeTokens": 399,
+      "totalCompletionTokens": 400,
+      "durationMs": 4298.49,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 6.35,
+          "reasoningChunks": 0,
+          "ttftMs": 6.35,
+          "decodeTps": 92.98,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 5039.54,
+          "prefillTokens": 32,
+          "totalMs": 4297.99,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough.",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:25:48 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-590c7df91f0a886a77b72ba0f155dfff",
+            "finishReason": "length",
+            "sseEventCount": 138,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-590c7df91f0a886a77b72ba0f155dfff\", \"object\": \"chat.completion.chunk\", \"created\": 1792869948, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 140
+            }
+          },
+          "usage": {
+            "promptTokens": 32,
+            "completionTokens": 400,
+            "totalTokens": 432
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "e entry there. Done.\n- If the bucket already contains an entry, you have a **collision** (see Section 4).\n- If the bucket contains an entry with the *same key*,",
+            "chars": 1605
+          },
+          "decodeMs": 4291.29
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    },
+    {
+      "concurrency": 2,
+      "streamsOk": 2,
+      "streamsFailed": 0,
+      "meanDecodeTps": 64.71,
+      "medianDecodeTps": 64.71,
+      "minDecodeTps": 62.02,
+      "maxDecodeTps": 67.4,
+      "meanTtftMs": 231.95,
+      "medianTtftMs": 231.95,
+      "aggregateDecodeTps": 124.04,
+      "meanPrefillTps": 200.72,
+      "medianPrefillTps": 200.72,
+      "aggregatePrefillTps": 239.39,
+      "totalPrefillTokens": 78,
+      "totalDecodeTokens": 798,
+      "totalCompletionTokens": 800,
+      "durationMs": 6572.41,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 138.5,
+          "reasoningChunks": 0,
+          "ttftMs": 138.5,
+          "decodeTps": 62.02,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 281.59,
+          "prefillTokens": 39,
+          "totalMs": 6572.25,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 1/2)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:25:52 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-da12f651fd396e66355cc2a9e7721a2a",
+            "finishReason": "length",
+            "sseEventCount": 148,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-da12f651fd396e66355cc2a9e7721a2a\", \"object\": \"chat.completion.chunk\", \"created\": 1792869952, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "t:\n\n```\nindex = hash(key) % n\n```\n\n(Many implementations use bit-masking `hash & (n - 1)` when `n` is a power of two, which is faster than modulo.)\n\n### Step 3:",
+            "chars": 1628
+          },
+          "decodeMs": 6433.47
+        },
+        {
+          "index": 1,
+          "ttftContentMs": 325.4,
+          "reasoningChunks": 0,
+          "ttftMs": 325.4,
+          "decodeTps": 67.4,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 119.85,
+          "prefillTokens": 39,
+          "totalMs": 6246.11,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 2/2)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:25:52 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-3dd8355e57b269c42336c164d7602ef3",
+            "finishReason": "length",
+            "sseEventCount": 137,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-3dd8355e57b269c42336c164d7602ef3\", \"object\": \"chat.completion.chunk\", \"created\": 1792869952, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ic**: same key → same hash.\n- **Uniform**: outputs spread evenly across the range.\n- **Fast**: cheap to compute.\n\n### Step 2: Insertion\n\nGiven key `k` and value",
+            "chars": 1580
+          },
+          "decodeMs": 5920.27
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    },
+    {
+      "concurrency": 3,
+      "streamsOk": 3,
+      "streamsFailed": 0,
+      "meanDecodeTps": 48.02,
+      "medianDecodeTps": 48.06,
+      "minDecodeTps": 47.2,
+      "maxDecodeTps": 48.81,
+      "meanTtftMs": 317.56,
+      "medianTtftMs": 314.08,
+      "aggregateDecodeTps": 135.83,
+      "meanPrefillTps": 160.56,
+      "medianPrefillTps": 124.17,
+      "aggregatePrefillTps": 234.25,
+      "totalPrefillTokens": 117,
+      "totalDecodeTokens": 1197,
+      "totalCompletionTokens": 1200,
+      "durationMs": 8953.13,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 314.08,
+          "reasoningChunks": 0,
+          "ttftMs": 314.08,
+          "decodeTps": 48.81,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 124.17,
+          "prefillTokens": 39,
+          "totalMs": 8488.77,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 1/3)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:25:59 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-8aaa3b5c9ffa4553e86ab55290129846",
+            "finishReason": "length",
+            "sseEventCount": 146,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-8aaa3b5c9ffa4553e86ab55290129846\", \"object\": \"chat.completion.chunk\", \"created\": 1792869959, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\n## Part 1: Core Concepts and Structure\n\n### What Is a Hash Map?\n\nA hash map (also called hash table",
+            "last": " minimize collisions.\n- **Fast**: O(1) or O(length of key) for strings.\n\n**Example**: For string keys, a common hash is polynomial rolling hash:\n\n```\nh(s) = (s[",
+            "chars": 1471
+          },
+          "decodeMs": 8174.35
+        },
+        {
+          "index": 1,
+          "ttftContentMs": 139.61,
+          "reasoningChunks": 0,
+          "ttftMs": 139.61,
+          "decodeTps": 48.06,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 279.36,
+          "prefillTokens": 39,
+          "totalMs": 8442.26,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 2/3)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:25:59 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-01c2f4fa81692b47aad23579a364b28d",
+            "finishReason": "length",
+            "sseEventCount": 146,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-01c2f4fa81692b47aad23579a364b28d\", \"object\": \"chat.completion.chunk\", \"created\": 1792869959, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "empty → key not present.\n4. If occupied → compare the stored key(s) with the search key using `equals()` (or `==` for primitives).\n   - Match found → return the",
+            "chars": 1583
+          },
+          "decodeMs": 8302.3
+        },
+        {
+          "index": 2,
+          "ttftContentMs": 498.99,
+          "reasoningChunks": 0,
+          "ttftMs": 498.99,
+          "decodeTps": 47.2,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 78.16,
+          "prefillTokens": 39,
+          "totalMs": 8952.52,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 3/3)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:25:59 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-a3e8e7b2c8474f5f403557ea5059c41e",
+            "finishReason": "length",
+            "sseEventCount": 161,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-a3e8e7b2c8474f5f403557ea5059c41e\", \"object\": \"chat.completion.chunk\", \"created\": 1792869959, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "oring Entries\n\nEach array slot holds a **bucket**. A bucket is typically:\n\n- A single entry (in simple implementations), or\n- A linked list / array of entries (",
+            "chars": 1647
+          },
+          "decodeMs": 8453.25
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    },
+    {
+      "concurrency": 4,
+      "streamsOk": 4,
+      "streamsFailed": 0,
+      "meanDecodeTps": 41.03,
+      "medianDecodeTps": 40.99,
+      "minDecodeTps": 39.07,
+      "maxDecodeTps": 43.08,
+      "meanTtftMs": 411.39,
+      "medianTtftMs": 406.37,
+      "aggregateDecodeTps": 156.26,
+      "meanPrefillTps": 134.42,
+      "medianPrefillTps": 101.11,
+      "aggregatePrefillTps": 224.87,
+      "totalPrefillTokens": 156,
+      "totalDecodeTokens": 1596,
+      "totalCompletionTokens": 1600,
+      "durationMs": 10353.71,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 139.7,
+          "reasoningChunks": 0,
+          "ttftMs": 139.7,
+          "decodeTps": 39.07,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 279.17,
+          "prefillTokens": 39,
+          "totalMs": 10353.58,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 1/4)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:08 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-e7e84ab61cf7908e783dbfe5f24036ae",
+            "finishReason": "length",
+            "sseEventCount": 157,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-e7e84ab61cf7908e783dbfe5f24036ae\", \"object\": \"chat.completion.chunk\", \"created\": 1792869968, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "it-masking `hash & (capacity - 1)` when capacity is a power of two, which is faster than modulo.)\n\nExample: `0x8F3A21C7 % 16 → 7`, so the entry goes into bucket",
+            "chars": 1573
+          },
+          "decodeMs": 10213.68
+        },
+        {
+          "index": 1,
+          "ttftContentMs": 314.78,
+          "reasoningChunks": 0,
+          "ttftMs": 314.78,
+          "decodeTps": 41.39,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 123.9,
+          "prefillTokens": 39,
+          "totalMs": 9955.63,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 2/4)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:08 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-d6f16ee5ea374ceecf3b00e0903fe367",
+            "finishReason": "length",
+            "sseEventCount": 146,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-d6f16ee5ea374ceecf3b00e0903fe367\", \"object\": \"chat.completion.chunk\", \"created\": 1792869968, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "empty → key not present.\n4. If occupied → compare the stored key(s) with the search key using `equals()` (or `==` for primitives).\n   - Match found → return the",
+            "chars": 1581
+          },
+          "decodeMs": 9640.33
+        },
+        {
+          "index": 2,
+          "ttftContentMs": 497.96,
+          "reasoningChunks": 0,
+          "ttftMs": 497.96,
+          "decodeTps": 40.58,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 78.32,
+          "prefillTokens": 39,
+          "totalMs": 10330.83,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 3/4)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:08 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-3492cc75960682f9712041956e58bf2a",
+            "finishReason": "length",
+            "sseEventCount": 154,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-3492cc75960682f9712041956e58bf2a\", \"object\": \"chat.completion.chunk\", \"created\": 1792869968, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ash (used in Rust/Python for DoS resistance).\n- **Object keys**: combine the hashes of fields.\n\nThe hash is then reduced to an index. Many implementations use `",
+            "chars": 1660
+          },
+          "decodeMs": 9832.65
+        },
+        {
+          "index": 3,
+          "ttftContentMs": 693.1,
+          "reasoningChunks": 0,
+          "ttftMs": 693.1,
+          "decodeTps": 43.08,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 56.27,
+          "prefillTokens": 39,
+          "totalMs": 9955.86,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 4/4)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:08 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-edbaa646543f8c172aa9c4e6dc356dc5",
+            "finishReason": "length",
+            "sseEventCount": 144,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-edbaa646543f8c172aa9c4e6dc356dc5\", \"object\": \"chat.completion.chunk\", \"created\": 1792869968, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "of functions to resist adversarial inputs.\n\n---\n\n## 3. Insertion\n\nTo insert `(key, value)`:\n\n1. Compute `index = h(key) % m`.\n2. Look at bucket `index`:\n   - **",
+            "chars": 1621
+          },
+          "decodeMs": 9261.84
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    },
+    {
+      "concurrency": 5,
+      "streamsOk": 5,
+      "streamsFailed": 0,
+      "meanDecodeTps": 37.08,
+      "medianDecodeTps": 36.49,
+      "minDecodeTps": 34.75,
+      "maxDecodeTps": 40,
+      "meanTtftMs": 502.96,
+      "medianTtftMs": 491.03,
+      "aggregateDecodeTps": 173.74,
+      "meanPrefillTps": 117.61,
+      "medianPrefillTps": 79.42,
+      "aggregatePrefillTps": 219.46,
+      "totalPrefillTokens": 195,
+      "totalDecodeTokens": 1995,
+      "totalCompletionTokens": 2000,
+      "durationMs": 11621.22,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 137.78,
+          "reasoningChunks": 0,
+          "ttftMs": 137.78,
+          "decodeTps": 34.75,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 283.07,
+          "prefillTokens": 39,
+          "totalMs": 11621.1,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 1/5)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-8bc656717a9a28f03fc4ffa10d0d7400",
+            "finishReason": "length",
+            "sseEventCount": 159,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-8bc656717a9a28f03fc4ffa10d0d7400\", \"object\": \"chat.completion.chunk\", \"created\": 1792869978, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "hen capacity is a power of two — faster than modulo.)\n\nExample: `1934823491 % 16 = 3` → the entry belongs in bucket 3.\n\n### Step 3: Store the entry\n- If bucket ",
+            "chars": 1584
+          },
+          "decodeMs": 11482.81
+        },
+        {
+          "index": 1,
+          "ttftContentMs": 312.69,
+          "reasoningChunks": 0,
+          "ttftMs": 312.69,
+          "decodeTps": 36.17,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 124.72,
+          "prefillTokens": 39,
+          "totalMs": 11342.78,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 2/5)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-7652f1cd0dcf5f8c0f312c450ba3e530",
+            "finishReason": "length",
+            "sseEventCount": 152,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-7652f1cd0dcf5f8c0f312c450ba3e530\", \"object\": \"chat.completion.chunk\", \"created\": 1792869978, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "upied**, compare keys:\n  - If the key already exists, **update** the value.\n  - Otherwise, a **collision** has occurred — resolve it (see Section 4).\n\n### Step ",
+            "chars": 1570
+          },
+          "decodeMs": 11029.88
+        },
+        {
+          "index": 2,
+          "ttftContentMs": 491.03,
+          "reasoningChunks": 0,
+          "ttftMs": 491.03,
+          "decodeTps": 38,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 79.42,
+          "prefillTokens": 39,
+          "totalMs": 10991.32,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 3/5)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-cec71302e0c424530c6e4165f3a854f5",
+            "finishReason": "length",
+            "sseEventCount": 145,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-cec71302e0c424530c6e4165f3a854f5\", \"object\": \"chat.completion.chunk\", \"created\": 1792869978, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "Step 3: Lookup\n\nWhen you call `get(key)`:\n\n1. Compute `h = hash(key)` and `i = h % capacity`.\n2. Look at bucket `i`.\n3. If empty → key not present, return `null",
+            "chars": 1515
+          },
+          "decodeMs": 10500.11
+        },
+        {
+          "index": 3,
+          "ttftContentMs": 888.2,
+          "reasoningChunks": 0,
+          "ttftMs": 888.2,
+          "decodeTps": 40,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 43.91,
+          "prefillTokens": 39,
+          "totalMs": 10864.01,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 4/5)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-924796c3b6e2384dd82f520da952328b",
+            "finishReason": "length",
+            "sseEventCount": 141,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-924796c3b6e2384dd82f520da952328b\", \"object\": \"chat.completion.chunk\", \"created\": 1792869978, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ckets[index]`:\n   - **Empty:** key not present → return \"not found.\"\n   - **Contains the key:** return its value.\n   - **Contains a different key (collision):**",
+            "chars": 1551
+          },
+          "decodeMs": 9975.52
+        },
+        {
+          "index": 4,
+          "ttftContentMs": 685.08,
+          "reasoningChunks": 0,
+          "ttftMs": 685.08,
+          "decodeTps": 36.49,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 56.93,
+          "prefillTokens": 39,
+          "totalMs": 11620.5,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 5/5)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-8b3276bba976cbe7cee73b35805a474c",
+            "finishReason": "length",
+            "sseEventCount": 156,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-8b3276bba976cbe7cee73b35805a474c\", \"object\": \"chat.completion.chunk\", \"created\": 1792869978, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ep 3: Insertion\n\nTo insert `(key, value)`:\n\n1. Compute `index = hash(key) % capacity`.\n2. Look at `buckets[index]`.\n3. If empty → place the entry there. Done.\n4",
+            "chars": 1566
+          },
+          "decodeMs": 10935.2
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    },
+    {
+      "concurrency": 6,
+      "streamsOk": 6,
+      "streamsFailed": 0,
+      "meanDecodeTps": 33.16,
+      "medianDecodeTps": 33.05,
+      "minDecodeTps": 31.32,
+      "maxDecodeTps": 35.52,
+      "meanTtftMs": 595.69,
+      "medianTtftMs": 582.15,
+      "aggregateDecodeTps": 185.98,
+      "meanPrefillTps": 104.1,
+      "medianPrefillTps": 68.79,
+      "aggregatePrefillTps": 216.08,
+      "totalPrefillTokens": 234,
+      "totalDecodeTokens": 2394,
+      "totalCompletionTokens": 2400,
+      "durationMs": 13011.51,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 138.48,
+          "reasoningChunks": 0,
+          "ttftMs": 138.48,
+          "decodeTps": 31.32,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 281.62,
+          "prefillTokens": 39,
+          "totalMs": 12880.35,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 1/6)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:30 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-0c64efa230085bde75f2f9328b00a35b",
+            "finishReason": "length",
+            "sseEventCount": 162,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-0c64efa230085bde75f2f9328b00a35b\", \"object\": \"chat.completion.chunk\", \"created\": 1792869990, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "\n// or\nindex = hash % capacity\n```\n\nThe bitwise-AND trick works only when capacity is a power of two — this is why many implementations (e.g., Java's `HashMap`)",
+            "chars": 1541
+          },
+          "decodeMs": 12741.28
+        },
+        {
+          "index": 1,
+          "ttftContentMs": 488.25,
+          "reasoningChunks": 0,
+          "ttftMs": 488.25,
+          "decodeTps": 32.73,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 79.88,
+          "prefillTokens": 39,
+          "totalMs": 12677.85,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 2/6)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:30 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-41822777fe87ed6a1008c5644be353b9",
+            "finishReason": "length",
+            "sseEventCount": 156,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-41822777fe87ed6a1008c5644be353b9\", \"object\": \"chat.completion.chunk\", \"created\": 1792869990, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "\n\n**Step 4 — Update load factor.**\nIncrement the element count `n`. If `n / m` exceeds the threshold (commonly 0.75), trigger a resize (§5).\n\n---\n\n## 3. Lookup:",
+            "chars": 1542
+          },
+          "decodeMs": 12189.1
+        },
+        {
+          "index": 2,
+          "ttftContentMs": 312.3,
+          "reasoningChunks": 0,
+          "ttftMs": 312.3,
+          "decodeTps": 33.37,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 124.88,
+          "prefillTokens": 39,
+          "totalMs": 12269.9,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 3/6)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:30 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-8a0dcba81c83fd3bd742df19443935dc",
+            "finishReason": "length",
+            "sseEventCount": 151,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-8a0dcba81c83fd3bd742df19443935dc\", \"object\": \"chat.completion.chunk\", \"created\": 1792869990, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "crement the size counter. If the **load factor** exceeds a threshold, trigger a resize (Step 5).\n\n---\n\n## Step 3: Lookup\n\nTo retrieve the value for key `k`:\n\n1.",
+            "chars": 1484
+          },
+          "decodeMs": 11957.33
+        },
+        {
+          "index": 3,
+          "ttftContentMs": 676.04,
+          "reasoningChunks": 0,
+          "ttftMs": 676.04,
+          "decodeTps": 32.59,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 57.69,
+          "prefillTokens": 39,
+          "totalMs": 12920.82,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 4/6)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:30 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-3df68ccc3da3ba1e6412dc438141d00f",
+            "finishReason": "length",
+            "sseEventCount": 160,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-3df68ccc3da3ba1e6412dc438141d00f\", \"object\": \"chat.completion.chunk\", \"created\": 1792869990, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ch key using `equals()`.\n   - If match → return the value.\n   - If no match → follow the collision resolution strategy to check other candidates.\n\n**Deletion (`",
+            "chars": 1579
+          },
+          "decodeMs": 12244.51
+        },
+        {
+          "index": 4,
+          "ttftContentMs": 876.82,
+          "reasoningChunks": 0,
+          "ttftMs": 876.82,
+          "decodeTps": 35.52,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 44.48,
+          "prefillTokens": 39,
+          "totalMs": 12110.78,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 5/6)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:30 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-17998493785a980bd3652972b0d3f56e",
+            "finishReason": "length",
+            "sseEventCount": 146,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-17998493785a980bd3652972b0d3f56e\", \"object\": \"chat.completion.chunk\", \"created\": 1792869990, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": " 3: Lookup\n\nTo retrieve the value for key `k`:\n\n1. Compute `index = hash(k) % capacity`.\n2. Examine `buckets[index]`.\n3. If empty → key not present (return null",
+            "chars": 1487
+          },
+          "decodeMs": 11233.69
+        },
+        {
+          "index": 5,
+          "ttftContentMs": 1082.23,
+          "reasoningChunks": 0,
+          "ttftMs": 1082.23,
+          "decodeTps": 33.45,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 36.04,
+          "prefillTokens": 39,
+          "totalMs": 13010.64,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 6/6)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:30 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-35b735b08e9cc38fabe02174e1f3d18e",
+            "finishReason": "length",
+            "sseEventCount": 161,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-35b735b08e9cc38fabe02174e1f3d18e\", \"object\": \"chat.completion.chunk\", \"created\": 1792869990, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Complete Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ex = hash(key) mod capacity`.\n2. Look at `buckets[index]`.\n3. If empty → place the entry there. Done.\n4. If occupied → handle the **collision** (see Step 5).\n5.",
+            "chars": 1621
+          },
+          "decodeMs": 11928.02
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    },
+    {
+      "concurrency": 8,
+      "streamsOk": 8,
+      "streamsFailed": 0,
+      "meanDecodeTps": 27.61,
+      "medianDecodeTps": 27.66,
+      "minDecodeTps": 26.35,
+      "maxDecodeTps": 28.97,
+      "meanTtftMs": 811.41,
+      "medianTtftMs": 804.64,
+      "aggregateDecodeTps": 205.84,
+      "meanPrefillTps": 83.02,
+      "medianPrefillTps": 49.19,
+      "aggregatePrefillTps": 206.23,
+      "totalPrefillTokens": 312,
+      "totalDecodeTokens": 3192,
+      "totalCompletionTokens": 3200,
+      "durationMs": 15649.28,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 141.53,
+          "reasoningChunks": 0,
+          "ttftMs": 141.53,
+          "decodeTps": 26.35,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 275.56,
+          "prefillTokens": 39,
+          "totalMs": 15285.52,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 1/8)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:43 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-2f15f4511c80c0224d4074d4a3594883",
+            "finishReason": "length",
+            "sseEventCount": 163,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-2f15f4511c80c0224d4074d4a3594883\", \"object\": \"chat.completion.chunk\", \"created\": 1792870003, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\n## Part 1: Core Concept and Structure\n\nA hash map (also called hash table, dictionary, or associati",
+            "last": "key) % N` → same index as insertion.\n2. Examine the slot:\n   - If empty → key not present, return null/error.\n   - If occupied → compare the stored key with the",
+            "chars": 1583
+          },
+          "decodeMs": 15142.71
+        },
+        {
+          "index": 1,
+          "ttftContentMs": 318.67,
+          "reasoningChunks": 0,
+          "ttftMs": 318.67,
+          "decodeTps": 26.78,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 122.38,
+          "prefillTokens": 39,
+          "totalMs": 15219.04,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 2/8)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:43 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-ce2ef5903679dea63b0fa67739e66585",
+            "finishReason": "length",
+            "sseEventCount": 161,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-ce2ef5903679dea63b0fa67739e66585\", \"object\": \"chat.completion.chunk\", \"created\": 1792870003, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": " 4 — Update load factor.**\nIncrement `size`. If `size / m > threshold` (commonly 0.75), trigger a resize (§5).\n\n---\n\n## 3. Lookup and Deletion\n\n**Lookup (`get(k",
+            "chars": 1516
+          },
+          "decodeMs": 14898.7
+        },
+        {
+          "index": 2,
+          "ttftContentMs": 508.76,
+          "reasoningChunks": 0,
+          "ttftMs": 508.76,
+          "decodeTps": 28.01,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 76.66,
+          "prefillTokens": 39,
+          "totalMs": 14754.92,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 3/8)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:43 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-a80ae97ce76d69a2734bfe12da15fa42",
+            "finishReason": "length",
+            "sseEventCount": 154,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-a80ae97ce76d69a2734bfe12da15fa42\", \"object\": \"chat.completion.chunk\", \"created\": 1792870003, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "hash to an index\nReduce the hash to a valid array index:\n```\nindex = h(k) mod m\n```\nWhen `m` is a power of two, `h(k) & (m - 1)` is used (faster than modulo).\n\n",
+            "chars": 1504
+          },
+          "decodeMs": 14245.88
+        },
+        {
+          "index": 3,
+          "ttftContentMs": 707.03,
+          "reasoningChunks": 0,
+          "ttftMs": 707.03,
+          "decodeTps": 27.5,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 55.16,
+          "prefillTokens": 39,
+          "totalMs": 15217.92,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 4/8)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:43 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-cec83e980ceda881d3e832e558541d80",
+            "finishReason": "length",
+            "sseEventCount": 159,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-cec83e980ceda881d3e832e558541d80\", \"object\": \"chat.completion.chunk\", \"created\": 1792870003, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "Lookup\n\nWhen you call `map.get(key)`:\n\n1. Compute the hash of the key.\n2. Compute the bucket index.\n3. Look inside that bucket:\n   - If empty → key not present,",
+            "chars": 1463
+          },
+          "decodeMs": 14510.13
+        },
+        {
+          "index": 4,
+          "ttftContentMs": 902.24,
+          "reasoningChunks": 0,
+          "ttftMs": 902.24,
+          "decodeTps": 27.06,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 43.23,
+          "prefillTokens": 39,
+          "totalMs": 15648.4,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 5/8)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:43 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-6becb0d5ff933cdc6f5bb31fa77fe5f1",
+            "finishReason": "length",
+            "sseEventCount": 170,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-6becb0d5ff933cdc6f5bb31fa77fe5f1\", \"object\": \"chat.completion.chunk\", \"created\": 1792870003, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "es of fields, or use identity hash.\n\nThe hash is then reduced to a bucket index, typically via `hash % capacity`. Many implementations use `capacity` as a power",
+            "chars": 1618
+          },
+          "decodeMs": 14745.82
+        },
+        {
+          "index": 5,
+          "ttftContentMs": 1102.79,
+          "reasoningChunks": 0,
+          "ttftMs": 1102.79,
+          "decodeTps": 27.81,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 35.36,
+          "prefillTokens": 39,
+          "totalMs": 15451.3,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 6/8)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:43 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-fb5a7ce422e1869f8a0db055b272a92b",
+            "finishReason": "length",
+            "sseEventCount": 162,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-fb5a7ce422e1869f8a0db055b272a92b\", \"object\": \"chat.completion.chunk\", \"created\": 1792870003, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "rly scan the list comparing keys with `equals()`.\n- **Insert**: hash → append to list (or update if key exists).\n- **Delete**: hash → find in list → remove node",
+            "chars": 1616
+          },
+          "decodeMs": 14348.18
+        },
+        {
+          "index": 6,
+          "ttftContentMs": 1298.47,
+          "reasoningChunks": 0,
+          "ttftMs": 1298.47,
+          "decodeTps": 28.43,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 30.04,
+          "prefillTokens": 39,
+          "totalMs": 15331.46,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 7/8)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:43 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-31f58454ffc7dab98f0a907401d1dcc3",
+            "finishReason": "length",
+            "sseEventCount": 158,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-31f58454ffc7dab98f0a907401d1dcc3\", \"object\": \"chat.completion.chunk\", \"created\": 1792870003, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "lue)`:\n\n1. Compute `index = hash(key) % capacity`.\n2. Look at `buckets[index]`.\n3. If empty → store the pair there. Done.\n4. If occupied → **collision**. Handle",
+            "chars": 1548
+          },
+          "decodeMs": 14032.37
+        },
+        {
+          "index": 7,
+          "ttftContentMs": 1511.79,
+          "reasoningChunks": 0,
+          "ttftMs": 1511.79,
+          "decodeTps": 28.97,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 25.8,
+          "prefillTokens": 39,
+          "totalMs": 15283.88,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 8/8)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:43 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-ecdfc6772e9bf5d7e58317b50b5cb406",
+            "finishReason": "length",
+            "sseEventCount": 155,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-ecdfc6772e9bf5d7e58317b50b5cb406\", \"object\": \"chat.completion.chunk\", \"created\": 1792870003, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 153
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ere. Done.\n4. If the bucket already contains entries → **handle the collision** (see Step 5).\n5. If the key already exists in that bucket → **update** its value",
+            "chars": 1520
+          },
+          "decodeMs": 13771.38
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    },
+    {
+      "concurrency": 10,
+      "streamsOk": 10,
+      "streamsFailed": 0,
+      "meanDecodeTps": 22.28,
+      "medianDecodeTps": 22.48,
+      "minDecodeTps": 20.41,
+      "maxDecodeTps": 24.34,
+      "meanTtftMs": 1024.71,
+      "medianTtftMs": 997.14,
+      "aggregateDecodeTps": 203.49,
+      "meanPrefillTps": 69.92,
+      "medianPrefillTps": 39.53,
+      "aggregatePrefillTps": 196.12,
+      "totalPrefillTokens": 390,
+      "totalDecodeTokens": 3990,
+      "totalCompletionTokens": 4000,
+      "durationMs": 19753.14,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 144.83,
+          "reasoningChunks": 0,
+          "ttftMs": 144.83,
+          "decodeTps": 20.41,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 269.28,
+          "prefillTokens": 39,
+          "totalMs": 19693.01,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 1/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-f8e5e2e1a5cb3485640ded397f63aaff",
+            "finishReason": "length",
+            "sseEventCount": 183,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-f8e5e2e1a5cb3485640ded397f63aaff\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "index\n\nThe raw hash is usually a 32- or 64-bit integer, but the bucket array has only `n` slots. So the map reduces the hash modulo the array size:\n\n```\nindex =",
+            "chars": 1668
+          },
+          "decodeMs": 19547.87
+        },
+        {
+          "index": 1,
+          "ttftContentMs": 507.31,
+          "reasoningChunks": 0,
+          "ttftMs": 507.31,
+          "decodeTps": 22.91,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 76.88,
+          "prefillTokens": 39,
+          "totalMs": 17923.81,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 2/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-7dd953cbc256ffecb4ef0a30f8c7ec8d",
+            "finishReason": "length",
+            "sseEventCount": 157,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-7dd953cbc256ffecb4ef0a30f8c7ec8d\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "ution strategy (see §4).\n\n**Step 4 — Update load factor.**\nIncrement `size`. If `size / m > load_factor_threshold` (commonly 0.75), trigger a **resize** (see §5",
+            "chars": 1503
+          },
+          "decodeMs": 17415.56
+        },
+        {
+          "index": 2,
+          "ttftContentMs": 323.04,
+          "reasoningChunks": 0,
+          "ttftMs": 323.04,
+          "decodeTps": 20.79,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 120.73,
+          "prefillTokens": 39,
+          "totalMs": 19513.24,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 3/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-681f76ce13978577b5b87095e8e3e142",
+            "finishReason": "length",
+            "sseEventCount": 178,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-681f76ce13978577b5b87095e8e3e142\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "`HashMap` spreading function `h ^ (h >>> 16)`) to improve bit distribution before taking the modulo.\n\n---\n\n## Step 3: Mapping Hash to Bucket Index\n\nGiven a hash",
+            "chars": 1657
+          },
+          "decodeMs": 19189.59
+        },
+        {
+          "index": 3,
+          "ttftContentMs": 695.73,
+          "reasoningChunks": 0,
+          "ttftMs": 695.73,
+          "decodeTps": 21.2,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 56.06,
+          "prefillTokens": 39,
+          "totalMs": 19513.38,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 4/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-9cfa1af80855f7a9cc137aec5b6767f8",
+            "finishReason": "length",
+            "sseEventCount": 176,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-9cfa1af80855f7a9cc137aec5b6767f8\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "`m`.\n- For objects: combine the hashes of fields (e.g., Java's `Objects.hash`).\n\n**Why modulo capacity?** The hash can be any integer (possibly negative or huge",
+            "chars": 1627
+          },
+          "decodeMs": 18816.81
+        },
+        {
+          "index": 4,
+          "ttftContentMs": 894.8,
+          "reasoningChunks": 0,
+          "ttftMs": 894.8,
+          "decodeTps": 21.7,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 43.59,
+          "prefillTokens": 39,
+          "totalMs": 19285.65,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 5/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-08fa39615bd30f94e71d67f5c3035516",
+            "finishReason": "length",
+            "sseEventCount": 171,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-08fa39615bd30f94e71d67f5c3035516\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": ".\n- **Object keys**: combine hashes of fields.\n\nA poor hash function (e.g., one that maps many keys to the same bucket) degrades performance toward O(n).\n\n---\n\n",
+            "chars": 1569
+          },
+          "decodeMs": 18390.52
+        },
+        {
+          "index": 5,
+          "ttftContentMs": 1099.48,
+          "reasoningChunks": 0,
+          "ttftMs": 1099.48,
+          "decodeTps": 22.77,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 35.47,
+          "prefillTokens": 39,
+          "totalMs": 18623.74,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 6/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-7c5a90d5b35bd0d0f38d474e54fce48a",
+            "finishReason": "length",
+            "sseEventCount": 161,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-7c5a90d5b35bd0d0f38d474e54fce48a\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ue):**\n1. Compute `index = hash(key) % capacity`.\n2. Place the (key, value) pair in `buckets[index]`.\n\n**Get(key):**\n1. Compute the same index.\n2. Look in `buck",
+            "chars": 1479
+          },
+          "decodeMs": 17524.08
+        },
+        {
+          "index": 6,
+          "ttftContentMs": 1302.19,
+          "reasoningChunks": 0,
+          "ttftMs": 1302.19,
+          "decodeTps": 23.29,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 29.95,
+          "prefillTokens": 39,
+          "totalMs": 18433.97,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 7/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-6b2e591cd72bd789d47d5a0140e2bb96",
+            "finishReason": "length",
+            "sseEventCount": 158,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-6b2e591cd72bd789d47d5a0140e2bb96\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "mpty → key not present, return `null`/`None`.\n4. If the bucket has entries → compare each stored key with the query key using `equals()` (or `==` for primitives",
+            "chars": 1502
+          },
+          "decodeMs": 17131.38
+        },
+        {
+          "index": 7,
+          "ttftContentMs": 1761.11,
+          "reasoningChunks": 0,
+          "ttftMs": 1761.11,
+          "decodeTps": 22.18,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 22.15,
+          "prefillTokens": 39,
+          "totalMs": 19751.51,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 8/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-e03ea5e2ec54035787a21f2b3324e977",
+            "finishReason": "length",
+            "sseEventCount": 177,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-e03ea5e2ec54035787a21f2b3324e977\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "e because the key space is usually larger than the array.\n\n---\n\n## Step 3: Insertion\n\nTo insert `(key, value)`:\n\n1. Compute `index = h(key) % capacity`.\n2. Look",
+            "chars": 1616
+          },
+          "decodeMs": 17989.98
+        },
+        {
+          "index": 8,
+          "ttftContentMs": 1531.73,
+          "reasoningChunks": 0,
+          "ttftMs": 1531.73,
+          "decodeTps": 24.34,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 25.46,
+          "prefillTokens": 39,
+          "totalMs": 17922.16,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 9/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-f2763a62f77be9794ee4b28fd8b4196d",
+            "finishReason": "length",
+            "sseEventCount": 152,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-f2763a62f77be9794ee4b28fd8b4196d\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": " the bucket contains the key → return its value.\n   - If the bucket contains other keys (collision chain) → scan the chain comparing keys with `equals()`.\n3. If",
+            "chars": 1510
+          },
+          "decodeMs": 16389.99
+        },
+        {
+          "index": 9,
+          "ttftContentMs": 1986.85,
+          "reasoningChunks": 0,
+          "ttftMs": 1986.85,
+          "decodeTps": 23.17,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 19.63,
+          "prefillTokens": 39,
+          "totalMs": 19206.05,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 10/10)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:26:58 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-1ef2b4919ba6879472f3bbf80685f562",
+            "finishReason": "length",
+            "sseEventCount": 165,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-1ef2b4919ba6879472f3bbf80685f562\", \"object\": \"chat.completion.chunk\", \"created\": 1792870018, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 155
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "ash to a bucket index:\n\n```\nindex = h & (m - 1)      // if m is a power of 2\nindex = h % m            // otherwise\n```\n\nUsing a power-of-two table size lets you",
+            "chars": 1570
+          },
+          "decodeMs": 17218.98
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    },
+    {
+      "concurrency": 12,
+      "streamsOk": 12,
+      "streamsFailed": 0,
+      "meanDecodeTps": 19.78,
+      "medianDecodeTps": 19.95,
+      "minDecodeTps": 18.88,
+      "maxDecodeTps": 20.47,
+      "meanTtftMs": 1239.68,
+      "medianTtftMs": 1205.07,
+      "aggregateDecodeTps": 219.17,
+      "meanPrefillTps": 62.1,
+      "medianPrefillTps": 32.6,
+      "aggregatePrefillTps": 191,
+      "totalPrefillTokens": 468,
+      "totalDecodeTokens": 4788,
+      "totalCompletionTokens": 4800,
+      "durationMs": 21986.07,
+      "error": null,
+      "streams": [
+        {
+          "index": 0,
+          "ttftContentMs": 317.19,
+          "reasoningChunks": 0,
+          "ttftMs": 317.19,
+          "decodeTps": 18.89,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 122.95,
+          "prefillTokens": 39,
+          "totalMs": 21436.91,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 1/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-2434afcb908398cd0100483dbb9f3fec",
+            "finishReason": "length",
+            "sseEventCount": 181,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-2434afcb908398cd0100483dbb9f3fec\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "    // when capacity is a power of 2\n// or: index = hash % capacity\n```\n\nUsing a power-of-two capacity lets the map use a bitwise AND instead of a modulo, which",
+            "chars": 1555
+          },
+          "decodeMs": 21119.26
+        },
+        {
+          "index": 1,
+          "ttftContentMs": 506.08,
+          "reasoningChunks": 0,
+          "ttftMs": 506.08,
+          "decodeTps": 19.9,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 77.06,
+          "prefillTokens": 39,
+          "totalMs": 20554.87,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 2/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-40f4e3243605bd95bc9ee41c86f7954a",
+            "finishReason": "length",
+            "sseEventCount": 171,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-40f4e3243605bd95bc9ee41c86f7954a\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": " MurmurHash, xxHash.\n- **Object keys**: combine field hashes (e.g., Java's `Objects.hash`).\n\n### Step 2: Map hash to an index\nCompute `index = h(k) mod m` (or `",
+            "chars": 1464
+          },
+          "decodeMs": 20047.87
+        },
+        {
+          "index": 2,
+          "ttftContentMs": 139.57,
+          "reasoningChunks": 0,
+          "ttftMs": 139.57,
+          "decodeTps": 19.25,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 279.43,
+          "prefillTokens": 39,
+          "totalMs": 20869.3,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 3/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-12cb9408e781efe4784cea913f55d302",
+            "finishReason": "length",
+            "sseEventCount": 176,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-12cb9408e781efe4784cea913f55d302\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "--\n\n## Step 3: Insertion\n\nTo insert `(key, value)`:\n\n1. Compute `index = hash(key) % capacity`.\n2. Look at `buckets[index]`.\n3. If empty → place the entry there",
+            "chars": 1646
+          },
+          "decodeMs": 20729.03
+        },
+        {
+          "index": 3,
+          "ttftContentMs": 895.59,
+          "reasoningChunks": 0,
+          "ttftMs": 895.59,
+          "decodeTps": 19.79,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 43.55,
+          "prefillTokens": 39,
+          "totalMs": 21056.26,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 4/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-76d4e4aa784d49a92f9fd5d7a6702465",
+            "finishReason": "length",
+            "sseEventCount": 174,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-76d4e4aa784d49a92f9fd5d7a6702465\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": ")` must hold.\n\n---\n\n## Step 3: Insertion\n\nTo insert `(key, value)`:\n\n1. Compute `index = hash(key) % capacity`.\n2. Look at `buckets[index]`.\n3. If empty → place",
+            "chars": 1580
+          },
+          "decodeMs": 20160.1
+        },
+        {
+          "index": 4,
+          "ttftContentMs": 1971.83,
+          "reasoningChunks": 0,
+          "ttftMs": 1971.83,
+          "decodeTps": 20.04,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 19.78,
+          "prefillTokens": 39,
+          "totalMs": 21881.91,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 5/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-9bf10cf9d57ef1a534522bb0e6ce67fb",
+            "finishReason": "length",
+            "sseEventCount": 180,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-9bf10cf9d57ef1a534522bb0e6ce67fb\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ep 3: Insertion\n\nTo insert `(key, value)`:\n\n1. Compute `index = hash(key) % capacity`.\n2. Look at `buckets[index]`.\n3. If empty → place the entry there. Done.\n4",
+            "chars": 1562
+          },
+          "decodeMs": 19909.54
+        },
+        {
+          "index": 5,
+          "ttftContentMs": 1308.08,
+          "reasoningChunks": 0,
+          "ttftMs": 1308.08,
+          "decodeTps": 20.21,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 29.81,
+          "prefillTokens": 39,
+          "totalMs": 21055.24,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 6/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-0c18cf8b6654f67b3d07a4ef6375e250",
+            "finishReason": "length",
+            "sseEventCount": 172,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-0c18cf8b6654f67b3d07a4ef6375e250\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": " matching key → return value.\n4. If it holds a chain/tree → search within it for the matching key.\n5. If not found → return \"not present.\"\n\n**Deletion** follows",
+            "chars": 1530
+          },
+          "decodeMs": 19746.71
+        },
+        {
+          "index": 6,
+          "ttftContentMs": 2449.83,
+          "reasoningChunks": 0,
+          "ttftMs": 2449.83,
+          "decodeTps": 20.42,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 15.92,
+          "prefillTokens": 39,
+          "totalMs": 21985.52,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 7/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-bcea05e6734ab28d506b7e869cd14ae0",
+            "finishReason": "length",
+            "sseEventCount": 181,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-bcea05e6734ab28d506b7e869cd14ae0\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": " for some prime `p` and modulus `m`.\n- For objects: combine the hashes of fields (e.g., Java's `Objects.hash`).\n\n**Why modulo?** The raw hash can be huge (e.g.,",
+            "chars": 1599
+          },
+          "decodeMs": 19535.42
+        },
+        {
+          "index": 7,
+          "ttftContentMs": 1532.77,
+          "reasoningChunks": 0,
+          "ttftMs": 1532.77,
+          "decodeTps": 20.05,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 25.44,
+          "prefillTokens": 39,
+          "totalMs": 21436.63,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 8/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-f04d432ca91d27aa2e11bcd58199d8f8",
+            "finishReason": "length",
+            "sseEventCount": 175,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-f04d432ca91d27aa2e11bcd58199d8f8\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table or dictionary) is a data structure that stores key-value pairs and provides a",
+            "last": "value.\n   - No match → continue probing (collision handling) or return \"not found.\"\n\n**Important:** Two different keys can hash to the same index. That's why we",
+            "chars": 1589
+          },
+          "decodeMs": 19903.44
+        },
+        {
+          "index": 8,
+          "ttftContentMs": 1749.59,
+          "reasoningChunks": 0,
+          "ttftMs": 1749.59,
+          "decodeTps": 20.01,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 22.29,
+          "prefillTokens": 39,
+          "totalMs": 21693.1,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 9/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-a7a276969fdcd17a6577080d68286663",
+            "finishReason": "length",
+            "sseEventCount": 177,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-a7a276969fdcd17a6577080d68286663\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 154
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ey (collision) → search within that slot's collision structure.\n\n**Critical detail**: The map must compare keys with `equals()` (or equivalent), not just hashes",
+            "chars": 1545
+          },
+          "decodeMs": 19942.87
+        },
+        {
+          "index": 9,
+          "ttftContentMs": 697.92,
+          "reasoningChunks": 0,
+          "ttftMs": 697.92,
+          "decodeTps": 18.88,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 55.88,
+          "prefillTokens": 39,
+          "totalMs": 21835.88,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 10/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-710a49814a4dd7246b8edd23ad51d906",
+            "finishReason": "length",
+            "sseEventCount": 185,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-710a49814a4dd7246b8edd23ad51d906\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 155
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Walkthrough\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stores key-value ",
+            "last": "ty → place the entry there. Done.\n4. If occupied → handle collision (see Step 5).\n5. Increment size counter. If **load factor** exceeds threshold, resize (Step ",
+            "chars": 1644
+          },
+          "decodeMs": 21137.35
+        },
+        {
+          "index": 10,
+          "ttftContentMs": 1102.05,
+          "reasoningChunks": 0,
+          "ttftMs": 1102.05,
+          "decodeTps": 19.44,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 35.39,
+          "prefillTokens": 39,
+          "totalMs": 21622.96,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 11/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-ebcb9251487dfd9f9a9b5b688206e5e1",
+            "finishReason": "length",
+            "sseEventCount": 179,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-ebcb9251487dfd9f9a9b5b688206e5e1\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 155
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "ower of 2\nindex = h % m            // general case\n```\nPower-of-two table sizes allow the fast bitwise AND instead of modulo.\n\n### Step 3: Probe the bucket\nLook",
+            "chars": 1584
+          },
+          "decodeMs": 20520.4
+        },
+        {
+          "index": 11,
+          "ttftContentMs": 2205.69,
+          "reasoningChunks": 0,
+          "ttftMs": 2205.69,
+          "decodeTps": 20.47,
+          "decodeTokens": 399,
+          "completionTokens": 400,
+          "prefillTps": 17.68,
+          "prefillTokens": 39,
+          "totalMs": 21693.61,
+          "error": null,
+          "prompt": "Write a detailed step-by-step explanation of how a hash map works, including collision handling, resizing, and time complexity. Be thorough. (stream 12/12)",
+          "http": {
+            "url": "http://127.0.0.1:8003/v1/chat/completions",
+            "status": 200,
+            "headers": {
+              "content-type": "text/event-stream",
+              "date": "Sat, 24 Oct 2026 19:27:18 GMT",
+              "server": "TensorFold"
+            },
+            "completionId": "chatcmpl-493491566bcab23ce43bdb4d1aa6bec4",
+            "finishReason": "length",
+            "sseEventCount": 175,
+            "firstSseDataPreview": "{\"id\": \"chatcmpl-493491566bcab23ce43bdb4d1aa6bec4\", \"object\": \"chat.completion.chunk\", \"created\": 1792870038, \"model\": \"deepseek-v4.1-flash\", \"choices\": [{\"index\": 0, \"delta\": {\"role\": \"assistant\"}, \"finish_reason\": null}]}",
+            "request": {
+              "model": "deepseek-v4.1-flash",
+              "maxTokens": 400,
+              "temperature": 0,
+              "stream": true,
+              "promptChars": 155
+            }
+          },
+          "usage": {
+            "promptTokens": 39,
+            "completionTokens": 400,
+            "totalTokens": 439
+          },
+          "contentPreview": {
+            "first": "# How a Hash Map Works: A Detailed Step-by-Step Explanation\n\nA hash map (also called hash table, dictionary, or associative array) is a data structure that stor",
+            "last": "# Step 2: Map hash to an index\nReduce the hash to a valid array index:\n```\nindex = h(k) mod m\n```\nIf `m` is a power of two, `index = h(k) & (m - 1)` is faster (",
+            "chars": 1491
+          },
+          "decodeMs": 19487.58
+        }
+      ],
+      "model": "deepseek-v4.1-flash",
+      "hardwareSamples": []
+    }
+  ],
+  "error": null,
+  "durationMs": 112817,
+  "owner": "published-stock-benchmark"
+}

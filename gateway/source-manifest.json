@@ -1,15 +1,10 @@
 {
   "schema": "ds41f.gateway-source/v1",
-  "source_revision": "04055fb74367c7d255e1d016366e09c5160409b9",
+  "source_revision": "6d05e10",
   "modules": {
-    "__init__.py": {
-      "production_sha256": "c86d50d5a8404a3be0ce18898bb095fa4924937b9c8a2a68a926a95880d4f92a",
-      "public_sha256": "c86d50d5a8404a3be0ce18898bb095fa4924937b9c8a2a68a926a95880d4f92a",
-      "adaptation": null
-    },
     "app.py": {
-      "production_sha256": "9b73d6c31740d10bfce48dd292123dc1edd56c96cb3c08a93a39021eefd7a3f6",
-      "public_sha256": "9b73d6c31740d10bfce48dd292123dc1edd56c96cb3c08a93a39021eefd7a3f6",
+      "production_sha256": "7c28d685b1106d7257281d1bebf6dac78d37d6eb1f25a58ca51700de9435ceb4",
+      "public_sha256": "7c28d685b1106d7257281d1bebf6dac78d37d6eb1f25a58ca51700de9435ceb4",
       "adaptation": null
     },
     "auxiliary_vision.py": {
@@ -43,8 +38,8 @@
       "adaptation": null
     },
     "config.py": {
-      "production_sha256": "3414514e7d52610974ade00bbc07fd991704bf05cea9aa4e8dbe7adf9ebc713c",
-      "public_sha256": "3414514e7d52610974ade00bbc07fd991704bf05cea9aa4e8dbe7adf9ebc713c",
+      "production_sha256": "0dee886b8c28f415f7a7fd18d100c480faf467c8c5dde95ded4ed678ad0e3a9c",
+      "public_sha256": "0dee886b8c28f415f7a7fd18d100c480faf467c8c5dde95ded4ed678ad0e3a9c",
       "adaptation": null
     },
     "custom_tools.py": {
@@ -58,8 +53,8 @@
       "adaptation": null
     },
     "engine.py": {
-      "production_sha256": "b5c320e8043ae21764e6e9d1fbb7859cec0a5e8e3774a999cc719707a6decb80",
-      "public_sha256": "b5c320e8043ae21764e6e9d1fbb7859cec0a5e8e3774a999cc719707a6decb80",
+      "production_sha256": "49db58218f0f1ffba7900a99c249aa56aaf3a85229978f2bc299f0ca42b1e868",
+      "public_sha256": "49db58218f0f1ffba7900a99c249aa56aaf3a85229978f2bc299f0ca42b1e868",
       "adaptation": null
     },
     "lan_bridge.py": {
@@ -132,9 +127,19 @@
       "public_sha256": "829ea1a2be157be2c3aa8ccc62cbfc060a2346dea585dba0663c4782b186cab5",
       "adaptation": null
     },
+    "vision_control.py": {
+      "production_sha256": "daab6554485cc7aa0dcc7c668c4c170783983713c132723f10747e46788082e3",
+      "public_sha256": "daab6554485cc7aa0dcc7c668c4c170783983713c132723f10747e46788082e3",
+      "adaptation": null
+    },
+    "vision_diagnostics.py": {
+      "production_sha256": "5a3780f77e1f1e8a83664f62175982a3b4dabd0c9f7fbac311462d33c24c70a7",
+      "public_sha256": "5a3780f77e1f1e8a83664f62175982a3b4dabd0c9f7fbac311462d33c24c70a7",
+      "adaptation": null
+    },
     "vision_jobs.py": {
-      "production_sha256": "f62def37ffc3f8a661e900fec4b33a95a26d81eebc6baf0aed96ff35457ec18d",
-      "public_sha256": "f62def37ffc3f8a661e900fec4b33a95a26d81eebc6baf0aed96ff35457ec18d",
+      "production_sha256": "bf154ab2f1d0a9de4a86cb405207c0d78582ee4b8400ea3c0ebd1db4644f3ee1",
+      "public_sha256": "bf154ab2f1d0a9de4a86cb405207c0d78582ee4b8400ea3c0ebd1db4644f3ee1",
       "adaptation": null
     },
     "vision_jobs_operator.py": {
@@ -143,16 +148,16 @@
       "adaptation": null
     },
     "vision_result.py": {
-      "production_sha256": "ce6af70b71a836a20d9290834c65e697fb81ddfab7ba371e2d84e17a2d6f74a5",
-      "public_sha256": "ce6af70b71a836a20d9290834c65e697fb81ddfab7ba371e2d84e17a2d6f74a5",
+      "production_sha256": "73e44c0b6fa9f4bda7d261f74715483e1cc7b63b669267867fb35270abdb3e17",
+      "public_sha256": "73e44c0b6fa9f4bda7d261f74715483e1cc7b63b669267867fb35270abdb3e17",
       "adaptation": null
     },
-    "vision_control.py": {
-      "production_sha256": "daab6554485cc7aa0dcc7c668c4c170783983713c132723f10747e46788082e3",
-      "public_sha256": "daab6554485cc7aa0dcc7c668c4c170783983713c132723f10747e46788082e3",
+    "__init__.py": {
+      "production_sha256": "c86d50d5a8404a3be0ce18898bb095fa4924937b9c8a2a68a926a95880d4f92a",
+      "public_sha256": "c86d50d5a8404a3be0ce18898bb095fa4924937b9c8a2a68a926a95880d4f92a",
       "adaptation": null
     }
   },
-  "production_release": "1.2.4k2a",
-  "release": "1.2.5"
+  "production_release": "1.2.5c",
+  "release": "1.2.6"
 }

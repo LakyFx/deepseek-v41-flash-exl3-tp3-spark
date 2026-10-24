@@ -12,7 +12,7 @@ from fastapi.testclient import TestClient
 from laguna_gateway.app import create_app
 from laguna_gateway.config import Settings
 from laguna_gateway.tailscale_bridge import create_bridge_app
-from laguna_gateway.vision_jobs import AdmissionError, Jobs, Ledger, contaminated, standalone
+from laguna_gateway.vision_jobs import AdmissionError, Jobs, Ledger, contaminated, standalone, repeated
 from laguna_gateway.vision_result import Collector
 from laguna_gateway.vision_jobs_operator import reconcile
 
@@ -159,6 +159,28 @@ def test_completed_repetition_fails_without_blocking_other_images(api):
     fake.reasoning='A different image has a valid answer.'
     assert client.post('/v1/chat/completions',json=body(max_tokens=6143)).status_code==200
     assert len(fake.calls)==2
+
+
+def test_distinct_numeric_table_is_not_a_repetition_loop(api):
+    client,fake,_=api
+    table='\n'.join(f'C{i} total median {80+i} TPS average {90+i} TPS peak {110+i} TPS per request median {(80+i)/i:.1f} TPS' for i in range(1,13))
+    assert not repeated(table)
+    fake.reasoning=table
+    fake.content='The highest numbered concurrency has the largest total in this fixture.'
+    response=client.post('/v1/chat/completions',json=body())
+    assert response.status_code==200,response.text
+    assert response.json()['choices'][0]['message']['content']==fake.content
+    assert len(fake.calls)==1
+
+
+def test_identical_numeric_rows_still_trigger_the_loop_guard():
+    assert repeated('C6 total median 148 TPS peak 200 TPS per request 24.7 TPS. '*12)
+    assert repeated('Let me check this again. '*100)
+
+
+def test_numeric_json_identifiers_preserve_distinct_evidence():
+    text=' '.join(f'c{i}_total_median_tps {80+i} c{i}_peak_tps {100+i}' for i in range(1,13))
+    assert not repeated(text)
 
 
 @pytest.mark.parametrize('channel',['content','reasoning'])

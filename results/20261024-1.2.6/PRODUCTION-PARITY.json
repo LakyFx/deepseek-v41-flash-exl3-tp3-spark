@@ -1,0 +1,33 @@
+{
+  "version": "1.2.6",
+  "measured_as": "1.2.5c",
+  "source_tree_sha256": "101c2b88aafcdd1751e3ef6e09ffec319c9f3f3e2f60bc8bec8787ed9dd47e96",
+  "ranks": [
+    {
+      "rank": 0,
+      "binary_sha256": "fdca64590679fc2cee926f301896b6915188fb74abb5c39c6b4deae446748c81",
+      "template_sha256": "4669c39b5ca71ca4722c52c750883bacfc8f1e2542ef40bddccd8684158e28c8"
+    },
+    {
+      "rank": 1,
+      "binary_sha256": "f773ef2a119f77d6d85b4e041fc32d0cb6888557b4b6ca041391cabeba80a69f",
+      "template_sha256": "7d1356675e429ec4a55cbcc1a6fbeb40615dbeb257aca25b8c3705a42087f33e"
+    },
+    {
+      "rank": 2,
+      "binary_sha256": "f773ef2a119f77d6d85b4e041fc32d0cb6888557b4b6ca041391cabeba80a69f",
+      "template_sha256": "7d1356675e429ec4a55cbcc1a6fbeb40615dbeb257aca25b8c3705a42087f33e"
+    }
+  ],
+  "weights_sampler_adaptive_controller": "Unchanged from captured 5b/5c; no model restart for promotion",
+  "runtime": {
+    "pool_tokens": 7000000,
+    "snapshot_gib": 3,
+    "streams": 12,
+    "round_rows": 48,
+    "chunk_tokens": 2048,
+    "relocate_max_bytes_per_rank": 335544320,
+    "credit_refill_bytes_per_rank_second": 8388608
+  },
+  "boot": "Independent immutable hash-bound local assets/peer readiness/API/vision-control guards installed and enabled on all original hosts. Current binaries preserved; no actual reboot performed."
+}

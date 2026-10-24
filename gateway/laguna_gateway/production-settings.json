@@ -56,6 +56,7 @@
   "qwen_thinking_budget": false,
   "qwen_responses_thinking_budget": false,
   "qwen_native_vllm": true,
+  "upstream_abort_mode": "tensorfold_disconnect",
   "deepseek_v41_vllm": true,
   "responses_checkpoint_mode": "enforce",
   "responses_checkpoint_shadow_sample_rate": 1.0,

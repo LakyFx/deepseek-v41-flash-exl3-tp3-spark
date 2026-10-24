@@ -1,4 +1,30 @@
-# Production gateway 1.2.3 and durable vision jobs
+# Production gateway 1.2.6 and durable vision jobs
+
+## Current 1.2.6 defaults
+
+Install `./gateway` and run `ds41f-gateway`; supply your own authentication secret
+and upstream. All 31 runtime modules match production, except the two documented
+bridge upstream defaults adapted to loopback. The portable package adds no keys,
+private topology, TLS material, user images, reasoning traces or runtime database.
+
+Standalone image jobs use **MAX**, **8,192 thinking tokens**, **32,768 final-answer
+tokens** (**40,960 total**). The entrypoint enables these defaults, two concurrent
+image jobs, finite deadlines and native termination control. Other agent tasks
+with image histories/tools retain their existing routing and requested budgets.
+
+Transport uses `tensorfold_disconnect`: it never sends vLLM-specific abort calls
+to TensorFold. Accepted image jobs are not automatically regenerated. Native
+termination/instance-replacement receipts govern uncertain slot reconciliation.
+
+Private diagnostics are opt-in: use a private, service-owned directory plus an
+expiring exact job-ID allowlist. Under `ProtectSystem=strict`, use the existing
+`StateDirectory` writable mount or add only the exact external `ReadWritePaths`.
+Never publish these files. Numeric values are retained by the repetition matcher;
+the old rare rejection was not reproduced in nine successful new image jobs.
+
+[Current recipe and boot guidance](DS41F-1.2.6.md) · [source hashes](../gateway/source-manifest.json).
+
+## Preserved historical gateway documentation
 
 ## 1.2.5 production parity
 

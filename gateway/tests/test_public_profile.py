@@ -77,8 +77,9 @@ def test_installed_profile_runs_authenticated_durable_vision(monkeypatch, tmp_pa
         assert result.status_code == 200
         assert result.headers['X-DGX-Vision-Job-ID'] == job
         assert len(fake.calls) == 1
-        assert fake.calls[0]['reasoning_effort'] == 'high'
-        assert fake.calls[0]['max_tokens'] == 35840
+        assert fake.calls[0]['reasoning_effort'] == 'max'
+        assert fake.calls[0]['thinking_budget'] == 8192
+        assert fake.calls[0]['max_tokens'] == 40960
         assert client.get('/health').json()['vision_jobs']['states'] == {'succeeded':1}
         normalized, cap, *_ = app.state.engine.normalise_request({'model':'deepseek-v4.1-flash',
             'messages':[{'role':'user','content':'A text task'}]})
@@ -86,6 +87,6 @@ def test_installed_profile_runs_authenticated_durable_vision(monkeypatch, tmp_pa
         assert app.state.settings.max_concurrency == 12
         assert app.state.vision_jobs.ledger.max_running == 2
         import os
-        assert os.environ['DS41F_RECIPE_VERSION'] == '1.2.5'
+        assert os.environ['DS41F_RECIPE_VERSION'] == '1.2.6'
         # This release changes scheduling without expiring existing job identities.
         assert os.environ['DGX_VISION_JOBS_REVISION'] == 'd021774d38c0e7c684e6da44f39f22e735deb14b'
