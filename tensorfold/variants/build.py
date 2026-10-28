@@ -20,6 +20,11 @@ def build(build_root,out,name,zig='zig',prepare_only=False):
     modules=[('core/lanes/adaptive.zig',False),('core/lanes/refresh_budget.zig',False),('families/dsv41/sampling.zig',True),('families/dsv41/penalty_pool.zig',True)]
     if name=='v126':
         modules += [('families/dsv41/kv_pressure.zig',False),('families/dsv41/kv_move_budget.zig',False)]
+    if spec.get('release_version')=='1.2.7' or name in ('x1','x2','x3','x4'):
+        modules += [(module, True) for module in (
+            'core/checkpoint_plan.zig', 'core/checkpoint_policy.zig',
+            'core/prompt_cache.zig', 'core/adaptive_prefix.zig',
+            'families/dsv41/kv_pressure.zig', 'families/dsv41/kv_move_budget.zig')]
     for module,libc in modules:
         path='zig/src/'+module
         if (source/path).exists():commands.append([zig,'test',path,'-O','ReleaseSafe']+(['-lc'] if libc else []))

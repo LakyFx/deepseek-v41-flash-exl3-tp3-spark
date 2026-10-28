@@ -1,6 +1,10 @@
 # Agent installation guide
 
-Current production is **1.2.6**, measured as 5c. Read `docs/DS41F-1.2.6.md` and
+Current production is **1.2.7**, the unchanged deployed X4 payload. Read `docs/DS41F-1.2.7.md`, `docs/X1-X4-DEVELOPMENT.md` and `docs/LIVE-CACHE-1.2.7.md`. Build `--recipe v127`, launch `--variant 1.2.7` on all three ranks, and prepare the matching head-only template. Include the activity-limited NVMe companion on every rank. Preserve C12/R48/7M/3 GiB/chunk2048, the existing speculation learner, 320 MiB per-rank copy credit and MAX/8K vision. X1-X4 are historical selectors, not different weights. The new flyer uses live continuation results; +67% is modeled, not a measured decode gain. Never commit prompts, responses, job/session identifiers or credentials.
+
+## Preserved 1.2.6 installation guidance
+
+Previous production was **1.2.6**, measured as 5c. Read `docs/DS41F-1.2.6.md` and
 `docs/SPARKDASH-20261024-1.2.6.md`. Build `--recipe v126`; launch `--variant 1.2.6`
 on all three ranks. Prepare the head overlay with `--variant 1.2.6`. Preserve
 7M KV/3 GiB snapshots/C12/R48/chunk2048 and the existing adaptive learner.

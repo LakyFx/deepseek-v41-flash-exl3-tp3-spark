@@ -1,6 +1,8 @@
 # Exact measured native recipes
 
-**Current: [1.2.5 / K2a](../../docs/DS41F-1.2.5.md)**, recipe `k2a`, selector `1.2.5`. Its exact 1,137-file source map includes the native vision-control repair. Also prepare the separate head-only direct-output template. CDEF remains preserved as 1.2.4.
+**Current: [1.2.7 / X4](../../docs/DS41F-1.2.7.md)**, recipe `v127`, selector `1.2.7`. `x1` / `x2` / `x3` / `x4` preserve every deployed trial independently. X4 and v127 have identical source maps and reference executable hashes; only release metadata differs. [Development and commands](../../docs/X1-X4-DEVELOPMENT.md). The new results are live cache observations; previous decode benchmarks remain assigned to their original versions.
+
+**Historical: [1.2.5 / K2a](../../docs/DS41F-1.2.5.md)**, recipe `k2a`, selector `1.2.5`. Its exact 1,137-file source map includes the native vision-control repair. Also prepare the separate head-only direct-output template. CDEF remains preserved as 1.2.4.
 
 [Human/agent recipe chooser](../../docs/RECIPES.md) · [build/install 1.2.4](../../docs/DS41F-1.2.4.md).
 

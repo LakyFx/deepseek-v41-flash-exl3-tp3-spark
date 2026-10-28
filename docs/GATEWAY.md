@@ -48,7 +48,7 @@ alias keeps its separate cap. Read the older 3072/6144 instructions below as
 historical behavior, not the new portable entrypoint defaults.
 
 The `laguna_gateway.app` module remains a compatibility/legacy entrypoint;
-use **`ds41f-gateway`** for the current production defaults. [Exact recipe](DS41F-1.2.5.md).
+use **`ds41f-gateway`** for the current production defaults. [Current recipe](DS41F-1.2.7.md).
 
 ## Preserved earlier gateway documentation
 

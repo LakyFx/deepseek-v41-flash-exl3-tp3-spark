@@ -25,3 +25,5 @@ benchmarks/sparkdash/vendor/** -text -whitespace
 results/20261023-sparkdash/** -text -whitespace
 results/20261023-1.2.5/** -text -whitespace
 results/20261024-1.2.6/** -text -whitespace
+
+results/20261028-1.2.7/** -text -whitespace

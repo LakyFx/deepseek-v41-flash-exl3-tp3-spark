@@ -1,3 +1,5 @@
+> Current production: [TensorFold 1.2.7](DS41F-1.2.7.md). Historical architecture follows.
+
 # Architecture: X11c foundation and DS41F 1.0.0
 
 The trained model, tokenizer and hybrid checkpoint remain the same. This is vLLM on three DGX Sparks, with tensor parallelism and PP1. Expert parallelism and TensorFold are not enabled. Approximately 3.51 bpw describes routed EXL3 experts; the checkpoint also contains native dense, shared, draft, Engram and vision tensors at their own precisions.

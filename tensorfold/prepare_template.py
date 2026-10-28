@@ -1,4 +1,4 @@
-"""Create the measured 1.2.5 head metadata overlay; original files stay intact."""
+"""Create a published head metadata overlay; original files stay intact."""
 import argparse
 import hashlib
 import json
@@ -8,7 +8,8 @@ HERE = Path(__file__).resolve().parent
 
 
 def prepare(runtime, variant='1.2.5'):
-    if variant not in ('1.2.5', '1.2.6'):
+    if variant not in {p.stem for p in (HERE/'profiles').glob('*.json')
+                       if json.loads(p.read_bytes()).get('head_chat_template_sha256')}:
         raise ValueError('Select a published direct-output template profile')
     profile = json.loads((HERE / 'profiles' / (variant+'.json')).read_bytes())
     original = runtime / 'weights/models' / profile['arm']
@@ -33,6 +34,8 @@ def prepare(runtime, variant='1.2.5'):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime', required=True, type=Path)
-    parser.add_argument('--variant', default='1.2.5', choices=['1.2.5','1.2.6'])
+    parser.add_argument('--variant', default='1.2.7', choices=sorted(
+        p.stem for p in (HERE/'profiles').glob('*.json')
+        if json.loads(p.read_bytes()).get('head_chat_template_sha256')))
     args=parser.parse_args()
     print(json.dumps(prepare(args.runtime.resolve(),args.variant), indent=2))

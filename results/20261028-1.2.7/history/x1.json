@@ -1,0 +1,76 @@
+{
+  "checks": {
+    "BUILD.json": {
+      "checks": {
+        "build": {
+          "log_sha256": "46655eb501923d2c5fbfade82786e5af235d53f1cb8d13c5fe89a5a0f04db4a5",
+          "rc": 0,
+          "seconds": 188.2960000000021
+        }
+      },
+      "original_receipt_sha256": "604a8de5189ac7eb6655c84b88a8e4417c3a8d862fb006e15010e305385e2cae",
+      "status": "ARM_BUILT_GPU_PENDING"
+    },
+    "CPU-CHECKS.json": {
+      "checks": {
+        "cache-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 32.03100000000268
+        },
+        "cache-run": {
+          "log_sha256": "f1e275e0482452f56343056def41fce427627080461f47d5e8908d7fae6f1149",
+          "rc": 0,
+          "seconds": 0.20299999999406282
+        },
+        "host-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 30.875
+        },
+        "host-run": {
+          "log_sha256": "9ca1bfef4a13e8630113af27ac5e8fbe2aecc860deadaa295896548241b13450",
+          "rc": 0,
+          "seconds": 0.7350000000005821
+        },
+        "plan-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 20.139999999999418
+        },
+        "plan-run": {
+          "log_sha256": "6b8e2fb2ced885175d6808a2da11b279df65dd8e18f1a78ae3d8635ec9a73ef6",
+          "rc": 0,
+          "seconds": 0.15600000000267755
+        },
+        "policy-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 20.75
+        },
+        "policy-run": {
+          "log_sha256": "2dc2e6af4891161ffc95cfc2780d667575228d9142918d74d56831033e87e293",
+          "rc": 0,
+          "seconds": 0.14100000000325963
+        }
+      },
+      "original_receipt_sha256": "a9759da0ba0819ff6a83d7dd45fc012f514debea57f1fd0bd59416cec2c47b0f",
+      "status": "PASS"
+    }
+  },
+  "overlays": 38,
+  "recipe": "x1",
+  "recorded_binaries": {
+    "tensorfold-native": {
+      "sha256": "670ff128ca4232759716f4c7c947efd030cedc6676e847d4958cbf5943b9a32d"
+    },
+    "tf-dsv41-lanes": {
+      "sha256": "09e489380b5dec192f213d9f00591a367c10cd20715aa00038dbce7884941c0f"
+    }
+  },
+  "selector": "1.2.6x1",
+  "source_files": 1142,
+  "source_manifest_sha256": "a5df555937dd9e3b73150b903d48b47ab4a6a2025d4cc00eb11311e6b2a5616b",
+  "source_tree_sha256": "5a989d4762884ab5939f9fbd5c23e17763a8d98587cfc41e8cfb7e814a7d6244",
+  "trial": "X1"
+}

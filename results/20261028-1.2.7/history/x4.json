@@ -1,0 +1,121 @@
+{
+  "checks": {
+    "BUILD.json": {
+      "checks": {},
+      "original_receipt_sha256": "e7ce09bf904a97654b67f2b77d7f2528aa8064393594f92792aad0823169ebc3",
+      "status": "ARM_BUILT_GPU_PENDING"
+    },
+    "CPU-CHECKS.json": {
+      "checks": {
+        "adaptive-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 15.84299999999348
+        },
+        "adaptive-run": {
+          "log_sha256": "471a68ec08e2952d1dbedd845e1dbca6a25f94b39f0f73bcc17e8c1181433654",
+          "rc": 0,
+          "seconds": 0.14100000000325963
+        },
+        "cache-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 21.437999999994645
+        },
+        "cache-run": {
+          "log_sha256": "39c0137551ed52bca046a18205ede65695e12cd670e401cbbb94e6240ac2284b",
+          "rc": 0,
+          "seconds": 0.23399999999674037
+        },
+        "host-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 32.062999999994645
+        },
+        "host-run": {
+          "log_sha256": "084a4c3cd19c9e208d651ac3bebbf3af20cb640b2cb8256846da4a944ef81c05",
+          "rc": 0,
+          "seconds": 0.7030000000086147
+        },
+        "move-budget-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 17.875
+        },
+        "move-budget-run": {
+          "log_sha256": "90a98e49587b32886f3acd08cd92075e92aac40b682fcb564628ee711bee94b9",
+          "rc": 0,
+          "seconds": 0.17199999999138527
+        },
+        "plan-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 15.937000000005355
+        },
+        "plan-run": {
+          "log_sha256": "6b8e2fb2ced885175d6808a2da11b279df65dd8e18f1a78ae3d8635ec9a73ef6",
+          "rc": 0,
+          "seconds": 0.15700000000651926
+        },
+        "policy-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 16.32799999997951
+        },
+        "policy-run": {
+          "log_sha256": "2dc2e6af4891161ffc95cfc2780d667575228d9142918d74d56831033e87e293",
+          "rc": 0,
+          "seconds": 0.14000000001396984
+        },
+        "pressure-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 20.85899999999674
+        },
+        "pressure-run": {
+          "log_sha256": "17fe80f39ad10233c77b878ab5600185ac529803a6a2f2db6fa5031f65fc6922",
+          "rc": 0,
+          "seconds": 0.35899999999674037
+        }
+      },
+      "original_receipt_sha256": "c7863d7aeedcaf3075e9c870cce3123c07519cfe632f5c38a68f2b2cba3c7bd3",
+      "status": "PASS"
+    },
+    "NATIVE-CPU.json": {
+      "checks": {
+        "compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 31.812999999994645
+        },
+        "run": {
+          "log_sha256": "e16883e2deed80bfe264d84f5187bd4b98d46548c1e43ee6610460bbff540d93",
+          "rc": 0,
+          "seconds": 2.312000000005355
+        }
+      },
+      "original_receipt_sha256": "75552dc0a7ea44077b4a93dd6ad132a1ed34e691a90b20c2b54c584392fc8558",
+      "status": "PASS"
+    },
+    "TIMING.json": {
+      "checks": {},
+      "original_receipt_sha256": "3e7d6d2994a03a1d5f33c294a01248cc461086557f3008910ee8cd54f1a07e56",
+      "status": "LOCAL_CPU_ONLY"
+    }
+  },
+  "overlays": 39,
+  "recipe": "x4",
+  "recorded_binaries": {
+    "tensorfold-native": {
+      "sha256": "93bfa145f256b048770d226ab34f13a64d29da1157f50a2b217a317e3f6287c3"
+    },
+    "tf-dsv41-lanes": {
+      "sha256": "c9190ce74a2a6cd3eb4a0d6a02641cc54ab85278a582da1287fa657f99f36dee"
+    }
+  },
+  "selector": "1.2.6x4",
+  "source_files": 1143,
+  "source_manifest_sha256": "eda31fe6a87fb18ebccf6219ffe2eb33c1b748f66eabb32b684c42de527e47d4",
+  "source_tree_sha256": "aaa029bc42aa37360976ce5b4fb1fbf59ab7c9c08e8bcc3f8fdf899396f364d4",
+  "trial": "X4"
+}

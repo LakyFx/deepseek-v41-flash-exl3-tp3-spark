@@ -107,3 +107,8 @@ CDEF contains A–F, while G is separate. [Exact boundaries](RECIPES.md) and
 [our measurements](WORKFLOW-BENCHMARK-20261021.md) separate inspiration from
 tested behavior. Existing source notices remain. The [comparison artwork](../assets/tensorfold-1.2.4-comparison.png)
 is a community illustration; its values and scopes also appear in text.
+
+
+## 1.2.7 prefix retention and runtime work
+
+The activity-limited NVMe hypothesis and cache/graph correctness reviews were informed by [knapcio’s TP4 recipe](https://github.com/knapcio/DeepSeek-V4.1-Flash-4x-DGX-Spark-TP4), including its [changelog](https://github.com/knapcio/DeepSeek-V4.1-Flash-4x-DGX-Spark-TP4/blob/main/CHANGELOG.md) and [SWA incident analysis](https://github.com/knapcio/DeepSeek-V4.1-Flash-4x-DGX-Spark-TP4/blob/main/docs/issue-16-swa-crash.md). Their TP4 results are not our TP3 measurements. Our bounded CPU checkpoint/prefix policies were developed for the existing TensorFold source and mixed agent workloads. The weights, verifier and retained TensorFold/upstream license notices are unchanged. The earlier AdaSpark, DeepInfer and NVIDIA FLARE inspirations remain described above; the new KV-retention controller is separate from the speculative verification controller.

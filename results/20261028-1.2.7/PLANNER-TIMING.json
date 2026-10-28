@@ -1,0 +1,97 @@
+{
+  "schema": "ds41f.planner-cpu-timing.v1",
+  "aggregate": [
+    {
+      "variant": "x3",
+      "states": 64,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 75906,
+      "median_of_batch_p95_ns": 113108,
+      "max_ns": 191413,
+      "truncated": 0
+    },
+    {
+      "variant": "x3",
+      "states": 220,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 412429,
+      "median_of_batch_p95_ns": 639345,
+      "max_ns": 2630788,
+      "truncated": 1
+    },
+    {
+      "variant": "x3",
+      "states": 420,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 727052,
+      "median_of_batch_p95_ns": 994471,
+      "max_ns": 1288992,
+      "truncated": 0
+    },
+    {
+      "variant": "x4-off",
+      "states": 64,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 80105,
+      "median_of_batch_p95_ns": 129610,
+      "max_ns": 327223,
+      "truncated": 0
+    },
+    {
+      "variant": "x4-off",
+      "states": 220,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 462032,
+      "median_of_batch_p95_ns": 634645,
+      "max_ns": 6112836,
+      "truncated": 1
+    },
+    {
+      "variant": "x4-off",
+      "states": 420,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 748653,
+      "median_of_batch_p95_ns": 988071,
+      "max_ns": 1934738,
+      "truncated": 0
+    },
+    {
+      "variant": "x4-on",
+      "states": 64,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 73906,
+      "median_of_batch_p95_ns": 114409,
+      "max_ns": 272219,
+      "truncated": 0
+    },
+    {
+      "variant": "x4-on",
+      "states": 220,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 516037,
+      "median_of_batch_p95_ns": 761054,
+      "max_ns": 1103281,
+      "truncated": 0
+    },
+    {
+      "variant": "x4-on",
+      "states": 420,
+      "batches": 3,
+      "samples_per_batch": 101,
+      "median_of_batch_medians_ns": 805459,
+      "median_of_batch_p95_ns": 1154083,
+      "max_ns": 1417301,
+      "truncated": 0
+    }
+  ],
+  "note": "101 samples after 10 warmups, fixed x86 WSL ReleaseSafe geometries, excludes native formatted logging and GPU; not measured decode or real cache-hit improvement.",
+  "original_receipt_sha256": "3e7d6d2994a03a1d5f33c294a01248cc461086557f3008910ee8cd54f1a07e56"
+}

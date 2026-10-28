@@ -1,0 +1,73 @@
+{
+  "schema": "ds41f.x-history.v1",
+  "trials": [
+    {
+      "overlays": 38,
+      "recipe": "x1",
+      "recorded_binaries": {
+        "tensorfold-native": {
+          "sha256": "670ff128ca4232759716f4c7c947efd030cedc6676e847d4958cbf5943b9a32d"
+        },
+        "tf-dsv41-lanes": {
+          "sha256": "09e489380b5dec192f213d9f00591a367c10cd20715aa00038dbce7884941c0f"
+        }
+      },
+      "selector": "1.2.6x1",
+      "source_files": 1142,
+      "source_manifest_sha256": "a5df555937dd9e3b73150b903d48b47ab4a6a2025d4cc00eb11311e6b2a5616b",
+      "source_tree_sha256": "5a989d4762884ab5939f9fbd5c23e17763a8d98587cfc41e8cfb7e814a7d6244",
+      "trial": "X1"
+    },
+    {
+      "overlays": 38,
+      "recipe": "x2",
+      "recorded_binaries": {
+        "tensorfold-native": {
+          "sha256": "068b2ff075339be7291d2a41a3eee3a23e2fc155a0febaab221c73784096585f"
+        },
+        "tf-dsv41-lanes": {
+          "sha256": "cbbe91986c30f93e2e99b8ebdb1f685dcdabc14a742811baefff2bc9d82d4026"
+        }
+      },
+      "selector": "1.2.6x2",
+      "source_files": 1142,
+      "source_manifest_sha256": "ea2f2a1fc0a2cab0e9ab238835fb7357f55ea6b3ca6526390c902bde0dbbdb13",
+      "source_tree_sha256": "ca91aa77d02672c3bfc392579dc24091f4bd59ffc595757ada57e2c2d6258737",
+      "trial": "X2"
+    },
+    {
+      "overlays": 39,
+      "recipe": "x3",
+      "recorded_binaries": {
+        "tensorfold-native": {
+          "sha256": "c82bed2cd9d973c4525aec4c667e6405f70e6a71ece87617b66288d1110b55a8"
+        },
+        "tf-dsv41-lanes": {
+          "sha256": "44027b06ea0b635f956b0f91bdc178ef49df1bcf51777cf6f9d237e607190805"
+        }
+      },
+      "selector": "1.2.6x3",
+      "source_files": 1143,
+      "source_manifest_sha256": "1ca9c36a92817bb7862d3e76543dd8feb112719d32d0a5f0a6b6098a4dcac6ff",
+      "source_tree_sha256": "0e07cc93395a284f246f25a94cc0f0b4d78280fb3207ccf5abdb1123c626d438",
+      "trial": "X3"
+    },
+    {
+      "overlays": 39,
+      "recipe": "x4",
+      "recorded_binaries": {
+        "tensorfold-native": {
+          "sha256": "93bfa145f256b048770d226ab34f13a64d29da1157f50a2b217a317e3f6287c3"
+        },
+        "tf-dsv41-lanes": {
+          "sha256": "c9190ce74a2a6cd3eb4a0d6a02641cc54ab85278a582da1287fa657f99f36dee"
+        }
+      },
+      "selector": "1.2.6x4",
+      "source_files": 1143,
+      "source_manifest_sha256": "eda31fe6a87fb18ebccf6219ffe2eb33c1b748f66eabb32b684c42de527e47d4",
+      "source_tree_sha256": "aaa029bc42aa37360976ce5b4fb1fbf59ab7c9c08e8bcc3f8fdf899396f364d4",
+      "trial": "X4"
+    }
+  ]
+}

@@ -1,5 +1,9 @@
 # Tuning history
 
+## 1.2.7 - 28 October 2026
+
+X4 is promoted unchanged to production 1.2.7. Added activity-limited NVMe keepalive, compatible checkpoint selection, graph-storage guards, short-prefix reuse and CPU-based adaptive retention through the X1-X4 trials. All four exact source recipes, profiles and CPU/build receipts are retained. [Development log](X1-X4-DEVELOPMENT.md) · [live workload evidence and estimation](LIVE-CACHE-1.2.7.md). No new SparkDash or heavy-workflow result is inferred from the rename.
+
 ## 20–21 October: matched 1017 workflows
 
 1.2.2TF → Bert1 → xTF/1.2.3, then new 1.2.3 reference, A–G, CF, DEF and

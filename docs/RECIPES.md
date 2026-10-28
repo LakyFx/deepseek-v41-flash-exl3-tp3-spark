@@ -1,6 +1,8 @@
 # Choose a recipe
 
-**Current production: [1.2.6](DS41F-1.2.6.md)**, selector `1.2.6`, exact source `v126`. Adds bounded idle KV relocation/320 MiB credit and current MAX/8K vision to the 1.2.5 foundations, preserving the adaptive learner and C12/R48/7M/3 GiB settings. [Three stock SparkDash runs](SPARKDASH-20261024-1.2.6.md).
+**Current production: [1.2.7](DS41F-1.2.7.md)**, selector `1.2.7`, source `v127`, exactly the deployed X4 native source. Adds ABCD and X1-X4 adaptive prefix retention to 1.2.6 without changing C12/R48/7M/3 GiB, weights or sampling. [Live results](LIVE-CACHE-1.2.7.md) · [X1-X4 recipes and development](X1-X4-DEVELOPMENT.md).
+
+**Previous production: [1.2.6](DS41F-1.2.6.md)**, selector `1.2.6`, exact source `v126`. Adds bounded idle KV relocation/320 MiB credit and current MAX/8K vision to the 1.2.5 foundations, preserving the adaptive learner and C12/R48/7M/3 GiB settings. [Three stock SparkDash runs](SPARKDASH-20261024-1.2.6.md).
 
 **Previous production: [1.2.5 / K2a](DS41F-1.2.5.md)**, selector `1.2.5`, source recipe `k2a`, C12/R48, 7M KV, 3 GiB snapshots. Adds K2 cache/diagnostics, K2a dead-state cleanup/gauge fixes, qualified direct-output template and native vision control. [New measurements](BENCHMARK-1.2.5.md) remain separate from the original 14-arm campaign below.
 

@@ -1,0 +1,27 @@
+[Unit]
+Description=Activity-limited Engram NVMe keepalive for TensorFold rank %i
+After=network-online.target tp3@%i.service
+BindsTo=tp3@%i.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/ds41f-tensorfold.env
+WorkingDirectory=/srv/deepseek-v41-flash-exl3-tp3-spark
+ExecStart=/usr/bin/python3 /srv/deepseek-v41-flash-exl3-tp3-spark/tensorfold/keepalive_launch.py --config /etc/ds41f-tensorfold.json --variant ${TF_PROFILE} --rank %i --unit tp3@%i.service
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=2
+MemoryMax=96M
+TasksMax=4
+CPUQuota=5%
+CPUWeight=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+ReadOnlyPaths=/srv
+
+[Install]
+WantedBy=tp3@%i.service

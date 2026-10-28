@@ -1,0 +1,121 @@
+{
+  "checks": {
+    "BUILD.json": {
+      "checks": {},
+      "original_receipt_sha256": "cc526cb5641d68859d2b84b5a636c7ff07583959da7b8b434a544348e9293ed1",
+      "status": "ARM_BUILT_GPU_PENDING"
+    },
+    "CPU-CHECKS.json": {
+      "checks": {
+        "adaptive-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 18.64000000001397
+        },
+        "adaptive-run": {
+          "log_sha256": "471a68ec08e2952d1dbedd845e1dbca6a25f94b39f0f73bcc17e8c1181433654",
+          "rc": 0,
+          "seconds": 0.1409999999741558
+        },
+        "cache-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 23.437000000005355
+        },
+        "cache-run": {
+          "log_sha256": "027b6db20d0dd49016485856e18afdec8a6c64e2773edb636e284cc9a0ffeca0",
+          "rc": 0,
+          "seconds": 0.21900000001187436
+        },
+        "host-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 29.95299999997951
+        },
+        "host-run": {
+          "log_sha256": "406c4060f31b0465c929dcc098233d9b2032ca44b2f44a81cd22b90e459e8f14",
+          "rc": 0,
+          "seconds": 0.6090000000258442
+        },
+        "move-budget-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 17.98399999999674
+        },
+        "move-budget-run": {
+          "log_sha256": "90a98e49587b32886f3acd08cd92075e92aac40b682fcb564628ee711bee94b9",
+          "rc": 0,
+          "seconds": 0.14100000000325963
+        },
+        "plan-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 16.437000000005355
+        },
+        "plan-run": {
+          "log_sha256": "6b8e2fb2ced885175d6808a2da11b279df65dd8e18f1a78ae3d8635ec9a73ef6",
+          "rc": 0,
+          "seconds": 0.125
+        },
+        "policy-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 16.54700000002049
+        },
+        "policy-run": {
+          "log_sha256": "2dc2e6af4891161ffc95cfc2780d667575228d9142918d74d56831033e87e293",
+          "rc": 0,
+          "seconds": 0.125
+        },
+        "pressure-compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 21.84299999999348
+        },
+        "pressure-run": {
+          "log_sha256": "cb98c8298473d5d50230e42676cc3974be2ea5aef16e8e379259654834bbad78",
+          "rc": 0,
+          "seconds": 0.26600000000325963
+        }
+      },
+      "original_receipt_sha256": "bf34549de6f53654ad533c2792bbf5943db5dfd925761fc60908654ac3db74bd",
+      "status": "PASS"
+    },
+    "NATIVE-CPU.json": {
+      "checks": {
+        "compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 34.98399999999674
+        },
+        "run": {
+          "log_sha256": "3fe89ce6efbea859daf11e1747bf67204aa2a4ceea986cb5baea187c2dbfbaa7",
+          "rc": 0,
+          "seconds": 2.3280000000086147
+        }
+      },
+      "original_receipt_sha256": "e7d6af81f90238a73aef282661883822372ce9da3c5ca4104affc80f2253db56",
+      "status": "PASS"
+    },
+    "TIMING.json": {
+      "checks": {},
+      "original_receipt_sha256": "cb32936e21945fe99cc5f4646244a0d0e55b9c71b6e1a1346f43d0c0dcc6f7fa",
+      "status": "LOCAL_CPU_ONLY"
+    }
+  },
+  "overlays": 39,
+  "recipe": "x3",
+  "recorded_binaries": {
+    "tensorfold-native": {
+      "sha256": "c82bed2cd9d973c4525aec4c667e6405f70e6a71ece87617b66288d1110b55a8"
+    },
+    "tf-dsv41-lanes": {
+      "sha256": "44027b06ea0b635f956b0f91bdc178ef49df1bcf51777cf6f9d237e607190805"
+    }
+  },
+  "selector": "1.2.6x3",
+  "source_files": 1143,
+  "source_manifest_sha256": "1ca9c36a92817bb7862d3e76543dd8feb112719d32d0a5f0a6b6098a4dcac6ff",
+  "source_tree_sha256": "0e07cc93395a284f246f25a94cc0f0b4d78280fb3207ccf5abdb1123c626d438",
+  "trial": "X3"
+}

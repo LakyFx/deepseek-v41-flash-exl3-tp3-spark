@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "version": "1.2.6x4",
+  "cached_tokens": {
+    "first": 0,
+    "repeat": 6523,
+    "next_turn": 6532,
+    "other_namespace": 0
+  },
+  "tests": [
+    "text",
+    "exact prefix",
+    "next turn",
+    "namespace isolation",
+    "reader cancellation then new answer",
+    "durable vision max",
+    "inline tool-history vision max"
+  ],
+  "epoch": 1793170751.8438585,
+  "published_version": "1.2.7"
+}

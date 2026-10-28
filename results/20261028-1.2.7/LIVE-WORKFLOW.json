@@ -1,0 +1,93 @@
+{
+  "schema": "ds41f.runtime-evidence.v1",
+  "version": "1.2.7",
+  "observed_as": "1.2.6x4",
+  "start": "2026-10-28T07:59:13.869769+01:00",
+  "end": "2026-10-28T10:11:25+01:00",
+  "duration_seconds": 7931.130231,
+  "successful_requests": 937,
+  "input_tokens": 90856475,
+  "cached_tokens": 86395378,
+  "computed_tokens": 4461097,
+  "global_cache_hit_percent": 95.0899514866717,
+  "exact_client_joins": 850,
+  "cohort_rule": "Only subsequent requests within observed sessions. Work+cron excludes six TUI requests. Long work is a subset, not an additional population. Hit is sum(cached)/sum(input), not mean of request percentages.",
+  "cohorts": [
+    {
+      "cohort": "My work sessions",
+      "requests": 201,
+      "input_tokens": 34019979,
+      "cached_tokens": 33727210,
+      "median_prefill_seconds": 0.641359585,
+      "cache_hit_percent": 99.13942039764339
+    },
+    {
+      "cohort": "Autonomous cron sessions",
+      "requests": 613,
+      "input_tokens": 53531742,
+      "cached_tokens": 51832776,
+      "median_prefill_seconds": 0.672126968,
+      "cache_hit_percent": 96.82624563198411
+    },
+    {
+      "cohort": "Combined work + cron",
+      "requests": 814,
+      "input_tokens": 87551721,
+      "cached_tokens": 85559986,
+      "median_prefill_seconds": 0.660732605,
+      "cache_hit_percent": 97.72507612957146
+    },
+    {
+      "cohort": "Long work contexts (subset)",
+      "requests": 121,
+      "input_tokens": 26244766,
+      "cached_tokens": 26148370,
+      "median_prefill_seconds": 0.656316307,
+      "cache_hit_percent": 99.63270390751435
+    }
+  ],
+  "periods": [
+    {
+      "label": "Earlier observed window",
+      "start": "2026-10-28T07:59:13.869769+01:00",
+      "end": "2026-10-28T09:17:47+01:00",
+      "requests": 509,
+      "input_tokens": 47727606,
+      "computed_tokens": 3011116,
+      "uncached_input_share": 0.06308960897808283,
+      "cache_hit_percent": 93.69103910219172
+    },
+    {
+      "label": "Later observed window",
+      "start": "2026-10-28T09:17:47+01:00",
+      "end": "2026-10-28T10:11:25+01:00",
+      "requests": 428,
+      "input_tokens": 43128869,
+      "computed_tokens": 1449981,
+      "uncached_input_share": 0.033619731600195685,
+      "cache_hit_percent": 96.63802683998043
+    }
+  ],
+  "uncached_share_reduction_percent": 46.711142857336306,
+  "estimated_effective_prefill_gain_percent": 67.40479742838943,
+  "assumed_computed_tok_s": 2000,
+  "assumed_reused_tok_s": 200000,
+  "effective_prefill_formula": "1 / (uncached_share / 2000 + (1-uncached_share) / 200000)",
+  "estimate_scope": "Modeled effective input throughput from two observed windows; includes warmup and task-mix changes. Not an isolated controller gain, GPU prefill measurement, decode gain or end-to-end workflow speedup.",
+  "pressure_decisions": 294,
+  "adaptive_placements": 68,
+  "moves": 18,
+  "planner_time_ms": {
+    "total": 46.084374,
+    "median": 0.1233915,
+    "p95": 0.2444,
+    "max": 1.936054
+  },
+  "x4_specific_short_rescues": 0,
+  "eligible_fresh_short_victims": 0,
+  "ghost_returns": 23,
+  "confirmed_lost_positions": 511555,
+  "lost_positions_share_of_all_input_pp": 0.5630363713758431,
+  "source_summary_sha256": "e9e82f0ba43dd38cac8aabd938e58411fac31392642f438b8b418306369c76f8",
+  "privacy": "Aggregates only; private prompts, responses, session IDs, job IDs, network addresses and client joins excluded."
+}

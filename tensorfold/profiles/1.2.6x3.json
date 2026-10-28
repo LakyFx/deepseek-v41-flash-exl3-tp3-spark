@@ -1,0 +1,67 @@
+{
+  "adaptive_learning": true,
+  "arm": "TF351-1017",
+  "binary_subdir": "bin-1.2.6x3",
+  "build_variant": "x3",
+  "chat_template_sha256": "7d1356675e429ec4a55cbcc1a6fbeb40615dbeb257aca25b8c3705a42087f33e",
+  "companion_services": {
+    "nvme_keepalive": {
+      "active_ms": 2000,
+      "block_bytes": 4096,
+      "native_activity_only": true,
+      "period_ms": 25
+    }
+  },
+  "comparative_benchmarks_rerun": false,
+  "context_tokens": 401408,
+  "engram_marker": "SOURCE.json",
+  "engram_subdir": "weights/engram-tp3",
+  "extra_head_arguments": [
+    "--loop-guard"
+  ],
+  "head_chat_template_sha256": "4669c39b5ca71ca4722c52c750883bacfc8f1e2542ef40bddccd8684158e28c8",
+  "head_environment": {
+    "TF_K2A_DIAGNOSTICS": "1",
+    "TF_K2A_PRUNE_DEAD": "1",
+    "TF_LOOP_DRY_WINDOWS": "10"
+  },
+  "head_model_subdir": "weights/models/TF351-1017-1.2.6x3",
+  "hub_repo": "LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold",
+  "hub_revision": "8621801c1fc74aece1fa83e67c6ade3fde1e7894",
+  "maximum_draft_tokens": 5,
+  "measured_as": "1.2.6x3",
+  "model_revision": "DeepSeek-V4.1-Flash-1017",
+  "native_kv": "FP4 compressed KV/index",
+  "parallel": 12,
+  "pool_tokens": 7000000,
+  "prefill_chunk_tokens": 2048,
+  "prompt_snapshot_gib_head": 3,
+  "qualification_scope": "Recorded CPU/module tests, ARM build and serving canary; subsequently exercised in live mixed workflows. Not a new SparkDash throughput campaign.",
+  "qualification_url": "../../results/20261028-1.2.7/QUALIFICATION.json",
+  "qualified_pool": false,
+  "rank_cache_subdir": "weights/rank-cache/TF351-1017",
+  "reasoning": "max",
+  "rope_table_reference_pool": 10000000,
+  "round_ms": "30.0,35.2,39.9,44.9,48.6,52.1,55.6,59.1,62.7,66.3,69.6,72.9,75.5,78.2,81.3,84.4,87.5,90.6,93.7,96.8,99.9,103.0,106.1,109.2,112.3,115.4,118.5,121.6,124.7,127.8,130.9,134.0,137.1,140.2,143.3,146.4,149.5,152.6,155.7,158.8,161.9,165.0,168.1,171.2,174.3,177.4,180.5,183.6",
+  "round_rows": 48,
+  "routed_expert_bpw": 3.510072157,
+  "runtime_environment": {
+    "TF_CACHE_ADAPTIVE_PREFIX": "1",
+    "TF_CACHE_BALANCED": "1",
+    "TF_CACHE_NATIVE_PLAN": "1",
+    "TF_CACHE_REUSE_EVICTION": "1",
+    "TF_CACHE_X1_TRACE": "1",
+    "TF_GRAPH_STORAGE_GUARD": "1",
+    "TF_KV_CONTINUATION_DONOR": "1",
+    "TF_KV_PRESSURE_PLANNER": "1",
+    "TF_KV_RELOCATE_MAX_BYTES": "335544320",
+    "TF_KV_SHORT_REUSE": "1"
+  },
+  "schema": "ds41f.tensorfold-profile.v1",
+  "serving_smoke_qualified": true,
+  "source_commit": "e4bed21e0251f4627a2bb60ae9cb09ddbf2358ab",
+  "source_repo": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+  "source_revision": "1bae0e1088993b9b82de08f59de5be5a34e42170",
+  "status": "historical_trial",
+  "version": "1.2.6x3"
+}

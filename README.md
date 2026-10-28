@@ -1,6 +1,29 @@
 # DeepSeek V4.1 Flash on three DGX Sparks
 
-**Current production recipe: [1.2.6](docs/DS41F-1.2.6.md)** — TensorFold TP3,
+**Current production recipe: [1.2.7](docs/DS41F-1.2.7.md)** — the exact deployed **X4** payload, now promoted under its final release number. TensorFold TP3 · DeepSeek 1017 · EXL3 **~3.51 bpw routed experts**.
+
+**Smart adaptive KV retention + smart adaptive speculation.** More useful prefix reuse for mixed interactive work and autonomous agents, within the same **7M KV / 3 GiB checkpoint / C12 / R48** budgets. The prefix controller learns verified return patterns and recomputation costs on the CPU; weights and target sampling are unchanged.
+
+| Real Hermes workflow: returning requests | Prefix cache hit | Median prefill |
+| --- | ---: | ---: |
+| My work sessions | **99.14%** | **0.641 s** |
+| Autonomous cron sessions | **96.83%** | **0.672 s** |
+| Combined work + cron | **97.73%** | **0.661 s** |
+| Long work contexts · subset | **99.63%** | **0.656 s** |
+
+814 returning work/cron requests; 937 successful requests overall in the documented live window. First loads are included in the **95.09% overall** figure, but excluded from the continuation table. These are live workflow observations, not a synthetic decode benchmark.
+
+**47% lower uncached input share** between two observed periods; **estimated +67% effective prefill throughput** using 2K tok/s computed input and 200K tok/s effective reuse. Warmup and task mix also changed: this is a modeled input-processing gain, not a measured decode or end-to-end speedup. [Numbers, methodology and limits](docs/LIVE-CACHE-1.2.7.md).
+
+[![Laky FX 1.2.7 · smart adaptive KV cache, live workflow results](assets/1.2.7/live-kv-cache.png)](assets/1.2.7/live-kv-cache.png)
+
+- **[Build / install / launch 1.2.7](docs/DS41F-1.2.7.md)** · [profile](tensorfold/profiles/1.2.7.json) · [exact source](tensorfold/variants/recipes/v127.json)
+- **[X1 → X4 development and reproducible recipes](docs/X1-X4-DEVELOPMENT.md)** · [CPU tests and serving evidence](results/20261028-1.2.7/)
+- **[All previous recipes and benchmark campaigns](docs/RECIPES.md)** · [release history](docs/HISTORY.md) · [weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold)
+
+## Preserved 1.2.6 measurements
+
+**Previous production recipe: [1.2.6](docs/DS41F-1.2.6.md)** — TensorFold TP3,
 DeepSeek 1017, EXL3 **~3.51 bpw routed experts**.
 C12 streams · R48 shared verification rows · 7M configured KV · 3 GiB snapshots.
 
@@ -181,7 +204,9 @@ not weight training; learned state is per process. [Mechanisms and boundaries](d
 | xTF → 1.2.3 | Online cost/acceptance learning; 3 GiB snapshots | [build](docs/DS41F-1.2.3.md), [learner](docs/ADAPTIVE-SPECULATION.md) |
 | A–G, CF, DEF | Measured scheduling/host-work alternatives | [recipes](docs/RECIPES.md), [all results](docs/WORKFLOW-BENCHMARK-20261021.md) |
 | **1.2.4 / CDEF** | **Combined A–F; shortest observed completed-work time** | **[main recipe](docs/DS41F-1.2.4.md), [report](docs/WORKFLOW-BENCHMARK-20261021.md)** |
-| **1.2.5 / K2a** | **Current production: cache-state cleanup, diagnostics, vision control and direct-output template** | **[exact recipe](docs/DS41F-1.2.5.md), [SparkDash](docs/SPARKDASH-20261023.md), [workflow / RigMark](docs/BENCHMARK-1.2.5.md)** |
+| **1.2.7 / X4** | **Current production: adaptive KV retention, ABCD runtime changes, unchanged adaptive speculation** | **[exact recipe](docs/DS41F-1.2.7.md), [live evidence](docs/LIVE-CACHE-1.2.7.md), [X1-X4 archive](docs/X1-X4-DEVELOPMENT.md)** |
+| **1.2.6 / 5c** | Bounded KV relocation, 320 MiB credit, MAX/8K vision | [recipe](docs/DS41F-1.2.6.md), [three SparkDash runs](docs/SPARKDASH-20261024-1.2.6.md) |
+| **1.2.5 / K2a** | **Historical production: cache-state cleanup, diagnostics, vision control and direct-output template** | **[exact recipe](docs/DS41F-1.2.5.md), [SparkDash](docs/SPARKDASH-20261023.md), [workflow / RigMark](docs/BENCHMARK-1.2.5.md)** |
 
 Only the matched 1017 workflow passes share the new comparison table. Earlier
 checkpoints, cold-prefill probes and production observations keep their own scopes.

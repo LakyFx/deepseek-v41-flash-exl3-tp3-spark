@@ -1,0 +1,18 @@
+{
+  "schema": "ds41f.release-qualification.v1",
+  "version": "1.2.7",
+  "same_payload_as": "1.2.6x4",
+  "status": "PRODUCTION_PROMOTION_OF_DEPLOYED_X4",
+  "source_tree_sha256": "aaa029bc42aa37360976ce5b4fb1fbf59ab7c9c08e8bcc3f8fdf899396f364d4",
+  "source_manifest_sha256": "eda31fe6a87fb18ebccf6219ffe2eb33c1b748f66eabb32b684c42de527e47d4",
+  "reference_binaries": {
+    "tensorfold-native": "93bfa145f256b048770d226ab34f13a64d29da1157f50a2b217a317e3f6287c3",
+    "tf-dsv41-lanes": "c9190ce74a2a6cd3eb4a0d6a02641cc54ab85278a582da1287fa657f99f36dee"
+  },
+  "cpu_checks": "history/x4.json",
+  "canary": "SERVING-CANARY.json",
+  "runtime_evidence": "LIVE-WORKFLOW.json",
+  "full_performance_benchmark_rerun": false,
+  "historical_sparkdash": "../20261024-1.2.6/",
+  "scope": "Same native bytes, weights, sampler, gateway and settings as X4. CPU tests/builds and serving canary are prior verified receipts. No new heavy benchmark, SparkDash or reboot drill at publication."
+}
