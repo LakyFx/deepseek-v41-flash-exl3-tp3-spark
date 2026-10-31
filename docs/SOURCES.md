@@ -112,3 +112,23 @@ is a community illustration; its values and scopes also appear in text.
 ## 1.2.7 prefix retention and runtime work
 
 The activity-limited NVMe hypothesis and cache/graph correctness reviews were informed by [knapcio’s TP4 recipe](https://github.com/knapcio/DeepSeek-V4.1-Flash-4x-DGX-Spark-TP4), including its [changelog](https://github.com/knapcio/DeepSeek-V4.1-Flash-4x-DGX-Spark-TP4/blob/main/CHANGELOG.md) and [SWA incident analysis](https://github.com/knapcio/DeepSeek-V4.1-Flash-4x-DGX-Spark-TP4/blob/main/docs/issue-16-swa-crash.md). Their TP4 results are not our TP3 measurements. Our bounded CPU checkpoint/prefix policies were developed for the existing TensorFold source and mixed agent workloads. The weights, verifier and retained TensorFold/upstream license notices are unchanged. The earlier AdaSpark, DeepInfer and NVIDIA FLARE inspirations remain described above; the new KV-retention controller is separate from the speculative verification controller.
+
+## 1.2.8 TP3 prefill work
+
+The engine, EXL3 primitives and baseline CUDA/Triton kernels are upstream work.
+The cumulative TP3 row-ownership and scheduling integration is ours; imported
+ideas and source are credited rather than presented as new quantization or a
+new inference engine. The EXL3 prompt MoE adaptation draws on pinned
+[TensorFold `612332f6`](https://github.com/ashhart/TensorFold/tree/612332f60668744b32a82eca8a91afa2b2929d69),
+BobClawblaw's contribution #976 and MiaAI-Lab's patches 0004/0009. Those paths
+retain TensorFold Apache-2.0 notices and ExLlamaV3/Turboderp MIT provenance
+(Copyright 2025), including trellis helpers via vcruz305. Local changes include
+TP3 launch geometry, live groups, exact-sum-preserving tiles and occupancy hints.
+The masked attention source adapts the existing TensorFold body; its source
+hash and exact AOT set are published under `tensorfold/prefill-128/`.
+
+Christopher Owen's [spark-ds41f](https://github.com/christopherowen/spark-ds41f)
+and the community TP4 recipes motivated review of distributed prefill and
+measurement boundaries. Their native-weight, TP4 or cached-input rates are not
+our TP3 EXL3 measurements. Existing AdaSpark, DeepInfer, NVIDIA FLARE and knapcio
+credits above still apply to the retained controllers/runtime.

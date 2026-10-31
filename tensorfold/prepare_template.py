@@ -34,7 +34,7 @@ def prepare(runtime, variant='1.2.5'):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runtime', required=True, type=Path)
-    parser.add_argument('--variant', default='1.2.7', choices=sorted(
+    parser.add_argument('--variant', default='1.2.8', choices=sorted(
         p.stem for p in (HERE/'profiles').glob('*.json')
         if json.loads(p.read_bytes()).get('head_chat_template_sha256')))
     args=parser.parse_args()

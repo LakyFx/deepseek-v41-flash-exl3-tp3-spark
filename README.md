@@ -1,6 +1,40 @@
 # DeepSeek V4.1 Flash on three DGX Sparks
 
-**Current production recipe: [1.2.7](docs/DS41F-1.2.7.md)** — the exact deployed **X4** payload, now promoted under its final release number. TensorFold TP3 · DeepSeek 1017 · EXL3 **~3.51 bpw routed experts**.
+**Latest TP3 recipe: [1.2.8 / AF-4K](docs/DS41F-1.2.8.md)** — faster computed
+prefill, with the smart KV cache and adaptive speculation from 1.2.7 retained.
+TensorFold · DeepSeek 1017 · EXL3 **~3.51 bpw routed experts** · **3 DGX Sparks**.
+
+**Up to 3,553 tok/s median cold prefill. +51–58% at 32K–128K versus 1.2.7.**
+Same weights, 7M KV, 3 GiB checkpoints, C12/R48. Actual prefill work is divided
+across the three nodes; tuned prompt kernels, 4K compute chunks and Engram
+scheduling reduce redundant work. Bounded prompt scratch saves about **3.4 GiB**
+in native startup accounting versus the preceding 4K candidate.
+
+| Input tokens | 1.2.7 tok/s | **1.2.8 / AF tok/s** | Gain |
+| --- | ---: | ---: | ---: |
+| 1K | 1,511.1 | **1,826.5** | **+20.9%** |
+| 2K | 1,816.6 | **2,366.6** | **+30.3%** |
+| 4K | 2,027.4 | **2,801.3** | **+38.2%** |
+| 8K | 2,207.2 | **3,169.1** | **+43.6%** |
+| 32K | 2,330.6 | **3,525.2** | **+51.3%** |
+| 64K | 2,310.9 | **3,552.8** | **+53.7%** |
+| 128K | 2,215.8 | **3,499.2** | **+57.9%** |
+
+C1, three samples per size, thinking OFF, **zero KV cache hits**; native computed
+prefill, measured separately from TTFT. The selected AF build keeps almost all
+AE's speed with more memory headroom. [Methodology, full table and limits](docs/PREFILL-1.2.8.md).
+
+- **[Build / install / launch 1.2.8](docs/DS41F-1.2.8.md)** · [profile](tensorfold/profiles/1.2.8.json) · [exact source](tensorfold/variants/recipes/v128.json)
+- **[Prefill campaign and numerical evidence](results/20261030-1.2.8/)** · [source credits](docs/SOURCES.md#128-tp3-prefill-work)
+- **[All retained recipes](docs/RECIPES.md)** · [release history](docs/HISTORY.md) · [weights](https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold)
+
+The AF campaign qualified prefill and full-window capacity. Earlier decode
+benchmarks remain below under their measured version names; they are not new
+1.2.8 decode measurements.
+
+## Preserved 1.2.7 smart KV results
+
+**Previous TP3 recipe: [1.2.7](docs/DS41F-1.2.7.md)** — the exact deployed **X4** payload, now promoted under its final release number. TensorFold TP3 · DeepSeek 1017 · EXL3 **~3.51 bpw routed experts**.
 
 **Smart adaptive KV retention + smart adaptive speculation.** More useful prefix reuse for mixed interactive work and autonomous agents, within the same **7M KV / 3 GiB checkpoint / C12 / R48** budgets. The prefix controller learns verified return patterns and recomputation costs on the CPU; weights and target sampling are unchanged.
 

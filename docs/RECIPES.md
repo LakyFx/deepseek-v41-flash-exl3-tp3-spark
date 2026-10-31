@@ -1,6 +1,8 @@
 # Choose a recipe
 
-**Current production: [1.2.7](DS41F-1.2.7.md)**, selector `1.2.7`, source `v127`, exactly the deployed X4 native source. Adds ABCD and X1-X4 adaptive prefix retention to 1.2.6 without changing C12/R48/7M/3 GiB, weights or sampling. [Live results](LIVE-CACHE-1.2.7.md) · [X1-X4 recipes and development](X1-X4-DEVELOPMENT.md).
+**Latest TP3 release: [1.2.8 / AF-4K](DS41F-1.2.8.md)**, selector `1.2.8`, source `v128`. Distributed owner-row prefill, tuned prompt kernels, 4K compute chunks, improved Engram scheduling and smaller prompt scratch. Retains the 1.2.7 controllers and C12/R48/7M/3 GiB. [Cold-prefill comparison](PREFILL-1.2.8.md); no new AF decode campaign.
+
+**Previous TP3 production: [1.2.7](DS41F-1.2.7.md)**, selector `1.2.7`, source `v127`, exactly the deployed X4 native source. Adds ABCD and X1-X4 adaptive prefix retention to 1.2.6 without changing C12/R48/7M/3 GiB, weights or sampling. [Live results](LIVE-CACHE-1.2.7.md) · [X1-X4 recipes and development](X1-X4-DEVELOPMENT.md).
 
 **Previous production: [1.2.6](DS41F-1.2.6.md)**, selector `1.2.6`, exact source `v126`. Adds bounded idle KV relocation/320 MiB credit and current MAX/8K vision to the 1.2.5 foundations, preserving the adaptive learner and C12/R48/7M/3 GiB settings. [Three stock SparkDash runs](SPARKDASH-20261024-1.2.6.md).
 

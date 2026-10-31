@@ -1,0 +1,24 @@
+{
+  "attention": {
+    "extraction": "AST function bodies unchanged; Python wrappers omitted",
+    "kernel_sha256": "7b7d0fd162e3026afd099f5ff11715b513ee383a56adcf37e3fdfcebb30ce511",
+    "modifications": "Mask Q load, sink load and FINAL BF16 stores by h<H; ceil grid in isolated launcher; no change to row/key reduction order",
+    "parent": "J extracted unchanged upstream",
+    "published_source": "kernels.py",
+    "source_sha256": "13db22a9f0f112d2a9cc040c63bc39bcbebaada4b1ea1ec999ca40da72dc9ebd",
+    "upstream": "https://github.com/ashhart/TensorFold",
+    "published_file_sha256": "72701d9bbfecbc4753a137b1ba0105948d1b237f9499c46d3b5e841ac7afda7d"
+  },
+  "prompt_moe": {
+    "upstream": "https://github.com/ashhart/TensorFold",
+    "upstream_revision": "612332f60668744b32a82eca8a91afa2b2929d69",
+    "contributors": [
+      "BobClawblaw #976",
+      "MiaAI-Lab patches 0004/0009",
+      "ExLlamaV3 / Turboderp (MIT, Copyright 2025), trellis helpers via vcruz305"
+    ],
+    "published_file": "experts_ragged.cu",
+    "published_file_sha256": "fdf5fc132395a63aee3ea8f5f3480899915858da6080ebbb983f992cff427be8",
+    "measured_cubin_sha256": "401d66291bc838575090f568184ec76533a3aec0bbd2f50ac9ba03a84d06b033"
+  }
+}

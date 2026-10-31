@@ -16,3 +16,11 @@ Our integration license does not relicense upstream source, libraries or weights
 | Model, tokenizer, quantization and checkpoint documents | DeepSeek and the bot-lab-21 Pollard checkpoint publisher; licenses and credits are downloaded with the exact checkpoint, not replaced by our integration license |
 
 The vendored source is included for reproducible installation and review. Selective ports, source hashes, publication adjustments and measured settings are recorded under `runtime/` and `config/`. Research-only links do not imply that their engine or weight pack is installed.
+
+## 1.2.8 prefill assets
+
+The added content-addressed source objects and `tensorfold/prefill-128/` retain
+the TensorFold Apache-2.0 and ExLlamaV3/Turboderp MIT notices. Upstream/MiaAI-Lab/
+BobClawblaw/vcruz305 contributions and local adaptations are identified in
+[sources](docs/SOURCES.md#128-tp3-prefill-work). Cubins do not replace source
+licenses. No model weights or private deployment inputs are included.

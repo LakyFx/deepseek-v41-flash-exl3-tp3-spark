@@ -1,5 +1,18 @@
 # Tuning history
 
+## 1.2.8 - 31 October 2026
+
+Publish the exact selected AF-4K TP3 source from the 30 October campaign.
+Distributed owner-row prefill, masked attention, tuned EXL3 prompt MoE, 4K
+compute, corrected Engram scheduling and context-bounded scratch. Same weights,
+smart controllers and C12/R48/7M/3 GiB. Long-input cold-prefill medians improve
+51–58% over 1.2.7; AF keeps AE's speed within about 1% while saving 3.4 GiB in
+rank-0 native startup accounting. [Recipe](DS41F-1.2.8.md) ·
+[measurements, full-window and validation scope](PREFILL-1.2.8.md).
+No live TP4 change or new AF decode-concurrency measurement at publication.
+All earlier recipes, benchmarks and artwork are retained.
+
+
 ## 1.2.7 - 28 October 2026
 
 X4 is promoted unchanged to production 1.2.7. Added activity-limited NVMe keepalive, compatible checkpoint selection, graph-storage guards, short-prefix reuse and CPU-based adaptive retention through the X1-X4 trials. All four exact source recipes, profiles and CPU/build receipts are retained. [Development log](X1-X4-DEVELOPMENT.md) · [live workload evidence and estimation](LIVE-CACHE-1.2.7.md). No new SparkDash or heavy-workflow result is inferred from the rename.

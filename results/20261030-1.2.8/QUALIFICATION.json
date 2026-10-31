@@ -1,0 +1,82 @@
+{
+  "aot_launches_checked": 1052,
+  "aot_missing": [],
+  "arm_build_exit_code": 0,
+  "cold_samples": 21,
+  "cpu_native_planner_cache_tests": 162,
+  "cpu_row_tests": 8,
+  "cuda_output_equality": "all-rank masked BF16 attention and MoE FP32 comparisons passed",
+  "exact_answer_probes_passed": 3,
+  "exact_answer_probes_total": 3,
+  "full_context_probe_input_tokens": 401344,
+  "full_context_probe_passed": true,
+  "full_decode_concurrency_campaign_for_AF": false,
+  "gateway_changed": false,
+  "measured_as": "AF-4K",
+  "measured_binaries": {
+    "tensorfold-native": {
+      "sha256": "4321d6ee3a8c9ecc8924d6c0ed5701fb15ad61c44f10c64d702ea59579516c14"
+    },
+    "tf-dsv41-lanes": {
+      "sha256": "d3c645298ab7b4c435a4f3856649a51708e1dd1d75e29708fcbaa116945a8751"
+    }
+  },
+  "recorded_checks": {
+    "AOT-CHECK": {
+      "checks": {
+        "build": {}
+      },
+      "original_receipt_sha256": "2f5ee0a71738714f4b67ae946fb14a804207dd3582faf7188fa4b84cb7bb1fb8",
+      "status_at_receipt_creation": "AF_LOCAL_ROWS_AOT_COVERED_NOT_GPU_QUALIFIED"
+    },
+    "BUILD": {
+      "checks": {
+        "build": {
+          "log_sha256": "6f166d9995033a99809ce0237875b24184e222cdc7e35c53bb15ceca759e370c",
+          "rc": 0,
+          "seconds": 109.67199999996228
+        }
+      },
+      "original_receipt_sha256": "0e4c36382b92bea1a5e3124c67b81880bea3f01d0250fc2fc8831992688b6a15",
+      "status_at_receipt_creation": "ARM_BUILT_GPU_PENDING"
+    },
+    "NATIVE-CPU": {
+      "checks": {
+        "compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 32.90600000001723
+        },
+        "run": {
+          "log_sha256": "ff8e66aa13a1f7c7047325a4cd5c9f909b0483e5bdaeb736eb63ea5ed91bcca0",
+          "rc": 0,
+          "seconds": 2.405999999959022
+        }
+      },
+      "original_receipt_sha256": "567401ff6ab3b5a7dabf60e416b77da7f9a99594c305619c603b5cfd7c94eac6",
+      "status_at_receipt_creation": "PASS"
+    },
+    "ROW-CHECKS": {
+      "checks": {
+        "compile": {
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "rc": 0,
+          "seconds": 15.905999999959022
+        },
+        "run": {
+          "log_sha256": "1241cc485ab6ef67f3efd935711f75ae044c8f899d2f13d71af56dfb23de7b81",
+          "rc": 0,
+          "seconds": 0.15600000001722947
+        }
+      },
+      "original_receipt_sha256": "45fa56addbe353d4f155c36ab401c609f7f6f5d2ece875a26b18d15b407a9765",
+      "status_at_receipt_creation": "PASS"
+    }
+  },
+  "release_version": "1.2.8",
+  "schema": "ds41f.qualification.v1",
+  "source_and_recipe_checks_at_publication": "See PUBLICATION-CHECKS.json; no new model inference at publication.",
+  "source_manifest_sha256": "8083d0ebd68192204ca2da1c478ba6cabcaf930f8a93406091acb725cb1a04d3",
+  "source_tree_sha256": "3b26aeb8ebbf5014f2bfd10ec0c0e682188a80cd3cefbc74254099633aa2edd2",
+  "weights_changed": false
+}

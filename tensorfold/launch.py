@@ -5,6 +5,10 @@ import json
 import os
 from pathlib import Path
 import shlex
+import sys
+
+if __package__ in (None, ''):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 HERE = Path(__file__).resolve().parent
 
@@ -19,6 +23,7 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
     root = Path(node['root'])
     binary_root = root / profile.get('binary_subdir', 'bin')
     kit = root / 'kit'
+    kernels = root / profile.get('kernel_subdir', 'kit/aot')
     model = root / 'weights/models' / profile['arm']
     if rank == 0 and profile.get('head_model_subdir'):
         model = root / profile['head_model_subdir']
@@ -35,7 +40,7 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
             raise ValueError('Operator setting required: ' + k)
     env = {'TF_DS_EXPERIMENTAL_TP3': '1', 'TF_DS_START_TIMEOUT': '1800', 'TF_TP_WORLD': '3',
            'TF_TP_MASTER': config['master_address'], 'TF_TP_PORT': str(config['master_port']),
-           'TF_DS_KIT': str(kit), 'TENSORFOLD_CUDA_KERNELS': str(kit / 'aot'),
+           'TF_DS_KIT': str(kit), 'TENSORFOLD_CUDA_KERNELS': str(kernels),
            'TF_DS_RANK_CACHE': str(cache), 'TF_DS_ENGRAM': str(engram),
            'TF_DS_TOKEN_MAP': str(kit / 'engram-token-map.json'), 'TF_DS_POOL_TOKENS': str(pool),
            'TF_DS_STREAMS': streams, 'TF_DS_ROUND_ROWS': rows, 'TF_DS_GRAPHS': '1',
@@ -55,6 +60,8 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
     if profile.get('adaptive_learning'):
         env['TF_DS_ADAPTIVE_LEARNING'] = '1'
     env.update(profile.get('runtime_environment', {}))
+    if profile.get('ragged_cubin'):
+        env['TF_DS_PREFILL_RAGGED_CUBIN'] = str(root / profile['ragged_cubin'])
     if rank == 0:
         env.update(profile.get('head_environment', {}))
     if config.get('library_path'):
@@ -73,6 +80,8 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
                 '--round-rows', rows, '--streams', streams, '--drafts', '1', '--graphs', '1',
                 '--side', '1', '--prefetch', '1', '--aio', '1', '--engram', str(engram),
                 '--token-map', str(kit / 'engram-token-map.json'), '--rdma', devices]
+        if profile.get('follower_prompt_context_tokens'):
+            argv += ['--prompt-context', str(profile['follower_prompt_context_tokens'])]
     if validate_files:
         if profile.get('build_variant'):
             import hashlib
@@ -89,6 +98,12 @@ def command(config, variant, rank, *, benchmark=False, validate_files=False):
             for binary in ['tensorfold-native','tf-dsv41-lanes']:
                 if hashlib.sha256((binary_root/binary).read_bytes()).hexdigest() != receipt['binaries'][binary]['sha256']:
                     raise ValueError('Recipe binary differs from its build receipt: '+binary)
+            if profile.get('prefill_assets_sha256'):
+                from tensorfold import prefill_assets
+                expected = profile['prefill_assets_sha256']
+                if receipt.get('prefill_assets_sha256') != expected:
+                    raise ValueError('Recipe build does not include matching prefill kernels')
+                prefill_assets.check(root/'prefill-1.2.8', expected)
         elif profile.get('adaptive_learning'):
             import hashlib
             receipt = json.loads((binary_root / 'BUILD.json').read_text(encoding='utf-8'))

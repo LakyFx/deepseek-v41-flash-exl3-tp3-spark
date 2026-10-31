@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "Offline publication/source/install checks; no new inference and no live deployment",
+  "root_suite": {
+    "total": 52,
+    "passed": 50,
+    "windows_posix_skips": 2,
+    "elapsed_seconds": 56.607
+  },
+  "final_release_specific_checks": {
+    "total": 5,
+    "passed": 5,
+    "elapsed_seconds": 17.815
+  },
+  "exact_source_reconstruction": {
+    "files": 1144,
+    "mode": "All source bytes verified in memory on Windows; Linux-only fixture names prevent complete NTFS extraction"
+  },
+  "assets": "Complete isolated base+AF AOT delivery, preserved original entries, all required cubins present; tampering rejected",
+  "install": "Wrong asset receipt rejected before writes; valid isolated install and direct launcher tested; example topology correctly refused",
+  "old_recipe_preservation": "v127 and older source/profile/results untouched; old launcher flags tested by existing regression suite",
+  "privacy": "37 changed/new files scanned before final receipt export; no credential/private host/path findings; kernel payload only",
+  "notes": [
+    "Historical catalog generator already disagrees with the corrected README catalog; that entire historical block is unchanged."
+  ],
+  "model_requests_at_publication": 0
+}

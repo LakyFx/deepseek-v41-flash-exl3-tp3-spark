@@ -1,5 +1,7 @@
 # Install DS41F 1.0.0 (C4)
 
+For the latest **1.2.8 / AF-4K TP3** build, use [its exact installation guide](DS41F-1.2.8.md). It retains the pinned 1017 weights but requires its own source and prefill kernel set. Earlier procedures remain below.
+
 **Current recommended TensorFold recipe: [1.2.4 / CDEF](DS41F-1.2.4.md).**
 Use its source/build receipt and [recipe chooser](RECIPES.md). Older procedures
 below remain available; preparation does not change services.

@@ -1,6 +1,21 @@
+# Current TP3 release: 1.2.8 / AF-4K
+
+Read `docs/DS41F-1.2.8.md` and `docs/PREFILL-1.2.8.md`. Build `--recipe v128`,
+install/launch `--variant 1.2.8` on all three ranks. Preserve C12/R48/7M/3 GiB,
+adaptive speculation and X4 smart retention. Compute chunks are 4096, physical
+KV quantum 2048, context 401408 and prompt workspace 403456. Followers require
+`--prompt-context 401408`; use the launcher. Include the isolated pinned 1.2.8
+AOT/auxiliary assets from the builder; never launch AF with the old AOT manifest.
+Keep NVMe companion and MAX/8K vision policy. Reference qualification is cold
+prefill and full-window correctness; do not relabel historical decode as 1.2.8.
+Publication does not authorize changing a live installation. Preserve old
+recipes, results, licenses and operator-owned runtime state.
+
+## Preserved installation guidance
+
 # Agent installation guide
 
-Current production is **1.2.7**, the unchanged deployed X4 payload. Read `docs/DS41F-1.2.7.md`, `docs/X1-X4-DEVELOPMENT.md` and `docs/LIVE-CACHE-1.2.7.md`. Build `--recipe v127`, launch `--variant 1.2.7` on all three ranks, and prepare the matching head-only template. Include the activity-limited NVMe companion on every rank. Preserve C12/R48/7M/3 GiB/chunk2048, the existing speculation learner, 320 MiB per-rank copy credit and MAX/8K vision. X1-X4 are historical selectors, not different weights. The new flyer uses live continuation results; +67% is modeled, not a measured decode gain. Never commit prompts, responses, job/session identifiers or credentials.
+Previous TP3 production is **1.2.7**, the unchanged deployed X4 payload. Read `docs/DS41F-1.2.7.md`, `docs/X1-X4-DEVELOPMENT.md` and `docs/LIVE-CACHE-1.2.7.md`. Build `--recipe v127`, launch `--variant 1.2.7` on all three ranks, and prepare the matching head-only template. Include the activity-limited NVMe companion on every rank. Preserve C12/R48/7M/3 GiB/chunk2048, the existing speculation learner, 320 MiB per-rank copy credit and MAX/8K vision. X1-X4 are historical selectors, not different weights. The new flyer uses live continuation results; +67% is modeled, not a measured decode gain. Never commit prompts, responses, job/session identifiers or credentials.
 
 ## Preserved 1.2.6 installation guidance
 
