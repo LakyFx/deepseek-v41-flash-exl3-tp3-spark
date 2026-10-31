@@ -1,0 +1,28 @@
+{
+  "schema": "ds41f.tp4-production-parity.v1",
+  "version": "4.0.0",
+  "previous_label": "1.2.7-TP4-P3",
+  "measured_as": "P3",
+  "same_native_bytes": true,
+  "same_weights": true,
+  "same_runtime_policy": true,
+  "native": {
+    "tensorfold-native": "c3e591224b0d009c72dc0852ca22275ef03fcae1380f04d5d2a45a10d7df8ea3",
+    "tf-dsv41-lanes": "593cc6aaf5b81bf6ab637919ff4cdbd9d153a22f86f17d5e0fc027ff7be4562c"
+  },
+  "source_tree_sha256": "0100f56062507959685b5e2b9385820e6c4ec392e45314eaac23f17414107652",
+  "source_manifest_sha256": "38df966cc119e1be123fe5bc5c5745d494a52c3853aeaedb189ce9e1e32d0a12",
+  "aot_manifest_sha256": "1042f9203e62efa04103904525575ba0945d22a7188606dde601174d7a81548b",
+  "auxiliary_sha256": "5ab389a66b9e42d5373a57ad1aa67fc4b0c8e39e1560af1d648798d593993f2c",
+  "nccl_library_sha256": "2634b128fb90a344710c3bd946a48523e222a45f5cd51efdd2cf9f2fbf75e1d9",
+  "world": 4,
+  "parallel": 16,
+  "round_rows": 48,
+  "pool_tokens": 9000000,
+  "checkpoints_gib": 3.5,
+  "compute_chunk_tokens": 8192,
+  "physical_kv_quantum_tokens": 2048,
+  "template_sha256": "4669c39b5ca71ca4722c52c750883bacfc8f1e2542ef40bddccd8684158e28c8",
+  "observed_native_cpu_checks": "PASS",
+  "publication_restarted_native": false
+}

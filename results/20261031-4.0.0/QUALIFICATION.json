@@ -1,0 +1,29 @@
+{
+  "schema": "ds41f.tp4-publication-qualification.v1",
+  "version": "4.0.0",
+  "measured_as": "P3",
+  "model_benchmarks_run_for_publication": 0,
+  "production_restart": false,
+  "offline_checks": {
+    "full_root_suite": {
+      "tests": 67,
+      "passed": 65,
+      "skipped": 2,
+      "reason": "Two retained POSIX-only checks skip on Windows"
+    },
+    "final_tp4_release_checks": {
+      "passed": 9
+    },
+    "final_tp4_geometry_and_native_discovery": {
+      "passed": 7
+    },
+    "gateway_entrypoint_regression_and_tp4_selection": {
+      "passed": 6
+    }
+  },
+  "source_files_verified": 1146,
+  "aot_entries_verified": 591,
+  "all_four_launch_commands_checked": true,
+  "tp3_128_preserved": true,
+  "full_gpu_runtime_qualification": "Historical exact P3 production; see WORKFLOW.json and PRODUCTION-PARITY.json. No new GPU run for publication."
+}

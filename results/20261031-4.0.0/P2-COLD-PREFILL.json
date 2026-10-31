@@ -1,0 +1,97 @@
+{
+  "status": "COMPLETED",
+  "samples": 21,
+  "results": [
+    {
+      "target_tokens": 1024,
+      "samples": 3,
+      "cached_tokens": 0,
+      "median_tps": 2180.8746793611067,
+      "min_tps": 2136.79332256594,
+      "max_tps": 2232.1263723228467,
+      "median_prefill_seconds": 0.469536379,
+      "weighted_tps": 2182.570719181137,
+      "median_ttft_seconds": 0.4717802350060083
+    },
+    {
+      "target_tokens": 2048,
+      "samples": 3,
+      "cached_tokens": 0,
+      "median_tps": 2799.3278256212093,
+      "min_tps": 2791.872568859042,
+      "max_tps": 2814.152291627282,
+      "median_prefill_seconds": 0.731604202,
+      "weighted_tps": 2801.753662124148,
+      "median_ttft_seconds": 0.7353764579747804
+    },
+    {
+      "target_tokens": 4096,
+      "samples": 3,
+      "cached_tokens": 0,
+      "median_tps": 3259.4074031453506,
+      "min_tps": 3241.3361804135125,
+      "max_tps": 3273.713644915439,
+      "median_prefill_seconds": 1.256670153,
+      "weighted_tps": 3258.0985119350144,
+      "median_ttft_seconds": 1.2602857680176385
+    },
+    {
+      "target_tokens": 8192,
+      "samples": 3,
+      "cached_tokens": 0,
+      "median_tps": 3640.7774649172293,
+      "min_tps": 3629.0400875192986,
+      "max_tps": 3652.3329856985847,
+      "median_prefill_seconds": 2.25006886,
+      "weighted_tps": 3640.6920072768385,
+      "median_ttft_seconds": 2.256416395015549
+    },
+    {
+      "target_tokens": 32768,
+      "samples": 3,
+      "cached_tokens": 0,
+      "median_tps": 4205.311993694594,
+      "min_tps": 3948.3923840738485,
+      "max_tps": 4212.445941651536,
+      "median_prefill_seconds": 7.792049686,
+      "weighted_tps": 4118.3114543949905,
+      "median_ttft_seconds": 7.836793583002873
+    },
+    {
+      "target_tokens": 65536,
+      "samples": 3,
+      "cached_tokens": 0,
+      "median_tps": 4289.346182480327,
+      "min_tps": 4287.7798641632735,
+      "max_tps": 4291.974217474572,
+      "median_prefill_seconds": 15.27878544,
+      "weighted_tps": 4289.6993900035295,
+      "median_ttft_seconds": 15.32467712200014
+    },
+    {
+      "target_tokens": 131072,
+      "samples": 3,
+      "cached_tokens": 0,
+      "median_tps": 4254.609556068013,
+      "min_tps": 4250.86498134457,
+      "max_tps": 4256.030827203311,
+      "median_prefill_seconds": 30.80705721,
+      "weighted_tps": 4253.83400519943,
+      "median_ttft_seconds": 30.89672119601164
+    }
+  ],
+  "source": "Same frozen TP3 AF fixtures and cold.validate_sample/summary functions",
+  "inference_retries": 0,
+  "measured_as": "P2",
+  "pool_tokens": 7000000,
+  "parallel": 12,
+  "prompt_snapshot_gib_head": 3,
+  "compute_chunk_tokens": 8192,
+  "temperature": 0,
+  "top_p": 1,
+  "seed": 42,
+  "max_tokens": 8,
+  "thinking": false,
+  "concurrency": 1,
+  "scope": "Historical selected P2 cold prefill, not a new P3/4.0.0 run"
+}

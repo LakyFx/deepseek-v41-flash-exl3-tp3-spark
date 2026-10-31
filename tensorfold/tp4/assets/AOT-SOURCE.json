@@ -1,0 +1,40 @@
+{
+  "upstream": "ashhart/TensorFold",
+  "source_files": [
+    {
+      "path": "families\\deepseek_v41\\cuda\\kernels.py",
+      "sha256": "13db22a9f0f112d2a9cc040c63bc39bcbebaada4b1ea1ec999ca40da72dc9ebd"
+    },
+    {
+      "path": "cuda\\exl3\\prefill.py",
+      "sha256": "d4718492f0be54155ad873d43bc2b15f6fc60f48f8bc023d84d9efb12ee9e7bb"
+    },
+    {
+      "path": "families/deepseek_v41/cuda/markov.py",
+      "sha256": "45181893c55e0ae1ac3321adb3cb675178bef9843c7e1c8d7e5252510e70f1ce"
+    }
+  ],
+  "extracted_functions": [
+    "_attn_step",
+    "_bfly",
+    "_comp_keys",
+    "_discard_l2",
+    "_e2m1",
+    "_finish",
+    "_gemm",
+    "_hc_mix_part",
+    "_hc_mix_rows",
+    "_pick",
+    "_prefetch_l2",
+    "_rope_heads",
+    "_rot128",
+    "_sparse_attn_merge_rot2",
+    "_sparse_attn_part",
+    "_best",
+    "_better"
+  ],
+  "method": "AST source slices; unchanged function and decorator text",
+  "extracted_constants": [
+    "BIG"
+  ]
+}

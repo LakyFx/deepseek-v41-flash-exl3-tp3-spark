@@ -1,0 +1,10 @@
+The NCCL source and this CTS acquire-fence backport retain NVIDIA's Apache-2.0
+license; see LICENSE.txt and ThirdPartyNotices.txt.
+
+The cumulative dual-PCI-domain switchless patch is credited to
+FujitsuPolycom/sparkring:
+https://github.com/FujitsuPolycom/sparkring
+
+CTS acquire-fence backport by Stanislav Bardyuk, obtained through knapcio's
+DeepSeek V4.1 recipe; upstream NVIDIA/nccl pull request 2393.
+These are third-party contributions, not original LakyFx work.

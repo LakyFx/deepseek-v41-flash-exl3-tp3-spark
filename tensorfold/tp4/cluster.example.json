@@ -1,0 +1,94 @@
+{
+  "schema": "ds41f.tp4-cluster.v1",
+  "master_address": "192.0.2.10",
+  "master_port": 29680,
+  "api_host": "127.0.0.1",
+  "api_port": 8003,
+  "nccl_address_range": "REPLACE_FABRIC_CIDR",
+  "ranks": [
+    {
+      "rank": 0,
+      "root": "/srv/ds41f-tp4-4.0.0",
+      "nccl_interface": "REPLACE_MANAGEMENT_INTERFACE",
+      "nccl_hcas": [
+        "REPLACE_R0_DEV0",
+        "REPLACE_R0_DEV1",
+        "REPLACE_R0_DEV2",
+        "REPLACE_R0_DEV3"
+      ],
+      "neighbor_first": [
+        "REPLACE_R0_DEV0",
+        "REPLACE_R0_DEV1"
+      ],
+      "neighbor_second": [
+        "REPLACE_R0_DEV2",
+        "REPLACE_R0_DEV3"
+      ],
+      "gid_index": 3,
+      "library_path": "/srv/ds41f-nccl-tp4/lib"
+    },
+    {
+      "rank": 1,
+      "root": "/srv/ds41f-tp4-4.0.0",
+      "nccl_interface": "REPLACE_MANAGEMENT_INTERFACE",
+      "nccl_hcas": [
+        "REPLACE_R1_DEV0",
+        "REPLACE_R1_DEV1",
+        "REPLACE_R1_DEV2",
+        "REPLACE_R1_DEV3"
+      ],
+      "neighbor_first": [
+        "REPLACE_R1_DEV0",
+        "REPLACE_R1_DEV1"
+      ],
+      "neighbor_second": [
+        "REPLACE_R1_DEV2",
+        "REPLACE_R1_DEV3"
+      ],
+      "gid_index": 3,
+      "library_path": "/srv/ds41f-nccl-tp4/lib"
+    },
+    {
+      "rank": 2,
+      "root": "/srv/ds41f-tp4-4.0.0",
+      "nccl_interface": "REPLACE_MANAGEMENT_INTERFACE",
+      "nccl_hcas": [
+        "REPLACE_R2_DEV0",
+        "REPLACE_R2_DEV1",
+        "REPLACE_R2_DEV2",
+        "REPLACE_R2_DEV3"
+      ],
+      "neighbor_first": [
+        "REPLACE_R2_DEV0",
+        "REPLACE_R2_DEV1"
+      ],
+      "neighbor_second": [
+        "REPLACE_R2_DEV2",
+        "REPLACE_R2_DEV3"
+      ],
+      "gid_index": 3,
+      "library_path": "/srv/ds41f-nccl-tp4/lib"
+    },
+    {
+      "rank": 3,
+      "root": "/srv/ds41f-tp4-4.0.0",
+      "nccl_interface": "REPLACE_MANAGEMENT_INTERFACE",
+      "nccl_hcas": [
+        "REPLACE_R3_DEV0",
+        "REPLACE_R3_DEV1",
+        "REPLACE_R3_DEV2",
+        "REPLACE_R3_DEV3"
+      ],
+      "neighbor_first": [
+        "REPLACE_R3_DEV0",
+        "REPLACE_R3_DEV1"
+      ],
+      "neighbor_second": [
+        "REPLACE_R3_DEV2",
+        "REPLACE_R3_DEV3"
+      ],
+      "gid_index": 3,
+      "library_path": "/srv/ds41f-nccl-tp4/lib"
+    }
+  ]
+}
