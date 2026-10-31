@@ -13,7 +13,7 @@ DeepSeek **1017**, mixed EXL3 **~3.51 bpw routed experts**, switchless RoCE.
 | Model context | 401,408 | 401,408 |
 | Exact recipe | **[Build TP3 1.2.8](docs/DS41F-1.2.8.md)** | **[Build TP4 4.0.0](docs/DS41F-4.0.0.md)** |
 | Source / launch | `v128` - `tensorfold.launch` | `v400` - `tensorfold.tp4.launch` |
-| Measurements | [AF cold prefill](docs/PREFILL-1.2.8.md) | [P3 workflow + historical P2 prefill](docs/BENCHMARK-4.0.0.md) |
+| Measurements | [AF cold prefill](docs/PREFILL-1.2.8.md) | [Short code/prose decode](docs/SHORT-DECODE-4.0.0.md), [workflow + cold prefill](docs/BENCHMARK-4.0.0.md) |
 
 **New TP4 4.0.0 = our deployed P3 profile.** Four-rank/native-shape weight
 preparation, distributed prefill, selected P2 prompt kernels, complete final
@@ -21,12 +21,27 @@ AOT/decode coverage and the required credited switchless NCCL patches are
 included. The adaptive speculation and X4 KV-retention controllers are
 preserved. The MAX/8K vision gateway remains available.
 
-**Measured TP4 highlights:** the selected P2 compute path reached **4,289 tok/s
-median cold prefill at 64K**, with zero cache hits. The final P3 capacity
-profile completed **78/78 frozen agent/tool workflow tasks**, 327 requests,
-in **15.14 minutes**. P2 prefill used C12/7M/3 GiB; P3 uses C16/9M/3.5 GiB.
-[Complete tables and metric scopes](docs/BENCHMARK-4.0.0.md).
-These workflow rates are separate from the preserved SparkDash decode scores.
+**Measured TP4 highlights: 4,289 tok/s median cold prefill; 298.6 tok/s code
+and 257.8 tok/s prose native decode sum at C12.**
+
+| Short TP4 benchmark, warm run 2 | C1 | C3 | C6 | C12 |
+| --- | ---: | ---: | ---: | ---: |
+| Code native decode sum, tok/s | **113.2** | **181.5** | **232.6** | **298.6** |
+| Prose native decode sum, tok/s | **86.2** | **150.0** | **192.9** | **257.8** |
+
+Thinking OFF, greedy, 512 output tokens/request. Decode sum excludes prefill;
+it is not an instantaneous peak or SparkDash's shared-window aggregate.
+Prefill: 64K cold input, median of three, zero cache hits. Both measured the
+selected P2 compute path at C12/7M/3 GiB, retained by 4.0.0; the final P3
+capacity is C16/9M/3.5 GiB. [Exact scopes, per-request medians and replayable
+short benchmark](docs/SHORT-DECODE-4.0.0.md).
+
+[![LakyFX TP3 1.2.8 and TP4 4.0.0 release announcement](assets/4.0.0/tp3-tp4-release.png)](assets/4.0.0/tp3-tp4-release.png)
+
+The final P3 capacity profile also completed **78/78 frozen agent/tool
+workflow tasks**, 327 requests, in **15.14 minutes**.
+[Complete workflow and prefill tables](docs/BENCHMARK-4.0.0.md).
+These are separate protocols from the preserved SparkDash decode scores.
 
 **Repository name now includes TP3-TP4.** The old GitHub URL redirects to this
 same repository; history, tags, previous recipes and measurements are retained.

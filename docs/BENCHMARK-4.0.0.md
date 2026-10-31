@@ -4,6 +4,18 @@
 selected P2 compute path. Publication did not run a new benchmark or restart
 production. [Recipe and installation](DS41F-4.0.0.md).
 
+## Short code/prose decode - selected compute path
+
+The short screen reached **113.2 tok/s code / 86.2 tok/s prose at C1** and
+**298.6 / 257.8 tok/s at C12**. These are **sums of native per-request decode
+rates**, excluding prefill, not instantaneous peaks or stock SparkDash
+aggregates. Warm pass 2, greedy, thinking OFF, 512 tokens/request;
+C1/C3/C6/C12. Measured at P2 C12/7M/3 GiB before the final capacity increase;
+4.0.0 retains the same native compute path at C16/9M/3.5 GiB.
+
+[Full short-screen table, whole-wave comparison, exact public prompts,
+portable runner and 88 numeric request records](SHORT-DECODE-4.0.0.md).
+
 ## Frozen tool workflow - final P3 settings
 
 Four Sparks, switchless RoCE; pinned DeepSeek 1017 EXL3 mixed weights;

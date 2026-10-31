@@ -1,5 +1,11 @@
 # Repeatable public workloads
 
+**New: [short code/prose decode screen](short_decode/)** used for the TP4
+4.0.0 announcement: C1/C3/C6/C12, two passes, thinking OFF, greedy,
+512 tokens/request. Exact reviewed authored prompts and a portable runner;
+[results and metric scopes](../docs/SHORT-DECODE-4.0.0.md). This protocol is
+separate from SparkDash and the agent/tool workflow below.
+
 The separate [real Hermes production observation](../docs/HERMES-REAL-WORKLOAD.md) is included in the results catalog and the main README. It does not use the exclusive runner below: different five-hour operational windows and active-time averages are explicitly labelled. Recalculate its published metric-only aggregates with `python3 tools/audit_real_workload.py` from the repository root; no model calls are made.
 
 `corpus/workloads` contains the sixteen reviewed source-reference and authored tool-task inputs used for the expanded workload suite. Decoded messages, tools and context text are unchanged. Files use ASCII JSON escaping so the repository prose has no em dash; the text passed to the model remains the original text. Published file hashes bind that encoding, while original request/context hashes remain available as provenance.
