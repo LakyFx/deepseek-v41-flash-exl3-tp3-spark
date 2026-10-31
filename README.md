@@ -1,4 +1,39 @@
-# DeepSeek V4.1 Flash on three DGX Sparks
+# DeepSeek V4.1 Flash on 3 or 4 DGX Sparks
+
+**Choose TP3 or TP4 ? the same TensorFold foundations, smart adaptive
+speculation and smart KV cache controller, with separate exact recipes.**
+DeepSeek **1017**, mixed EXL3 **~3.51 bpw routed experts**, switchless RoCE.
+
+| | **TP3 ? 1.2.8** | **TP4 ? 4.0.0** |
+| --- | --- | --- |
+| Hardware | 3 DGX Sparks | 4 DGX Sparks, switchless cycle |
+| Serving capacity | C12 / adaptive R48 | **C16 / adaptive R48** |
+| Physical KV / head checkpoints | 7M / 3 GiB | **9M / 3.5 GiB** |
+| Prefill compute chunk | 4K | 8K |
+| Model context | 401,408 | 401,408 |
+| Exact recipe | **[Build TP3 1.2.8](docs/DS41F-1.2.8.md)** | **[Build TP4 4.0.0](docs/DS41F-4.0.0.md)** |
+| Source / launch | `v128` ? `tensorfold.launch` | `v400` ? `tensorfold.tp4.launch` |
+| Measurements | [AF cold prefill](docs/PREFILL-1.2.8.md) | [P3 workflow + historical P2 prefill](docs/BENCHMARK-4.0.0.md) |
+
+**New TP4 4.0.0 = our deployed P3 profile.** Four-rank/native-shape weight
+preparation, distributed prefill, selected P2 prompt kernels, complete final
+AOT/decode coverage and the required credited switchless NCCL patches are
+included. The adaptive speculation and X4 KV-retention controllers are
+preserved. The MAX/8K vision gateway remains available.
+
+**Measured TP4 highlights:** the selected P2 compute path reached **4,289 tok/s
+median cold prefill at 64K**, with zero cache hits. The final P3 capacity
+profile completed **78/78 frozen agent/tool workflow tasks**, 327 requests,
+in **15.14 minutes**. P2 prefill used C12/7M/3 GiB; P3 uses C16/9M/3.5 GiB.
+[Complete tables and metric scopes](docs/BENCHMARK-4.0.0.md).
+These workflow rates are separate from the preserved SparkDash decode scores.
+
+**Repository name now includes TP3?TP4.** The old GitHub URL redirects to this
+same repository; history, tags, previous recipes and measurements are retained.
+[All recipes](docs/RECIPES.md) ? [history](docs/HISTORY.md) ?
+[weights and exact TP4 repartition](docs/DS41F-4.0.0.md#3-prepare-exact-tp4-weights-without-changing-quantization).
+
+## TP3 1.2.8 ? retained high-prefill recipe
 
 **Latest TP3 recipe: [1.2.8 / AF-4K](docs/DS41F-1.2.8.md)** — faster computed
 prefill, with the smart KV cache and adaptive speculation from 1.2.7 retained.

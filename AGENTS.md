@@ -1,3 +1,19 @@
+# Select TP3 or TP4 explicitly
+
+TP3 **1.2.8 / AF-4K** and TP4 **4.0.0 / P3** are separate supported recipes.
+For TP4 read `docs/DS41F-4.0.0.md`, `docs/BENCHMARK-4.0.0.md` and
+`tensorfold/tp4/profile.json`. Source is `v400`; launch with
+`python3 -m tensorfold.tp4.launch` on four explicitly ordered ranks. Preserve
+C16/R48/9M/3.5 GiB, 8K compute, 2K KV quantum, 401408 context, the X4 retention
+and speculation learners, 320 MiB credit, two-way owned Engram and final TP4
+AOT/kernel assets. Use the separately patched pinned NCCL library. Never
+select the TP3 launcher for TP4 or treat the published TP3 weight shards as
+native TP4 caches. Use the byte-exact repartition tools and readback receipts.
+Historical P2 cold prefill and final P3 workflow are separate scopes.
+Publication does not authorize a live restart or a new benchmark.
+
+All preserved TP3 and historical instructions follow.
+
 # Current TP3 release: 1.2.8 / AF-4K
 
 Read `docs/DS41F-1.2.8.md` and `docs/PREFILL-1.2.8.md`. Build `--recipe v128`,

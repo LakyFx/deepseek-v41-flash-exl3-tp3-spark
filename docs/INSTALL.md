@@ -1,5 +1,7 @@
 # Install DS41F 1.0.0 (C4)
 
+**Select your cluster:** [TP3 1.2.8 installation](DS41F-1.2.8.md) or **[TP4 4.0.0 installation](DS41F-4.0.0.md)**. The four-node recipe uses its own launcher/assets; the older three-node/vLLM instructions below retain their original scope.
+
 For the latest **1.2.8 / AF-4K TP3** build, use [its exact installation guide](DS41F-1.2.8.md). It retains the pinned 1017 weights but requires its own source and prefill kernel set. Earlier procedures remain below.
 
 **Current recommended TensorFold recipe: [1.2.4 / CDEF](DS41F-1.2.4.md).**
@@ -23,8 +25,8 @@ The weights can be shared read-only from one Spark to the other two over NFS. Ev
 ## 2. Clone and build
 
 ```bash
-git clone https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark.git
-cd deepseek-v41-flash-exl3-tp3-spark
+git clone https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-tp4-spark.git
+cd deepseek-v41-flash-exl3-tp3-tp4-spark
 git checkout v1.0.0
 bash build/build.sh
 ```

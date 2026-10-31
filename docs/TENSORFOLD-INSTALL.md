@@ -1,5 +1,7 @@
 # Prepare and run the two TensorFold TP3 recipes
 
+**Current recipes:** [TP3 1.2.8](DS41F-1.2.8.md) and **[TP4 4.0.0](DS41F-4.0.0.md)**. The TP3 launcher below remains three-rank-only. TP4 has separate native caches, Engram ownership, AOT assets and a switchless NCCL library.
+
 For the latest **1.2.8 / AF-4K TP3** build, use [its exact installation guide](DS41F-1.2.8.md). It retains the pinned 1017 weights but requires its own source and prefill kernel set. Earlier procedures remain below.
 
 For the new **DeepSeek 1017 / 1.2.0** variant, follow [its separate recipe](DS41F-1.2.0.md). It reuses the source/build/kit procedures below but downloads the prebuilt 1017 model/rank/Engram artifacts instead of performing the older Pollard/Mia checkpoint preparation. The original procedures below remain available for TF351 and TF29.

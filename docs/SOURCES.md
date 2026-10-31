@@ -132,3 +132,14 @@ and the community TP4 recipes motivated review of distributed prefill and
 measurement boundaries. Their native-weight, TP4 or cached-input rates are not
 our TP3 EXL3 measurements. Existing AdaSpark, DeepInfer, NVIDIA FLARE and knapcio
 credits above still apply to the retained controllers/runtime.
+
+
+## 4.0.0 TP4 production
+
+- DeepSeek: [1017 base model](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017), pinned revision in the profile.
+- Ashley Hart: [TensorFold engine](https://github.com/ashhart/TensorFold); unchanged upstream licenses and full pinned source retained.
+- FujitsuPolycom: [sparkring dual-PCI-domain switchless NCCL](https://github.com/FujitsuPolycom/sparkring/blob/main/spark_transport/nccl/DUAL_PCI_DOMAIN.md). Cumulative patch SHA `8e2b8715d62d2b07a74caca3778da0eff2e7b54caf8a184bb728f179a5d1eba4` against NCCL `73cf112295c33aee2b895f329f592f2a9b4b0f97`.
+- NVIDIA: [NCCL](https://github.com/NVIDIA/nccl) and [CTS ordering fix #2393](https://github.com/NVIDIA/nccl/pull/2393). Stanislav Bardyuk's credited acquire-fence backport was obtained through [knapcio's recipe](https://github.com/knapcio/DeepSeek-V4.1-Flash-4x-DGX-Spark-TP4). These patches are third-party work.
+- Our additions: native-layout port of the existing TP3 recipe, exact byte repartition and provenance checks, TP4 owned-row/Engram integration, selected prompt MMA tuning, bounded scratch, complete final decode AOT coverage and measured capacity policy. The adaptive speculation/X4 retention controllers are preserved from our preceding releases.
+
+[Exact release recipe](DS41F-4.0.0.md) and [measurement scopes](BENCHMARK-4.0.0.md).

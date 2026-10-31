@@ -30,7 +30,7 @@ it does not retrain model weights.
 Built on Ashley Hart and contributors’ **TensorFold**, with inspiration from
 **AdaSpark, DeepInfer and NVIDIA FLARE**.
 
-**Recipe, results and source:** https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark
+**Recipe, results and source:** https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-tp4-spark
 
 **Weights:** https://huggingface.co/LakyFx/DeepSeek-V4.1-Flash-1017-EXL3-3.5bpw-TensorFold
 

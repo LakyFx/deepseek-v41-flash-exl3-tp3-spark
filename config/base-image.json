@@ -64,6 +64,6 @@
     "compressed_bytes":  10815810505,
     "audit_passed":  true,
     "archive_contains_model_weights":  false,
-    "download_base":  "https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-spark/releases/download/x11c-base-20261009",
+    "download_base":  "https://github.com/LakyFx/deepseek-v41-flash-exl3-tp3-tp4-spark/releases/download/x11c-base-20261009",
     "release_tag":  "x11c-base-20261009"
 }
