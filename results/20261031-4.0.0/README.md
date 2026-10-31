@@ -1,7 +1,7 @@
 # TP4 4.0.0 evidence
 
 - [P3 production parity](PRODUCTION-PARITY.json): exact deployed binary/source/kernel identity and final settings.
-- [Frozen P3 workflow](WORKFLOW.json): all C1?C12 cells, latency, output and memory metrics.
+- [Frozen P3 workflow](WORKFLOW.json): all C1-C12 cells, latency, output and memory metrics.
 - [Historical selected P2 cold prefill](P2-COLD-PREFILL.json), [all 21 numeric samples](P2-COLD-SAMPLES.json).
 - [Readable tables, methodology and limitations](../../docs/BENCHMARK-4.0.0.md).
 

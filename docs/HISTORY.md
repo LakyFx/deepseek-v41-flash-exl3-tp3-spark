@@ -1,6 +1,6 @@
 # Tuning history
 
-## 4.0.0 ? 31 October 2026 ? TP4 line
+## 4.0.0 - 31 October 2026 - TP4 line
 
 Publish current P3 production as 4.0.0 alongside TP3 1.2.8. Exact selected P2
 native source/executables, final AOT/decode coverage, native four-rank caches
@@ -8,8 +8,8 @@ and two-way Engram. C16/R48, 9M KV, 3.5 GiB checkpoints, 8K compute. Existing
 smart KV, adaptive speculation, 320 MiB move credit and MAX/8K vision retained.
 Credited dual-domain switchless NCCL and CTS-fence patches included. All old
 recipes, source, benchmarks, tags and releases retained. Repository renamed
-to include TP3?TP4, preserving the same repository and old-URL redirects.
-[Recipe](DS41F-4.0.0.md) ? [measurements and scopes](BENCHMARK-4.0.0.md).
+to include TP3-TP4, preserving the same repository and old-URL redirects.
+[Recipe](DS41F-4.0.0.md) - [measurements and scopes](BENCHMARK-4.0.0.md).
 No new benchmark or live native restart for this publication.
 
 ## 1.2.8 - 31 October 2026
